@@ -11,3 +11,11 @@ vscode : jest runner
 
 - jest runner
 - jest framework
+
+principles:
+
+- fast
+- independant/isolated
+- repeatable - determinsiic result, no flickerinmg test
+- self-validating - pass or fail
+- Thorough -

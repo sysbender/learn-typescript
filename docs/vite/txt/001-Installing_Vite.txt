@@ -1,0 +1,138 @@
+this course will be about frontend
+bundler of new generation called vit and
+because of that it provides much faster
+developer experience compared to
+traditional front end bundlers such as
+web pack so in this course we're going
+to review most of the V features and
+we'll be doing it step by step to better
+understand how V Works which will allow
+us to use this tool more efficiently so
+let's get started and install it locally
+for this I'm going to use package
+manager called npm so let's copy this
+command and run it in a terminal this
+will prompt us to enter project
+name then we're presented with option to
+choose which framework we'd like to use
+we're not going to use any specific
+framework but instead we'll review with
+features by using vanilla JavaScript
+then it will ask us if we'd like to use
+typescript we will definitely have a
+lesson about how to use typescript in VD
+projects but most part of the course
+will be using vanilla Javas script and
+at the end we'll see three commments
+that we need to run sequentially in
+order to run vid server firstly let's go
+inside of project folder in here let's
+run npm install to install all npm
+dependencies and finally we can start
+vid server by running npm runev here we
+will see which address we can use to
+access our project in a browser so let's
+open up a new tab and here we see
+welcome screen of the default with
+project then let's open up project
+inside of editor I'm going to use vs
+code and just to make it easier for us
+to learn how it works we're going to
+install helpful VD plugin called VD
+plugin inspect which will allow us to
+see how VD transforms our source files
+so we will get access to such dashboard
+in the browser and all transformations
+that we will make with our source files
+will be visible to us at every step of
+Transformations this plugin can be
+installed by running the following npm
+command in the terminal so let's run it
+and wait until installation is finished
+and just to let V know about this plugin
+we need to add the following
+instructions inside of V configuration
+file first we have to create this file
+in the project route unless it is
+already created and paste in here all
+those instructions that we just copied
+and then we're given with address which
+we can open up in the browser where our
+in inst inspector will be available but
+for now it is not accessible yet we need
+to restart our V server let's go back to
+terminal stop development server by
+pressing crl C then run it again with a
+commment npm runev and besides with
+servers address we also see another
+address where our inspector will be
+available and we'll see this screen that
+means our inspector has been
+successfully installed what it is and
+how to use it we will be talking about
+in the next slide lessons and for now
+let's see which file gets loaded in the
+browser when we access root of our R
+server and the file which is loaded is
+called
+index.html which is in the project route
+here we can see that this page also
+includes main Javascript file which by
+the way is included as native ecmascript
+module because here we can see attribute
+type with Val a module and all our
+application gets mounted into this deal
+with an IDE of app so now let's open up
+main Javascript file and see what is
+happening inside and right away we can
+see unusual UTS of CSS file and its VG
+files which are not supported natively
+in browsers so if we would be using
+normal static server those UTS would
+fail but it treats those UTS in a
+special way and before serving those UTS
+to the browser it applies all necessary
+transformations to make browsers to
+recognize such UTS where we're going to
+talk about it in details in upcoming
+lessons but basically whenever we import
+CSS files like this V is going to inject
+all these Styles onto the page and
+whenever we import assets such as SVG
+images V is going to expert pass to this
+file and save it in JavaScript logo
+variable so then this pass can be used
+in a normal way for example inside of
+source attribute as we can see right
+here to reference corresponding image
+and sure now this image will be visible
+on the page it is this JavaScript logo
+the same thing happens when we import v.
+SVG file but there is one important
+difference you may notice that vsvg file
+is not in our project route it is
+actually inside of a special folder with
+the name public and for it this public
+folder stores all static assets and all
+static assets that are stored in this
+public folder will not be processed by
+VD but instead will be returned to the
+the browser in its original form we're
+also going to talk about this folder in
+detail in upcoming lessons and finally
+the last import we can see right here is
+normal import of ecmascript module it is
+this counter. JS file which provides
+functionality for the counter whenever
+we click on that button on the page and
+we see that the counter increases with a
+click but we are going to start our
+explanation of V from the very beginning
+so let's clear everything inside of main
+Js file let's also remove counter. JS
+module which we will no longer use and
+finally we'll remove all default Styles
+inside of style. CSS and now we're done
+with installation and initial setup from
+the next lesson we're going to start
+reviewing V's features step by step when

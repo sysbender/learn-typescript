@@ -1,0 +1,362 @@
+WEBVTT
+
+00:00:02.080 --> 00:00:06.880
+import CSS files in JavaScript modules
+
+00:00:05.200 --> 00:00:09.480
+and also in the previous lesson we have
+
+00:00:06.880 --> 00:00:11.919
+taken a look how it works with CSS
+
+00:00:09.480 --> 00:00:14.120
+modules specification and in this lesson
+
+00:00:11.919 --> 00:00:17.080
+we're going to see how it allows us to
+
+00:00:14.120 --> 00:00:19.480
+apply post CSS transformations to CSS
+
+00:00:17.080 --> 00:00:21.880
+Imports and just to demonstrate how to
+
+00:00:19.480 --> 00:00:23.799
+work with post CSS plugins in vid
+
+00:00:21.880 --> 00:00:26.360
+projects we're going to install very
+
+00:00:23.799 --> 00:00:29.440
+popular post CSS plugin which is
+
+00:00:26.360 --> 00:00:32.000
+Tailwind CSS framework so in docs let's
+
+00:00:29.440 --> 00:00:34.400
+open up installation instructions in
+
+00:00:32.000 --> 00:00:37.880
+this case we're installing Tailwind CSS
+
+00:00:34.400 --> 00:00:40.919
+in vid project so let's use page how to
+
+00:00:37.880 --> 00:00:43.399
+install tailin CSS Within withd project
+
+00:00:40.919 --> 00:00:45.880
+and here we can skip the first step
+
+00:00:43.399 --> 00:00:47.880
+because First Step initializes default
+
+00:00:45.880 --> 00:00:50.559
+withd project but we already have a
+
+00:00:47.880 --> 00:00:52.880
+project so let's go directly to step
+
+00:00:50.559 --> 00:00:55.360
+number two and install all necessary
+
+00:00:52.880 --> 00:00:57.679
+packages to provide support for Tailwind
+
+00:00:55.360 --> 00:00:59.840
+CSS the first comment is going to
+
+00:00:57.679 --> 00:01:03.600
+install the following packages Tailwind
+
+00:00:59.840 --> 00:01:05.919
+CSS post CSS and auto prefixer and the
+
+00:01:03.600 --> 00:01:09.760
+second command is going to generate two
+
+00:01:05.919 --> 00:01:13.840
+configuration files one for Tailwind CSS
+
+00:01:09.760 --> 00:01:16.720
+called twin. config.js and another file
+
+00:01:13.840 --> 00:01:19.399
+is post CSS configuration and by the way
+
+00:01:16.720 --> 00:01:22.240
+generated post CSS configuration file
+
+00:01:19.399 --> 00:01:25.080
+already contains necessary plugins which
+
+00:01:22.240 --> 00:01:27.640
+provide support for tawin CSS there is
+
+00:01:25.080 --> 00:01:30.360
+Tailwind CSS plugin itself and auto
+
+00:01:27.640 --> 00:01:33.080
+prefixer to provide support for modern
+
+00:01:30.360 --> 00:01:35.600
+CSS rules in most browsers and now we
+
+00:01:33.080 --> 00:01:38.520
+need to tell Tailwind CSS utility which
+
+00:01:35.600 --> 00:01:41.120
+files will include Tailwind CSS classes
+
+00:01:38.520 --> 00:01:43.919
+and we can do it by specifying value for
+
+00:01:41.120 --> 00:01:47.200
+Content property here we just list pass
+
+00:01:43.919 --> 00:01:49.279
+to all the files with tawin CSS classes
+
+00:01:47.200 --> 00:01:52.559
+and since in our case we're only going
+
+00:01:49.279 --> 00:01:55.039
+to use Tailwind classes within
+
+00:01:52.559 --> 00:01:57.520
+index.html let's just mention pass to
+
+00:01:55.039 --> 00:01:59.640
+this file and on the next step we're
+
+00:01:57.520 --> 00:02:03.520
+going to have to add the following
+
+00:01:59.640 --> 00:02:06.000
+Tailwind CSS directive to our main CSS
+
+00:02:03.520 --> 00:02:08.399
+file so let's copy over these three
+
+00:02:06.000 --> 00:02:12.520
+directives so inside of our project
+
+00:02:08.399 --> 00:02:15.360
+let's create new CS s file 5. CSS inside
+
+00:02:12.520 --> 00:02:18.360
+of assets folder and place those three
+
+00:02:15.360 --> 00:02:21.640
+dires in here and finally after we
+
+00:02:18.360 --> 00:02:23.279
+restart server by running npm Rand Dev
+
+00:02:21.640 --> 00:02:26.039
+we can start using all available
+
+00:02:23.279 --> 00:02:29.399
+Tailwind CSS classes in our source files
+
+00:02:26.039 --> 00:02:32.120
+like this so first of all let's restart
+
+00:02:29.399 --> 00:02:34.640
+our server by pressing contrl C in here
+
+00:02:32.120 --> 00:02:37.559
+to stop the server and run it again by
+
+00:02:34.640 --> 00:02:40.720
+running npm randev let's clear out
+
+00:02:37.559 --> 00:02:44.840
+everything within main.js file and leave
+
+00:02:40.720 --> 00:02:47.440
+only import which includes tellin CSS so
+
+00:02:44.840 --> 00:02:49.760
+we only import 5. CSS file because this
+
+00:02:47.440 --> 00:02:53.120
+is the file where we previously included
+
+00:02:49.760 --> 00:02:56.440
+TN CSS directives and now when browser
+
+00:02:53.120 --> 00:02:59.840
+Encounters this CSS import it is going
+
+00:02:56.440 --> 00:03:02.080
+to make request to our VD server and VD
+
+00:02:59.840 --> 00:03:05.039
+server is going to respond with valid
+
+00:03:02.080 --> 00:03:07.919
+EAS module which means it has converted
+
+00:03:05.039 --> 00:03:11.120
+our CSS file with included Tailwind CSS
+
+00:03:07.919 --> 00:03:14.080
+on the Fly and hold CSS style sheet has
+
+00:03:11.120 --> 00:03:16.279
+been assigned to with CSS constant and
+
+00:03:14.080 --> 00:03:19.919
+then this constant has been used to
+
+00:03:16.279 --> 00:03:22.480
+inject this Styles onto our page as we
+
+00:03:19.919 --> 00:03:25.279
+can see this style includes generated
+
+00:03:22.480 --> 00:03:27.520
+tailn CSS style sheet so let's go ahead
+
+00:03:25.279 --> 00:03:30.360
+and try to apply a couple of Tailwind
+
+00:03:27.520 --> 00:03:32.840
+CSS classes to our heading let's copy
+
+00:03:30.360 --> 00:03:36.360
+over code of this background color from
+
+00:03:32.840 --> 00:03:38.840
+this file and style our H1 heading and
+
+00:03:36.360 --> 00:03:42.360
+in deln CSS the class which corresponds
+
+00:03:38.840 --> 00:03:44.240
+to background color starts with BG and
+
+00:03:42.360 --> 00:03:46.919
+then here in square brackets we can
+
+00:03:44.240 --> 00:03:49.600
+specify Dynamic value of the color so
+
+00:03:46.919 --> 00:03:52.760
+let's paste that hexadecimal code and
+
+00:03:49.600 --> 00:03:54.919
+let's also make text color white and
+
+00:03:52.760 --> 00:03:58.440
+let's better apply those classes to the
+
+00:03:54.919 --> 00:04:00.320
+body element and here we go in Def toes
+
+00:03:58.440 --> 00:04:03.480
+we can see that the appropriate Tailwind
+
+00:04:00.320 --> 00:04:06.159
+CSS classes have been generated and sure
+
+00:04:03.480 --> 00:04:08.320
+enough proper Styles have been applied
+
+00:04:06.159 --> 00:04:10.279
+and in terms of Transformations let's
+
+00:04:08.320 --> 00:04:13.640
+see what transformation have been
+
+00:04:10.279 --> 00:04:16.559
+applied to our initial CSS file as we
+
+00:04:13.640 --> 00:04:19.960
+know our initial stylesheet contains
+
+00:04:16.559 --> 00:04:22.559
+only Tailwind CSS directives so tawin
+
+00:04:19.960 --> 00:04:25.679
+CSS plugin that we have included in post
+
+00:04:22.559 --> 00:04:29.159
+CSS configuration has turned this three
+
+00:04:25.679 --> 00:04:31.200
+directive into full tawin CSS stylesheet
+
+00:04:29.159 --> 00:04:33.799
+and then vid has taken this generated
+
+00:04:31.200 --> 00:04:36.200
+stylesheet and applied another
+
+00:04:33.799 --> 00:04:38.960
+transformation which eventually turned
+
+00:04:36.200 --> 00:04:41.760
+this stylesheet into valid ecmascript
+
+00:04:38.960 --> 00:04:44.799
+module so at the end this code was run
+
+00:04:41.760 --> 00:04:47.440
+in the browser and tawin CSS Styles have
+
+00:04:44.799 --> 00:04:50.200
+been included on the page let's just try
+
+00:04:47.440 --> 00:04:53.039
+to use another Tailwind CSS class to
+
+00:04:50.200 --> 00:04:56.000
+make font size 30 pixels and in a
+
+00:04:53.039 --> 00:04:58.320
+browser in order to see newly generated
+
+00:04:56.000 --> 00:05:01.080
+class we don't even need to refresh the
+
+00:04:58.320 --> 00:05:03.799
+page all modifications are reflected on
+
+00:05:01.080 --> 00:05:06.320
+the page instantly thanks to v hot
+
+00:05:03.799 --> 00:05:08.000
+module replacement feature and this is
+
+00:05:06.320 --> 00:05:10.320
+how we can work with po CSS
+
+00:05:08.000 --> 00:05:13.039
+transformations in VD Pro projects we
+
+00:05:10.320 --> 00:05:16.279
+just need to create post CSS file in our
+
+00:05:13.039 --> 00:05:19.399
+project install all necessary post CSS
+
+00:05:16.279 --> 00:05:22.120
+plugins then include those plugins in
+
+00:05:19.399 --> 00:05:23.880
+post CSS configuration file and it is
+
+00:05:22.120 --> 00:05:26.760
+going to automatically apply all
+
+00:05:23.880 --> 00:05:28.840
+necessary post CSS transformations to
+
+00:05:26.760 --> 00:05:31.600
+all imported CSS
+
+00:05:28.840 --> 00:05:34.640
+files let's see how easy it is to use
+

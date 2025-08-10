@@ -1,0 +1,440 @@
+WEBVTT
+
+00:00:00.960 --> 00:00:05.440
+let's see how we can work with CSS
+
+00:00:02.799 --> 00:00:06.840
+module specification in withd projects
+
+00:00:05.440 --> 00:00:10.240
+first of all we're going to import a
+
+00:00:06.840 --> 00:00:12.760
+couple of CSS files in our main script
+
+00:00:10.240 --> 00:00:15.480
+let's just give them arbitrary names and
+
+00:00:12.760 --> 00:00:17.600
+create these files as with another CSS
+
+00:00:15.480 --> 00:00:20.160
+file we're going to place new files
+
+00:00:17.600 --> 00:00:21.880
+within asss folder and now just to have
+
+00:00:20.160 --> 00:00:24.400
+something to work with let's add here
+
+00:00:21.880 --> 00:00:25.799
+some CSS rules for example we will have
+
+00:00:24.400 --> 00:00:28.240
+heading class which will have the
+
+00:00:25.799 --> 00:00:30.840
+following role color of the text will be
+
+00:00:28.240 --> 00:00:33.720
+orange and in another CSS file we're
+
+00:00:30.840 --> 00:00:36.440
+going to have the same CSS selector but
+
+00:00:33.720 --> 00:00:39.360
+in this case let's use another CSS
+
+00:00:36.440 --> 00:00:41.960
+property font size and set it to 30
+
+00:00:39.360 --> 00:00:43.679
+pixels and so what will happen right now
+
+00:00:41.960 --> 00:00:46.159
+when we're going to use this heading
+
+00:00:43.679 --> 00:00:49.120
+class is that it's going to apply both
+
+00:00:46.159 --> 00:00:51.320
+of these rules to the element so the
+
+00:00:49.120 --> 00:00:54.159
+color will become orange and font size
+
+00:00:51.320 --> 00:00:57.559
+will be 30 pixels let's just assign this
+
+00:00:54.159 --> 00:00:59.400
+class heading to this H1 element and
+
+00:00:57.559 --> 00:01:02.640
+before we check it out in the browser
+
+00:00:59.400 --> 00:01:06.320
+let's go back to main.js file and import
+
+00:01:02.640 --> 00:01:08.159
+another CSS file 3. CSS this is the file
+
+00:01:06.320 --> 00:01:10.799
+we have already created in the previous
+
+00:01:08.159 --> 00:01:12.760
+lesson and we already know what will
+
+00:01:10.799 --> 00:01:16.080
+happen in a browser when it's going to
+
+00:01:12.760 --> 00:01:18.760
+make requests to fetch these CSS files
+
+00:01:16.080 --> 00:01:22.280
+actually VD is going to convert every
+
+00:01:18.760 --> 00:01:24.840
+CSS UT into valid ecmascript module
+
+00:01:22.280 --> 00:01:27.480
+where all styles will be assigned to a
+
+00:01:24.840 --> 00:01:29.600
+constant with the name V CSS and then
+
+00:01:27.480 --> 00:01:32.280
+this code will also include these Styles
+
+00:01:29.600 --> 00:01:34.799
+as separate Style Elements inside of
+
+00:01:32.280 --> 00:01:37.280
+head element as we can see right here
+
+00:01:34.799 --> 00:01:39.480
+and as a result on the page we see text
+
+00:01:37.280 --> 00:01:41.600
+with orange color and now we're going to
+
+00:01:39.480 --> 00:01:44.440
+go back to the editor and do the
+
+00:01:41.600 --> 00:01:47.080
+following let's include suffix module in
+
+00:01:44.440 --> 00:01:50.360
+every of these Imports and this is going
+
+00:01:47.080 --> 00:01:53.640
+to be kind of a hint for V to treat this
+
+00:01:50.360 --> 00:01:56.559
+CSS Import in a special way so what vit
+
+00:01:53.640 --> 00:01:59.000
+is going to do whenever it sees such UT
+
+00:01:56.559 --> 00:02:01.679
+with word module it is going to apply
+
+00:01:59.000 --> 00:02:04.520
+transformation to to convert this CSS
+
+00:02:01.679 --> 00:02:07.159
+module into valid ecmascript module and
+
+00:02:04.520 --> 00:02:09.799
+this module as a default expert will
+
+00:02:07.159 --> 00:02:11.559
+have JavaScript object with Styles and
+
+00:02:09.799 --> 00:02:13.799
+of course we can import such objects
+
+00:02:11.559 --> 00:02:16.320
+from CSS modules and assign it to
+
+00:02:13.799 --> 00:02:19.159
+appropriate variables for example to
+
+00:02:16.320 --> 00:02:20.960
+style a variable and style B and just to
+
+00:02:19.159 --> 00:02:23.679
+see exactly what we're going to get in
+
+00:02:20.960 --> 00:02:25.919
+these variables let's print each of
+
+00:02:23.679 --> 00:02:27.880
+those variables in a console and in
+
+00:02:25.919 --> 00:02:31.400
+order for this to work we should also
+
+00:02:27.880 --> 00:02:34.400
+rename appropriate CSS files and use
+
+00:02:31.400 --> 00:02:37.600
+module word in names so let's do this
+
+00:02:34.400 --> 00:02:40.320
+rename first module 4 a by adding module
+
+00:02:37.600 --> 00:02:43.679
+word and also do the same with second
+
+00:02:40.320 --> 00:02:45.679
+module for B and if we take a look what
+
+00:02:43.679 --> 00:02:48.799
+we get in a browser when we were
+
+00:02:45.679 --> 00:02:51.840
+requesting every CSS module we see that
+
+00:02:48.799 --> 00:02:54.520
+theit has applied conversion to turn CSS
+
+00:02:51.840 --> 00:02:57.080
+modules into AAS script module but this
+
+00:02:54.520 --> 00:02:59.600
+time it has also converted our original
+
+00:02:57.080 --> 00:03:01.760
+class names into unique strings as we
+
+00:02:59.600 --> 00:03:04.480
+can see and also since we printed
+
+00:03:01.760 --> 00:03:07.600
+exported objects in a console let's just
+
+00:03:04.480 --> 00:03:10.760
+see how these objects look so as a key
+
+00:03:07.600 --> 00:03:13.400
+in here we see our original class name
+
+00:03:10.760 --> 00:03:15.120
+that we have used in CSS module files
+
+00:03:13.400 --> 00:03:17.520
+and as a Val it has corresponding
+
+00:03:15.120 --> 00:03:20.000
+converted class name which is unique per
+
+00:03:17.520 --> 00:03:23.360
+CSS module so on the page we're going to
+
+00:03:20.000 --> 00:03:25.840
+see two Style Elements that include both
+
+00:03:23.360 --> 00:03:28.400
+of these unique class names and every
+
+00:03:25.840 --> 00:03:30.520
+style element corresponds to one CSS
+
+00:03:28.400 --> 00:03:32.440
+module so now we don't have to to worry
+
+00:03:30.520 --> 00:03:35.039
+if we're going to have two equal class
+
+00:03:32.440 --> 00:03:37.400
+names in more than one CSS module
+
+00:03:35.039 --> 00:03:39.120
+because generated classes will be unique
+
+00:03:37.400 --> 00:03:42.679
+and let's see it in action so I'm going
+
+00:03:39.120 --> 00:03:45.840
+to query element with class heading and
+
+00:03:42.679 --> 00:03:49.120
+assign to property class name class of
+
+00:03:45.840 --> 00:03:52.760
+the first CSS module so I'm referring to
+
+00:03:49.120 --> 00:03:54.840
+the first CSS module object Styles a and
+
+00:03:52.760 --> 00:03:57.400
+use class name which is start within
+
+00:03:54.840 --> 00:04:00.400
+heading property as we can see this key
+
+00:03:57.400 --> 00:04:02.200
+corresponds to our original class name
+
+00:04:00.400 --> 00:04:05.520
+but the actual value which is stored
+
+00:04:02.200 --> 00:04:07.720
+under this key is unique class name so
+
+00:04:05.520 --> 00:04:10.159
+by applying only this heading class from
+
+00:04:07.720 --> 00:04:13.120
+the first module we going to get only
+
+00:04:10.159 --> 00:04:15.520
+one property applied font size and
+
+00:04:13.120 --> 00:04:17.919
+another property which makes text color
+
+00:04:15.520 --> 00:04:20.640
+orange which belongs to another CSS
+
+00:04:17.919 --> 00:04:22.840
+module was not actually applied because
+
+00:04:20.640 --> 00:04:26.080
+every class name is unique per CSS
+
+00:04:22.840 --> 00:04:28.480
+module and if I would like to also apply
+
+00:04:26.080 --> 00:04:31.200
+text color I'm going to have to manually
+
+00:04:28.480 --> 00:04:34.600
+assign CSS class from the second module
+
+00:04:31.200 --> 00:04:36.720
+Styles B in the same way by referencing
+
+00:04:34.600 --> 00:04:39.039
+heading property so right now we see
+
+00:04:36.720 --> 00:04:40.960
+that both those CSS rules have been
+
+00:04:39.039 --> 00:04:43.960
+applied because we have manually
+
+00:04:40.960 --> 00:04:46.400
+assigned unique CSS classes to this H1
+
+00:04:43.960 --> 00:04:49.520
+element and as for Transformations that
+
+00:04:46.400 --> 00:04:52.120
+we makes with our CSS modules we can see
+
+00:04:49.520 --> 00:04:54.799
+that our original CSS module code gets
+
+00:04:52.120 --> 00:04:57.799
+converted into the following code where
+
+00:04:54.799 --> 00:05:00.240
+class name becomes unique with unique HH
+
+00:04:57.799 --> 00:05:02.880
+appended to class name and after after
+
+00:05:00.240 --> 00:05:05.919
+we has applied this transformation it is
+
+00:05:02.880 --> 00:05:08.640
+going to transform this CSS code into
+
+00:05:05.919 --> 00:05:10.480
+valid ecmascript module so after running
+
+00:05:08.640 --> 00:05:12.840
+this code in the browser the Styles will
+
+00:05:10.480 --> 00:05:16.000
+be added to the page and this module
+
+00:05:12.840 --> 00:05:18.880
+also exports object where key is our
+
+00:05:16.000 --> 00:05:21.159
+original class name and value converted
+
+00:05:18.880 --> 00:05:24.000
+unique class name and this is how we
+
+00:05:21.159 --> 00:05:26.559
+were able to import CSS module within
+
+00:05:24.000 --> 00:05:29.360
+Javascript file so we have received
+
+00:05:26.559 --> 00:05:31.919
+default expert into this Styles a
+
+00:05:29.360 --> 00:05:34.679
+variable which contains our original
+
+00:05:31.919 --> 00:05:37.360
+class names as keys and converted unique
+
+00:05:34.679 --> 00:05:39.799
+class names as values and since here we
+
+00:05:37.360 --> 00:05:42.279
+use synex of native Imports of es
+
+00:05:39.799 --> 00:05:45.039
+modules we can just as easily use the
+
+00:05:42.279 --> 00:05:47.760
+structuring and fetch only those parts
+
+00:05:45.039 --> 00:05:50.240
+that we need for example we want FH only
+
+00:05:47.760 --> 00:05:54.200
+class that corresponds to heading let's
+
+00:05:50.240 --> 00:05:56.919
+use here variable heading assign an alas
+
+00:05:54.200 --> 00:05:59.279
+heading for size just to avoid collision
+
+00:05:56.919 --> 00:06:01.600
+with another CSS class that we are
+
+00:05:59.279 --> 00:06:04.760
+importing in here we can also assign
+
+00:06:01.600 --> 00:06:07.559
+unique Alias heading color and then we
+
+00:06:04.760 --> 00:06:11.039
+need to reference these new aliases when
+
+00:06:07.559 --> 00:06:13.159
+we assign these classes to heading
+
+00:06:11.039 --> 00:06:15.600
+element and sure enough we're going to
+
+00:06:13.159 --> 00:06:17.559
+end up with the same result and this is
+
+00:06:15.600 --> 00:06:19.559
+how we can work with CSS module
+
+00:06:17.559 --> 00:06:22.080
+specification in vid
+
+00:06:19.559 --> 00:06:25.200
+projects we have already seen how to
+

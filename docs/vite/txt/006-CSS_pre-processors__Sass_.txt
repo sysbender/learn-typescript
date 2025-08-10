@@ -1,0 +1,76 @@
+CSS pre-processors in vid projects and
+for demonstration purposes we're going
+to use SAS so let's open up ourain
+Javascript file and import new
+stylesheet with the name 6. CSS let's go
+ahead and create this file in assets
+folder by the way this will be a SAS
+file so in main.js let's change this
+extension on SAS and now we're basically
+going to use arbitrary CSS rule convert
+this rule in valid SAS
+syntax and then let's also switch over
+to
+index.html and remove all Tailwind CSS
+classes that were left since previous
+lesson V provides support for different
+CSS pre-processors such as SS Les stylus
+out of the box so all we have to do is
+to install CSS pre processor with lu to
+use in our case we're using sus so let's
+run this command and install CSS
+compiler after that we need to restart
+our development server so let's run npm
+Rand there once again and in a browser
+we'll see that those styles that have
+been specified Within SAS file have been
+applied that means SAS successfully
+compiled our source file and it was
+successfully served to a browser and as
+a response VD has returned compiled CSS
+file in the form of string which has
+been assigned to this VD CSS constant
+and of course this ecmascript module has
+run and our Styles have been injected on
+the page as always within head element
+and if we'll take closer look at the
+Transformations that we has applied
+we'll see that our source sus file has
+been firstly converted to valid CSS
+syntax and then VD has transformed this
+code once again to convert it to valid
+ecmascript code which will inject CSS
+code on the page and by the way along
+with CSS preprocessors we can also use
+CSS modules at the same time and for
+this we need to use module word in file
+name let's rename this source file we
+have already seen how to work with CSS
+modules in one of the previous lessons
+so we're not going to spend too much
+time on this here let's just see what is
+going to happen when we import CSS
+module like this which also has
+pre-processor code and let's take a look
+what value we're going to get in this
+Styles variable by printing it in a
+console if we leave it as this in a
+console we're going to get an empty
+object so let's go back to SAS file and
+change this selector on class for
+example wrapper and there we go now this
+object contains one key which
+corresponds to class name and the value
+will be generated class name with random
+hash and of course CSS rule that
+corresponds to this unique class name
+has been injected within head element
+and now in our Javascript file we can
+use this class name in whatever way we'd
+like for example let's manually assign
+this class to the body element like so
+and of course in a browser we will see
+that this rule has been applied to our
+heading element and this is how easy it
+is to work with CSS preprocessors in vit
+projects vit allows us to work with Json

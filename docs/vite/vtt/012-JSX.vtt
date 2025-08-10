@@ -1,0 +1,851 @@
+WEBVTT
+
+00:00:00.440 --> 00:00:04.839
+this lesson we're going to check how to
+
+00:00:02.039 --> 00:00:06.880
+work with a jsx specification in V
+
+00:00:04.839 --> 00:00:09.480
+projects and additionally we're going to
+
+00:00:06.880 --> 00:00:11.920
+implement our own custom jsx
+
+00:00:09.480 --> 00:00:13.799
+specification so let's get going first
+
+00:00:11.920 --> 00:00:17.039
+of all we're going to clear out our
+
+00:00:13.799 --> 00:00:19.240
+main.js and in here we'll add Only One
+
+00:00:17.039 --> 00:00:22.480
+Import I will import the file with the
+
+00:00:19.240 --> 00:00:25.680
+name 12. jsx and right away let's create
+
+00:00:22.480 --> 00:00:27.319
+this file within Source folder and as an
+
+00:00:25.680 --> 00:00:30.559
+example we're going to add some
+
+00:00:27.319 --> 00:00:33.280
+arbitrary jsx code within this file so
+
+00:00:30.559 --> 00:00:35.720
+let's create new constant template and
+
+00:00:33.280 --> 00:00:38.799
+then let's use the jsx syntax and
+
+00:00:35.720 --> 00:00:40.680
+specify arbitrary jsx markup kind of
+
+00:00:38.799 --> 00:00:43.559
+like we do in react projects when we
+
+00:00:40.680 --> 00:00:46.039
+create components here I'll create a du
+
+00:00:43.559 --> 00:00:49.160
+with the class wrapper within which I'm
+
+00:00:46.039 --> 00:00:52.200
+going to put Tech p and finally this
+
+00:00:49.160 --> 00:00:54.119
+paragraph will contain anchor Tech and
+
+00:00:52.200 --> 00:00:57.079
+just to have some Styles applied to our
+
+00:00:54.119 --> 00:01:00.160
+markup we're also going to create CSS
+
+00:00:57.079 --> 00:01:01.400
+file with the name 12. CSS and import it
+
+00:01:00.160 --> 00:01:04.000
+right
+
+00:01:01.400 --> 00:01:07.400
+here and as a Content let's just copy
+
+00:01:04.000 --> 00:01:09.680
+over all content from 3. CSS and put it
+
+00:01:07.400 --> 00:01:12.280
+within 12.
+
+00:01:09.680 --> 00:01:15.240
+CSS and just because we're using CSS
+
+00:01:12.280 --> 00:01:18.520
+class called rer in our jsx mark up
+
+00:01:15.240 --> 00:01:21.119
+let's rename this selector on wrapper
+
+00:01:18.520 --> 00:01:23.680
+and so that now we expert constant with
+
+00:01:21.119 --> 00:01:26.640
+a name template from this module let's
+
+00:01:23.680 --> 00:01:29.079
+go back to our main.js and apply the
+
+00:01:26.640 --> 00:01:31.520
+structuring to this import and extract
+
+00:01:29.079 --> 00:01:33.200
+only constant with a name template and
+
+00:01:31.520 --> 00:01:35.480
+I'm also going to use console loog
+
+00:01:33.200 --> 00:01:38.319
+statement in here just to see what we
+
+00:01:35.480 --> 00:01:41.039
+get within this variable after that
+
+00:01:38.319 --> 00:01:44.200
+we're going to get console error because
+
+00:01:41.039 --> 00:01:47.640
+currently our project cannot recognize
+
+00:01:44.200 --> 00:01:51.160
+Js syntax so we need to enable a jsx
+
+00:01:47.640 --> 00:01:54.720
+support and to convert jsx syntax into
+
+00:01:51.160 --> 00:01:57.839
+JS syntax V uses another bundler called
+
+00:01:54.720 --> 00:01:59.440
+es belet and it also lets us specify a
+
+00:01:57.839 --> 00:02:02.079
+couple of options within VD
+
+00:01:59.440 --> 00:02:05.200
+configuration file to kind of Define our
+
+00:02:02.079 --> 00:02:08.720
+own jsx specification and this way we're
+
+00:02:05.200 --> 00:02:11.240
+going to teach we how to process our jsx
+
+00:02:08.720 --> 00:02:14.359
+syntax so let's go back to the file with
+
+00:02:11.240 --> 00:02:16.160
+jsx code and here I'm going to create
+
+00:02:14.359 --> 00:02:18.839
+new new local function with a name
+
+00:02:16.160 --> 00:02:22.119
+create and later we will specify this
+
+00:02:18.839 --> 00:02:24.119
+function as a jsx factory function which
+
+00:02:22.119 --> 00:02:27.599
+is going to be responsible for creating
+
+00:02:24.119 --> 00:02:29.839
+D elements based on our jsx elements
+
+00:02:27.599 --> 00:02:32.160
+let's do this right now so let's open up
+
+00:02:29.839 --> 00:02:34.079
+V configuration file and in this
+
+00:02:32.160 --> 00:02:37.359
+configuration object we're going to
+
+00:02:34.079 --> 00:02:40.160
+specify options for ESU within this
+
+00:02:37.359 --> 00:02:42.720
+internal object and for now the only
+
+00:02:40.160 --> 00:02:44.880
+option that we need is called jsx
+
+00:02:42.720 --> 00:02:47.680
+Factory and this is the option where we
+
+00:02:44.880 --> 00:02:50.359
+need to specify our function name which
+
+00:02:47.680 --> 00:02:52.920
+will be responsible for processing jsx
+
+00:02:50.359 --> 00:02:54.960
+elements so if earlier we have created
+
+00:02:52.920 --> 00:02:57.280
+the function with a name create I'm
+
+00:02:54.960 --> 00:03:00.599
+going to use this name in here and when
+
+00:02:57.280 --> 00:03:02.839
+V is going to process our jsx code for
+
+00:03:00.599 --> 00:03:05.680
+every tag name it is going to call our
+
+00:03:02.839 --> 00:03:08.119
+custom function create and it will pass
+
+00:03:05.680 --> 00:03:10.680
+three additional parameters first one
+
+00:03:08.119 --> 00:03:13.440
+will be element which will contain the
+
+00:03:10.680 --> 00:03:15.880
+tag name the second one will be an
+
+00:03:13.440 --> 00:03:19.599
+object with a attributes that we have
+
+00:03:15.880 --> 00:03:21.640
+specified on that tag within jsx syntax
+
+00:03:19.599 --> 00:03:23.839
+and the third parameter will be content
+
+00:03:21.640 --> 00:03:26.880
+that we can put in between opening and
+
+00:03:23.839 --> 00:03:29.400
+closing text so before going any further
+
+00:03:26.880 --> 00:03:31.520
+let's just see what we get in all these
+
+00:03:29.400 --> 00:03:34.000
+three parameters I'm going to add
+
+00:03:31.520 --> 00:03:36.960
+another console loog statement and print
+
+00:03:34.000 --> 00:03:39.799
+out every parameter and this function
+
+00:03:36.960 --> 00:03:43.079
+will be called three times one time per
+
+00:03:39.799 --> 00:03:45.240
+tag we have used within jsx syntax so
+
+00:03:43.079 --> 00:03:47.640
+the first code to the create function
+
+00:03:45.240 --> 00:03:50.000
+has received three parameters with the
+
+00:03:47.640 --> 00:03:52.960
+following values the element parameter
+
+00:03:50.000 --> 00:03:55.200
+equals to T name a the attributes that
+
+00:03:52.960 --> 00:03:58.680
+we have specified on the anchor Tech
+
+00:03:55.200 --> 00:04:00.520
+consist of only one attribute called hrf
+
+00:03:58.680 --> 00:04:03.039
+and finally the text that we have
+
+00:04:00.520 --> 00:04:05.440
+specified for this anchor element is
+
+00:04:03.039 --> 00:04:08.039
+link the second call to the create
+
+00:04:05.440 --> 00:04:11.000
+function has received parameters with
+
+00:04:08.039 --> 00:04:13.160
+such Val when the first one corresponds
+
+00:04:11.000 --> 00:04:15.480
+to the tag name and the other two for
+
+00:04:13.160 --> 00:04:17.760
+now do not contain any vales and the
+
+00:04:15.480 --> 00:04:19.760
+reason to that is because we haven't
+
+00:04:17.760 --> 00:04:22.039
+returned anything from our Factory
+
+00:04:19.760 --> 00:04:24.680
+function yet and as a content for a
+
+00:04:22.039 --> 00:04:27.400
+paragraph element we use another element
+
+00:04:24.680 --> 00:04:29.599
+which is Anor Tech and finally these are
+
+00:04:27.400 --> 00:04:32.200
+the last set of three parameters that we
+
+00:04:29.599 --> 00:04:35.119
+get after calling create function third
+
+00:04:32.200 --> 00:04:37.880
+time because the root element of our jsx
+
+00:04:35.119 --> 00:04:40.760
+markup is div which has only one
+
+00:04:37.880 --> 00:04:42.559
+attribute class with the Val upper and
+
+00:04:40.760 --> 00:04:45.520
+because we haven't returned anything
+
+00:04:42.559 --> 00:04:47.039
+from our Factory function yet the third
+
+00:04:45.520 --> 00:04:49.839
+parameter which is supposed to be a
+
+00:04:47.039 --> 00:04:51.920
+content of this div element holds value
+
+00:04:49.839 --> 00:04:55.000
+undefine it for now and now we're going
+
+00:04:51.920 --> 00:04:57.720
+to get to fixing it going back to our
+
+00:04:55.000 --> 00:05:00.880
+create function in here I'm going to
+
+00:04:57.720 --> 00:05:02.480
+create new constant called node and
+
+00:05:00.880 --> 00:05:05.079
+based on the element name what we
+
+00:05:02.480 --> 00:05:07.680
+receive as the first parameter into this
+
+00:05:05.079 --> 00:05:11.279
+function we're going to use native Dom
+
+00:05:07.680 --> 00:05:13.920
+API and create Dome node by using Create
+
+00:05:11.279 --> 00:05:14.920
+element method on the document object
+
+00:05:13.920 --> 00:05:16.960
+like this
+
+00:05:14.920 --> 00:05:20.200
+and now that we have our Dom element
+
+00:05:16.960 --> 00:05:22.160
+created we need to take attributes
+
+00:05:20.200 --> 00:05:25.480
+object which we receive as a second
+
+00:05:22.160 --> 00:05:27.440
+parameter into this function and iterate
+
+00:05:25.480 --> 00:05:30.319
+over all the attributes within this
+
+00:05:27.440 --> 00:05:33.200
+object and to iterate keys and values of
+
+00:05:30.319 --> 00:05:35.640
+this object we can use JavaScript method
+
+00:05:33.200 --> 00:05:38.720
+entries and here we're passing object
+
+00:05:35.640 --> 00:05:40.400
+name which we' like to iterate over and
+
+00:05:38.720 --> 00:05:43.160
+if this object will be null we're going
+
+00:05:40.400 --> 00:05:45.920
+to f back to an empty object and this
+
+00:05:43.160 --> 00:05:48.839
+entries method is going to produce array
+
+00:05:45.920 --> 00:05:51.680
+with pairs key and value that are
+
+00:05:48.839 --> 00:05:54.640
+contained within attributes object so we
+
+00:05:51.680 --> 00:05:57.079
+can easily iterate over this array and
+
+00:05:54.640 --> 00:05:59.559
+as a first parameter we're going to
+
+00:05:57.079 --> 00:06:02.359
+destructure these pairs the name
+
+00:05:59.559 --> 00:06:05.839
+variable will hold attribute name and
+
+00:06:02.359 --> 00:06:07.880
+the Val variable will hold its Val and
+
+00:06:05.839 --> 00:06:11.279
+finally in here by using another native
+
+00:06:07.880 --> 00:06:14.880
+Dom AP Pi method called set attribute we
+
+00:06:11.279 --> 00:06:17.160
+can set attribute with a name stored in
+
+00:06:14.880 --> 00:06:20.640
+the variable name and assigned value
+
+00:06:17.160 --> 00:06:23.599
+stored in variable value like this and
+
+00:06:20.640 --> 00:06:26.160
+down here we also need to check if SE
+
+00:06:23.599 --> 00:06:28.359
+parameter also contains value which is
+
+00:06:26.160 --> 00:06:30.640
+supposed to be a content for our Dom
+
+00:06:28.359 --> 00:06:33.640
+element and if this value will be a
+
+00:06:30.640 --> 00:06:36.359
+string we're going to create text node
+
+00:06:33.640 --> 00:06:38.960
+based on this string by using Create
+
+00:06:36.359 --> 00:06:41.200
+text node method and pass received
+
+00:06:38.960 --> 00:06:44.440
+content into this method and then
+
+00:06:41.200 --> 00:06:47.039
+reassign resulting text element to this
+
+00:06:44.440 --> 00:06:49.640
+content variable and finally we need to
+
+00:06:47.039 --> 00:06:52.200
+append this text element into that Dom
+
+00:06:49.640 --> 00:06:55.279
+element we have previously created so
+
+00:06:52.200 --> 00:06:58.240
+let's use a pen child method and pass
+
+00:06:55.279 --> 00:07:00.359
+variable content as the first parameter
+
+00:06:58.240 --> 00:07:03.760
+and eventually we're going to return
+
+00:07:00.359 --> 00:07:06.240
+create a d element from this function so
+
+00:07:03.760 --> 00:07:08.520
+right now let's check one more time what
+
+00:07:06.240 --> 00:07:10.720
+values we're going to get within every
+
+00:07:08.520 --> 00:07:13.279
+parameter that we print in here the
+
+00:07:10.720 --> 00:07:15.359
+first code to the create function has
+
+00:07:13.279 --> 00:07:17.279
+produced the following result as the
+
+00:07:15.359 --> 00:07:20.079
+first parameter we still get anchor
+
+00:07:17.279 --> 00:07:23.000
+element the second parameter is object
+
+00:07:20.079 --> 00:07:25.119
+with attributes to this anchor and the
+
+00:07:23.000 --> 00:07:28.200
+third parameter will be content for this
+
+00:07:25.119 --> 00:07:30.720
+element and then when V sees paragraph
+
+00:07:28.200 --> 00:07:32.960
+element within our jsx markup it is
+
+00:07:30.720 --> 00:07:35.920
+going to call create function with this
+
+00:07:32.960 --> 00:07:38.559
+element as the first parameter and since
+
+00:07:35.920 --> 00:07:41.559
+we have not specified any attributes on
+
+00:07:38.559 --> 00:07:44.160
+this P element the second parameter is
+
+00:07:41.559 --> 00:07:46.880
+empty and finally just because this
+
+00:07:44.160 --> 00:07:49.960
+paragraph element contains another
+
+00:07:46.880 --> 00:07:52.640
+element a as the third parameter we have
+
+00:07:49.960 --> 00:07:55.720
+received D element which corresponds to
+
+00:07:52.640 --> 00:07:57.960
+an anchor and this anchor element was
+
+00:07:55.720 --> 00:08:01.000
+created when calling that function
+
+00:07:57.960 --> 00:08:04.559
+create that we have implemented earlier
+
+00:08:01.000 --> 00:08:07.400
+and finally our GSX markup also contains
+
+00:08:04.559 --> 00:08:09.839
+another element called div the create
+
+00:08:07.400 --> 00:08:12.520
+function gets called for this element
+
+00:08:09.839 --> 00:08:14.760
+first parameter will be element name
+
+00:08:12.520 --> 00:08:18.039
+which is Du the second parameter
+
+00:08:14.760 --> 00:08:20.680
+contains attributes of this element we
+
+00:08:18.039 --> 00:08:23.079
+have specified only one attribute with
+
+00:08:20.680 --> 00:08:26.000
+the name class and just because this
+
+00:08:23.079 --> 00:08:28.799
+element also wraps another element
+
+00:08:26.000 --> 00:08:31.599
+paragraph As a Content within the C
+
+00:08:28.799 --> 00:08:34.160
+parameter we receive this paragraph
+
+00:08:31.599 --> 00:08:36.240
+element so now let's go back to the
+
+00:08:34.160 --> 00:08:38.680
+create function and remove this console
+
+00:08:36.240 --> 00:08:40.920
+loog statement and as we can see in our
+
+00:08:38.680 --> 00:08:43.839
+main.js file we have another console
+
+00:08:40.920 --> 00:08:46.160
+lock statement which prints out content
+
+00:08:43.839 --> 00:08:48.400
+of the template variable and this
+
+00:08:46.160 --> 00:08:51.119
+template variable is supposed to hold
+
+00:08:48.400 --> 00:08:54.200
+Dom structure which was created based on
+
+00:08:51.119 --> 00:08:56.440
+our initial jsx markup so if we take a
+
+00:08:54.200 --> 00:08:58.760
+look in the browser we will see that
+
+00:08:56.440 --> 00:09:01.920
+this template variable holds a root
+
+00:08:58.760 --> 00:09:04.559
+element of our jsx markup for now it is
+
+00:09:01.920 --> 00:09:07.480
+represented as a Dom element but to see
+
+00:09:04.559 --> 00:09:11.400
+the whole content as text we can use
+
+00:09:07.480 --> 00:09:14.160
+another Dome property called outer HTML
+
+00:09:11.400 --> 00:09:16.359
+let's use it in here and check conso
+
+00:09:14.160 --> 00:09:19.760
+again and now we see full string
+
+00:09:16.359 --> 00:09:22.599
+representation of our jsx markup so this
+
+00:09:19.760 --> 00:09:24.920
+whole jsx markup that was specified in
+
+00:09:22.599 --> 00:09:27.480
+here it was properly processed and
+
+00:09:24.920 --> 00:09:29.119
+turned into Dom structure and then we
+
+00:09:27.480 --> 00:09:31.680
+have printed out its string
+
+00:09:29.119 --> 00:09:33.440
+representation in a console and now what
+
+00:09:31.680 --> 00:09:35.760
+we're going to do instead of printing
+
+00:09:33.440 --> 00:09:38.599
+this markup in a console we're actually
+
+00:09:35.760 --> 00:09:39.680
+going to create another div element in
+
+00:09:38.599 --> 00:09:43.200
+our
+
+00:09:39.680 --> 00:09:45.839
+index.html with an identifier of up and
+
+00:09:43.200 --> 00:09:48.359
+then let's goad and add this hmark up in
+
+00:09:45.839 --> 00:09:50.920
+our page so I'm going to use Query
+
+00:09:48.359 --> 00:09:54.400
+selector to select element with an idea
+
+00:09:50.920 --> 00:09:56.559
+of app then let's call append child and
+
+00:09:54.400 --> 00:09:59.079
+as a parameter we specify D element we
+
+00:09:56.559 --> 00:10:01.400
+wish to append within element with an
+
+00:09:59.079 --> 00:10:03.760
+IDE of app and as we can see in the
+
+00:10:01.400 --> 00:10:06.440
+browser new element was appeared on our
+
+00:10:03.760 --> 00:10:09.799
+page which is that whole converted jsx
+
+00:10:06.440 --> 00:10:12.200
+markup added within up element but right
+
+00:10:09.799 --> 00:10:14.520
+now we can't really see the link well so
+
+00:10:12.200 --> 00:10:17.079
+let's go ahead and change Style we're
+
+00:10:14.520 --> 00:10:19.799
+going to make the text color white for
+
+00:10:17.079 --> 00:10:21.960
+this link and there we go now we can
+
+00:10:19.799 --> 00:10:24.640
+clearly see the link and what we're
+
+00:10:21.960 --> 00:10:27.599
+going to do next is to extract this
+
+00:10:24.640 --> 00:10:30.079
+Factory function create and move it in
+
+00:10:27.599 --> 00:10:34.039
+the new module we're going to create new
+
+00:10:30.079 --> 00:10:37.600
+file called 12- create within Source
+
+00:10:34.039 --> 00:10:39.480
+folder and put that function in here and
+
+00:10:37.600 --> 00:10:41.759
+of course we need to expert this
+
+00:10:39.480 --> 00:10:43.520
+function from this module but after
+
+00:10:41.759 --> 00:10:46.120
+doing this change we're actually going
+
+00:10:43.520 --> 00:10:48.759
+to get error in a console saying that
+
+00:10:46.120 --> 00:10:51.239
+create is not defined so right now
+
+00:10:48.759 --> 00:10:53.480
+whenever we're going to use a jsx markup
+
+00:10:51.239 --> 00:10:56.920
+we also have to import our Factory
+
+00:10:53.480 --> 00:10:59.839
+function create from the new module 12
+
+00:10:56.920 --> 00:11:03.000
+create. GS let's add a proper import
+
+00:10:59.839 --> 00:11:05.759
+statement in this file and after this as
+
+00:11:03.000 --> 00:11:08.319
+we can see everything is working again
+
+00:11:05.759 --> 00:11:11.159
+but yes having to import this create
+
+00:11:08.319 --> 00:11:14.199
+function every time we want to use jsx
+
+00:11:11.159 --> 00:11:17.239
+markup is not very convenient so we can
+
+00:11:14.199 --> 00:11:20.560
+use another trick and specify option
+
+00:11:17.239 --> 00:11:23.080
+with the name jsx inject in the es build
+
+00:11:20.560 --> 00:11:24.880
+configuration object and here we can
+
+00:11:23.080 --> 00:11:28.640
+Define what content should be
+
+00:11:24.880 --> 00:11:31.440
+automatically added to all jsx files so
+
+00:11:28.640 --> 00:11:34.120
+we can add in here that import statement
+
+00:11:31.440 --> 00:11:36.759
+of create function so we don't have to
+
+00:11:34.120 --> 00:11:39.719
+import it manually over and over again
+
+00:11:36.759 --> 00:11:42.000
+in jsx files let's just specify an
+
+00:11:39.719 --> 00:11:44.799
+absolute pass to the module which holds
+
+00:11:42.000 --> 00:11:47.279
+our create function and now even though
+
+00:11:44.799 --> 00:11:51.199
+we haven't explicitly imported create
+
+00:11:47.279 --> 00:11:54.199
+function in jsx file we still can see
+
+00:11:51.199 --> 00:11:57.000
+that our jsx code was properly processed
+
+00:11:54.199 --> 00:11:59.480
+and resulting jsx structure was injected
+
+00:11:57.000 --> 00:12:02.000
+into the page that is because VD has
+
+00:11:59.480 --> 00:12:04.679
+automatically added proper import
+
+00:12:02.000 --> 00:12:07.319
+statement which Imports our Factory
+
+00:12:04.679 --> 00:12:10.040
+function create at the top of the GSX
+
+00:12:07.319 --> 00:12:14.080
+file and by the way every usage of the
+
+00:12:10.040 --> 00:12:16.960
+jsx element in our jsx markup was great
+
+00:12:14.080 --> 00:12:19.840
+into such function calls of our Factory
+
+00:12:16.960 --> 00:12:22.840
+function create with proper parameters
+
+00:12:19.840 --> 00:12:25.120
+depending on the GSX element so in this
+
+00:12:22.840 --> 00:12:29.440
+lesson we have learned how to write our
+
+00:12:25.120 --> 00:12:31.880
+own jsx specification and use it in vid
+
+00:12:29.440 --> 00:12:34.120
+projects let's talk about typescript
+

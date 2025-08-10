@@ -1,0 +1,131 @@
+lesson let's review how we can optimize
+images by using VD and for that I
+already prepared default vid project
+let's open it up in the browser and
+start so at the beginning as always
+let's just do a little preparation let's
+switch over to index.html file and here
+I'm going to add an image and in order
+for this image to not exceed the
+available wids of the browser let's
+assign wids 100% And then what we're
+going to do inside main.js firstly let's
+clear everything from here an import an
+example image which I'm going to add in
+this project in a bit so then once we
+got the pass to this image inside the
+image variable let's just select Dom
+element of that image we have just added
+and assign the pass of the image to the
+source attribute like so let me just
+quickly add an image to this project
+here it is this is how our image we're
+going to optimize looks like and then in
+order to easily see the size of any file
+within vs code we can use the following
+extension I already have this installed
+and the way this extension works is it
+just shows the size of an active file in
+the status bar at the bottom right
+corner I currently have my status bar
+hidden so let me just enable it and
+right here I can see the original size
+of this image as we can see this image
+is quite big and the size exceeds 1 MB
+and now before proceeding further let's
+switch over to the browser and make sure
+that this image shows up and everything
+looks good we can continue so in order
+to optimize images VD has several
+plugins and one of them we're going to
+use in this lesson I'm going to use
+plugin called VD plugin image Optimizer
+so this plugin relies on two other
+libraries sharp JS and SVG o for image
+optimizations so first things first
+let's just install this plugin by
+running the following npm code command
+I'm going to copy over this command and
+run it in my terminal and then since
+this plugin relies onto other libraries
+those libraries have to be manually
+installed so one by one I'm going to
+copy these commments to install these
+two libraries firstly let's install
+sharp and right after that let's also
+install another Library SVG o and once
+the installation process is finished we
+have to configure this plugin and the
+way we do this is by inserting this
+configuration into our re configuration
+file currently I do not have this file
+so let me create it and paste in here
+all that configuration there is nothing
+special about this configuration and the
+most important thing here is that we
+import and include our new image
+optimization plugin and add it to the
+vid pipeline actually this plugin allows
+us to configure a lot of things but
+we're not going to review any possible
+configuration option and instead let's
+just see how to optimize an image with
+an extension. gpg so let me copy over
+this configuration option and paste it
+into my V.C config.js and by using this
+option quality we can configure how much
+we want all gpg images to be optimized
+so as an example let's specify 80 and by
+the way image optimization only happens
+when building the project for production
+so I'm going to have to run the build by
+using npm run build and right here we
+can see the new output this is the
+result of that image optimization plugin
+and right away we can see in here that
+two images were optimized the first
+image is that image we just added to the
+project and another one vid SVG is the
+default one which recites inside public
+folder by default so as we can see the
+size of the first image was reduced by
+around 300 kilobytes and now to see the
+result in the browser I'm going to have
+to run npm run preview to open up build
+project in the browser and by following
+the address Local Host
+4173 we can see in the browser build
+project and there we go we got here an
+optimized image but the size here is a
+little bit different than the one we
+have just seen in the terminal anyway
+our image optimization is worked so now
+let's just change the value of the
+quality configuration option for example
+let's specify 40 and then run the build
+by running npm run build and this time
+the image size was reduced even more and
+of course if I open up this build in a
+browser we can see in here the newly
+optimized image with the size of
+392 kiloby so let's review in the editor
+let's open up original image with the
+name image. gpg and as we can see the
+original size of this image was over 1
+MB but then when building the project
+for production the size of this image
+was dropped to 34 4 kiloby and actually
+the point of this lesson was not to show
+you how the particular plugin works but
+how to include any plugin into it
+because the installation process as well
+as configuration will be pretty similar
+and of course there is not the only
+plugin which allows it to optimize
+images there are also other choices so
+we just have to pick that plugin which
+satisfies our needs and then follow
+simple steps to install and configure
+this plugin and then we'll be good to go
+let's keep exploring capabilities of itd
+in the next lesson in this lesson let's

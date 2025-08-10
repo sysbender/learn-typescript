@@ -1,0 +1,169 @@
+supportting vid we're going to use a
+very basic example just for
+demonstration purposes how to integrate
+typescript into vid project so I'm going
+to create a new file with an extension
+TS let's call it
+main.ts and in here we're going to
+declare a function sum which basically
+is going to sum up two numbers it will
+accept two arguments of type number A
+and B and it's supposed to calculate the
+sum of these numbers and eventually
+return number so in here let's just sum
+up two arguments a plus b and down here
+we're going to add console log statement
+to print out the result of calling this
+function sum with arguments one which is
+number and the second argument will be
+two but this time it will be a string
+and before checking it out in the
+browser we of course how to include this
+file to our page and by the way it
+allows us to include typescript files
+directly within HTML files like so so
+once it's done let's switch over to the
+browser and surprisingly we don't see
+any errors in the console and as a
+result in a console we have number 12
+which is the result of executing that
+some function
+so as we can see after browser loads our
+file main.ts it receives the content
+where all types have been stried so that
+means VD has applied transformation to
+this file to remove everything related
+to typescript and leave only valid
+JavaScript code that can be run in a
+browser so that means that vid hasn't
+done any static type checks and instead
+only converted typescript syntax into
+JavaScript syntax and which is why as a
+result of executing this function we got
+12 because instead of summing up two
+numbers JavaScript has concatenated them
+and there is actually a reason why it
+doesn't do any static type checking when
+converting typescript files into
+JavaScript files and this reason is a
+speed because to do full static type
+checking will actually drastically delay
+the whole build process so what we'd
+recommend us to do instead if we want to
+run static type checking is to
+separately install typescript compiler
+we're going to to do it right now so in
+a terminal let's run npm install
+typescript and then we're going to use
+this compiler to separately analyze our
+types script files and apply type
+checking so in our package.json we're
+going to add one more script within
+script section with the name
+TSC and what this script will do is
+basically run typescript compiler but in
+our case we don't need to transform any
+typescript files into JavaScript files
+instead we want only run static type
+checking since this will be done by V
+and instead what we want to do is to
+actually run static type checking so in
+here for typescript compiler we're going
+to use option called No emit which is
+not going to produce any JavaScript
+files and instead we'll only run static
+type checking and now if we try to go
+ahead and run that script by running npm
+run DSC we're going to see the following
+error and to fix it we have to uh
+typescript configuration file within the
+root of the project with the name TS
+config.js and in here the only option
+that we have to specify is to actually
+show typescript compiler where our
+source files are stored so let's add
+root deer option with the value dot
+which is kind of a pointer to the root
+directory of our project so right now if
+we run the same common again npm run TSC
+this time we're going to get a different
+error and this is actually the error
+that we expect that we have some type
+mismatches in our typescript file so
+right now our typescript compiler works
+properly and gives us hints whenever we
+have type mismatches like this one but
+actually a running types script compiler
+like this is not going to rerun it every
+time we're going to make change to our
+source file so to make typescript
+compiler watch our source file for
+changes we're going to run the same
+command npm run DSC but this time we
+will also add flag watch and from now on
+anytime we're going to make a change to
+our source files for example let's go
+ahead switch over to
+main.ts and make a change by fixing this
+type error and now that we don't have
+any type errors within this file if we
+take a look at the types scrip output we
+can see that typ scrip compiler was
+rerun and this time there are no errors
+and warnings being reported so when it
+comes to running typescript in VD
+projects this is one of the V
+recommendations to run typescript type
+checking in a separate process to
+prevent deferring main VD build process
+but if we actually want to fully
+integrate typescript type checking
+process within VD build process there is
+a special plugin for it called with
+plugin Checker and this plugin allows us
+to fully integrate typescript type
+checking into vid build process and
+after that all typescript related errors
+and warnings will be shown directly in
+the browser and if we wish to use this
+plugin the first thing we need to do of
+course is to install it by running the
+following command so let's switch over
+to the terminal paste here that
+installation comment and wait until the
+installation process finished and after
+installation is finished next we have to
+configure this plugin by adding some
+instructions into our withd
+configuration file so first of all let's
+add this import statement I'm going to
+switch over to my V.C config.js and
+right below the inspect import statement
+I'm going to paste new import statement
+for withd plug-in Checker plugin and one
+more thing to do to configure this
+plugin is to actually copy this function
+call and paste it into plugins section
+down below like this and this is
+actually all what's required to fully
+integrate typescript type checking
+within V build process so right now
+we're going to go ahead and get back
+that type check in error by converting
+this argument to string this time during
+VI build process we're going to see that
+the typescript error was appeared within
+the browser so as we can see from now on
+every typescript error will be shown
+directly in the browser and of course if
+we go ahead and fix this error and check
+the result in the browser we no longer
+see any typescript errors and now within
+such setup we no longer need to run
+types script compiler within a separate
+process so let's stop the previous
+process that we have previously run in a
+console by pressing controlc because
+typescript will notify us about any type
+related errors directly in the
+browser now that we know how to

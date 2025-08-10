@@ -1,0 +1,416 @@
+WEBVTT
+
+00:00:00.160 --> 00:00:04.680
+this course will be about frontend
+
+00:00:01.760 --> 00:00:06.640
+bundler of new generation called vit and
+
+00:00:04.680 --> 00:00:08.840
+because of that it provides much faster
+
+00:00:06.640 --> 00:00:10.920
+developer experience compared to
+
+00:00:08.840 --> 00:00:13.040
+traditional front end bundlers such as
+
+00:00:10.920 --> 00:00:15.559
+web pack so in this course we're going
+
+00:00:13.040 --> 00:00:18.560
+to review most of the V features and
+
+00:00:15.559 --> 00:00:20.800
+we'll be doing it step by step to better
+
+00:00:18.560 --> 00:00:23.240
+understand how V Works which will allow
+
+00:00:20.800 --> 00:00:26.000
+us to use this tool more efficiently so
+
+00:00:23.240 --> 00:00:27.439
+let's get started and install it locally
+
+00:00:26.000 --> 00:00:30.599
+for this I'm going to use package
+
+00:00:27.439 --> 00:00:33.680
+manager called npm so let's copy this
+
+00:00:30.599 --> 00:00:37.079
+command and run it in a terminal this
+
+00:00:33.680 --> 00:00:39.879
+will prompt us to enter project
+
+00:00:37.079 --> 00:00:42.360
+name then we're presented with option to
+
+00:00:39.879 --> 00:00:44.280
+choose which framework we'd like to use
+
+00:00:42.360 --> 00:00:46.640
+we're not going to use any specific
+
+00:00:44.280 --> 00:00:49.760
+framework but instead we'll review with
+
+00:00:46.640 --> 00:00:51.840
+features by using vanilla JavaScript
+
+00:00:49.760 --> 00:00:53.840
+then it will ask us if we'd like to use
+
+00:00:51.840 --> 00:00:56.359
+typescript we will definitely have a
+
+00:00:53.840 --> 00:00:58.519
+lesson about how to use typescript in VD
+
+00:00:56.359 --> 00:01:00.920
+projects but most part of the course
+
+00:00:58.519 --> 00:01:02.719
+will be using vanilla Javas script and
+
+00:01:00.920 --> 00:01:04.920
+at the end we'll see three commments
+
+00:01:02.719 --> 00:01:07.720
+that we need to run sequentially in
+
+00:01:04.920 --> 00:01:11.000
+order to run vid server firstly let's go
+
+00:01:07.720 --> 00:01:14.200
+inside of project folder in here let's
+
+00:01:11.000 --> 00:01:16.640
+run npm install to install all npm
+
+00:01:14.200 --> 00:01:20.119
+dependencies and finally we can start
+
+00:01:16.640 --> 00:01:22.200
+vid server by running npm runev here we
+
+00:01:20.119 --> 00:01:25.240
+will see which address we can use to
+
+00:01:22.200 --> 00:01:27.560
+access our project in a browser so let's
+
+00:01:25.240 --> 00:01:29.320
+open up a new tab and here we see
+
+00:01:27.560 --> 00:01:31.680
+welcome screen of the default with
+
+00:01:29.320 --> 00:01:34.240
+project then let's open up project
+
+00:01:31.680 --> 00:01:36.680
+inside of editor I'm going to use vs
+
+00:01:34.240 --> 00:01:39.119
+code and just to make it easier for us
+
+00:01:36.680 --> 00:01:41.920
+to learn how it works we're going to
+
+00:01:39.119 --> 00:01:44.320
+install helpful VD plugin called VD
+
+00:01:41.920 --> 00:01:47.759
+plugin inspect which will allow us to
+
+00:01:44.320 --> 00:01:50.280
+see how VD transforms our source files
+
+00:01:47.759 --> 00:01:52.680
+so we will get access to such dashboard
+
+00:01:50.280 --> 00:01:55.399
+in the browser and all transformations
+
+00:01:52.680 --> 00:01:58.280
+that we will make with our source files
+
+00:01:55.399 --> 00:02:00.159
+will be visible to us at every step of
+
+00:01:58.280 --> 00:02:02.399
+Transformations this plugin can be
+
+00:02:00.159 --> 00:02:05.320
+installed by running the following npm
+
+00:02:02.399 --> 00:02:08.200
+command in the terminal so let's run it
+
+00:02:05.320 --> 00:02:10.879
+and wait until installation is finished
+
+00:02:08.200 --> 00:02:12.520
+and just to let V know about this plugin
+
+00:02:10.879 --> 00:02:15.160
+we need to add the following
+
+00:02:12.520 --> 00:02:17.800
+instructions inside of V configuration
+
+00:02:15.160 --> 00:02:19.959
+file first we have to create this file
+
+00:02:17.800 --> 00:02:22.599
+in the project route unless it is
+
+00:02:19.959 --> 00:02:25.319
+already created and paste in here all
+
+00:02:22.599 --> 00:02:27.080
+those instructions that we just copied
+
+00:02:25.319 --> 00:02:29.480
+and then we're given with address which
+
+00:02:27.080 --> 00:02:32.080
+we can open up in the browser where our
+
+00:02:29.480 --> 00:02:34.440
+in inst inspector will be available but
+
+00:02:32.080 --> 00:02:37.519
+for now it is not accessible yet we need
+
+00:02:34.440 --> 00:02:40.120
+to restart our V server let's go back to
+
+00:02:37.519 --> 00:02:43.400
+terminal stop development server by
+
+00:02:40.120 --> 00:02:45.920
+pressing crl C then run it again with a
+
+00:02:43.400 --> 00:02:48.239
+commment npm runev and besides with
+
+00:02:45.920 --> 00:02:50.599
+servers address we also see another
+
+00:02:48.239 --> 00:02:52.760
+address where our inspector will be
+
+00:02:50.599 --> 00:02:54.519
+available and we'll see this screen that
+
+00:02:52.760 --> 00:02:56.840
+means our inspector has been
+
+00:02:54.519 --> 00:02:59.040
+successfully installed what it is and
+
+00:02:56.840 --> 00:03:01.280
+how to use it we will be talking about
+
+00:02:59.040 --> 00:03:03.440
+in the next slide lessons and for now
+
+00:03:01.280 --> 00:03:06.720
+let's see which file gets loaded in the
+
+00:03:03.440 --> 00:03:09.159
+browser when we access root of our R
+
+00:03:06.720 --> 00:03:10.239
+server and the file which is loaded is
+
+00:03:09.159 --> 00:03:13.080
+called
+
+00:03:10.239 --> 00:03:14.680
+index.html which is in the project route
+
+00:03:13.080 --> 00:03:17.239
+here we can see that this page also
+
+00:03:14.680 --> 00:03:19.599
+includes main Javascript file which by
+
+00:03:17.239 --> 00:03:22.120
+the way is included as native ecmascript
+
+00:03:19.599 --> 00:03:24.560
+module because here we can see attribute
+
+00:03:22.120 --> 00:03:27.239
+type with Val a module and all our
+
+00:03:24.560 --> 00:03:30.040
+application gets mounted into this deal
+
+00:03:27.239 --> 00:03:32.319
+with an IDE of app so now let's open up
+
+00:03:30.040 --> 00:03:34.560
+main Javascript file and see what is
+
+00:03:32.319 --> 00:03:38.400
+happening inside and right away we can
+
+00:03:34.560 --> 00:03:41.000
+see unusual UTS of CSS file and its VG
+
+00:03:38.400 --> 00:03:43.720
+files which are not supported natively
+
+00:03:41.000 --> 00:03:46.439
+in browsers so if we would be using
+
+00:03:43.720 --> 00:03:49.519
+normal static server those UTS would
+
+00:03:46.439 --> 00:03:52.799
+fail but it treats those UTS in a
+
+00:03:49.519 --> 00:03:55.519
+special way and before serving those UTS
+
+00:03:52.799 --> 00:03:57.680
+to the browser it applies all necessary
+
+00:03:55.519 --> 00:04:00.120
+transformations to make browsers to
+
+00:03:57.680 --> 00:04:02.120
+recognize such UTS where we're going to
+
+00:04:00.120 --> 00:04:05.040
+talk about it in details in upcoming
+
+00:04:02.120 --> 00:04:08.799
+lessons but basically whenever we import
+
+00:04:05.040 --> 00:04:11.560
+CSS files like this V is going to inject
+
+00:04:08.799 --> 00:04:14.159
+all these Styles onto the page and
+
+00:04:11.560 --> 00:04:17.840
+whenever we import assets such as SVG
+
+00:04:14.159 --> 00:04:20.359
+images V is going to expert pass to this
+
+00:04:17.840 --> 00:04:22.680
+file and save it in JavaScript logo
+
+00:04:20.359 --> 00:04:24.759
+variable so then this pass can be used
+
+00:04:22.680 --> 00:04:26.800
+in a normal way for example inside of
+
+00:04:24.759 --> 00:04:29.639
+source attribute as we can see right
+
+00:04:26.800 --> 00:04:31.479
+here to reference corresponding image
+
+00:04:29.639 --> 00:04:34.440
+and sure now this image will be visible
+
+00:04:31.479 --> 00:04:37.080
+on the page it is this JavaScript logo
+
+00:04:34.440 --> 00:04:39.560
+the same thing happens when we import v.
+
+00:04:37.080 --> 00:04:42.960
+SVG file but there is one important
+
+00:04:39.560 --> 00:04:45.120
+difference you may notice that vsvg file
+
+00:04:42.960 --> 00:04:47.240
+is not in our project route it is
+
+00:04:45.120 --> 00:04:50.000
+actually inside of a special folder with
+
+00:04:47.240 --> 00:04:53.320
+the name public and for it this public
+
+00:04:50.000 --> 00:04:55.520
+folder stores all static assets and all
+
+00:04:53.320 --> 00:04:57.840
+static assets that are stored in this
+
+00:04:55.520 --> 00:04:59.600
+public folder will not be processed by
+
+00:04:57.840 --> 00:05:02.240
+VD but instead will be returned to the
+
+00:04:59.600 --> 00:05:04.280
+the browser in its original form we're
+
+00:05:02.240 --> 00:05:06.840
+also going to talk about this folder in
+
+00:05:04.280 --> 00:05:09.120
+detail in upcoming lessons and finally
+
+00:05:06.840 --> 00:05:11.800
+the last import we can see right here is
+
+00:05:09.120 --> 00:05:14.960
+normal import of ecmascript module it is
+
+00:05:11.800 --> 00:05:17.039
+this counter. JS file which provides
+
+00:05:14.960 --> 00:05:19.720
+functionality for the counter whenever
+
+00:05:17.039 --> 00:05:22.080
+we click on that button on the page and
+
+00:05:19.720 --> 00:05:24.160
+we see that the counter increases with a
+
+00:05:22.080 --> 00:05:26.720
+click but we are going to start our
+
+00:05:24.160 --> 00:05:29.120
+explanation of V from the very beginning
+
+00:05:26.720 --> 00:05:32.520
+so let's clear everything inside of main
+
+00:05:29.120 --> 00:05:35.280
+Js file let's also remove counter. JS
+
+00:05:32.520 --> 00:05:37.880
+module which we will no longer use and
+
+00:05:35.280 --> 00:05:40.919
+finally we'll remove all default Styles
+
+00:05:37.880 --> 00:05:43.639
+inside of style. CSS and now we're done
+
+00:05:40.919 --> 00:05:45.520
+with installation and initial setup from
+
+00:05:43.639 --> 00:05:48.840
+the next lesson we're going to start
+
+00:05:45.520 --> 00:05:50.919
+reviewing V's features step by step when
+

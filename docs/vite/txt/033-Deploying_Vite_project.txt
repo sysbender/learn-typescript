@@ -1,0 +1,116 @@
+end of the course and in this final
+lesson we're going to take a look how to
+deploy V application and the service for
+the deployment that we are going to be
+using is called GitHub pages in fact
+there are a lot more services that
+provide support for when it comes to
+deployment and the deployment process is
+pretty simple for any of those services
+so we're going to review deployment
+steps by using GitHub Pages as always I
+have already prepared default vid
+application which we're going to deploy
+and actually before get into the
+deployment we need to make sure that
+that our repository exists on GitHub
+which in my case it does so we can go
+directly to the deployment we will not
+change any default configurations so
+after building our project all build
+files will be located inside this folder
+and this is exactly the folder which is
+going to be deployed so here in docs
+let's choose the option deployment to
+GitHub pages and our repository URL
+corresponds to this format where we have
+two URL segments first one is our GitHub
+username and the second one is the name
+of the repository so the only
+configuration option we have to specify
+will be the option called base and this
+option should contain the name of our
+repository so let's just go ahead and
+create configuration file vi. config.js
+in the root of this project from here
+we're going to expert configuration
+object which with only one option base
+where we're going to specify repository
+name which in my case is vit Das
+deployment and once again this is really
+important that this option Val should
+match repository name on GitHub so now
+we have to create new commit where we're
+going to include our configuration file
+let's specify any message and push this
+commit to
+GitHub after that let's just make sure
+that the new commit appears in the
+GitHub history of our project it is the
+second commit then let's open up
+settings tab the main branch of our
+repository is main so we're going to
+deploy this branch and now on the left
+side let's open up page called pages and
+in here we have to set up some
+deployment configurations firstly in
+this Source dropdown we have to choose
+option GitHub actions and then let's
+click this link create your own which is
+basically going to create an empty
+deployment configuration file let's
+clear out all this predefined content
+and specify our own configurations and
+these configurations are listed in vit
+docs so we just have to copy over this
+whole configuration paste it in that
+file and let's quickly go through some
+of the options specified in this file in
+here we can see which branch is going to
+be deployed and down here there are a
+couple of steps which will be executed
+during deployment for example in here we
+can see that the node version which is
+going to be used to build our project
+will be version 18 then we're going to
+install all npm dependencies by running
+npm install after that we're going to
+build a project by running npm run build
+and at the end once this folder with our
+built files will be created this folder
+will be deployed to GitHub Pages server
+then let's just give this configuration
+file a name for example deploy yml and
+click commit changes in here let's make
+sure that the new commit will be created
+on the main branch let's click commit
+changes once again and then we can see
+another new commit in the commit history
+this the commit with the configuration
+file for deployment we have just created
+and then if we open up top actions here
+we can actually see the new deployment
+task that is currently running and this
+is our deployment task so anytime we're
+going to push changes to the main branch
+it will automatically kick off the
+deployment process and by clicking on
+this task we can actually inspect what
+steps are executed during the deployment
+and once this deployment will be
+successfully finished we can once again
+open up settings tab and then go to
+Pages page and in here we will see the
+URL where our application will be
+available on the web so by following
+this URL we can see that our application
+was successfully deployed on GitHub
+pages and that's it we were able to
+successfully deploy V application on
+GitHub Pages server as we can see it was
+pretty simple process and if we decide
+to deploy our project by using another
+hosting provider the deployment process
+is going to be pretty simple as well and
+with that we are finishing this course
+about vid bundler

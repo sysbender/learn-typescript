@@ -1,0 +1,701 @@
+WEBVTT
+
+00:00:00.559 --> 00:00:05.080
+finally time to actually go ahead and
+
+00:00:02.599 --> 00:00:06.800
+publish our package into npm registry
+
+00:00:05.080 --> 00:00:08.920
+and as a reminder we are already
+
+00:00:06.800 --> 00:00:11.319
+importing functionality from our package
+
+00:00:08.920 --> 00:00:13.200
+in the main.js file of our client
+
+00:00:11.319 --> 00:00:15.880
+application and the way we made it
+
+00:00:13.200 --> 00:00:18.319
+possible is by linking our local folder
+
+00:00:15.880 --> 00:00:20.559
+with a package to node modulus folder of
+
+00:00:18.319 --> 00:00:23.439
+our client application by running the
+
+00:00:20.559 --> 00:00:26.080
+following command npm link and the name
+
+00:00:23.439 --> 00:00:28.559
+of the package would' like to link to
+
+00:00:26.080 --> 00:00:30.519
+our client application and then as we
+
+00:00:28.559 --> 00:00:32.920
+can see inside node modules folder we
+
+00:00:30.519 --> 00:00:35.479
+have the new link called PLU which
+
+00:00:32.920 --> 00:00:37.800
+points directly to the folder with our
+
+00:00:35.479 --> 00:00:40.040
+library and now instead of linking our
+
+00:00:37.800 --> 00:00:43.000
+local library we're actually going to go
+
+00:00:40.040 --> 00:00:45.559
+ahead and publish our package to npm
+
+00:00:43.000 --> 00:00:48.760
+registry so first of all what we have to
+
+00:00:45.559 --> 00:00:51.160
+do is to login let's run npm login in
+
+00:00:48.760 --> 00:00:53.479
+the rout of our library and we will be
+
+00:00:51.160 --> 00:00:55.880
+presented with a couple of prompts here
+
+00:00:53.479 --> 00:00:58.359
+we need to type in the username as well
+
+00:00:55.880 --> 00:01:01.599
+as the password that we have used to
+
+00:00:58.359 --> 00:01:03.840
+register on the npm website and yes I
+
+00:01:01.599 --> 00:01:06.559
+note we need to be registered up front
+
+00:01:03.840 --> 00:01:09.679
+in order to log to npm then we also have
+
+00:01:06.559 --> 00:01:12.280
+to enter our email address and right
+
+00:01:09.679 --> 00:01:15.960
+after we will receive the code on our
+
+00:01:12.280 --> 00:01:17.439
+email so let's enter this code in here
+
+00:01:15.960 --> 00:01:20.080
+and as soon as we're going to see this
+
+00:01:17.439 --> 00:01:22.359
+message that means we were successfully
+
+00:01:20.080 --> 00:01:25.240
+authenticated so I'll switch over to my
+
+00:01:22.359 --> 00:01:28.000
+browser and right here as we can see I
+
+00:01:25.240 --> 00:01:30.240
+don't have any libraries in my npm
+
+00:01:28.000 --> 00:01:33.200
+account yet so let's start the process
+
+00:01:30.240 --> 00:01:36.000
+of publishing our library to npm
+
+00:01:33.200 --> 00:01:38.760
+first of all let's go and open up file
+
+00:01:36.000 --> 00:01:40.599
+package Json of our library and here the
+
+00:01:38.760 --> 00:01:42.599
+first thing that I'm going to do is
+
+00:01:40.599 --> 00:01:45.040
+rename the value stored under the key
+
+00:01:42.599 --> 00:01:48.160
+name besides the name of our library I'm
+
+00:01:45.040 --> 00:01:50.760
+also going to use Nam space this Nam
+
+00:01:48.160 --> 00:01:53.479
+space should match username of the loged
+
+00:01:50.760 --> 00:01:55.080
+in user and what this will do is it will
+
+00:01:53.479 --> 00:01:57.399
+basically make sure that we are not
+
+00:01:55.080 --> 00:01:59.319
+going to get any naming collisions
+
+00:01:57.399 --> 00:02:01.319
+because there is a high chance that the
+
+00:01:59.319 --> 00:02:04.240
+package with the name plugged already
+
+00:02:01.319 --> 00:02:06.520
+exists on NP pm and now in the terminal
+
+00:02:04.240 --> 00:02:10.399
+to publish the package we have to run
+
+00:02:06.520 --> 00:02:12.479
+npm publish this time we get an error
+
+00:02:10.399 --> 00:02:14.640
+saying that our library is considered to
+
+00:02:12.479 --> 00:02:16.479
+be private and the reason is that in the
+
+00:02:14.640 --> 00:02:18.840
+package Json file we have the key
+
+00:02:16.479 --> 00:02:22.319
+private with the Val through so let's
+
+00:02:18.840 --> 00:02:23.920
+remove this key run npm publish again
+
+00:02:22.319 --> 00:02:26.399
+and it looks like publishing private
+
+00:02:23.920 --> 00:02:28.640
+packages is actually paid feature so
+
+00:02:26.399 --> 00:02:31.640
+when running npm publish we have to
+
+00:02:28.640 --> 00:02:33.120
+specify one flag called access with
+
+00:02:31.640 --> 00:02:35.800
+access modifier
+
+00:02:33.120 --> 00:02:38.439
+in this case I'm going to use public so
+
+00:02:35.800 --> 00:02:40.760
+this way our library will be publicly
+
+00:02:38.439 --> 00:02:42.920
+visible and finally the common has
+
+00:02:40.760 --> 00:02:45.080
+finished with no errors and if I'll
+
+00:02:42.920 --> 00:02:48.160
+switch over to the browser in here I can
+
+00:02:45.080 --> 00:02:50.720
+see that my library was published next
+
+00:02:48.160 --> 00:02:53.160
+let's go back to the editor inside the
+
+00:02:50.720 --> 00:02:56.560
+client application let's open up
+
+00:02:53.160 --> 00:02:59.640
+package.json and here let's remove the
+
+00:02:56.560 --> 00:03:01.680
+only dependency collect JS we're also
+
+00:02:59.640 --> 00:03:04.399
+going to remove the folder with this
+
+00:03:01.680 --> 00:03:07.319
+dependency from node modules folder as
+
+00:03:04.399 --> 00:03:10.760
+well as special folder. vit that
+
+00:03:07.319 --> 00:03:13.479
+generates to store cached dependencies
+
+00:03:10.760 --> 00:03:16.560
+and now in order to install the library
+
+00:03:13.479 --> 00:03:19.600
+I have just published we can use npm
+
+00:03:16.560 --> 00:03:21.840
+install and the full Library name the
+
+00:03:19.600 --> 00:03:24.439
+full name is stored in here under the
+
+00:03:21.840 --> 00:03:26.720
+name key of the package Json of our
+
+00:03:24.439 --> 00:03:29.359
+library project so let's see what is
+
+00:03:26.720 --> 00:03:32.479
+going to happen when we run npm install
+
+00:03:29.359 --> 00:03:35.120
+and our library name as we can see the
+
+00:03:32.479 --> 00:03:37.840
+library was successfully installed and
+
+00:03:35.120 --> 00:03:40.680
+now I can run development server by
+
+00:03:37.840 --> 00:03:42.520
+running npm Rand Dev and here I see the
+
+00:03:40.680 --> 00:03:45.800
+following error saying that some of the
+
+00:03:42.520 --> 00:03:48.800
+dependencies were not resolved and those
+
+00:03:45.800 --> 00:03:50.840
+dependencies are from our library and
+
+00:03:48.800 --> 00:03:53.399
+the reason is that currently our client
+
+00:03:50.840 --> 00:03:55.800
+application inside main.js file
+
+00:03:53.399 --> 00:03:58.200
+references old pass to import
+
+00:03:55.800 --> 00:04:01.120
+functionality from our library so we
+
+00:03:58.200 --> 00:04:04.560
+have to properly update this import pass
+
+00:04:01.120 --> 00:04:07.319
+by specifying full Library name in here
+
+00:04:04.560 --> 00:04:10.600
+next let's start development server
+
+00:04:07.319 --> 00:04:13.040
+again this time we got a new error and
+
+00:04:10.600 --> 00:04:15.720
+to understand what's going on in here
+
+00:04:13.040 --> 00:04:18.399
+let's open up the folder with our
+
+00:04:15.720 --> 00:04:20.920
+package inside node modulus folder of
+
+00:04:18.399 --> 00:04:23.760
+our client application and here we can
+
+00:04:20.920 --> 00:04:26.720
+see that there is no folder dist with
+
+00:04:23.760 --> 00:04:30.160
+the built assets of our library but in
+
+00:04:26.720 --> 00:04:32.560
+fact inside the package.json file we are
+
+00:04:30.160 --> 00:04:35.040
+referencing these files from the this
+
+00:04:32.560 --> 00:04:37.840
+folder cuz those are the files that have
+
+00:04:35.040 --> 00:04:40.520
+to be imported when users are going to
+
+00:04:37.840 --> 00:04:42.200
+import functionality from our library so
+
+00:04:40.520 --> 00:04:45.359
+we actually have to do one more thing
+
+00:04:42.200 --> 00:04:47.840
+before publishing our package to npm
+
+00:04:45.359 --> 00:04:50.680
+let's go back to the package Json file
+
+00:04:47.840 --> 00:04:54.600
+of our library and in here we have to
+
+00:04:50.680 --> 00:04:57.479
+specify the key files where we can list
+
+00:04:54.600 --> 00:05:00.399
+all the files and folders that have to
+
+00:04:57.479 --> 00:05:02.760
+be published in our case we only need to
+
+00:05:00.399 --> 00:05:05.520
+publish folder with the build up assets
+
+00:05:02.760 --> 00:05:08.960
+which is dist so I'm going to specify
+
+00:05:05.520 --> 00:05:11.680
+one folder name in here and then once we
+
+00:05:08.960 --> 00:05:14.160
+do any change to our library I'm also
+
+00:05:11.680 --> 00:05:16.439
+going to have to republish this library
+
+00:05:14.160 --> 00:05:18.840
+but with a different version number we
+
+00:05:16.439 --> 00:05:22.319
+could update this version manually or we
+
+00:05:18.840 --> 00:05:24.720
+could use npm command called npm version
+
+00:05:22.319 --> 00:05:27.680
+so we also have to specify which version
+
+00:05:24.720 --> 00:05:30.680
+number we'd like to update either the
+
+00:05:27.680 --> 00:05:32.479
+first one second one or the third one in
+
+00:05:30.680 --> 00:05:34.200
+this case it's not really important
+
+00:05:32.479 --> 00:05:36.560
+which one we're going to update so I'm
+
+00:05:34.200 --> 00:05:38.600
+going to update the third one and the
+
+00:05:36.560 --> 00:05:41.680
+word responsible for updating the third
+
+00:05:38.600 --> 00:05:44.319
+number is patch let's run this commment
+
+00:05:41.680 --> 00:05:47.439
+as we can see our version number was
+
+00:05:44.319 --> 00:05:50.279
+updated and also this number was updated
+
+00:05:47.439 --> 00:05:52.680
+inside package Json and to grab the new
+
+00:05:50.279 --> 00:05:54.720
+version of this library in the client
+
+00:05:52.680 --> 00:05:56.439
+application we have to reinstall it and
+
+00:05:54.720 --> 00:05:58.800
+before installing the new version of
+
+00:05:56.439 --> 00:06:00.880
+this library in the client application
+
+00:05:58.800 --> 00:06:03.000
+let's go inside node modules folder of
+
+00:06:00.880 --> 00:06:05.479
+our client application and manually
+
+00:06:03.000 --> 00:06:08.160
+remove the folder of our library from
+
+00:06:05.479 --> 00:06:11.960
+here and right after that we are ready
+
+00:06:08.160 --> 00:06:15.399
+to install a new version let's run npm
+
+00:06:11.960 --> 00:06:17.200
+install and our library name and now we
+
+00:06:15.399 --> 00:06:19.600
+will take a look at the content of the
+
+00:06:17.200 --> 00:06:23.240
+library inside non modules folder we can
+
+00:06:19.600 --> 00:06:25.560
+see here that this time only one folder
+
+00:06:23.240 --> 00:06:28.160
+is present which is this this is that
+
+00:06:25.560 --> 00:06:31.319
+folder we have previously specified
+
+00:06:28.160 --> 00:06:32.520
+under the key files inside package Json
+
+00:06:31.319 --> 00:06:34.920
+of the library
+
+00:06:32.520 --> 00:06:37.560
+and which is why only this folder has
+
+00:06:34.920 --> 00:06:40.160
+been published to npm let's run
+
+00:06:37.560 --> 00:06:42.720
+development server once again and this
+
+00:06:40.160 --> 00:06:44.920
+time we also got an error but the error
+
+00:06:42.720 --> 00:06:47.359
+message is different so it cannot
+
+00:06:44.920 --> 00:06:50.000
+install the library collect GS but in
+
+00:06:47.359 --> 00:06:52.399
+fact we reference this library from the
+
+00:06:50.000 --> 00:06:55.760
+source code of our package right here
+
+00:06:52.399 --> 00:06:57.560
+inside index. GS but in fact we have not
+
+00:06:55.760 --> 00:07:00.840
+install this library in the client
+
+00:06:57.560 --> 00:07:02.640
+application as well as in our package so
+
+00:07:00.840 --> 00:07:04.960
+this dependency is not nowhere to be
+
+00:07:02.640 --> 00:07:07.439
+found and the reason why this library
+
+00:07:04.960 --> 00:07:09.680
+was not included in the buildt file of
+
+00:07:07.439 --> 00:07:12.600
+our library is because inside v.
+
+00:07:09.680 --> 00:07:15.200
+config.js we have manually specified
+
+00:07:12.600 --> 00:07:17.960
+that we should not include this external
+
+00:07:15.200 --> 00:07:20.960
+dependency into final build of our
+
+00:07:17.960 --> 00:07:24.560
+library so to fix this issue we have to
+
+00:07:20.960 --> 00:07:26.960
+go inside of package Json of our library
+
+00:07:24.560 --> 00:07:30.080
+and in here let's specify one more key
+
+00:07:26.960 --> 00:07:32.439
+called Pure dependencies and these are
+
+00:07:30.080 --> 00:07:35.600
+the dependencies that our Library
+
+00:07:32.439 --> 00:07:37.760
+depends on but it doesn't include those
+
+00:07:35.600 --> 00:07:39.960
+dependencies so actually client
+
+00:07:37.760 --> 00:07:42.960
+applications will be the ones who will
+
+00:07:39.960 --> 00:07:45.640
+be responsible to install this library
+
+00:07:42.960 --> 00:07:47.680
+in order to use our package so let's
+
+00:07:45.640 --> 00:07:50.720
+specify here one perer dependency
+
+00:07:47.680 --> 00:07:53.399
+collect. JS this way we are saying that
+
+00:07:50.720 --> 00:07:55.560
+our library depends on this third party
+
+00:07:53.399 --> 00:07:58.120
+library and then of course I'm going to
+
+00:07:55.560 --> 00:08:00.359
+have to republish our new version of the
+
+00:07:58.120 --> 00:08:02.279
+package let's firstly update the version
+
+00:08:00.359 --> 00:08:04.680
+of our package by running running the
+
+00:08:02.279 --> 00:08:06.920
+corresponding command and then let's go
+
+00:08:04.680 --> 00:08:09.760
+back inside the folder with our client
+
+00:08:06.920 --> 00:08:11.840
+application let's remove our previous
+
+00:08:09.760 --> 00:08:15.279
+version of the library from node modules
+
+00:08:11.840 --> 00:08:17.560
+folder and reinstall it by running nbm
+
+00:08:15.279 --> 00:08:20.279
+install so what actually happened this
+
+00:08:17.560 --> 00:08:22.600
+time is this besides installing our
+
+00:08:20.279 --> 00:08:25.399
+library we can see that inside node
+
+00:08:22.600 --> 00:08:28.560
+modules folder there is collect JS
+
+00:08:25.399 --> 00:08:30.680
+folder which means dependency collect JS
+
+00:08:28.560 --> 00:08:32.640
+was automatically installed along with
+
+00:08:30.680 --> 00:08:34.319
+our package and the reason it was
+
+00:08:32.640 --> 00:08:36.240
+installed automatically is because we
+
+00:08:34.319 --> 00:08:39.479
+have previously specified this
+
+00:08:36.240 --> 00:08:42.479
+dependency under pure dependencies key
+
+00:08:39.479 --> 00:08:44.840
+inside of our library so from now on
+
+00:08:42.479 --> 00:08:47.560
+when any client application is going to
+
+00:08:44.840 --> 00:08:49.960
+install our library the dependency
+
+00:08:47.560 --> 00:08:52.040
+collect. JS will be automatically
+
+00:08:49.960 --> 00:08:54.000
+installed and finally if we're going to
+
+00:08:52.040 --> 00:08:57.560
+run development server inside of our
+
+00:08:54.000 --> 00:08:59.120
+client application eventually it worked
+
+00:08:57.560 --> 00:09:01.880
+and in the browser we can see an
+
+00:08:59.120 --> 00:09:03.520
+expected result in a console and also so
+
+00:09:01.880 --> 00:09:06.240
+let's see if production build is also
+
+00:09:03.520 --> 00:09:09.040
+going to work I'm going to run npm run
+
+00:09:06.240 --> 00:09:11.160
+build to build this client application
+
+00:09:09.040 --> 00:09:13.840
+the build has finished without errors so
+
+00:09:11.160 --> 00:09:16.120
+that's good and now let's run this build
+
+00:09:13.840 --> 00:09:19.760
+in the browser by running npm run
+
+00:09:16.120 --> 00:09:22.399
+preview and then by opening up this URL
+
+00:09:19.760 --> 00:09:25.200
+we see the same result as in development
+
+00:09:22.399 --> 00:09:28.160
+mode so we were able to successfully
+
+00:09:25.200 --> 00:09:30.080
+publish our package to npm registry and
+
+00:09:28.160 --> 00:09:32.840
+additionally our package contains
+
+00:09:30.080 --> 00:09:35.439
+external dependency collect JS which is
+
+00:09:32.840 --> 00:09:37.880
+not bundled with our library so all
+
+00:09:35.439 --> 00:09:40.520
+client applications that are going to
+
+00:09:37.880 --> 00:09:42.880
+use our library once they're going to
+
+00:09:40.520 --> 00:09:45.600
+install our library all third party
+
+00:09:42.880 --> 00:09:47.000
+libraries which our library depends upon
+
+00:09:45.600 --> 00:09:49.560
+which in this case is only one
+
+00:09:47.000 --> 00:09:52.080
+dependency collect GS they are going to
+
+00:09:49.560 --> 00:09:54.120
+be automatically installed so that's
+
+00:09:52.080 --> 00:09:57.040
+about it for this lesson let's continue
+
+00:09:54.120 --> 00:09:59.000
+learning with in the next one in this
+

@@ -1,0 +1,114 @@
+take a look at how we can integrate
+framework view in vid project so I have
+already scaffold the default vid project
+so let's start development server by
+running npm randev and by the way whil
+scolding new VD project there is a
+special command that we can use which
+will basically scaffold VI project with
+view framework already integrated but
+just to better understand this whole
+process and to see what is going on
+under the hood we're going to do this
+manually and the first thing we need to
+do is of course install all necessary
+npm dependencies such as framework view
+itself and vid plugin which will allow
+us to convert files with an extension.
+view into Jo script code so after
+installing both of these dependencies we
+need to open up VD configuration file v.
+config.js and in here we have to include
+that plugin we have just installed plug
+plugin view into this array by calling
+this function
+View and then let's just remove
+everything from the main.js file and
+start writing view component so inside
+of our index.html file we already have
+an element with an IDE of up this will
+be an element where we're going to Mound
+our View application so firstly we're
+going to create the root component up.
+View and for demonstration purposes we
+we're going to use a very basic example
+of a counter component so I'm going to
+create here one reactive variable by
+running function ref this variable is
+going to store current value of our
+counter and inside the template of this
+component let's add H1 element with a
+text counter and right under we're going
+to add a button which will allow us to
+increment count variable so let's also
+output develop the count variable in
+here and register click listener on this
+button which will basically increment
+count variable like this so now that we
+have one view component we need to
+initialize View application in our main
+script so in here firstly let's import
+our root component from the file up.
+view and also we'll need to import
+function create up from The View package
+which is going to be used to initialize
+our review application and in here let's
+call this function create up pass in our
+root component and then call in function
+Mount and specifying an identifier of
+that element where we're going to mount
+our application into and just as a
+reminder we already have an element with
+an IDE of up in our
+index.html so now in the browser as we
+can see we have a working counter so our
+View application was properly
+initialized and now let's take a look at
+the transformation which wi has applied
+to our app component I have additionally
+installed plugin called VD plugin
+inspect in order to see what
+transformation VD applies to our modules
+so we can open up this URL in the
+browser and in here we're going to see
+all those Transformations done to our
+modules so whenever we are importing up.
+view component the plugin is going to
+take the content of this component and
+turn all this content into valid
+JavaScript code in other words into the
+render function which will be called on
+the client side and render our component
+on the page and now let's also take a
+look on the network tab so when browser
+fetches
+main.js then it fires the call to the
+server to fetch the content of the
+update view component but instead of
+giving us the r cont content of the
+update view component vit has applied
+the plugin to the file with this. view
+extension which would transform view
+template into valid JavaScript syntax
+and this is the code which is
+responsible for rendering counter
+component on the page so as you can see
+it was very easy to integrate view
+framework into vid project initially we
+just had to install to npm dependencies
+view framework itself and vid plugin to
+transform View files into JavaScript
+code and then we had to include this
+plugin inside of V configuration file
+just like any other we plugin and after
+doing all these steps we have actually
+provided the full support of the view
+framework inside vid project so we can
+develop View application in a normal way
+by creating components with view
+extensions importing those components
+they will be properly transformed into
+valid JavaScript code and and everything
+will be working fine and this is how we
+integrate view framework in vid
+projects in this lesson we're going to

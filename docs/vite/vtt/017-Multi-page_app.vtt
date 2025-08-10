@@ -1,0 +1,653 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:04.840
+besides generating bundles for single
+
+00:00:02.480 --> 00:00:07.000
+page applications V also allows us to
+
+00:00:04.840 --> 00:00:09.600
+generate multiple bundles for several
+
+00:00:07.000 --> 00:00:11.760
+pages one bundle per page and in this
+
+00:00:09.600 --> 00:00:14.080
+lesson we're going to talk about how to
+
+00:00:11.760 --> 00:00:16.679
+actually generate several bundles for
+
+00:00:14.080 --> 00:00:18.760
+individual pages and to demonstrate this
+
+00:00:16.679 --> 00:00:22.159
+let's just do a little preparation so
+
+00:00:18.760 --> 00:00:25.199
+for example in our main index.html file
+
+00:00:22.159 --> 00:00:27.639
+I'm going to add a heading called index
+
+00:00:25.199 --> 00:00:30.320
+and also I'm going to add here a link
+
+00:00:27.639 --> 00:00:33.080
+which is going to redirect it to a
+
+00:00:30.320 --> 00:00:35.119
+second page called login and now I'm
+
+00:00:33.080 --> 00:00:38.520
+going to copy over all the content of
+
+00:00:35.119 --> 00:00:40.639
+this file and create our new page so in
+
+00:00:38.520 --> 00:00:43.520
+the root of our project we're going to
+
+00:00:40.639 --> 00:00:46.239
+create a new folder called login and in
+
+00:00:43.520 --> 00:00:48.960
+here I'm going to add another Javascript
+
+00:00:46.239 --> 00:00:52.040
+file which will be a script for our new
+
+00:00:48.960 --> 00:00:55.040
+page and I'm also going to add HTML file
+
+00:00:52.040 --> 00:00:57.920
+for the login page so here I'm going to
+
+00:00:55.040 --> 00:01:00.920
+paste everything from the
+
+00:00:57.920 --> 00:01:03.159
+index.html and a few values to
+
+00:01:00.920 --> 00:01:06.440
+differentiate this page let's just
+
+00:01:03.159 --> 00:01:09.639
+change the title text here on login as
+
+00:01:06.440 --> 00:01:13.320
+well as the H1 Tech and the link on this
+
+00:01:09.639 --> 00:01:15.080
+page will point to our main page index
+
+00:01:13.320 --> 00:01:18.560
+and of course let's also properly
+
+00:01:15.080 --> 00:01:21.239
+include Javascript file to this page by
+
+00:01:18.560 --> 00:01:24.119
+specifying the proper PA to login.
+
+00:01:21.239 --> 00:01:27.480
+jscript which is contained inside the
+
+00:01:24.119 --> 00:01:30.800
+login folder and then let's also edit
+
+00:01:27.480 --> 00:01:33.119
+the title on the index. HTML page and
+
+00:01:30.800 --> 00:01:35.639
+now let's run our development server by
+
+00:01:33.119 --> 00:01:38.320
+running npm randev and check the result
+
+00:01:35.639 --> 00:01:40.119
+in the browser so here we can see our
+
+00:01:38.320 --> 00:01:42.840
+main page
+
+00:01:40.119 --> 00:01:45.400
+index.html since we have referenced the
+
+00:01:42.840 --> 00:01:47.280
+root pass and if I'm going to click on
+
+00:01:45.400 --> 00:01:49.719
+this link we're supposed to be
+
+00:01:47.280 --> 00:01:52.000
+redirected on the second page which is
+
+00:01:49.719 --> 00:01:54.400
+login and this is exactly what is
+
+00:01:52.000 --> 00:01:57.080
+happening So currently our project
+
+00:01:54.400 --> 00:01:59.560
+contains two separate pages that are
+
+00:01:57.080 --> 00:02:01.639
+completely independent of each other and
+
+00:01:59.560 --> 00:02:03.800
+between navigating these two pages
+
+00:02:01.639 --> 00:02:06.080
+browser actually makes full page
+
+00:02:03.800 --> 00:02:08.480
+refreshes so now let's see what is going
+
+00:02:06.080 --> 00:02:10.760
+to happen when we build this project for
+
+00:02:08.480 --> 00:02:12.920
+production let's switch over back to the
+
+00:02:10.760 --> 00:02:15.920
+terminal and run the commment npm Run
+
+00:02:12.920 --> 00:02:18.880
+build and here as we can see VD has
+
+00:02:15.920 --> 00:02:21.480
+generated only one page
+
+00:02:18.880 --> 00:02:24.000
+index.html but we also expected another
+
+00:02:21.480 --> 00:02:25.880
+page login to be generated as well so
+
+00:02:24.000 --> 00:02:27.800
+let's check the result in a browser and
+
+00:02:25.880 --> 00:02:30.840
+then we figure out why it didn't
+
+00:02:27.800 --> 00:02:33.199
+generate login page so here I opened the
+
+00:02:30.840 --> 00:02:36.520
+build application and if I'm going to
+
+00:02:33.199 --> 00:02:39.239
+try and go to login page as you can see
+
+00:02:36.520 --> 00:02:41.960
+the page didn't change even though the
+
+00:02:39.239 --> 00:02:43.480
+address in the URL bar was updated and
+
+00:02:41.960 --> 00:02:46.679
+this makes sense because VD has
+
+00:02:43.480 --> 00:02:48.960
+generated only one index.html page when
+
+00:02:46.679 --> 00:02:51.080
+building project for production and when
+
+00:02:48.960 --> 00:02:53.800
+we are trying to navigate to the page
+
+00:02:51.080 --> 00:02:56.119
+which doesn't exist we are redirected to
+
+00:02:53.800 --> 00:02:58.800
+the main page and the reason why V
+
+00:02:56.119 --> 00:03:00.320
+didn't generate the login page is
+
+00:02:58.800 --> 00:03:02.880
+because we are missing some
+
+00:03:00.320 --> 00:03:05.199
+configurations to tell it that we
+
+00:03:02.880 --> 00:03:08.080
+actually have more than one page in our
+
+00:03:05.199 --> 00:03:10.119
+application so to notify it about
+
+00:03:08.080 --> 00:03:13.199
+several pages in our application that it
+
+00:03:10.119 --> 00:03:15.840
+needs to generate Pages for we need to
+
+00:03:13.199 --> 00:03:19.280
+add some configurations inside VD
+
+00:03:15.840 --> 00:03:22.679
+configuration file so in here let's add
+
+00:03:19.280 --> 00:03:25.840
+an object built within which there will
+
+00:03:22.679 --> 00:03:28.119
+be another object rollup options which
+
+00:03:25.840 --> 00:03:30.800
+will contain in turn another object
+
+00:03:28.119 --> 00:03:33.360
+called input and finally in this object
+
+00:03:30.800 --> 00:03:36.040
+we're going to list all the available
+
+00:03:33.360 --> 00:03:38.480
+pages in our application and currently
+
+00:03:36.040 --> 00:03:40.840
+we have only two pages so let's specify
+
+00:03:38.480 --> 00:03:44.440
+these pages in here we'll call these
+
+00:03:40.840 --> 00:03:47.119
+Pages Main and login and now as well as
+
+00:03:44.440 --> 00:03:50.639
+for the keys we have to specify the full
+
+00:03:47.119 --> 00:03:53.440
+pass to HTML files or these Pages let's
+
+00:03:50.639 --> 00:03:57.639
+use function resolve to generate
+
+00:03:53.440 --> 00:04:00.040
+absolute pass to our template
+
+00:03:57.639 --> 00:04:02.320
+index.html and the same function we're
+
+00:04:00.040 --> 00:04:05.679
+going to use to generate passs for the
+
+00:04:02.320 --> 00:04:08.400
+login page but here let's also specify
+
+00:04:05.679 --> 00:04:10.920
+proper pass since login page is
+
+00:04:08.400 --> 00:04:13.400
+contained inside of login folder we have
+
+00:04:10.920 --> 00:04:16.920
+to mention this folder in the pass like
+
+00:04:13.400 --> 00:04:19.159
+so and before building our project again
+
+00:04:16.920 --> 00:04:21.400
+let's add an import statement for the
+
+00:04:19.159 --> 00:04:25.040
+resolve function from the standard
+
+00:04:21.400 --> 00:04:28.360
+nodejs module pass and now switch over
+
+00:04:25.040 --> 00:04:31.400
+to the terminal and run npm run build
+
+00:04:28.360 --> 00:04:33.960
+again and let's see what pages have been
+
+00:04:31.400 --> 00:04:36.639
+generated in this case and this time as
+
+00:04:33.960 --> 00:04:39.440
+we can see besides our main page we also
+
+00:04:36.639 --> 00:04:41.400
+see that the Lin page was also generated
+
+00:04:39.440 --> 00:04:44.040
+and if we take a look at the generated
+
+00:04:41.400 --> 00:04:46.880
+folder with our project disc in here we
+
+00:04:44.040 --> 00:04:49.400
+can see an HTML file which corresponds
+
+00:04:46.880 --> 00:04:51.599
+to the login page so now if we're going
+
+00:04:49.400 --> 00:04:54.920
+to preview this project in a browser and
+
+00:04:51.599 --> 00:04:57.320
+try to navigate to the login page in
+
+00:04:54.920 --> 00:05:00.159
+this case indeed we were navigated to
+
+00:04:57.320 --> 00:05:02.320
+the login page but please also note that
+
+00:05:00.159 --> 00:05:05.000
+there is no JavaScript bundle fetched
+
+00:05:02.320 --> 00:05:08.199
+for these Pages even though we have
+
+00:05:05.000 --> 00:05:10.760
+those JavaScript files imported in these
+
+00:05:08.199 --> 00:05:13.800
+templates and actually when we run npm
+
+00:05:10.760 --> 00:05:16.000
+run build the JavaScript bundles are not
+
+00:05:13.800 --> 00:05:17.760
+generated one more time just to make
+
+00:05:16.000 --> 00:05:21.360
+sure that we are including proper
+
+00:05:17.760 --> 00:05:23.800
+scripts on HTML Pages our main page as
+
+00:05:21.360 --> 00:05:25.719
+well as login page so the reason why
+
+00:05:23.800 --> 00:05:27.719
+there were no bundles generated for
+
+00:05:25.719 --> 00:05:30.400
+these JavaScript files is because
+
+00:05:27.719 --> 00:05:32.679
+currently these two files are empty and
+
+00:05:30.400 --> 00:05:35.080
+just to make build generate Jo bundles
+
+00:05:32.679 --> 00:05:37.119
+as well let's just add arbitrary
+
+00:05:35.080 --> 00:05:40.560
+statement in here for example let's
+
+00:05:37.119 --> 00:05:42.599
+console log something in the main.js as
+
+00:05:40.560 --> 00:05:45.280
+well as in
+
+00:05:42.599 --> 00:05:47.920
+login.js and now let's regenerate build
+
+00:05:45.280 --> 00:05:50.159
+project again and this time in the list
+
+00:05:47.920 --> 00:05:52.400
+of all generated files we also see a
+
+00:05:50.159 --> 00:05:55.639
+couple of JavaScript files one
+
+00:05:52.400 --> 00:05:58.360
+Javascript file for each HTML page and
+
+00:05:55.639 --> 00:06:00.320
+now we can use all capabilities of it
+
+00:05:58.360 --> 00:06:02.760
+inside these JavaScript files to
+
+00:06:00.320 --> 00:06:05.760
+continue our development and generate
+
+00:06:02.760 --> 00:06:08.719
+proper JavaScript bundles for every HTML
+
+00:06:05.760 --> 00:06:11.239
+page so let's try it out for example
+
+00:06:08.719 --> 00:06:14.520
+let's assume that we have to import some
+
+00:06:11.239 --> 00:06:17.880
+CSS file well not actually CSS but let's
+
+00:06:14.520 --> 00:06:20.760
+use SAS as an example and I'm going to
+
+00:06:17.880 --> 00:06:23.080
+create this login dosas file and put
+
+00:06:20.760 --> 00:06:25.800
+here some arbitrary Styles just to make
+
+00:06:23.080 --> 00:06:28.199
+sure that while importing This Ss file
+
+00:06:25.800 --> 00:06:30.440
+these Styles will be properly applied to
+
+00:06:28.199 --> 00:06:33.159
+the page so I'm going to make background
+
+00:06:30.440 --> 00:06:36.360
+color of the body Brown the text color
+
+00:06:33.159 --> 00:06:37.199
+will be white and Link text will be
+
+00:06:36.360 --> 00:06:40.040
+white as
+
+00:06:37.199 --> 00:06:43.000
+well and the same sus file I'm also
+
+00:06:40.040 --> 00:06:46.760
+going to create for our main page let's
+
+00:06:43.000 --> 00:06:48.599
+call it main. sus paste the same Styles
+
+00:06:46.760 --> 00:06:52.000
+but to differentiate these two pages
+
+00:06:48.599 --> 00:06:54.480
+let's change background color on Indigo
+
+00:06:52.000 --> 00:06:57.679
+so now let's not forget and also include
+
+00:06:54.480 --> 00:07:00.719
+this main dos file inside our main
+
+00:06:57.679 --> 00:07:02.360
+script like so and now before generating
+
+00:07:00.719 --> 00:07:05.679
+the build we actually have to do one
+
+00:07:02.360 --> 00:07:08.239
+more thing in order for V to compile our
+
+00:07:05.679 --> 00:07:10.920
+sus files we also have to install SAS
+
+00:07:08.239 --> 00:07:14.920
+preprocessor itself so we are doing this
+
+00:07:10.920 --> 00:07:17.080
+by using npm let's install SAS compiler
+
+00:07:14.920 --> 00:07:20.280
+and now if we're going to start our
+
+00:07:17.080 --> 00:07:22.320
+development server by using npm rundo
+
+00:07:20.280 --> 00:07:24.320
+and take a look at the browser we're
+
+00:07:22.320 --> 00:07:27.000
+going to see that those Styles have been
+
+00:07:24.320 --> 00:07:29.800
+properly applied to the page which means
+
+00:07:27.000 --> 00:07:32.000
+SAS was compiled success sucessfully and
+
+00:07:29.800 --> 00:07:34.080
+if we'll switch over to the main page we
+
+00:07:32.000 --> 00:07:35.560
+can see that background color changes
+
+00:07:34.080 --> 00:07:38.800
+because we have two different
+
+00:07:35.560 --> 00:07:41.000
+stylesheets for these Pages index and
+
+00:07:38.800 --> 00:07:42.639
+login and now let's see how everything
+
+00:07:41.000 --> 00:07:45.560
+looks when we build the project for
+
+00:07:42.639 --> 00:07:47.320
+production by running npm run build and
+
+00:07:45.560 --> 00:07:50.239
+then again I'm going to run npm run
+
+00:07:47.320 --> 00:07:52.719
+preview to open up build project in the
+
+00:07:50.239 --> 00:07:55.080
+browser and here we also can see that
+
+00:07:52.719 --> 00:07:57.760
+styles were applied by the way there is
+
+00:07:55.080 --> 00:07:59.679
+only CSS file fetched as we can see in
+
+00:07:57.760 --> 00:08:02.199
+the network tab and there is no
+
+00:07:59.679 --> 00:08:04.679
+JavaScript bundle for this page and
+
+00:08:02.199 --> 00:08:07.679
+again just because our Javascript file
+
+00:08:04.679 --> 00:08:09.599
+contains only SAS import it didn't
+
+00:08:07.679 --> 00:08:12.040
+actually generate JavaScript bundle at
+
+00:08:09.599 --> 00:08:14.880
+all so just to make sure that it's going
+
+00:08:12.040 --> 00:08:17.840
+to generate those two bundles let's add
+
+00:08:14.880 --> 00:08:20.280
+arbitrary JavaScript code in each of
+
+00:08:17.840 --> 00:08:23.440
+these files I'm going to add basic
+
+00:08:20.280 --> 00:08:24.719
+consol lock statement here as well as
+
+00:08:23.440 --> 00:08:27.280
+inside
+
+00:08:24.719 --> 00:08:29.920
+login.js and once again we're going to
+
+00:08:27.280 --> 00:08:33.480
+rebuild the project and run the preview
+
+00:08:29.920 --> 00:08:35.639
+server and switch over to the browser
+
+00:08:33.480 --> 00:08:39.000
+and this time in the network tab we can
+
+00:08:35.639 --> 00:08:40.880
+see that besides fetching CSS file there
+
+00:08:39.000 --> 00:08:43.360
+is also a request for fetching
+
+00:08:40.880 --> 00:08:45.639
+JavaScript bundle as well so everything
+
+00:08:43.360 --> 00:08:48.320
+is properly working and this is how we
+
+00:08:45.639 --> 00:08:50.520
+can generate several JavaScript bundles
+
+00:08:48.320 --> 00:08:53.360
+for multiple pages in case we're
+
+00:08:50.520 --> 00:08:54.840
+building multipage app and the most
+
+00:08:53.360 --> 00:08:56.920
+important thing when it comes to
+
+00:08:54.840 --> 00:08:59.560
+generating several bundles for different
+
+00:08:56.920 --> 00:09:02.920
+pages is to actually specify proper
+
+00:08:59.560 --> 00:09:05.040
+config inside of VD configuration file
+
+00:09:02.920 --> 00:09:07.520
+and particularly what we have to do here
+
+00:09:05.040 --> 00:09:11.400
+is to actually provide a mapin between
+
+00:09:07.520 --> 00:09:14.320
+all our pages and absolute pass for
+
+00:09:11.400 --> 00:09:16.840
+template files of those pages and then
+
+00:09:14.320 --> 00:09:18.719
+when building project for production VD
+
+00:09:16.840 --> 00:09:21.520
+is going to make sure to generate
+
+00:09:18.719 --> 00:09:22.760
+separate JavaScript bundles for every
+
+00:09:21.520 --> 00:09:25.880
+HTML
+
+00:09:22.760 --> 00:09:28.320
+page vit also has mode which allows us
+

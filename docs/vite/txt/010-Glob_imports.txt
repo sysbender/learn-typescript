@@ -1,0 +1,196 @@
+from the file system by using special
+function which we will review in this
+lesson so first of all let's clear main
+Javascript file let's also go to
+index.html and remove IMG element with
+an idea of image and now back to our
+main Javascript file and in here we're
+going to write the following let's
+create constant with a name modules and
+the special function which VD provides
+us with is called Globe which we will
+call on The Meta object and here we're
+going to specify pass to those modules
+that should be imported and by the way
+in here we can also use so-called Globe
+syntax which is kind of like simplified
+version of regular Expressions so for
+example I'll say that I want to import
+all JavaScript files within folder with
+a name 10 and I can do so by specifying
+asteris instead of file name and of
+course to import these modules first of
+all we have to create them in our
+project structure so let's create folder
+with the name 10 within Source folder
+and in here let's create three modules
+first one is
+ajs and just to see that our modules
+will be imported we're going to place
+here simple console lock statement and
+the same thing we're going to do with
+the rest of modules second module will
+be BJs which is also going to contain
+simple consolo statement and finally
+third module will be called
+CJs and in here let's see what we got
+into this modules constant by printing
+it in a console like this and as we can
+see in a console we get an object where
+every qod this object corresponds to
+pass to a particular module and the
+value of each key is a special function
+which we can use to dynamically load
+particular module and actually before
+proceeding any further let's take a look
+at the transform main JS file which
+browser has received so once VD has
+discovered that call to Globe function
+it has transformed this SK into such
+form where we can see the usage of the
+method assign which creates an object
+where every key of an object points to
+individual module we're trying to import
+and as a value for every key it has a
+function which contains instruction to
+dynamically import particular module and
+now we can simply iterate over keys of
+this object let's do this by using Val
+method on the object and here we need to
+pass the object which Val Val we have to
+iterate over so we're using our modules
+constant then let's call method for each
+to iterate over values of the modules
+object and on every iteration we're
+going to get a function which we can use
+to dynamically load particular module
+and this function Returns the promise so
+we can chain then call and when the
+promise will be resolved once our module
+will be imported as a parameter in here
+we're going to get the result of
+execution of the imported module and
+which is why in a console we have three
+different log statements and each of
+these statements comes from modules
+imported dynamically so on the initial
+page load browser has instantly
+requested these three modules as we can
+see we have requests for every such
+module in the network Tab and therefore
+this consol statement was also run which
+produced those Lo statements in a
+console and now let's print out the
+value of the data variable which will
+receive after promise gets resolved
+after Dynamic module import so for now
+we're not going to see anything
+interesting Within These objects they're
+basically empty but what we're actually
+supposed to get Within These objects is
+the actual data which gets exported from
+the dynamically imported modules and as
+of now our dynamically imported modules
+do not export any data which is why
+those objects are empty so now let's go
+ahead and try to expert something from
+module a
+we're going to use default expert and
+expert number two from the next module
+BJs we're going to expert constant name
+with value John and right now within
+those objects which we receive after
+promise gets resolved first object is
+going to contain the key default since
+we use default expert within the first
+module and it contains value which we
+expert that number two and the second
+object contains property name because
+this is the constant name which we
+export from the second module with the
+value John but even though those Imports
+of modules a B and C are considered to
+be dynamic they are executed right away
+when we load the page and now let's try
+to change our code in such way that
+these modules will be loaded only after
+some event OCC course for example on the
+document object we can register listener
+for a click event and within this event
+handler we can place all this code which
+is going to dynamically import our
+modules and now in the initial page load
+we're not going to get any data within
+the console as we can see no logs are
+present here but after I click on the
+document in the network tab we can see
+that three new calls are being made to
+fetch our modules a b and c and of
+course after execution these modules we
+receive logs in a console as well as the
+data that gets exported from window
+those modules and now a couple of words
+about the configurations which we can
+pass when calling Globe method so as a
+second parameter in here it receives
+configuration object and one
+configuration option is called eager
+this option literally disables Dynamic
+nature and even though based on our
+current implementation Dynamic modules
+are supposed to be loaded only after
+clicking on the document with this eager
+option set to True our modules will be
+loaded instantly on the initial page
+load let's check it out and right away
+on the initial page load as we can see
+our console contains three log
+statements which is a hint that our
+Dynamic modules were loaded and executed
+an appropriate Network requests to lower
+Dynamic modules we can see in the
+network tab it's these three modules a b
+and c but also let's see what is going
+to happen this time when I will click on
+the document and in a console we're
+going to get an error saying that module
+is not a function and this is because we
+have used eager configuration option
+with value a true and The Returned
+modules object no longer contains
+functions that we can execute to load
+Dynamic modules and let's see what it
+contains instead by printing the value
+in a console so as we can see in here we
+got an object where every key is passed
+to a particular module and instead of
+the value be in a function which we can
+execute to load module dynamically this
+time all modules were loaded immediately
+on the initial page load and as well as
+in this object we have exported data
+from those modules for example first
+object contains key default because
+first module uses default expert and the
+second module contains key name because
+we expert constant with this name from
+that module and theel a John and as for
+the Transformations which wi has applied
+to the C2 Globe function we can see that
+it converted that call into such three
+import statements where each import
+statement Imports particular module and
+the data which gets exported from every
+module is being saved as a Val for keys
+of the resulting object that we store
+within modules constant and of course
+the same transformation which is being
+made on our JavaScript source file we
+can see if we take a look at our plugin
+inspector in here and this is how we can
+use special VI function called glob to
+import several modules at once but this
+is definitely not all what glow function
+can do and in the next lesson we're
+going to review some additional details
+about this function let's continue

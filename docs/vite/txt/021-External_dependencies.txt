@@ -1,0 +1,182 @@
+created npm package and use this package
+in the client application let's start
+development server by running npm randev
+to start our application in the browser
+and the result of using our custom
+package is shown in a console it
+basically have extracted usern names
+from the initial array of the user
+object s and all of that has been
+implemented in previous lessons so let's
+just recall how that works in the main
+script of our Clan application we are
+importing functionality from our package
+but not only from the main module of our
+package also from the sub module lock
+and currently the project which contains
+our package has two JavaScript files
+index.js and lock. JS and each of these
+files experts one function and these two
+functions we are actually importing in
+our client application from different
+sub modules but as we can see currently
+our package is pretty simple it doesn't
+even use any third party libraries so in
+this lesson we're going to review how to
+integrate third party library in our
+custom package so in this file index.js
+we're going to import third party
+Library called collect. JS which
+basically has lots of utilities to work
+with array of objects and we're going to
+to leverage this function inside of our
+plug function but firstly let's just
+rename this function on plug and lock
+and then we'll basically do the same
+which is extract a key from each object
+of the collection but this time we're
+going to use plug method on our
+collection and we'll basically do the
+same here but by using method PL which
+Library collect JS provides us with like
+so and then besides returning this
+result we're also going to look the
+result in this function and right after
+we return this result so besides the
+main purpose of this function we're also
+loging the result in the console right
+away and then let's see what is going to
+happen if we'll try to build this
+Library so in the terminal let's run npm
+run buildt and we are receiving the
+following error that the collect JS
+Library cannot be imported since this
+Library does not exist in our package so
+what we need to to do is to actually
+install this Library by running npm
+install collect. JS and now once I'm
+going to start the build process once
+again this time it worked we still see
+four build files but this time we can
+notice that the sizes of some files
+drastically increased for example the
+size of the main file index.js is now
+almost 60 kiloby and that is because
+when we were importing Library collect
+JS in in our script VD has actually
+taken the whole source code of sord
+party library and put it in the build
+and which is why the resulting file of
+our library has much bigger size now but
+before we'll solve this problem let's
+just import our new function plug and
+lock in the client application and see
+if it's going to work so now we don't
+need to additionally Call the lock
+function in order to print results in a
+console because the new function plug
+and lock is going to extract keys from
+every object of the array as well as
+print the result in a console and in the
+console as we can see we are seeing
+expected result with the difference that
+our result is contained within items
+property of the wrapper object that's
+how the library collect JS works it
+returns us not only the result in Array
+but an object which wraps our collection
+but this is not the most optimal
+solution of building our libraries
+because anytime we're going to third
+party Library the file size of our
+library will be drastically increased so
+let's see what we can do about it and
+what it has to offer in this regard so
+moving on let's open up configuration
+file vi. config.js and in here we're
+going to add another option which is
+called rollup options which will be an
+object with the key external and this is
+where we have to specify Library names
+which we don't need to be bundled along
+with the code of our library and since
+by now we're using only one third party
+Library called collect JS I'm going to
+include only one name in this array like
+so and then let's watch the size of the
+bundlet file index.js so currently the
+size of index.js file is around 60
+kiloby but after I rerun the build
+process by executing npm run build this
+time we see that the file size was
+drastically dropped and if we're going
+to take a look at the content of the
+build file
+index.js we're seeing only our cod in
+here and the import of the library
+collect JS but the source code of this
+library is absent and which is why we
+don't even need to install the library
+collect JS in our project so let's
+remove this dependency by running npm
+uninstall and dependency name and let's
+just rerun the build process of our
+package once again by executing npm run
+build so now if we go to the browser and
+check the result in our client
+application again we're supposed to get
+an error since our package relies on the
+third party Library collect JS but that
+library was not included in the build
+version of our package but surprisingly
+as we can see we didn't receive any
+errors so it worked and the reason it
+worked is that previously when we
+started development server vit has gone
+ahead and cached some dependencies in
+the folder. vit which is inside of node
+modules and this folder has cached
+version of the library collect GS so
+let's just go back to the editor open up
+no modules folder of our client
+application and remove that folder with
+sketched dependency is called vit so now
+let's restart development server in the
+client application and we are receiving
+an error that dependency client JS
+cannot be imported since it is missing
+from our client application as well as
+from the build file of our library and
+the first thing that comes to mind is
+actually install this Library into our
+client application so let's do just that
+I'm going to execute npm install and
+specify Library name collect. JS and
+then after running npm run Dev again
+we're receiving a different error
+similar but this time it could not
+resolve UTS of our own package plug
+because the link to our package which we
+have previously added to the node
+modules folder of the client application
+by executing npm link is gone for some
+reason so let's just add the link to our
+package inside node modules folder One
+More Time by running npm link and our
+package name I am not going to explain
+in detail what this common is doing
+since we were talking about it in one of
+the previous lessons so now that we have
+added back link plug which points to our
+package inside non modules folder we can
+try to start development server once
+again and again the previous error is
+back that it cannot resolve dependency
+collect JS so we're going to solve this
+problem in the next lesson when we will
+publish our package to the npm registry
+and then instead of using npm link to
+make our package available to the client
+application we're going to install our
+package as any other third party
+dependency by running npm install it's

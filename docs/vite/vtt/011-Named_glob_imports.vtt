@@ -1,0 +1,338 @@
+WEBVTT
+
+00:00:01.200 --> 00:00:06.160
+reviewing function called Globe to
+
+00:00:03.480 --> 00:00:07.920
+import several modules at once so in the
+
+00:00:06.160 --> 00:00:10.319
+previous lesson we have reviewed one
+
+00:00:07.920 --> 00:00:12.000
+configuration option with the name eager
+
+00:00:10.319 --> 00:00:14.480
+and in this lesson we'll continue
+
+00:00:12.000 --> 00:00:17.760
+reviewing some other options for example
+
+00:00:14.480 --> 00:00:19.640
+we can also use option called as and in
+
+00:00:17.760 --> 00:00:22.440
+case we specify whether they rot for
+
+00:00:19.640 --> 00:00:24.960
+this option then the object which Globe
+
+00:00:22.440 --> 00:00:27.760
+function will return is going to contain
+
+00:00:24.960 --> 00:00:30.400
+the following every key of this object
+
+00:00:27.760 --> 00:00:33.319
+will still be passed to a particular
+
+00:00:30.400 --> 00:00:35.760
+module but the Val is different because
+
+00:00:33.319 --> 00:00:38.040
+this time it contains content of those
+
+00:00:35.760 --> 00:00:40.720
+modules instead of the function which
+
+00:00:38.040 --> 00:00:42.839
+allows us to load particular module
+
+00:00:40.720 --> 00:00:45.440
+dynamically so when browser were
+
+00:00:42.839 --> 00:00:47.280
+requesting those modules to fetch them
+
+00:00:45.440 --> 00:00:49.520
+as we can see VD has replied with the
+
+00:00:47.280 --> 00:00:51.440
+following content it has produced used
+
+00:00:49.520 --> 00:00:54.079
+validas script module where default
+
+00:00:51.440 --> 00:00:57.720
+expert contains module content in a
+
+00:00:54.079 --> 00:01:00.640
+string form so literally what V has done
+
+00:00:57.720 --> 00:01:03.280
+it read content of every module
+
+00:01:00.640 --> 00:01:06.359
+converted it to a string and returned to
+
+00:01:03.280 --> 00:01:10.240
+a browser but if I'm going to specify
+
+00:01:06.359 --> 00:01:12.280
+value URL for the option s in here this
+
+00:01:10.240 --> 00:01:14.680
+time glob function is going to produce
+
+00:01:12.280 --> 00:01:17.240
+the following result we still get an
+
+00:01:14.680 --> 00:01:19.680
+object where every key is a passed to
+
+00:01:17.240 --> 00:01:23.119
+individual module and the Val this time
+
+00:01:19.680 --> 00:01:25.200
+is absolute pass to those modules so as
+
+00:01:23.119 --> 00:01:27.720
+a response to calls which fetch those
+
+00:01:25.200 --> 00:01:30.599
+modules in the browser VD has return the
+
+00:01:27.720 --> 00:01:33.520
+valid masr module where default expert
+
+00:01:30.599 --> 00:01:36.640
+is pass to that module and now let's try
+
+00:01:33.520 --> 00:01:39.280
+to do the following I'm going to add an
+
+00:01:36.640 --> 00:01:42.559
+expert of constant name into every
+
+00:01:39.280 --> 00:01:45.440
+module in the first module this constant
+
+00:01:42.559 --> 00:01:47.559
+will be equal to Jane the second module
+
+00:01:45.440 --> 00:01:50.440
+B already contains this constant with
+
+00:01:47.559 --> 00:01:53.280
+value JN so let's at the same constant
+
+00:01:50.440 --> 00:01:55.799
+into module C and the value in here
+
+00:01:53.280 --> 00:01:58.480
+let's say will be JY and I'm also going
+
+00:01:55.799 --> 00:02:01.119
+to place default expert into every
+
+00:01:58.480 --> 00:02:04.359
+module the first module will expert
+
+00:02:01.119 --> 00:02:06.920
+letter A as a default expert the second
+
+00:02:04.359 --> 00:02:09.760
+module will export letter b and the
+
+00:02:06.920 --> 00:02:12.119
+third module will export letter C and
+
+00:02:09.760 --> 00:02:14.400
+then back to our main Javascript file
+
+00:02:12.119 --> 00:02:17.079
+let's remove this configuration object
+
+00:02:14.400 --> 00:02:19.400
+that we're passing to Globe function
+
+00:02:17.079 --> 00:02:22.119
+remove the comment from this channel of
+
+00:02:19.400 --> 00:02:25.280
+code and this time let's use one
+
+00:02:22.119 --> 00:02:27.480
+configuration option called import and
+
+00:02:25.280 --> 00:02:30.520
+what this option allows us to do it lets
+
+00:02:27.480 --> 00:02:32.400
+us specify name the expert which would
+
+00:02:30.520 --> 00:02:35.319
+like to import while importing modules
+
+00:02:32.400 --> 00:02:37.359
+in bulk by using glob function so for
+
+00:02:35.319 --> 00:02:40.480
+example if every module we're trying to
+
+00:02:37.359 --> 00:02:42.680
+import in bulk contains some named
+
+00:02:40.480 --> 00:02:45.079
+expert instead of importing anything
+
+00:02:42.680 --> 00:02:47.799
+else we can literally specify a
+
+00:02:45.079 --> 00:02:50.520
+particular input that would like and
+
+00:02:47.799 --> 00:02:52.960
+since all our module expert constant
+
+00:02:50.520 --> 00:02:55.480
+with a name name we can specify this
+
+00:02:52.960 --> 00:02:58.000
+name in here and since we have already
+
+00:02:55.480 --> 00:03:01.240
+specified that every import should
+
+00:02:58.000 --> 00:03:03.720
+contain import Cod name that promise
+
+00:03:01.240 --> 00:03:07.680
+which will be resolved after dynamically
+
+00:03:03.720 --> 00:03:11.359
+Import in module will contain this data
+
+00:03:07.680 --> 00:03:13.760
+so let's rename this parameter on name
+
+00:03:11.359 --> 00:03:16.240
+and use it to print it out and there we
+
+00:03:13.760 --> 00:03:19.039
+go after every Dynamic module gets
+
+00:03:16.240 --> 00:03:21.480
+fetched and executed we also see the
+
+00:03:19.039 --> 00:03:24.480
+value of the name variable in here which
+
+00:03:21.480 --> 00:03:27.599
+contains names and if for example I only
+
+00:03:24.480 --> 00:03:30.960
+want to import default expert we can
+
+00:03:27.599 --> 00:03:32.480
+literally mention default in here and
+
+00:03:30.960 --> 00:03:35.680
+this time instead of names we're going
+
+00:03:32.480 --> 00:03:38.200
+to get Val experted by default from
+
+00:03:35.680 --> 00:03:40.079
+those modules and let's take a look at
+
+00:03:38.200 --> 00:03:43.240
+one more combination of configuration
+
+00:03:40.079 --> 00:03:46.799
+options we're going to use eager option
+
+00:03:43.240 --> 00:03:49.400
+with value true and import option with
+
+00:03:46.799 --> 00:03:51.480
+value name and by now we already know
+
+00:03:49.400 --> 00:03:54.160
+that by using these configuration
+
+00:03:51.480 --> 00:03:57.079
+options we disable a dynamic nature of
+
+00:03:54.160 --> 00:03:59.640
+importing modules as well as we specify
+
+00:03:57.079 --> 00:04:02.559
+that we'd like to import only imports
+
+00:03:59.640 --> 00:04:05.839
+called name and as a result we're going
+
+00:04:02.559 --> 00:04:09.400
+to receive such object where every key
+
+00:04:05.839 --> 00:04:12.480
+is a pass to individual imported module
+
+00:04:09.400 --> 00:04:16.079
+and as a value for those keys we receive
+
+00:04:12.480 --> 00:04:19.559
+values of the named experts called name
+
+00:04:16.079 --> 00:04:22.039
+so all our three modules a b and c were
+
+00:04:19.559 --> 00:04:24.880
+requested and fetched on the initial
+
+00:04:22.039 --> 00:04:26.640
+page load and now let's also take a look
+
+00:04:24.880 --> 00:04:30.079
+at the transformation what bit has
+
+00:04:26.640 --> 00:04:32.799
+applied to glob function call so right
+
+00:04:30.079 --> 00:04:36.359
+here we can see it was transformed into
+
+00:04:32.799 --> 00:04:39.240
+three static Imports where every import
+
+00:04:36.359 --> 00:04:43.000
+Imports only one piece of data called
+
+00:04:39.240 --> 00:04:45.920
+name and down here all this data gets GA
+
+00:04:43.000 --> 00:04:49.240
+it within one object and this object
+
+00:04:45.920 --> 00:04:51.839
+gets assigned to modules constant which
+
+00:04:49.240 --> 00:04:53.799
+at the end gets printed to the console
+
+00:04:51.839 --> 00:04:56.200
+so as we can see this glob function
+
+00:04:53.799 --> 00:04:58.599
+which VI provides us with to load
+
+00:04:56.200 --> 00:05:01.039
+several modules at once is pretty
+
+00:04:58.599 --> 00:05:04.440
+powerful and lets us import multiple
+
+00:05:01.039 --> 00:05:06.039
+modules in several different ways in
+

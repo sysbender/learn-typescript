@@ -1,0 +1,191 @@
+how we can accept HMR updates by using
+method accept and apply them to our page
+and this method accept has a few
+signatures first one allows us to accept
+updates of the module itself and the
+other signature allows us to accept
+updates from dependencies of this module
+in other words from those modules that
+are imported in this module like we're
+doing in here where we are monitoring
+changes inside of subm module. GS but
+there can be such situations where when
+modules are updated and updates are
+applied in a browser those updates might
+also leave some kind of side effects for
+example those updates might modify Dom
+structure or change some data in local
+storage of the browser or even a simple
+console loog statement can also be
+considered a side effect and sometimes
+before applying updates of the module in
+a browser before we need to run some
+kind of a code which would clean up
+those side effects left from previous
+executions of this module it might sound
+complicated but in fact it is really
+simple let's consider one example I'm
+going to create variable Styles and then
+let's declare the function at stylesheet
+which is basically going to add Styles
+into head element on the page so in here
+I'm going to use Dom API to create Dom
+element which corresponds to the style
+tag and then we're going to assign
+arbitrary styles to the inner HTML
+property for example let's make
+background color of the body Indigo and
+text color will be white and then all we
+have to do is to append this style
+element to the Head element like so by
+using method append child and of course
+to apply these changes we have to
+execute this function once current
+module will be loaded in the browser so
+let's call the function add Styles shet
+right here and also let's open up
+index.html and in here we'll add H1
+element so in the browser we see that
+those styles were applied and if we take
+a look at the head element at the end we
+can see that style element that we have
+just added so far it looks good but what
+is going to happen if we're going to
+modify the Styles in any way for example
+let's change change the color on yellow
+and take a look in the browser the color
+was properly applied to the Page by
+using hot module replacement but in fact
+if we take a look at the Dum structure
+here we have two Style Elements so the
+previous style element was not removed
+and the new one was just added so the
+previous execution of this module has
+left side effect in the dome by adding
+style element but right after we have
+updated those Styles the previous style
+TCH was not removed So It produced
+so-called side effect but we didn't
+clean up that side effect before
+applying new updates and inserting new
+style element and as you may have
+guessed anytime we're going to do any
+kind of changes to our module we're
+going to get the new style element
+appended to head element so now let's
+see how we can actually clean up after
+ourselves and anytime we're going to
+modify this module the previous style
+tag will be removed and the new one will
+be appended and for that let's create
+new function call it remove style sheet
+and all this function is going to do is
+basically remove Styles Dom element by
+coling remove method like this but the
+question is where do we actually need to
+call this function remove style sheet
+and since this function has to be
+executed right before we're going to
+receive new HMR updates it provides us
+with another method called dispose that
+we also call on the H object
+and the closure which will be passed
+into this method should execute all
+necessary cleanup code to get rid of
+previous side effects so this is exactly
+the place where we can call our function
+remove style sheet to remove style Dom
+element so now before going back to the
+browser let's actually reset these
+Styles as they were initially let's also
+do a full page refresh to have only one
+style element on the page so now after
+I'm going to modify this module in the
+browser what we will actually see is
+that before appending updated Styles
+onto the page the previous style element
+was removed because that function remove
+stylesheet was executed inside of a
+closure of the method dispose which
+cleaned up our previous side effect
+before appending new element and just to
+see at what time those functions are
+executed let's just Place arbitrary
+console Lo statement into function add
+stylesheet as well as remove
+stylesheet so on the initial page load
+our module was executed and called
+function and style sheet and therefore
+new styles were applied to the page and
+after any subsequent modifications of
+this module we're going to see that
+before applying new updates our function
+remove styish sheet was executed thanks
+to that method dispose that we have
+called on the hot object
+so the previous styles were removed and
+then the new styles were added and this
+way we end up only with one style
+element on the page let's go back to the
+editor and remove these two console loog
+statements so by now we know how we can
+accept hot module updates by using
+method accept as well as how to remove
+any side effects before applying new
+updates by using function dispose and
+now a couple of words about standard vid
+events that we can listen to and there
+are several events that we can listen to
+and all of them are shown on this
+documentation page so for demonstration
+purposes let's just register listeners
+for some of these events as the first
+parameter we have to specify an event
+name I'm going to use before update
+event and as a second parameter we're
+passing the Handler which is going going
+to take some data received from the
+server let's just print out this data in
+the console and then duplicate this
+piece of code a couple more times to
+register listeners for other wins such
+as for after update and for the error
+reent like
+this and just to make it clear which
+conso Lo statement corresponds to which
+listener I'm going to add in here a
+label
+before update after update and
+error so again initially there are no
+looks that came from those listeners
+because none of those events were fired
+on the initial page load because they
+will be fired once we're going to modify
+the module so let's do just that I'm
+going to go ahead and change the color
+of the background and then in a browser
+we can see that firstly we have received
+the lock which came from the before
+update EV went listener with some
+metadata about the module which was
+updated when it was updated and the pass
+to this module so this log was printed
+to right before we have applied HMR
+update and the after update log was
+printed after we have applied HMR
+updates and this7 Handler also received
+the same object which describes the
+module which was updated and just to
+trigger the error went we have to make
+syntax error in this module and then in
+the console we're going to see that the
+error was printed which means the error
+handler was executed and the data that
+we have received in here contains the
+full description of the error and by the
+way the same error was displayed right
+here and this is how we can leverage
+those default events to be able to hook
+into HMR process and execute particular
+code at the different stages of HMR
+updates in this lesson we're going to

@@ -1,0 +1,509 @@
+WEBVTT
+
+00:00:01.880 --> 00:00:06.120
+supportting vid we're going to use a
+
+00:00:04.120 --> 00:00:08.239
+very basic example just for
+
+00:00:06.120 --> 00:00:10.880
+demonstration purposes how to integrate
+
+00:00:08.239 --> 00:00:12.679
+typescript into vid project so I'm going
+
+00:00:10.880 --> 00:00:14.960
+to create a new file with an extension
+
+00:00:12.679 --> 00:00:17.000
+TS let's call it
+
+00:00:14.960 --> 00:00:19.320
+main.ts and in here we're going to
+
+00:00:17.000 --> 00:00:21.679
+declare a function sum which basically
+
+00:00:19.320 --> 00:00:25.239
+is going to sum up two numbers it will
+
+00:00:21.679 --> 00:00:27.640
+accept two arguments of type number A
+
+00:00:25.239 --> 00:00:29.880
+and B and it's supposed to calculate the
+
+00:00:27.640 --> 00:00:32.560
+sum of these numbers and eventually
+
+00:00:29.880 --> 00:00:36.239
+return number so in here let's just sum
+
+00:00:32.560 --> 00:00:38.400
+up two arguments a plus b and down here
+
+00:00:36.239 --> 00:00:40.480
+we're going to add console log statement
+
+00:00:38.400 --> 00:00:43.800
+to print out the result of calling this
+
+00:00:40.480 --> 00:00:46.120
+function sum with arguments one which is
+
+00:00:43.800 --> 00:00:48.880
+number and the second argument will be
+
+00:00:46.120 --> 00:00:50.320
+two but this time it will be a string
+
+00:00:48.880 --> 00:00:52.640
+and before checking it out in the
+
+00:00:50.320 --> 00:00:55.239
+browser we of course how to include this
+
+00:00:52.640 --> 00:00:57.640
+file to our page and by the way it
+
+00:00:55.239 --> 00:01:01.679
+allows us to include typescript files
+
+00:00:57.640 --> 00:01:03.560
+directly within HTML files like so so
+
+00:01:01.679 --> 00:01:05.960
+once it's done let's switch over to the
+
+00:01:03.560 --> 00:01:08.159
+browser and surprisingly we don't see
+
+00:01:05.960 --> 00:01:10.520
+any errors in the console and as a
+
+00:01:08.159 --> 00:01:12.679
+result in a console we have number 12
+
+00:01:10.520 --> 00:01:14.080
+which is the result of executing that
+
+00:01:12.679 --> 00:01:16.520
+some function
+
+00:01:14.080 --> 00:01:19.679
+so as we can see after browser loads our
+
+00:01:16.520 --> 00:01:22.480
+file main.ts it receives the content
+
+00:01:19.679 --> 00:01:24.800
+where all types have been stried so that
+
+00:01:22.480 --> 00:01:27.159
+means VD has applied transformation to
+
+00:01:24.800 --> 00:01:29.639
+this file to remove everything related
+
+00:01:27.159 --> 00:01:31.600
+to typescript and leave only valid
+
+00:01:29.639 --> 00:01:34.040
+JavaScript code that can be run in a
+
+00:01:31.600 --> 00:01:36.719
+browser so that means that vid hasn't
+
+00:01:34.040 --> 00:01:39.239
+done any static type checks and instead
+
+00:01:36.719 --> 00:01:41.760
+only converted typescript syntax into
+
+00:01:39.239 --> 00:01:43.960
+JavaScript syntax and which is why as a
+
+00:01:41.760 --> 00:01:46.199
+result of executing this function we got
+
+00:01:43.960 --> 00:01:49.360
+12 because instead of summing up two
+
+00:01:46.199 --> 00:01:51.080
+numbers JavaScript has concatenated them
+
+00:01:49.360 --> 00:01:53.520
+and there is actually a reason why it
+
+00:01:51.080 --> 00:01:55.239
+doesn't do any static type checking when
+
+00:01:53.520 --> 00:01:57.679
+converting typescript files into
+
+00:01:55.239 --> 00:02:00.639
+JavaScript files and this reason is a
+
+00:01:57.679 --> 00:02:02.920
+speed because to do full static type
+
+00:02:00.639 --> 00:02:05.239
+checking will actually drastically delay
+
+00:02:02.920 --> 00:02:07.520
+the whole build process so what we'd
+
+00:02:05.239 --> 00:02:09.960
+recommend us to do instead if we want to
+
+00:02:07.520 --> 00:02:13.040
+run static type checking is to
+
+00:02:09.960 --> 00:02:14.840
+separately install typescript compiler
+
+00:02:13.040 --> 00:02:18.840
+we're going to to do it right now so in
+
+00:02:14.840 --> 00:02:21.000
+a terminal let's run npm install
+
+00:02:18.840 --> 00:02:24.040
+typescript and then we're going to use
+
+00:02:21.000 --> 00:02:26.239
+this compiler to separately analyze our
+
+00:02:24.040 --> 00:02:29.239
+types script files and apply type
+
+00:02:26.239 --> 00:02:31.639
+checking so in our package.json we're
+
+00:02:29.239 --> 00:02:34.239
+going to add one more script within
+
+00:02:31.639 --> 00:02:36.719
+script section with the name
+
+00:02:34.239 --> 00:02:39.159
+TSC and what this script will do is
+
+00:02:36.719 --> 00:02:41.199
+basically run typescript compiler but in
+
+00:02:39.159 --> 00:02:44.199
+our case we don't need to transform any
+
+00:02:41.199 --> 00:02:46.480
+typescript files into JavaScript files
+
+00:02:44.199 --> 00:02:49.080
+instead we want only run static type
+
+00:02:46.480 --> 00:02:51.080
+checking since this will be done by V
+
+00:02:49.080 --> 00:02:53.639
+and instead what we want to do is to
+
+00:02:51.080 --> 00:02:55.639
+actually run static type checking so in
+
+00:02:53.639 --> 00:02:59.000
+here for typescript compiler we're going
+
+00:02:55.639 --> 00:03:01.080
+to use option called No emit which is
+
+00:02:59.000 --> 00:03:03.320
+not going to produce any JavaScript
+
+00:03:01.080 --> 00:03:05.840
+files and instead we'll only run static
+
+00:03:03.320 --> 00:03:08.320
+type checking and now if we try to go
+
+00:03:05.840 --> 00:03:10.920
+ahead and run that script by running npm
+
+00:03:08.320 --> 00:03:13.679
+run DSC we're going to see the following
+
+00:03:10.920 --> 00:03:16.040
+error and to fix it we have to uh
+
+00:03:13.679 --> 00:03:18.600
+typescript configuration file within the
+
+00:03:16.040 --> 00:03:21.639
+root of the project with the name TS
+
+00:03:18.600 --> 00:03:23.600
+config.js and in here the only option
+
+00:03:21.639 --> 00:03:26.199
+that we have to specify is to actually
+
+00:03:23.600 --> 00:03:29.480
+show typescript compiler where our
+
+00:03:26.199 --> 00:03:32.800
+source files are stored so let's add
+
+00:03:29.480 --> 00:03:34.719
+root deer option with the value dot
+
+00:03:32.800 --> 00:03:37.520
+which is kind of a pointer to the root
+
+00:03:34.719 --> 00:03:40.880
+directory of our project so right now if
+
+00:03:37.520 --> 00:03:42.440
+we run the same common again npm run TSC
+
+00:03:40.880 --> 00:03:44.719
+this time we're going to get a different
+
+00:03:42.440 --> 00:03:46.880
+error and this is actually the error
+
+00:03:44.719 --> 00:03:50.120
+that we expect that we have some type
+
+00:03:46.880 --> 00:03:52.440
+mismatches in our typescript file so
+
+00:03:50.120 --> 00:03:55.239
+right now our typescript compiler works
+
+00:03:52.440 --> 00:03:57.960
+properly and gives us hints whenever we
+
+00:03:55.239 --> 00:03:59.880
+have type mismatches like this one but
+
+00:03:57.960 --> 00:04:02.639
+actually a running types script compiler
+
+00:03:59.880 --> 00:04:04.639
+like this is not going to rerun it every
+
+00:04:02.639 --> 00:04:06.920
+time we're going to make change to our
+
+00:04:04.639 --> 00:04:09.120
+source file so to make typescript
+
+00:04:06.920 --> 00:04:11.360
+compiler watch our source file for
+
+00:04:09.120 --> 00:04:14.400
+changes we're going to run the same
+
+00:04:11.360 --> 00:04:17.920
+command npm run DSC but this time we
+
+00:04:14.400 --> 00:04:19.600
+will also add flag watch and from now on
+
+00:04:17.920 --> 00:04:21.920
+anytime we're going to make a change to
+
+00:04:19.600 --> 00:04:23.880
+our source files for example let's go
+
+00:04:21.920 --> 00:04:26.840
+ahead switch over to
+
+00:04:23.880 --> 00:04:29.400
+main.ts and make a change by fixing this
+
+00:04:26.840 --> 00:04:32.239
+type error and now that we don't have
+
+00:04:29.400 --> 00:04:34.920
+any type errors within this file if we
+
+00:04:32.239 --> 00:04:36.760
+take a look at the types scrip output we
+
+00:04:34.920 --> 00:04:38.679
+can see that typ scrip compiler was
+
+00:04:36.760 --> 00:04:41.400
+rerun and this time there are no errors
+
+00:04:38.679 --> 00:04:43.600
+and warnings being reported so when it
+
+00:04:41.400 --> 00:04:45.679
+comes to running typescript in VD
+
+00:04:43.600 --> 00:04:48.159
+projects this is one of the V
+
+00:04:45.679 --> 00:04:50.360
+recommendations to run typescript type
+
+00:04:48.159 --> 00:04:53.199
+checking in a separate process to
+
+00:04:50.360 --> 00:04:54.920
+prevent deferring main VD build process
+
+00:04:53.199 --> 00:04:57.199
+but if we actually want to fully
+
+00:04:54.920 --> 00:04:59.800
+integrate typescript type checking
+
+00:04:57.199 --> 00:05:02.080
+process within VD build process there is
+
+00:04:59.800 --> 00:05:04.679
+a special plugin for it called with
+
+00:05:02.080 --> 00:05:07.040
+plugin Checker and this plugin allows us
+
+00:05:04.679 --> 00:05:10.400
+to fully integrate typescript type
+
+00:05:07.040 --> 00:05:13.000
+checking into vid build process and
+
+00:05:10.400 --> 00:05:15.440
+after that all typescript related errors
+
+00:05:13.000 --> 00:05:17.840
+and warnings will be shown directly in
+
+00:05:15.440 --> 00:05:19.800
+the browser and if we wish to use this
+
+00:05:17.840 --> 00:05:21.800
+plugin the first thing we need to do of
+
+00:05:19.800 --> 00:05:24.040
+course is to install it by running the
+
+00:05:21.800 --> 00:05:26.320
+following command so let's switch over
+
+00:05:24.040 --> 00:05:28.840
+to the terminal paste here that
+
+00:05:26.320 --> 00:05:31.320
+installation comment and wait until the
+
+00:05:28.840 --> 00:05:33.719
+installation process finished and after
+
+00:05:31.320 --> 00:05:36.159
+installation is finished next we have to
+
+00:05:33.719 --> 00:05:37.719
+configure this plugin by adding some
+
+00:05:36.159 --> 00:05:41.000
+instructions into our withd
+
+00:05:37.719 --> 00:05:43.800
+configuration file so first of all let's
+
+00:05:41.000 --> 00:05:47.360
+add this import statement I'm going to
+
+00:05:43.800 --> 00:05:50.280
+switch over to my V.C config.js and
+
+00:05:47.360 --> 00:05:53.000
+right below the inspect import statement
+
+00:05:50.280 --> 00:05:55.600
+I'm going to paste new import statement
+
+00:05:53.000 --> 00:05:57.280
+for withd plug-in Checker plugin and one
+
+00:05:55.600 --> 00:06:00.120
+more thing to do to configure this
+
+00:05:57.280 --> 00:06:03.400
+plugin is to actually copy this function
+
+00:06:00.120 --> 00:06:06.360
+call and paste it into plugins section
+
+00:06:03.400 --> 00:06:08.239
+down below like this and this is
+
+00:06:06.360 --> 00:06:10.360
+actually all what's required to fully
+
+00:06:08.239 --> 00:06:13.199
+integrate typescript type checking
+
+00:06:10.360 --> 00:06:14.800
+within V build process so right now
+
+00:06:13.199 --> 00:06:17.520
+we're going to go ahead and get back
+
+00:06:14.800 --> 00:06:20.320
+that type check in error by converting
+
+00:06:17.520 --> 00:06:22.560
+this argument to string this time during
+
+00:06:20.320 --> 00:06:25.159
+VI build process we're going to see that
+
+00:06:22.560 --> 00:06:28.040
+the typescript error was appeared within
+
+00:06:25.159 --> 00:06:30.520
+the browser so as we can see from now on
+
+00:06:28.040 --> 00:06:32.840
+every typescript error will be shown
+
+00:06:30.520 --> 00:06:35.280
+directly in the browser and of course if
+
+00:06:32.840 --> 00:06:37.800
+we go ahead and fix this error and check
+
+00:06:35.280 --> 00:06:40.880
+the result in the browser we no longer
+
+00:06:37.800 --> 00:06:43.080
+see any typescript errors and now within
+
+00:06:40.880 --> 00:06:44.920
+such setup we no longer need to run
+
+00:06:43.080 --> 00:06:47.360
+types script compiler within a separate
+
+00:06:44.920 --> 00:06:49.560
+process so let's stop the previous
+
+00:06:47.360 --> 00:06:52.320
+process that we have previously run in a
+
+00:06:49.560 --> 00:06:54.920
+console by pressing controlc because
+
+00:06:52.320 --> 00:06:57.440
+typescript will notify us about any type
+
+00:06:54.920 --> 00:06:59.560
+related errors directly in the
+
+00:06:57.440 --> 00:07:01.880
+browser now that we know how to
+

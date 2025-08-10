@@ -1,0 +1,151 @@
+let's consider several options which
+allows us to configure development
+server so when we start development
+server by running npm randev it starts
+with using Port
+5173 but then if we're going to go ahead
+and run another copy of this server the
+port will be changed dynamically because
+the previous Port 5173 was already taken
+by the previous copy of the development
+server and of course this port is
+configurable and just like other
+configurations we can override the port
+in vid configuration file so let's
+create an empty vid configuration file
+and in here we're going to specify an
+object under the server key where we can
+configure several aspects of the V
+development server so for example I want
+the port to be 33 33 and now after
+running npm randale we can notice that
+the port we just specified was used for
+development server but still if we're
+going to launch another copy of the
+server the port will be changed and this
+is a pretty convenient behavor but in
+case we'd like this commment to throw an
+error if the specified Port was already
+taken
+we can specify another configuration
+option called restrict port with the Val
+true and now if we're going to launch
+one instance of the development server
+and then we'll try to launch another
+instance in this case instead of picking
+up Port which is available it will throw
+an error CU part
+3333 is already in use another option
+called headers allows us to specify
+custom headers for we responses as an
+example let's specify one header with a
+name a and the value B and then in the
+browser if we'll inspect the request for
+fetching the current page in here under
+the response headers we are noticing our
+custom header a and this header will be
+added not only in the response for
+fetching the current page but also for
+fetching other assets such as JavaScript
+files another interesting option is
+called proxy and what this will allow us
+to do is to provide custom URLs which
+will be accessible from our Dev server
+for example I want to use URL SL
+products to fetch list of dummy products
+during development and we can achieve
+this by specifying custom option proxy
+this option holds an object where keys
+are addresses that would like to be
+accessible and the values for those keys
+will be addresses that do it is going to
+redirect those requests so for this
+particular example I'm going to use
+third party servers called dami Json
+which provides us with dami API it
+basically gives us set of dumy end
+points which we can use during our local
+development so in this case I have used
+the first end point products and now
+while accessing this endpoint products
+from our local Dev server
+I'm supposed to get list of fetched
+products received from damage Json API
+that's exactly what we're seeing but
+also besides specifying only addresses
+for keys inside a proxy object we can
+also provide more detail configuration
+in the form of object so for example I
+want to have an API Road in my
+development server which is going to
+redirect me to that same damage Json
+service but while r correcting me to
+these servers I don't want to include
+API segment in the address so I'm
+basically going to modify the final URL
+which is going to be used to make a
+request to damage is on API by
+completely removing API segment from the
+URL like so and this configuration is
+going to allow me to do the following
+type of requests for example if I'm
+going to refer to
+/i/ products since a API segment will be
+removed the result in url will be as
+follows so only products segment will be
+added to the end of the D jon.com domain
+so now let's try to call this URL in the
+browser /i/ products this time I'm
+receiving an error with an error code of
+500 this error has something to do with
+different Origins so without getting too
+far of the topic the documentation
+suggests us to use another option chain
+origin with the Val through to avoid
+errors related to different Origins so
+now if I'm going to make that same
+request on API SL products I'm receiving
+the list of products but this time we
+can do even more for example let's use
+different URL let's try to fetch list of
+posts by using post URL and to do this I
+simply have to change the segment on
+posts like so as we can see it has
+worked and we got list of posts in the
+response so for now we were only
+specifying all configurations for the
+server under the server key in the
+configuration file but we can also
+assign separate configurations for the
+preview server so let's build this
+project for production by running npm
+run build and then run preview server by
+executing npm run preview as we can see
+the default part of the preview server
+is
+4173 let's just try to overwrite some
+configurations for the view server for
+that I'm going to copy over this object
+paste it down here and rename option
+server on preview and this configuration
+will only be applicable for the preview
+server let's change something in this
+configuration for example let's use
+different port remove this headers
+object and add another option called
+open here we can specify which address
+should be open in a browser by default
+after starting preview server I'm going
+to specify our custom URL API SL
+products and just because we have
+previously configured proxy a request
+was made to the following URL API
+products and we got the list of products
+on the page and this is how we can
+override configurations for the preview
+server as well as for the development
+server in fact there are many more
+configurations for configuring servers
+and all of them are described in details
+in the official withd
+documentation in one of the previous

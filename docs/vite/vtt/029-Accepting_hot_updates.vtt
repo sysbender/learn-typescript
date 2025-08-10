@@ -1,0 +1,629 @@
+WEBVTT
+
+00:00:01.479 --> 00:00:06.720
+previous lessons we have implemented hot
+
+00:00:03.439 --> 00:00:09.040
+module replacement for CSV modules the
+
+00:00:06.720 --> 00:00:12.040
+way we have done this is by using handle
+
+00:00:09.040 --> 00:00:14.479
+hot update hook inside of our plug-in
+
+00:00:12.040 --> 00:00:17.680
+implementation so in here whenever do c
+
+00:00:14.479 --> 00:00:19.840
+PV file will be modified we would fire
+
+00:00:17.680 --> 00:00:22.600
+Event Y websocket connection to the
+
+00:00:19.840 --> 00:00:25.040
+client and include all necessary data
+
+00:00:22.600 --> 00:00:26.880
+along with this event so that client
+
+00:00:25.040 --> 00:00:29.960
+could receive this data and then
+
+00:00:26.880 --> 00:00:32.359
+Implement all necessary updates and in
+
+00:00:29.960 --> 00:00:35.000
+this lesson we're going to see how we
+
+00:00:32.359 --> 00:00:38.800
+can Implement hot module replacement for
+
+00:00:35.000 --> 00:00:41.239
+JavaScript files so I'm going to comment
+
+00:00:38.800 --> 00:00:43.880
+out all these listeners we're not going
+
+00:00:41.239 --> 00:00:46.359
+to need them in this lesson and also we
+
+00:00:43.880 --> 00:00:49.520
+don't need to fire any custom events
+
+00:00:46.359 --> 00:00:52.840
+from our server so let's just comment
+
+00:00:49.520 --> 00:00:56.080
+out this hook configure server which was
+
+00:00:52.840 --> 00:00:58.160
+basically used to Fire custom V web soet
+
+00:00:56.080 --> 00:00:59.960
+connection to the client and before
+
+00:00:58.160 --> 00:01:02.760
+getting to implementing hot module
+
+00:00:59.960 --> 00:01:05.439
+replacement for JavaScript files let's
+
+00:01:02.760 --> 00:01:08.560
+do a little preparation I'm going to
+
+00:01:05.439 --> 00:01:10.600
+create new JavaScript module in the root
+
+00:01:08.560 --> 00:01:15.640
+of the project let's call this file
+
+00:01:10.600 --> 00:01:18.640
+module. JS and here let's add some dami
+
+00:01:15.640 --> 00:01:21.160
+code for example let's expert constant
+
+00:01:18.640 --> 00:01:23.479
+with a name message and the random
+
+00:01:21.160 --> 00:01:26.199
+string and also let's add one more
+
+00:01:23.479 --> 00:01:27.840
+expert which will be a default expert
+
+00:01:26.199 --> 00:01:30.800
+also with a random
+
+00:01:27.840 --> 00:01:33.960
+string and now we're going to use HMR
+
+00:01:30.800 --> 00:01:36.080
+API to implement hot module replacement
+
+00:01:33.960 --> 00:01:38.000
+and all the code which we will need for
+
+00:01:36.080 --> 00:01:41.439
+hot module replacement we're going to
+
+00:01:38.000 --> 00:01:44.000
+wrap in the if conditional and check if
+
+00:01:41.439 --> 00:01:47.120
+hot object is present then we're going
+
+00:01:44.000 --> 00:01:49.439
+to mement HMR so that b could properly
+
+00:01:47.120 --> 00:01:52.000
+remove this Cod when doing production
+
+00:01:49.439 --> 00:01:55.760
+builds since we don't need to provide
+
+00:01:52.000 --> 00:01:58.319
+HMR during production so in order to
+
+00:01:55.760 --> 00:02:01.199
+implement hot module replacement for
+
+00:01:58.319 --> 00:02:04.439
+this specific module we can leverage
+
+00:02:01.199 --> 00:02:07.439
+method called accept on the object hot
+
+00:02:04.439 --> 00:02:11.120
+so this method accepts closure which in
+
+00:02:07.439 --> 00:02:13.880
+turn accepts one parameter which will be
+
+00:02:11.120 --> 00:02:17.199
+updated content of this module let's
+
+00:02:13.880 --> 00:02:19.680
+call this parameter updated module and
+
+00:02:17.199 --> 00:02:22.160
+then print out this variable in the
+
+00:02:19.680 --> 00:02:24.439
+browser console and just to see it an
+
+00:02:22.160 --> 00:02:27.199
+action we of course have to go back to
+
+00:02:24.439 --> 00:02:29.880
+our main Javascript file and write an
+
+00:02:27.199 --> 00:02:33.239
+import statement to import our new
+
+00:02:29.880 --> 00:02:35.560
+module and regarding all other code we
+
+00:02:33.239 --> 00:02:40.279
+actually don't need any of that so let's
+
+00:02:35.560 --> 00:02:42.680
+comment everything out besides our
+
+00:02:40.279 --> 00:02:44.479
+import and one more thing before we'll
+
+00:02:42.680 --> 00:02:48.479
+check it in a browser let's go back back
+
+00:02:44.479 --> 00:02:50.640
+to module. JS and print something out so
+
+00:02:48.479 --> 00:02:53.720
+we can see that this module will be
+
+00:02:50.640 --> 00:02:56.279
+loaded and here we go we got that Lo
+
+00:02:53.720 --> 00:02:58.479
+that means that our module was properly
+
+00:02:56.279 --> 00:03:00.960
+included and now let's see what is going
+
+00:02:58.479 --> 00:03:04.080
+to happen as soon as I'm going to modify
+
+00:03:00.960 --> 00:03:06.760
+the file module. GS for example let's
+
+00:03:04.080 --> 00:03:09.120
+change this string and in the browser
+
+00:03:06.760 --> 00:03:11.479
+console I'm seeing a different loog
+
+00:03:09.120 --> 00:03:13.760
+which was just modified because after
+
+00:03:11.479 --> 00:03:17.120
+updating this file this module was
+
+00:03:13.760 --> 00:03:19.920
+executed again and then we also got this
+
+00:03:17.120 --> 00:03:22.399
+lock which contains updated content of
+
+00:03:19.920 --> 00:03:24.359
+this module in the form of an object so
+
+00:03:22.399 --> 00:03:27.160
+here we can see a default expert of this
+
+00:03:24.359 --> 00:03:29.640
+module as well as a named expert of the
+
+00:03:27.160 --> 00:03:31.640
+constant message and this log was
+
+00:03:29.640 --> 00:03:34.399
+printed by using disclosure that we have
+
+00:03:31.640 --> 00:03:36.600
+passed into accept message so now if I'm
+
+00:03:34.399 --> 00:03:39.000
+going to modify the value of the message
+
+00:03:36.600 --> 00:03:41.439
+constant for example right away I'm
+
+00:03:39.000 --> 00:03:43.920
+seeing the new log in the browser and
+
+00:03:41.439 --> 00:03:46.560
+this time the constant message contains
+
+00:03:43.920 --> 00:03:49.199
+the new value that we have just updated
+
+00:03:46.560 --> 00:03:52.600
+so anytime we're going to modify module.
+
+00:03:49.199 --> 00:03:55.279
+JS file we're going to see here new log
+
+00:03:52.600 --> 00:03:57.439
+with updated content of that file and by
+
+00:03:55.279 --> 00:04:00.000
+the way all this is happening without
+
+00:03:57.439 --> 00:04:03.080
+full page refreshes but what if I'm not
+
+00:04:00.000 --> 00:04:05.720
+going to use call accept in this module
+
+00:04:03.080 --> 00:04:08.319
+Let's test it out let's comment out this
+
+00:04:05.720 --> 00:04:11.239
+part in the browser I'm only seeing one
+
+00:04:08.319 --> 00:04:14.160
+lock which was printed on the initial
+
+00:04:11.239 --> 00:04:18.080
+page load but after I'm going to modify
+
+00:04:14.160 --> 00:04:20.080
+by the file module. JS in the console we
+
+00:04:18.080 --> 00:04:22.439
+can see only the new Lo without all
+
+00:04:20.080 --> 00:04:25.600
+previous outputs and that is because
+
+00:04:22.439 --> 00:04:27.439
+browser has made full page refresh so in
+
+00:04:25.600 --> 00:04:29.600
+this case there is no hot module
+
+00:04:27.439 --> 00:04:32.279
+replacement and again if I'm going to go
+
+00:04:29.600 --> 00:04:35.680
+back to the editor and comment this code
+
+00:04:32.279 --> 00:04:39.239
+back in then initially here I'm seeing
+
+00:04:35.680 --> 00:04:41.640
+only one loog from the module. GS and
+
+00:04:39.239 --> 00:04:43.840
+after I'm going to modify this lock
+
+00:04:41.640 --> 00:04:46.520
+we're still going to see the old lock as
+
+00:04:43.840 --> 00:04:49.359
+well as the new output and in addition
+
+00:04:46.520 --> 00:04:52.760
+to that we got an object which contains
+
+00:04:49.359 --> 00:04:55.720
+updated data of the module so in this
+
+00:04:52.760 --> 00:04:58.560
+case as I'm using accept method in my
+
+00:04:55.720 --> 00:05:01.239
+module anytime we're modifying module.
+
+00:04:58.560 --> 00:05:03.960
+JS browser is not going to make full
+
+00:05:01.239 --> 00:05:06.560
+page refresh in order to update this
+
+00:05:03.960 --> 00:05:08.520
+module in a browser because all these
+
+00:05:06.560 --> 00:05:10.800
+updates are happening by using hot
+
+00:05:08.520 --> 00:05:13.520
+module replacement technique and now
+
+00:05:10.800 --> 00:05:17.239
+let's consider another example so what
+
+00:05:13.520 --> 00:05:19.960
+if my module. Js is going to import
+
+00:05:17.239 --> 00:05:23.319
+another module let's emulate this
+
+00:05:19.960 --> 00:05:26.720
+situation let's create the new file and
+
+00:05:23.319 --> 00:05:30.840
+call it subm module. JS this module is
+
+00:05:26.720 --> 00:05:32.000
+going to have only one default expert of
+
+00:05:30.840 --> 00:05:34.520
+the random
+
+00:05:32.000 --> 00:05:39.760
+string and then we're going to import
+
+00:05:34.520 --> 00:05:39.760
+this module from within module. GS right
+
+00:05:39.840 --> 00:05:45.359
+here and now let's say we want to
+
+00:05:42.120 --> 00:05:48.359
+monitor changes in all those modules we
+
+00:05:45.359 --> 00:05:51.160
+are importing in this module so for
+
+00:05:48.359 --> 00:05:54.680
+example I want to run some code anytime
+
+00:05:51.160 --> 00:05:58.080
+the module sub module. JS will change so
+
+00:05:54.680 --> 00:06:01.359
+in here I'm going to use another code to
+
+00:05:58.080 --> 00:06:03.760
+Method accept which in this case will
+
+00:06:01.359 --> 00:06:06.319
+have a different shape as the first
+
+00:06:03.760 --> 00:06:09.080
+parameter we can provide an array which
+
+00:06:06.319 --> 00:06:11.760
+consists of all those UTS we like to
+
+00:06:09.080 --> 00:06:14.239
+monitor changes in so for example in
+
+00:06:11.760 --> 00:06:17.120
+here I'm going to watch file called
+
+00:06:14.239 --> 00:06:19.760
+submodule dogs so I'm going to include
+
+00:06:17.120 --> 00:06:22.319
+this name in here and then in this
+
+00:06:19.760 --> 00:06:25.040
+closure we are going to receive an
+
+00:06:22.319 --> 00:06:28.040
+updated content of every module that we
+
+00:06:25.040 --> 00:06:30.640
+are monitoring since in this case I'm
+
+00:06:28.040 --> 00:06:34.080
+monitoring only one module I'm going to
+
+00:06:30.640 --> 00:06:37.040
+destructure this parameter and extract
+
+00:06:34.080 --> 00:06:39.600
+only the content of this subm module
+
+00:06:37.040 --> 00:06:42.120
+file and eventually let's see what will
+
+00:06:39.600 --> 00:06:44.920
+be contained in this new subm module
+
+00:06:42.120 --> 00:06:48.080
+variable which is supposed to give us
+
+00:06:44.920 --> 00:06:49.520
+updated content of the subm module file
+
+00:06:48.080 --> 00:06:53.040
+and before checking it out in the
+
+00:06:49.520 --> 00:06:55.800
+browser I'm going to include conso
+
+00:06:53.040 --> 00:06:56.840
+statement inside sub module. GS for
+
+00:06:55.800 --> 00:06:59.479
+testing
+
+00:06:56.840 --> 00:07:03.120
+purposes so on the initial page load we
+
+00:06:59.479 --> 00:07:07.160
+can see two locks obtained from loading
+
+00:07:03.120 --> 00:07:08.680
+subm module. JS as well as module. JS
+
+00:07:07.160 --> 00:07:10.760
+and now let's see what is going to
+
+00:07:08.680 --> 00:07:13.800
+happen if I'm going to modify the
+
+00:07:10.760 --> 00:07:16.479
+content of the subm module. GS let's
+
+00:07:13.800 --> 00:07:19.000
+let's change this message go back to the
+
+00:07:16.479 --> 00:07:21.359
+browser and here I can see the log from
+
+00:07:19.000 --> 00:07:24.439
+subm module. JS again because after
+
+00:07:21.359 --> 00:07:27.239
+modifying this file it was executed in
+
+00:07:24.439 --> 00:07:29.720
+the browser one more time and then I'm
+
+00:07:27.239 --> 00:07:32.239
+seeing another look which contains
+
+00:07:29.720 --> 00:07:35.399
+updated content of the modified subm
+
+00:07:32.239 --> 00:07:37.880
+module. GS file and that is because in
+
+00:07:35.399 --> 00:07:41.080
+our parent module which is called
+
+00:07:37.880 --> 00:07:44.319
+module. GS we have registered this
+
+00:07:41.080 --> 00:07:47.040
+listener which monitors for changes
+
+00:07:44.319 --> 00:07:50.000
+inside subm module. JS file and when
+
+00:07:47.040 --> 00:07:52.760
+that change occurs it is going to print
+
+00:07:50.000 --> 00:07:55.239
+the updated data of this subm module in
+
+00:07:52.760 --> 00:07:58.319
+the form of an object and if I'm going
+
+00:07:55.239 --> 00:08:00.880
+to make mistake in the subm module name
+
+00:07:58.319 --> 00:08:04.160
+and then we'll do any modifications to
+
+00:08:00.880 --> 00:08:06.120
+this subm module then in a browser I'm
+
+00:08:04.160 --> 00:08:08.800
+still going to see the lock but this
+
+00:08:06.120 --> 00:08:11.040
+lock comes from a different place it is
+
+00:08:08.800 --> 00:08:13.439
+actually this part of code which prints
+
+00:08:11.040 --> 00:08:16.640
+that log entry so just to make it all
+
+00:08:13.439 --> 00:08:20.239
+clear let's comment out this part and
+
+00:08:16.640 --> 00:08:22.800
+modify subm module. JS once again and as
+
+00:08:20.239 --> 00:08:25.600
+we can see after modification there are
+
+00:08:22.800 --> 00:08:28.359
+no extra locks in a console because we
+
+00:08:25.600 --> 00:08:30.840
+are no longer listening for changes in
+
+00:08:28.359 --> 00:08:34.279
+the subm module so let's go back to
+
+00:08:30.840 --> 00:08:37.439
+module. JS and fix that mistake in this
+
+00:08:34.279 --> 00:08:39.359
+name subm module. JS and one more time
+
+00:08:37.439 --> 00:08:42.640
+if I'm going to go ahead and modify the
+
+00:08:39.359 --> 00:08:44.920
+file subm module. JS sure enough in the
+
+00:08:42.640 --> 00:08:47.359
+console we're going to see a new log
+
+00:08:44.920 --> 00:08:50.080
+entry with an updated content of the
+
+00:08:47.359 --> 00:08:53.560
+subm module file and by the way if we're
+
+00:08:50.080 --> 00:08:56.359
+going to make any syntax errors in our
+
+00:08:53.560 --> 00:08:59.160
+modules then dead log which is
+
+00:08:56.359 --> 00:09:01.479
+responsible for showing updated content
+
+00:08:59.160 --> 00:09:04.279
+of the module we'll print value
+
+00:09:01.479 --> 00:09:07.080
+undefined instead so if we're planning
+
+00:09:04.279 --> 00:09:10.439
+to use this value in our closure it's
+
+00:09:07.080 --> 00:09:13.359
+necessary to firstly check if theed
+
+00:09:10.439 --> 00:09:17.520
+value actually exists so we're going to
+
+00:09:13.359 --> 00:09:20.319
+R this part in the if conditional so now
+
+00:09:17.520 --> 00:09:23.120
+if we're going to make any syntax errors
+
+00:09:20.319 --> 00:09:25.520
+in our modules it will prevent us from
+
+00:09:23.120 --> 00:09:27.520
+potential crashes and it's actually good
+
+00:09:25.520 --> 00:09:30.479
+to do these kind of checks most of the
+
+00:09:27.520 --> 00:09:33.080
+times so let's add the same conditional
+
+00:09:30.479 --> 00:09:33.080
+to this
+
+00:09:42.600 --> 00:09:48.239
+closure let's keep learning it in the
+
+00:09:45.199 --> 00:09:50.920
+next lesson so by now we already know
+

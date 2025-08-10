@@ -1,0 +1,356 @@
+WEBVTT
+
+00:00:01.880 --> 00:00:05.880
+have created the library with multiple
+
+00:00:03.719 --> 00:00:07.480
+entry points and then in our client
+
+00:00:05.880 --> 00:00:09.559
+application we have imported the
+
+00:00:07.480 --> 00:00:12.119
+functionality from those two entry
+
+00:00:09.559 --> 00:00:15.360
+points right here from the main entry
+
+00:00:12.119 --> 00:00:16.880
+point plug and from subm module loog and
+
+00:00:15.360 --> 00:00:19.280
+just as a reminder the way we have
+
+00:00:16.880 --> 00:00:21.440
+organized the code in our library is as
+
+00:00:19.280 --> 00:00:24.159
+follows so in here we have a couple of
+
+00:00:21.440 --> 00:00:26.320
+JavaScript files inside source folder
+
+00:00:24.159 --> 00:00:28.599
+where each of those files contain only
+
+00:00:26.320 --> 00:00:30.599
+one function and then to tell node.js
+
+00:00:28.599 --> 00:00:32.760
+which modules have to be imported
+
+00:00:30.599 --> 00:00:35.199
+whenever client application will import
+
+00:00:32.760 --> 00:00:38.040
+functionality from our library by using
+
+00:00:35.199 --> 00:00:40.719
+either main entry point or sub entry
+
+00:00:38.040 --> 00:00:42.920
+point which in our case is called lock
+
+00:00:40.719 --> 00:00:45.760
+we have provided the pass in here for
+
+00:00:42.920 --> 00:00:48.719
+every buildt file which corresponds to
+
+00:00:45.760 --> 00:00:50.840
+every entry point of our library weather
+
+00:00:48.719 --> 00:00:53.360
+client side application is going to use
+
+00:00:50.840 --> 00:00:55.679
+native ECP modules to import
+
+00:00:53.360 --> 00:00:58.599
+functionality from our package or
+
+00:00:55.679 --> 00:01:00.920
+commonjs modules in both of these cases
+
+00:00:58.599 --> 00:01:03.679
+imports from our library are going to
+
+00:01:00.920 --> 00:01:06.159
+work fine but so far we have only tested
+
+00:01:03.679 --> 00:01:09.320
+importing functionality from our library
+
+00:01:06.159 --> 00:01:12.079
+by using naasri modules and in this case
+
+00:01:09.320 --> 00:01:15.480
+note while importing these modules looks
+
+00:01:12.079 --> 00:01:18.599
+into key import of the package Json file
+
+00:01:15.480 --> 00:01:20.840
+of our library in order to find the file
+
+00:01:18.599 --> 00:01:22.639
+which it should import and of course
+
+00:01:20.840 --> 00:01:25.239
+each of these PS specified in this
+
+00:01:22.639 --> 00:01:27.320
+package Jon file points to build files
+
+00:01:25.239 --> 00:01:29.719
+of our library that it has generated
+
+00:01:27.320 --> 00:01:32.239
+during the build process and it placed
+
+00:01:29.719 --> 00:01:34.440
+all these build files inside this folder
+
+00:01:32.239 --> 00:01:36.320
+by default so now let's see if it is
+
+00:01:34.440 --> 00:01:39.280
+going to work if in our client
+
+00:01:36.320 --> 00:01:42.679
+application instead of using native es6
+
+00:01:39.280 --> 00:01:45.159
+inerts we're going to use commonjs synex
+
+00:01:42.679 --> 00:01:48.520
+by using function require so I'm going
+
+00:01:45.159 --> 00:01:51.199
+to convert both of these UTS to use
+
+00:01:48.520 --> 00:01:53.119
+function require like this and now this
+
+00:01:51.199 --> 00:01:56.199
+I'm doing inside of the main Javascript
+
+00:01:53.119 --> 00:01:58.320
+file of our main client application
+
+00:01:56.199 --> 00:02:00.480
+which Imports functionality from the
+
+00:01:58.320 --> 00:02:03.159
+library and now instead of checking
+
+00:02:00.480 --> 00:02:06.440
+result in the browser we're going to run
+
+00:02:03.159 --> 00:02:09.520
+this script main.js by using node so in
+
+00:02:06.440 --> 00:02:12.199
+the terminal I'm going to run node and
+
+00:02:09.520 --> 00:02:14.400
+the F name and as we can see we got an
+
+00:02:12.199 --> 00:02:17.559
+error saying that require is not defined
+
+00:02:14.400 --> 00:02:19.719
+in yes module scope and in order to fix
+
+00:02:17.559 --> 00:02:23.159
+this issue we have to rename an
+
+00:02:19.719 --> 00:02:25.320
+extension of this script on CJs so that
+
+00:02:23.159 --> 00:02:27.880
+nodejs will treat this module as common
+
+00:02:25.320 --> 00:02:29.840
+G s module but we're going to do it a
+
+00:02:27.880 --> 00:02:32.280
+bit differently and instead of renaming
+
+00:02:29.840 --> 00:02:35.360
+the current file I'm going to make a
+
+00:02:32.280 --> 00:02:38.520
+copy of this file with an extension of
+
+00:02:35.360 --> 00:02:40.639
+CJs like so and then let's just revert
+
+00:02:38.520 --> 00:02:44.000
+all the changes we have previously made
+
+00:02:40.639 --> 00:02:47.280
+to the main DJs file and leave file with
+
+00:02:44.000 --> 00:02:50.239
+an extension CJs as is which still uses
+
+00:02:47.280 --> 00:02:52.639
+syntax of commonjs modules with require
+
+00:02:50.239 --> 00:02:55.840
+function calls and now again let's
+
+00:02:52.639 --> 00:02:58.239
+execute main. CJs script in the node
+
+00:02:55.840 --> 00:03:00.000
+environment and in this case as we can
+
+00:02:58.239 --> 00:03:02.440
+see everything worked fine we got a
+
+00:03:00.000 --> 00:03:05.599
+result and as a reminder this script
+
+00:03:02.440 --> 00:03:08.159
+just extracts usern names from the array
+
+00:03:05.599 --> 00:03:10.719
+of user objects and then it prints out
+
+00:03:08.159 --> 00:03:12.719
+the new array which consists only of
+
+00:03:10.719 --> 00:03:15.119
+usern names so that's what we are seeing
+
+00:03:12.719 --> 00:03:17.559
+in here so as we can see it is possible
+
+00:03:15.119 --> 00:03:20.040
+to use our library in both cases
+
+00:03:17.559 --> 00:03:23.440
+whenever client application uses native
+
+00:03:20.040 --> 00:03:25.840
+ecmascript import syntax or syntax of
+
+00:03:23.440 --> 00:03:27.880
+common GS modules by using function
+
+00:03:25.840 --> 00:03:30.320
+required to import functionality from
+
+00:03:27.880 --> 00:03:32.520
+the library and this is possible because
+
+00:03:30.320 --> 00:03:35.440
+it while building our library has
+
+00:03:32.520 --> 00:03:37.320
+generated two versions of our library
+
+00:03:35.440 --> 00:03:39.760
+the one which is intended to be used
+
+00:03:37.320 --> 00:03:42.280
+with Native ecmascript Imports and
+
+00:03:39.760 --> 00:03:45.199
+another one for importing functionality
+
+00:03:42.280 --> 00:03:48.040
+by using common GS syntax in other words
+
+00:03:45.199 --> 00:03:49.920
+by using function require and of course
+
+00:03:48.040 --> 00:03:52.960
+if I'm going to go back to the source
+
+00:03:49.920 --> 00:03:56.360
+code of our library and in here I'm
+
+00:03:52.960 --> 00:03:58.800
+going to remove versions of of CJs
+
+00:03:56.360 --> 00:04:01.520
+builds those are the files responsible
+
+00:03:58.800 --> 00:04:05.639
+for providing support to import our
+
+00:04:01.520 --> 00:04:07.679
+library as command JS modules then after
+
+00:04:05.639 --> 00:04:12.199
+removal both of these files from the
+
+00:04:07.679 --> 00:04:15.599
+dist folder index. CJs and log. CJs if
+
+00:04:12.199 --> 00:04:18.360
+we'll try to execute our main. CJs
+
+00:04:15.599 --> 00:04:21.760
+script from the client application which
+
+00:04:18.360 --> 00:04:24.559
+still uses command GS syntax to import
+
+00:04:21.760 --> 00:04:26.719
+modules from our library in this case
+
+00:04:24.559 --> 00:04:28.480
+we're going to get the following error
+
+00:04:26.719 --> 00:04:30.960
+well obviously because we have just
+
+00:04:28.480 --> 00:04:32.840
+removed those files that were previously
+
+00:04:30.960 --> 00:04:35.599
+providing support to import
+
+00:04:32.840 --> 00:04:38.239
+functionality from our package by using
+
+00:04:35.599 --> 00:04:40.199
+commonjs syntax so as we can see it's
+
+00:04:38.239 --> 00:04:42.880
+very good that while building our
+
+00:04:40.199 --> 00:04:45.280
+library vit generates two sets of the
+
+00:04:42.880 --> 00:04:47.559
+build files the first set of files is
+
+00:04:45.280 --> 00:04:50.400
+intended to be imported as normal
+
+00:04:47.559 --> 00:04:53.320
+ecmascript modules and the second set of
+
+00:04:50.400 --> 00:04:55.440
+file provides support whenever users are
+
+00:04:53.320 --> 00:04:59.040
+going to import functionality from our
+
+00:04:55.440 --> 00:05:01.000
+Library by using require function so
+
+00:04:59.040 --> 00:05:03.040
+let's continue reviewing possibilities
+
+00:05:01.000 --> 00:05:06.000
+of building libraries with it in the
+
+00:05:03.040 --> 00:05:08.880
+next lesson so by now we have already
+

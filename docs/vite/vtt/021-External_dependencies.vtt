@@ -1,0 +1,548 @@
+WEBVTT
+
+00:00:02.000 --> 00:00:07.320
+created npm package and use this package
+
+00:00:04.880 --> 00:00:10.000
+in the client application let's start
+
+00:00:07.320 --> 00:00:12.920
+development server by running npm randev
+
+00:00:10.000 --> 00:00:14.679
+to start our application in the browser
+
+00:00:12.920 --> 00:00:16.880
+and the result of using our custom
+
+00:00:14.679 --> 00:00:19.199
+package is shown in a console it
+
+00:00:16.880 --> 00:00:20.960
+basically have extracted usern names
+
+00:00:19.199 --> 00:00:23.079
+from the initial array of the user
+
+00:00:20.960 --> 00:00:25.880
+object s and all of that has been
+
+00:00:23.079 --> 00:00:28.360
+implemented in previous lessons so let's
+
+00:00:25.880 --> 00:00:30.760
+just recall how that works in the main
+
+00:00:28.360 --> 00:00:33.520
+script of our Clan application we are
+
+00:00:30.760 --> 00:00:35.679
+importing functionality from our package
+
+00:00:33.520 --> 00:00:38.639
+but not only from the main module of our
+
+00:00:35.679 --> 00:00:40.840
+package also from the sub module lock
+
+00:00:38.639 --> 00:00:43.800
+and currently the project which contains
+
+00:00:40.840 --> 00:00:47.199
+our package has two JavaScript files
+
+00:00:43.800 --> 00:00:50.880
+index.js and lock. JS and each of these
+
+00:00:47.199 --> 00:00:53.239
+files experts one function and these two
+
+00:00:50.880 --> 00:00:55.440
+functions we are actually importing in
+
+00:00:53.239 --> 00:00:58.079
+our client application from different
+
+00:00:55.440 --> 00:01:00.520
+sub modules but as we can see currently
+
+00:00:58.079 --> 00:01:03.440
+our package is pretty simple it doesn't
+
+00:01:00.520 --> 00:01:05.719
+even use any third party libraries so in
+
+00:01:03.440 --> 00:01:08.239
+this lesson we're going to review how to
+
+00:01:05.719 --> 00:01:11.280
+integrate third party library in our
+
+00:01:08.239 --> 00:01:13.199
+custom package so in this file index.js
+
+00:01:11.280 --> 00:01:16.239
+we're going to import third party
+
+00:01:13.199 --> 00:01:18.800
+Library called collect. JS which
+
+00:01:16.239 --> 00:01:21.239
+basically has lots of utilities to work
+
+00:01:18.800 --> 00:01:23.520
+with array of objects and we're going to
+
+00:01:21.239 --> 00:01:25.679
+to leverage this function inside of our
+
+00:01:23.520 --> 00:01:28.880
+plug function but firstly let's just
+
+00:01:25.679 --> 00:01:30.599
+rename this function on plug and lock
+
+00:01:28.880 --> 00:01:33.920
+and then we'll basically do the same
+
+00:01:30.599 --> 00:01:36.040
+which is extract a key from each object
+
+00:01:33.920 --> 00:01:38.599
+of the collection but this time we're
+
+00:01:36.040 --> 00:01:40.880
+going to use plug method on our
+
+00:01:38.599 --> 00:01:44.239
+collection and we'll basically do the
+
+00:01:40.880 --> 00:01:47.280
+same here but by using method PL which
+
+00:01:44.239 --> 00:01:49.960
+Library collect JS provides us with like
+
+00:01:47.280 --> 00:01:52.480
+so and then besides returning this
+
+00:01:49.960 --> 00:01:55.719
+result we're also going to look the
+
+00:01:52.480 --> 00:01:58.440
+result in this function and right after
+
+00:01:55.719 --> 00:02:00.639
+we return this result so besides the
+
+00:01:58.440 --> 00:02:02.520
+main purpose of this function we're also
+
+00:02:00.639 --> 00:02:05.000
+loging the result in the console right
+
+00:02:02.520 --> 00:02:07.239
+away and then let's see what is going to
+
+00:02:05.000 --> 00:02:10.239
+happen if we'll try to build this
+
+00:02:07.239 --> 00:02:12.599
+Library so in the terminal let's run npm
+
+00:02:10.239 --> 00:02:14.639
+run buildt and we are receiving the
+
+00:02:12.599 --> 00:02:17.280
+following error that the collect JS
+
+00:02:14.639 --> 00:02:20.599
+Library cannot be imported since this
+
+00:02:17.280 --> 00:02:22.239
+Library does not exist in our package so
+
+00:02:20.599 --> 00:02:25.040
+what we need to to do is to actually
+
+00:02:22.239 --> 00:02:28.360
+install this Library by running npm
+
+00:02:25.040 --> 00:02:30.639
+install collect. JS and now once I'm
+
+00:02:28.360 --> 00:02:33.920
+going to start the build process once
+
+00:02:30.639 --> 00:02:37.280
+again this time it worked we still see
+
+00:02:33.920 --> 00:02:40.000
+four build files but this time we can
+
+00:02:37.280 --> 00:02:42.320
+notice that the sizes of some files
+
+00:02:40.000 --> 00:02:45.559
+drastically increased for example the
+
+00:02:42.320 --> 00:02:48.320
+size of the main file index.js is now
+
+00:02:45.559 --> 00:02:50.400
+almost 60 kiloby and that is because
+
+00:02:48.320 --> 00:02:53.079
+when we were importing Library collect
+
+00:02:50.400 --> 00:02:55.040
+JS in in our script VD has actually
+
+00:02:53.079 --> 00:02:57.880
+taken the whole source code of sord
+
+00:02:55.040 --> 00:03:00.040
+party library and put it in the build
+
+00:02:57.880 --> 00:03:03.239
+and which is why the resulting file of
+
+00:03:00.040 --> 00:03:05.159
+our library has much bigger size now but
+
+00:03:03.239 --> 00:03:07.440
+before we'll solve this problem let's
+
+00:03:05.159 --> 00:03:10.040
+just import our new function plug and
+
+00:03:07.440 --> 00:03:12.239
+lock in the client application and see
+
+00:03:10.040 --> 00:03:13.840
+if it's going to work so now we don't
+
+00:03:12.239 --> 00:03:16.840
+need to additionally Call the lock
+
+00:03:13.840 --> 00:03:19.159
+function in order to print results in a
+
+00:03:16.840 --> 00:03:22.079
+console because the new function plug
+
+00:03:19.159 --> 00:03:24.360
+and lock is going to extract keys from
+
+00:03:22.079 --> 00:03:26.880
+every object of the array as well as
+
+00:03:24.360 --> 00:03:29.199
+print the result in a console and in the
+
+00:03:26.880 --> 00:03:31.520
+console as we can see we are seeing
+
+00:03:29.199 --> 00:03:34.119
+expected result with the difference that
+
+00:03:31.520 --> 00:03:37.079
+our result is contained within items
+
+00:03:34.119 --> 00:03:39.639
+property of the wrapper object that's
+
+00:03:37.079 --> 00:03:42.159
+how the library collect JS works it
+
+00:03:39.639 --> 00:03:45.440
+returns us not only the result in Array
+
+00:03:42.159 --> 00:03:46.960
+but an object which wraps our collection
+
+00:03:45.440 --> 00:03:49.199
+but this is not the most optimal
+
+00:03:46.960 --> 00:03:51.679
+solution of building our libraries
+
+00:03:49.199 --> 00:03:54.000
+because anytime we're going to third
+
+00:03:51.679 --> 00:03:56.559
+party Library the file size of our
+
+00:03:54.000 --> 00:03:58.280
+library will be drastically increased so
+
+00:03:56.559 --> 00:04:00.960
+let's see what we can do about it and
+
+00:03:58.280 --> 00:04:03.440
+what it has to offer in this regard so
+
+00:04:00.960 --> 00:04:06.760
+moving on let's open up configuration
+
+00:04:03.440 --> 00:04:08.960
+file vi. config.js and in here we're
+
+00:04:06.760 --> 00:04:11.719
+going to add another option which is
+
+00:04:08.960 --> 00:04:14.559
+called rollup options which will be an
+
+00:04:11.719 --> 00:04:18.199
+object with the key external and this is
+
+00:04:14.559 --> 00:04:20.559
+where we have to specify Library names
+
+00:04:18.199 --> 00:04:23.239
+which we don't need to be bundled along
+
+00:04:20.559 --> 00:04:25.440
+with the code of our library and since
+
+00:04:23.239 --> 00:04:28.239
+by now we're using only one third party
+
+00:04:25.440 --> 00:04:31.239
+Library called collect JS I'm going to
+
+00:04:28.239 --> 00:04:33.679
+include only one name in this array like
+
+00:04:31.239 --> 00:04:36.800
+so and then let's watch the size of the
+
+00:04:33.679 --> 00:04:40.000
+bundlet file index.js so currently the
+
+00:04:36.800 --> 00:04:42.559
+size of index.js file is around 60
+
+00:04:40.000 --> 00:04:45.599
+kiloby but after I rerun the build
+
+00:04:42.559 --> 00:04:47.639
+process by executing npm run build this
+
+00:04:45.599 --> 00:04:49.520
+time we see that the file size was
+
+00:04:47.639 --> 00:04:51.480
+drastically dropped and if we're going
+
+00:04:49.520 --> 00:04:52.679
+to take a look at the content of the
+
+00:04:51.480 --> 00:04:55.679
+build file
+
+00:04:52.679 --> 00:04:57.760
+index.js we're seeing only our cod in
+
+00:04:55.679 --> 00:05:00.480
+here and the import of the library
+
+00:04:57.760 --> 00:05:02.880
+collect JS but the source code of this
+
+00:05:00.480 --> 00:05:04.599
+library is absent and which is why we
+
+00:05:02.880 --> 00:05:07.800
+don't even need to install the library
+
+00:05:04.599 --> 00:05:10.719
+collect JS in our project so let's
+
+00:05:07.800 --> 00:05:14.000
+remove this dependency by running npm
+
+00:05:10.719 --> 00:05:16.040
+uninstall and dependency name and let's
+
+00:05:14.000 --> 00:05:19.000
+just rerun the build process of our
+
+00:05:16.040 --> 00:05:22.040
+package once again by executing npm run
+
+00:05:19.000 --> 00:05:23.760
+build so now if we go to the browser and
+
+00:05:22.040 --> 00:05:25.800
+check the result in our client
+
+00:05:23.760 --> 00:05:28.440
+application again we're supposed to get
+
+00:05:25.800 --> 00:05:31.079
+an error since our package relies on the
+
+00:05:28.440 --> 00:05:33.000
+third party Library collect JS but that
+
+00:05:31.079 --> 00:05:35.960
+library was not included in the build
+
+00:05:33.000 --> 00:05:38.000
+version of our package but surprisingly
+
+00:05:35.960 --> 00:05:40.800
+as we can see we didn't receive any
+
+00:05:38.000 --> 00:05:43.159
+errors so it worked and the reason it
+
+00:05:40.800 --> 00:05:46.000
+worked is that previously when we
+
+00:05:43.159 --> 00:05:48.880
+started development server vit has gone
+
+00:05:46.000 --> 00:05:51.440
+ahead and cached some dependencies in
+
+00:05:48.880 --> 00:05:53.960
+the folder. vit which is inside of node
+
+00:05:51.440 --> 00:05:56.360
+modules and this folder has cached
+
+00:05:53.960 --> 00:05:59.040
+version of the library collect GS so
+
+00:05:56.360 --> 00:06:00.960
+let's just go back to the editor open up
+
+00:05:59.040 --> 00:06:03.239
+no modules folder of our client
+
+00:06:00.960 --> 00:06:06.920
+application and remove that folder with
+
+00:06:03.239 --> 00:06:09.040
+sketched dependency is called vit so now
+
+00:06:06.920 --> 00:06:11.559
+let's restart development server in the
+
+00:06:09.040 --> 00:06:14.800
+client application and we are receiving
+
+00:06:11.559 --> 00:06:17.199
+an error that dependency client JS
+
+00:06:14.800 --> 00:06:19.880
+cannot be imported since it is missing
+
+00:06:17.199 --> 00:06:22.679
+from our client application as well as
+
+00:06:19.880 --> 00:06:24.440
+from the build file of our library and
+
+00:06:22.679 --> 00:06:26.880
+the first thing that comes to mind is
+
+00:06:24.440 --> 00:06:29.960
+actually install this Library into our
+
+00:06:26.880 --> 00:06:32.880
+client application so let's do just that
+
+00:06:29.960 --> 00:06:36.120
+I'm going to execute npm install and
+
+00:06:32.880 --> 00:06:38.880
+specify Library name collect. JS and
+
+00:06:36.120 --> 00:06:41.000
+then after running npm run Dev again
+
+00:06:38.880 --> 00:06:43.319
+we're receiving a different error
+
+00:06:41.000 --> 00:06:46.639
+similar but this time it could not
+
+00:06:43.319 --> 00:06:48.880
+resolve UTS of our own package plug
+
+00:06:46.639 --> 00:06:50.679
+because the link to our package which we
+
+00:06:48.880 --> 00:06:53.399
+have previously added to the node
+
+00:06:50.679 --> 00:06:56.359
+modules folder of the client application
+
+00:06:53.399 --> 00:06:59.080
+by executing npm link is gone for some
+
+00:06:56.359 --> 00:07:01.200
+reason so let's just add the link to our
+
+00:06:59.080 --> 00:07:05.080
+package inside node modules folder One
+
+00:07:01.200 --> 00:07:07.599
+More Time by running npm link and our
+
+00:07:05.080 --> 00:07:09.960
+package name I am not going to explain
+
+00:07:07.599 --> 00:07:11.960
+in detail what this common is doing
+
+00:07:09.960 --> 00:07:14.359
+since we were talking about it in one of
+
+00:07:11.960 --> 00:07:17.359
+the previous lessons so now that we have
+
+00:07:14.359 --> 00:07:20.200
+added back link plug which points to our
+
+00:07:17.359 --> 00:07:22.719
+package inside non modules folder we can
+
+00:07:20.200 --> 00:07:25.120
+try to start development server once
+
+00:07:22.719 --> 00:07:27.880
+again and again the previous error is
+
+00:07:25.120 --> 00:07:30.840
+back that it cannot resolve dependency
+
+00:07:27.880 --> 00:07:33.240
+collect JS so we're going to solve this
+
+00:07:30.840 --> 00:07:36.439
+problem in the next lesson when we will
+
+00:07:33.240 --> 00:07:38.479
+publish our package to the npm registry
+
+00:07:36.439 --> 00:07:40.319
+and then instead of using npm link to
+
+00:07:38.479 --> 00:07:42.559
+make our package available to the client
+
+00:07:40.319 --> 00:07:44.639
+application we're going to install our
+
+00:07:42.559 --> 00:07:48.559
+package as any other third party
+
+00:07:44.639 --> 00:07:50.599
+dependency by running npm install it's
+

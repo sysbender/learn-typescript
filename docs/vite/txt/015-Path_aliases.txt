@@ -1,0 +1,91 @@
+pass aliases so let's see how it can be
+useful for us I'm going to clear out our
+main Javascript file main.js then let's
+just go ahead and import this CSS file
+into our main GS file and of course to
+import that I'm going to have to write
+down the whole pass which leads to this
+CSS file like this and then let's add
+one more import and we're going to
+import this image so here I'm going to
+have to write the whole pass to this
+image which is contained inside IMG
+folder and then inside index HTML I'm
+going to add another IMG Tech to display
+that
+image but for demonstration purposes
+we're going to use JavaScript for it so
+let's select an element by an ID of
+image and assign the URL of an image to
+the source attribute like this
+so before switching over to the browser
+we also have to change the extension of
+our main Javascript file from DS on JS
+and now let's see how it looks in a
+browser so first of all the imported CSS
+file was inserted onto the page in this
+style tech and as we can see our
+JavaScript image is also displayed on
+the right side but there is a chance
+that over time our project will become
+pretty large with lots of different
+Imports and those Imports sometimes can
+be pretty long and just to avoid always
+mentioning the whole pass whenever we
+need to import some module that allows
+us to Define so-called pass Al's by
+using which we can drastically shorten
+our import pass so let's just apply pass
+LSS for this two UTS as Al I'm going to
+use add sign and soon we're going to map
+this character to point2 source as its
+folder and to Define our own P LS we
+have to open up VI configuration file
+and in here let's add another
+configuration key called resolve which
+will be an object with one more property
+called LS and in turn this will also be
+an object here we need to define the
+mapping between our pass ls's and actual
+P that these Alis will be pointing to so
+in here I'm going to Define one Alis
+that I have used previously it's this at
+sign and as for the pass which this LS
+should be pointing to I'm going to use
+node GS helper called resolve to resolve
+the pass to the folder Source assets as
+the first argument to this method I'm
+going to pass the current directory name
+where this configuration file is located
+and we can get it by using de name magic
+variable and as a second argument we
+should specify our folder where our P LS
+will be pointing to and at the top let's
+just quickly test this out I'm going to
+import this pass module and write
+console log statement and then see what
+is actually be printed after calling
+that resolve method with those
+parameters so in order to see this lock
+I'm going to have to restart our Dev
+server by running npm run Dev and right
+here we can see that pass that was
+printed by that method resolve and it's
+exactly the P that we need so our P LS
+will point to as a folder which is
+located inside of source folder and now
+in the browser I'm not supposed to see
+any changes so as we can see the Styles
+have been properly applied and the image
+is also displayed so that means that our
+custom alas was properly configured and
+while importing those modules vid has
+replaced that alas with the proper pass
+that that alas points to and in our case
+it is the assis folder inside of source
+folder so at the end let's go back to
+our configur curation file and get rid
+of this console log statement and this
+is how we can leverage p ls's in order
+to avoid long passes while importing
+modules in this lesson let's talk about

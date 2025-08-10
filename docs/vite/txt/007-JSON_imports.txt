@@ -1,0 +1,49 @@
+files very easily all we have to do to
+use some Json file in our Javascript
+file we just have to import it as usual
+as native ecmascript module and let's
+see it in action so in here I'm going to
+import some Json file and accept default
+export from this module in data variable
+and then let's create basic Json file
+with a couple of fields for example name
+and
+H this object will describe a person and
+then just to see what we're going to get
+inside of data variable let's print it
+out in the console and check it in the
+browser and first of all what is going
+to happen in a browser whenever it
+encounters our Json import right here it
+is going to fire a code to our server to
+fetch this JavaScript module but since
+this file is not a valid JavaScript
+module VD has to process this import
+first and convert Json file into valid
+ecmascript module and eventually by
+doing a cod to fetch this file in the
+browser we're going to get the following
+in the response so every field of that
+Json object was exported here separately
+and additionally the whole Json object
+gets exported as default expert right
+here and by printing that value which
+gets exported from Json module we will
+get plain alt JavaScript or object in a
+console with properties name and Ag and
+as for Transformations which git is
+going to apply to our Json module we can
+see that it converts Json syntax into
+ecmascript syntax which of course allows
+us to import Json files as normal
+ecmascript modules in our JavaScript
+source files and since the default
+expert that we get is normal JavaScript
+object we can easily apply the
+structuring and extract only necessary
+Fields name and H
+and sure enough in a console we're going
+to get value of every field exported
+separately so this is how easy it is to
+work with Json files in viit
+projects in this lesson we're going to

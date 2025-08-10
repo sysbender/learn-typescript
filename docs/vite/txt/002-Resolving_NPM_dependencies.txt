@@ -1,0 +1,185 @@
+we install VD project there are three
+preconfigured commments inside of
+package Json first commment starts local
+development server we have already used
+this commment in the previous lesson
+when we started Dev server by running
+npm randev the second script build is
+going to build our project for
+production by applying all necessary
+optimizations to achieve better
+performance and there is also one more
+script preview which starts basic static
+web server to serve our built
+application to see how it is going to
+behave in the production like
+environment all these three scripts use
+VD binary which we get by installing
+VD npm package and this binary is
+contained within bin folder which is
+inside of node modules folder so when we
+use V comments everything starts with
+this script so let's start reviewing V's
+features switch over to the terminal and
+start development server by using
+command npm run Dev in the previous
+lesson we have removed everything inside
+of our main Javascript file so we see a
+blank page in the browser so let's go
+inside of index.htm ML and remove this
+de with an ADF app and on this place
+let's add heading with some text right
+away this changes will be reflected in
+the browser without manually refreshing
+the page and since our main script file
+is included as es module in here by
+using this type attribute we can of
+course use Import and Export keywords to
+include other modules and browsers will
+properly fetch those modules so let's
+try to import in here arbitrary
+Javascript file we're going to create
+this file in projects rout and here
+we'll just use arbitrary consol loog
+statement and let's see what's going to
+happen in the browser when our main
+application script is requested by the
+browser browser gets content of this
+script and once it sees this import it
+is going to fire an extra request to the
+server to fetch this module this is
+native ecmascript feature which is
+currently widely supported in all modern
+browsers so we can easily leverage
+native es modules and once we get a
+response on request to fetch module with
+name a we get this content and browser
+is supposed to run this module so now
+we're supposed to see this console loog
+statement in browser's console and sure
+enough we see this output in here so by
+now there is nothing special going on
+and such Imports of es modules are
+needly supported in browsers so let's
+try something more interesting for
+example let's try to use npm package to
+demonstrate this example I'll be using
+Library called collect JS let's go ahead
+and install this Library by using the
+following npm command and once this
+library is installed let's go back to
+docs and here we just need to include
+this library on the page so let's use
+this import statement in our main script
+We'll add it here right after our import
+of the first module and then let's try
+to use this library for example to C
+Cate average from the docs we're going
+to copy over this instruction and output
+result in a console and now let's see if
+it's going to work in the browser and if
+we would be using normal static web
+server imports from node modules folder
+will not be recognized so UT of this
+collect library is not going to work but
+in our case we're using VD server so
+this example worked fine and we got
+calculated average in a console and
+let's find out what happened in this
+case and how V was able to process our
+import of npm package so whenever we
+requested our main JS file we can see
+that VD has done some processing and it
+transformed the second import when we
+try to import module from node modules
+folder let's take a closer look at this
+import we see that VD transformed pass
+to this library and once browser
+receives this transformed inut it is
+going to request this Library
+by using the following paths node
+modules viit depths and the name of our
+library collect JS and once browser
+tries to request this file by using the
+following paths sure enough it gets
+source code which makes that collect
+Library work in the browser so VD has
+dynamically generated folder called vit
+within node modules folder and here it
+puts source code of our imported Library
+collect Js and at the same time VD has
+done some optimizations to this source
+code and this is how VD makes it
+possible to import libraries directly
+from node modules folder so these
+libraries will be available to use
+inside of browsers and this is a big
+advantage of vit server over basic
+static server since static server cannot
+resolve UTS from node modules folder and
+now let's take a closer look at what
+Transformations are applied to our
+source files when when they are served
+and exactly for this purpose we have
+previously installed withd plug-in
+called inspect here we can clearly see
+how it transforms our source files if we
+select here module main we can see
+initial content of this module as we
+wrote it and transformed code which gets
+sent to the browser when our browser
+requests this module here we also see
+that import of module from node modules
+folder but if we take a look at
+Transformations what being applied to
+another module ajs we can see that the
+content of this module is left as this
+so we didn't try to apply any
+Transformations because this content can
+be easily recognized by browsers so no
+extra Transformations are needed in this
+case it's just a simple consolo
+statement now let's go back to the
+editor and in projects root let's create
+new folder called Source this is pretty
+common convention to name this folder
+source which is going to store all our
+source files and right away let's just
+move our module a inside of this folder
+and right after that let's go to
+main.js here we'll fix the import to
+import the module with a new name and
+move these two lines with usage of
+collect JS Library into file
+tojs so that the module's file name
+corresponds to current lesson number and
+one more time let's see what's going on
+in the browser when browser requests our
+main script file with the name main.js
+it pares content of this file and once
+it sees this import it is going to fire
+another request to the server to fetch
+module with this name and we see this
+request right here and while fetching
+content of this file V has done extra
+transformations to provide support for
+importing modules directly from node
+modules folder by doing all necessary
+transformations to this import statement
+and here you may have also noticed that
+we were able to use collect Library by
+using name collect but here we import
+this Library under randomly generated
+name and if we search for this name in
+this file we can see that it gets
+assigned to the constant with name
+collect which lets us use this library
+in a usual way and finally once browser
+has fetched source code of collect
+Library we were able to easily use
+functionality provided by this library
+and the ability to use libraries
+imported directly from node modules
+folder is a great advantage of VD server
+over basic static
+server let's take a look how we can work

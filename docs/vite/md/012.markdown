@@ -1,0 +1,306 @@
+# Lesson 012: Working with JSX in Vite Projects and Creating a Custom JSX Specification
+
+This lesson guides you through enabling JSX support in a Vite project, creating a custom JSX specification, and rendering JSX markup to the DOM. We'll cover setting up JSX files, configuring Vite with esbuild, implementing a custom JSX factory function, and styling the output. The lesson includes code examples and concise explanations.
+
+## Prerequisites
+- Basic understanding of JavaScript, HTML, CSS, and Vite.
+- A Vite project set up with a `src` folder and `index.html`.
+
+## Step 1: Set Up the Main JavaScript File
+Clear the `main.js` file and import a JSX module to work with JSX syntax.
+
+```javascript
+// src/main.js
+import { template } from './12.jsx';
+
+console.log(template);
+```
+
+**Explanation**: We import a `template` constant from a JSX file (`12.jsx`) and log it to inspect the output. Initially, this will cause an error because Vite doesn't recognize JSX syntax by default.
+
+## Step 2: Create the JSX File
+Create a new file `12.jsx` in the `src` folder with sample JSX markup, similar to React components.
+
+```jsx
+// src/12.jsx
+const template = (
+  <div class="wrapper">
+    <p>
+      <a href="https://example.com">Link</a>
+    </p>
+  </div>
+);
+
+export { template };
+```
+
+**Explanation**: The `template` constant contains JSX markup with a `div` (class `wrapper`), a `p` tag, and an `a` tag with an `href` attribute. We export `template` to use it in `main.js`.
+
+## Step 3: Style the JSX Markup
+Create a CSS file `12.css` in the `src` folder and import it in `12.jsx` to style the JSX elements.
+
+```css
+// src/12.css
+.wrapper {
+  background-color: #333;
+  padding: 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+```
+
+In `12.jsx`, add the CSS import:
+
+```jsx
+// src/12.jsx
+import './12.css';
+
+const template = (
+  <div class="wrapper">
+    <p>
+      <a href="https://example.com">Link</a>
+    </p>
+  </div>
+);
+
+export { template };
+```
+
+**Explanation**: The CSS styles the `wrapper` class with a dark background and padding, and the `a` tag with white text for visibility. Importing the CSS ensures styles apply to the JSX markup.
+
+## Step 4: Enable JSX Support in Vite
+Vite uses esbuild to process JSX. Configure Vite to recognize JSX by adding a JSX factory function in the Vite configuration.
+
+```javascript
+// vite.config.js
+export default {
+  esbuild: {
+    jsxFactory: 'create',
+  },
+};
+```
+
+**Explanation**: The `jsxFactory` option specifies a function (`create`) that Vite will use to process JSX elements. This function will handle converting JSX tags into DOM elements.
+
+## Step 5: Implement the Custom JSX Factory Function
+In `12.jsx`, define the `create` function to process JSX elements into DOM nodes.
+
+```jsx
+// src/12.jsx
+import './12.css';
+
+function create(element, attributes, content) {
+  const node = document.createElement(element);
+
+  // Handle attributes
+  const attrs = Object.entries(attributes || {});
+  for (const [name, value] of attrs) {
+    node.setAttribute(name, value);
+  }
+
+  // Handle content (text or child elements)
+  if (typeof content === 'string') {
+    const textNode = document.createTextNode(content);
+    node.appendChild(textNode);
+  } else if (content) {
+    node.appendChild(content);
+  }
+
+  return node;
+}
+
+const template = (
+  <div class="wrapper">
+    <p>
+      <a href="https://example.com">Link</a>
+    </p>
+  </div>
+);
+
+export { template };
+```
+
+**Explanation**:
+- The `create` function takes three parameters:
+  - `element`: The tag name (e.g., `div`, `p`, `a`).
+  - `attributes`: An object containing tag attributes (e.g., `{ class: 'wrapper' }`).
+  - `content`: The tag's content, which can be a string (text) or another DOM element.
+- We create a DOM node using `document.createElement(element)`.
+- Attributes are iterated using `Object.entries()` and applied with `node.setAttribute()`.
+- If `content` is a string, we create a text node with `document.createTextNode()` and append it. If it's a DOM element (from nested JSX), we append it directly.
+- The function returns the created DOM node.
+
+## Step 6: Inspect the JSX Processing
+To understand how Vite processes JSX, temporarily add a console log in the `create` function to inspect parameters.
+
+```jsx
+// src/12.jsx (temporary)
+function create(element, attributes, content) {
+  console.log({ element, attributes, content });
+  // ... rest of the function
+}
+```
+
+**Expected Console Output**:
+1. For `<a href="https://example.com">Link</a>`:
+   ```javascript
+   { element: 'a', attributes: { href: 'https://example.com' }, content: 'Link' }
+   ```
+2. For `<p>...</p>`:
+   ```javascript
+   { element: 'p', attributes: {}, content: [DOM Element <a>] }
+   ```
+3. For `<div class="wrapper">...</div>`:
+   ```javascript
+   { element: 'div', attributes: { class: 'wrapper' }, content: [DOM Element <p>] }
+   ```
+
+**Explanation**: Vite calls `create` for each JSX tag, passing the tag name, attributes, and content (text or child elements). The content is a DOM element if the tag contains nested JSX, created by recursive calls to `create`.
+
+Remove the console log after inspection to clean up the code.
+
+## Step 7: Render the JSX to the DOM
+Modify `index.html` to include a container for the JSX output, and update `main.js` to append the JSX template.
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vite JSX Example</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+```
+
+```javascript
+// src/main.js
+import { template } from './12.jsx';
+
+document.querySelector('#app').appendChild(template);
+```
+
+**Explanation**:
+- Add a `<div id="app">` in `index.html` as the container.
+- In `main.js`, select the `#app` element and append the `template` (a DOM element created from JSX).
+- The browser renders the JSX markup with styles applied (white link text on a dark background).
+
+## Step 8: Modularize the Factory Function
+To improve reusability, move the `create` function to a separate module.
+
+```javascript
+// src/12-create.js
+export function create(element, attributes, content) {
+  const node = document.createElement(element);
+
+  const attrs = Object.entries(attributes || {});
+  for (const [name, value] of attrs) {
+    node.setAttribute(name, value);
+  }
+
+  if (typeof content === 'string') {
+    const textNode = document.createTextNode(content);
+    node.appendChild(textNode);
+  } else if (content) {
+    node.appendChild(content);
+  }
+
+  return node;
+}
+```
+
+Update `12.jsx` to import the `create` function:
+
+```jsx
+// src/12.jsx
+import './12.css';
+import { create } from './12-create.js';
+
+const template = (
+  <div class="wrapper">
+    <p>
+      <a href="https://example.com">Link</a>
+    </p>
+  </div>
+);
+
+export { template };
+```
+
+**Explanation**: Moving `create` to `12-create.js` makes it reusable across multiple JSX files. However, importing it manually in every JSX file is inconvenient.
+
+## Step 9: Automate Factory Function Import
+Use Vite's `jsxInject` option to automatically inject the `create` import into JSX files.
+
+```javascript
+// vite.config.js
+export default {
+  esbuild: {
+    jsxFactory: 'create',
+    jsxInject: `import { create } from '/src/12-create.js';`,
+  },
+};
+```
+
+Update `12.jsx` to remove the manual import:
+
+```jsx
+// src/12.jsx
+import './12.css';
+
+const template = (
+  <div class="wrapper">
+    <p>
+      <a href="https://example.com">Link</a>
+    </p>
+  </div>
+);
+
+export { template };
+```
+
+**Explanation**:
+- The `jsxInject` option adds the `import { create } from '/src/12-create.js';` statement to all JSX files automatically.
+- This eliminates the need to manually import `create`, simplifying JSX file usage.
+- Vite processes the JSX, calls `create` for each tag, and renders the resulting DOM structure.
+
+## Step 10: Verify the Output
+Run the Vite development server (`npm run dev`) and open the browser. You should see:
+- A styled `div` with a dark background.
+- A paragraph containing a white, clickable link ("Link") that navigates to `https://example.com`.
+
+To inspect the DOM structure in the console:
+
+```javascript
+// src/main.js
+import { template } from './12.jsx';
+
+console.log(template.outerHTML);
+document.querySelector('#app').appendChild(template);
+```
+
+**Expected Console Output**:
+```html
+<div class="wrapper"><p><a href="https://example.com">Link</a></p></div>
+```
+
+**Explanation**: The `outerHTML` property shows the string representation of the JSX-generated DOM structure, confirming correct processing.
+
+## Key Takeaways
+- Vite uses esbuild to process JSX, configurable via `jsxFactory` and `jsxInject`.
+- A custom JSX factory function (`create`) converts JSX tags into DOM elements by handling tag names, attributes, and content.
+- JSX markup can be styled with CSS and rendered to the DOM using standard JavaScript APIs.
+- Modularizing the factory function and using `jsxInject` improves code organization and usability.
+
+## Next Steps
+In the next lesson, we'll explore integrating TypeScript with Vite and JSX to add type safety to our custom JSX specification.

@@ -1,0 +1,112 @@
+reviewing function called Globe to
+import several modules at once so in the
+previous lesson we have reviewed one
+configuration option with the name eager
+and in this lesson we'll continue
+reviewing some other options for example
+we can also use option called as and in
+case we specify whether they rot for
+this option then the object which Globe
+function will return is going to contain
+the following every key of this object
+will still be passed to a particular
+module but the Val is different because
+this time it contains content of those
+modules instead of the function which
+allows us to load particular module
+dynamically so when browser were
+requesting those modules to fetch them
+as we can see VD has replied with the
+following content it has produced used
+validas script module where default
+expert contains module content in a
+string form so literally what V has done
+it read content of every module
+converted it to a string and returned to
+a browser but if I'm going to specify
+value URL for the option s in here this
+time glob function is going to produce
+the following result we still get an
+object where every key is a passed to
+individual module and the Val this time
+is absolute pass to those modules so as
+a response to calls which fetch those
+modules in the browser VD has return the
+valid masr module where default expert
+is pass to that module and now let's try
+to do the following I'm going to add an
+expert of constant name into every
+module in the first module this constant
+will be equal to Jane the second module
+B already contains this constant with
+value JN so let's at the same constant
+into module C and the value in here
+let's say will be JY and I'm also going
+to place default expert into every
+module the first module will expert
+letter A as a default expert the second
+module will export letter b and the
+third module will export letter C and
+then back to our main Javascript file
+let's remove this configuration object
+that we're passing to Globe function
+remove the comment from this channel of
+code and this time let's use one
+configuration option called import and
+what this option allows us to do it lets
+us specify name the expert which would
+like to import while importing modules
+in bulk by using glob function so for
+example if every module we're trying to
+import in bulk contains some named
+expert instead of importing anything
+else we can literally specify a
+particular input that would like and
+since all our module expert constant
+with a name name we can specify this
+name in here and since we have already
+specified that every import should
+contain import Cod name that promise
+which will be resolved after dynamically
+Import in module will contain this data
+so let's rename this parameter on name
+and use it to print it out and there we
+go after every Dynamic module gets
+fetched and executed we also see the
+value of the name variable in here which
+contains names and if for example I only
+want to import default expert we can
+literally mention default in here and
+this time instead of names we're going
+to get Val experted by default from
+those modules and let's take a look at
+one more combination of configuration
+options we're going to use eager option
+with value true and import option with
+value name and by now we already know
+that by using these configuration
+options we disable a dynamic nature of
+importing modules as well as we specify
+that we'd like to import only imports
+called name and as a result we're going
+to receive such object where every key
+is a pass to individual imported module
+and as a value for those keys we receive
+values of the named experts called name
+so all our three modules a b and c were
+requested and fetched on the initial
+page load and now let's also take a look
+at the transformation what bit has
+applied to glob function call so right
+here we can see it was transformed into
+three static Imports where every import
+Imports only one piece of data called
+name and down here all this data gets GA
+it within one object and this object
+gets assigned to modules constant which
+at the end gets printed to the console
+so as we can see this glob function
+which VI provides us with to load
+several modules at once is pretty
+powerful and lets us import multiple
+modules in several different ways in

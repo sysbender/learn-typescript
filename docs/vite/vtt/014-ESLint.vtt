@@ -1,0 +1,341 @@
+WEBVTT
+
+00:00:01.560 --> 00:00:06.600
+integrate typescript with the invit
+
+00:00:03.880 --> 00:00:09.920
+project in this lesson we're going to
+
+00:00:06.600 --> 00:00:12.800
+see how to integrate es link which is a
+
+00:00:09.920 --> 00:00:15.400
+static analyzis tool for JavaScript so
+
+00:00:12.800 --> 00:00:17.920
+let's get started and in our main. ES
+
+00:00:15.400 --> 00:00:20.560
+file we're going to add one es link
+
+00:00:17.920 --> 00:00:23.120
+violation let's add a semicolon after
+
+00:00:20.560 --> 00:00:25.199
+this function declaration and since
+
+00:00:23.120 --> 00:00:27.639
+we're going to have to make es link
+
+00:00:25.199 --> 00:00:29.679
+analyze typescript files there is a
+
+00:00:27.639 --> 00:00:32.840
+special plug-in for it that we can use
+
+00:00:29.679 --> 00:00:35.239
+called typescript es link this tool
+
+00:00:32.840 --> 00:00:37.520
+basically enables es L support for
+
+00:00:35.239 --> 00:00:39.360
+typescript and as always the first thing
+
+00:00:37.520 --> 00:00:42.360
+we have to do before using this plugin
+
+00:00:39.360 --> 00:00:44.480
+is to install all necessary dependencies
+
+00:00:42.360 --> 00:00:47.239
+so let's copy over this commment and run
+
+00:00:44.480 --> 00:00:48.719
+it in our terminal on the next step we
+
+00:00:47.239 --> 00:00:51.239
+will actually have to create
+
+00:00:48.719 --> 00:00:55.320
+configuration file for eslint with the
+
+00:00:51.239 --> 00:00:57.840
+name eslint RC do CJs and paste there
+
+00:00:55.320 --> 00:01:00.120
+the following content so in my editor
+
+00:00:57.840 --> 00:01:02.800
+I'm going to create new file with this
+
+00:01:00.120 --> 00:01:05.320
+name paste here all the content I have
+
+00:01:02.800 --> 00:01:08.080
+just copied and then again let's go back
+
+00:01:05.320 --> 00:01:11.280
+to the browser and as a third step we
+
+00:01:08.080 --> 00:01:14.600
+are ready to run our es l so to execute
+
+00:01:11.280 --> 00:01:16.520
+es L we need to run npx ESL and as an
+
+00:01:14.600 --> 00:01:18.960
+argument into this comment we specify
+
+00:01:16.520 --> 00:01:21.120
+the folder where es link should be
+
+00:01:18.960 --> 00:01:23.280
+executed in our case it's fine to
+
+00:01:21.120 --> 00:01:25.560
+specify a root folder of our project so
+
+00:01:23.280 --> 00:01:28.000
+I'm going to use dot let's execute this
+
+00:01:25.560 --> 00:01:30.000
+command in a terminal and as we can see
+
+00:01:28.000 --> 00:01:32.560
+as a result there are a lot more errors
+
+00:01:30.000 --> 00:01:34.560
+as we have initially expected and among
+
+00:01:32.560 --> 00:01:37.159
+all these errors we also can see that
+
+00:01:34.560 --> 00:01:38.960
+error we have made intentionally by
+
+00:01:37.159 --> 00:01:41.199
+adding semicolon to the end of the
+
+00:01:38.960 --> 00:01:43.159
+function declaration and by the way the
+
+00:01:41.199 --> 00:01:45.400
+rest of errors are coming from analyz
+
+00:01:43.159 --> 00:01:47.719
+and JavaScript files so so we need to
+
+00:01:45.400 --> 00:01:51.080
+ignore all the JavaScript files and run
+
+00:01:47.719 --> 00:01:53.560
+yesl only within typescript files and to
+
+00:01:51.080 --> 00:01:56.320
+tell yes L which files it should ignore
+
+00:01:53.560 --> 00:01:59.239
+we can create special file for eslint
+
+00:01:56.320 --> 00:02:01.679
+called eslint ignore and here we can
+
+00:01:59.239 --> 00:02:04.520
+list those files that should be ignored
+
+00:02:01.679 --> 00:02:07.480
+so to ignore all JavaScript files we can
+
+00:02:04.520 --> 00:02:09.960
+use the following notation asterisk do
+
+00:02:07.480 --> 00:02:13.120
+JS so after that if we're going to
+
+00:02:09.960 --> 00:02:16.280
+execute npx es lint again we're going to
+
+00:02:13.120 --> 00:02:18.639
+see only one error which is that error
+
+00:02:16.280 --> 00:02:20.400
+that is coming from our typescript file
+
+00:02:18.639 --> 00:02:22.840
+where we have intentionally added
+
+00:02:20.400 --> 00:02:25.719
+semicolon to the end of function
+
+00:02:22.840 --> 00:02:27.880
+declaration so as we can see to run ESL
+
+00:02:25.719 --> 00:02:30.960
+checks in withd projects we need to
+
+00:02:27.880 --> 00:02:33.520
+start a separate ESL process alongside
+
+00:02:30.960 --> 00:02:35.280
+our main VD build process and this is
+
+00:02:33.520 --> 00:02:38.000
+also recommended by VD to prevent
+
+00:02:35.280 --> 00:02:40.520
+deferring main build process but if you
+
+00:02:38.000 --> 00:02:43.199
+don't want to do this and prefer that VD
+
+00:02:40.520 --> 00:02:45.880
+will run es link during the build
+
+00:02:43.199 --> 00:02:48.800
+process we can achieve it by installing
+
+00:02:45.880 --> 00:02:50.639
+the following plugin with plugin Checker
+
+00:02:48.800 --> 00:02:52.880
+we have already used this plugin in the
+
+00:02:50.639 --> 00:02:55.440
+previous lesson when we were integrating
+
+00:02:52.880 --> 00:02:57.800
+typescript within vid project but
+
+00:02:55.440 --> 00:03:00.400
+besides of integrating typescript this
+
+00:02:57.800 --> 00:03:03.320
+plugin is also capable of integrating
+
+00:03:00.400 --> 00:03:05.600
+other tools and one of such tools is as
+
+00:03:03.320 --> 00:03:07.719
+link and this time we're not going to
+
+00:03:05.600 --> 00:03:09.400
+install this plugin again since we have
+
+00:03:07.719 --> 00:03:11.920
+already installed it in the previous
+
+00:03:09.400 --> 00:03:15.000
+lesson so in here let's open up
+
+00:03:11.920 --> 00:03:17.120
+documentation to run eslint and the
+
+00:03:15.000 --> 00:03:20.239
+first thing to do before running eslint
+
+00:03:17.120 --> 00:03:22.920
+is actually install eslint executable on
+
+00:03:20.239 --> 00:03:26.719
+a system and then we're going to make V
+
+00:03:22.920 --> 00:03:28.480
+use this executable to run es L checks
+
+00:03:26.719 --> 00:03:30.840
+and to achieve it we need to copy the
+
+00:03:28.480 --> 00:03:33.440
+following lines go to our re
+
+00:03:30.840 --> 00:03:37.239
+configuration file with config JS and
+
+00:03:33.440 --> 00:03:39.560
+paste those lines in here like this here
+
+00:03:37.239 --> 00:03:42.280
+we're basically specifying the command
+
+00:03:39.560 --> 00:03:44.760
+which will be used to run as L and as we
+
+00:03:42.280 --> 00:03:47.520
+can see this command also contains P to
+
+00:03:44.760 --> 00:03:49.480
+files that es Lane should scan and since
+
+00:03:47.520 --> 00:03:52.159
+in our case types script files is
+
+00:03:49.480 --> 00:03:54.080
+located within the root of our project
+
+00:03:52.159 --> 00:03:56.920
+let's correct this pass by removing
+
+00:03:54.080 --> 00:03:58.960
+Source folder and after this if we open
+
+00:03:56.920 --> 00:04:02.400
+up our browser again we're going to see
+
+00:03:58.960 --> 00:04:04.840
+e lint error in here so our es lint
+
+00:04:02.400 --> 00:04:07.120
+integration works perfectly and now
+
+00:04:04.840 --> 00:04:10.520
+every time wi is going to build our
+
+00:04:07.120 --> 00:04:13.679
+project at the same time is going to run
+
+00:04:10.520 --> 00:04:16.120
+eslint analyzer and show all eslint
+
+00:04:13.679 --> 00:04:18.199
+errors in the following form and by the
+
+00:04:16.120 --> 00:04:21.159
+way the same output we can see in the
+
+00:04:18.199 --> 00:04:24.400
+server locks in the terminal top where
+
+00:04:21.159 --> 00:04:26.440
+we executed npm runev command and now
+
+00:04:24.400 --> 00:04:28.920
+just to see if this error is going to
+
+00:04:26.440 --> 00:04:31.679
+disappear we're going to switch over to
+
+00:04:28.920 --> 00:04:34.600
+main.ts and remove this semicolon from
+
+00:04:31.679 --> 00:04:36.560
+here going back to the browser again and
+
+00:04:34.600 --> 00:04:39.199
+this time we don't see any es lint
+
+00:04:36.560 --> 00:04:41.840
+errors and of course message saying that
+
+00:04:39.199 --> 00:04:44.280
+no errors were found appears in the logs
+
+00:04:41.840 --> 00:04:47.199
+right here and this is how easy it is to
+
+00:04:44.280 --> 00:04:50.040
+integrate es lint into VD
+
+00:04:47.199 --> 00:04:52.400
+projects VD offers handy feature called
+

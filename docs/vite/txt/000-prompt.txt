@@ -1,0 +1,1 @@
+generate a detailed course guide in markdown that include commands, code, and concise explanation , and let me download the md file. for each text I enter, generate one md file. I will give you text file one by one

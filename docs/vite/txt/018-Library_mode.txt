@@ -1,0 +1,285 @@
+to create libraries and in this lesson
+let's see what tools V provides us with
+to create npm packages so for that we
+need to do a little preparation first
+let's create an empty folder 18 and then
+switch over to this folder in our
+terminal and here I'm going to create
+two vid projects first one will be our
+client application which is going to
+import the custom package we're going to
+create and the second project will be
+the library itself self so let's start
+with creating the first client
+application let's run npm create V
+latest to scaffold default V project I'm
+going to call this project simply up we
+are not going to use any Frameworks so
+I'll go with an option vanilla JS and
+also we will not use typescript and now
+right next to the app folder let's
+create another vid project which is
+going to contain the library so let's
+run the same comment npm create V latest
+I'll call this project leap and
+basically make the same choices we'll
+use vanilla J without using typescript
+so now let's just open up folders with
+these projects in a separate terminal
+TPS and then we can start working on our
+npm package so let's open up main
+Javascript file of our library from here
+we're going to remove everything
+and install all npm dependencies by
+running npm install next just to make
+sure that our application can be open in
+a browser let's run development server
+by running npm randev switch over to the
+browser and make sure application is
+loaded everything looks good so let's
+start creating Javascript file which
+will contain functionality of our
+package I'm going to place this file
+inside the source folder and the file
+will be called
+index.js so the package we're about to
+create will contain only one utility
+function called plug which is going to
+accept array of objects as the first
+parameter and the name of the key which
+will have to extract from every object
+from the array is the second parameter
+and in here we're going to Loop over
+every object in this collection and
+extract key pest as a second parameter
+fi and eventually this function is going
+to give us an array which contains only
+values of the specified key and just to
+test out this functionality we're going
+to create an array of objects for
+example let's create array of users
+where every object will contain two keys
+name of the user and H I'm going to add
+three objects in this array and then
+populate each field with random
+data let's do the same for the h
+property and down here I'm going to
+Brint the result of our function plug
+we'll call this function with our array
+of users and the property we need to
+extract will be name and now in a
+console we're supposed to receive an
+array which will consist only of the
+user names and of course to execute this
+script in the browser let's reference it
+from
+index.html and as expected we can see an
+array of usernames but of course since
+this project is intended to be an npm
+package we need to build this project as
+npm library and we need to tell it that
+our project is actually the package that
+other users can install so let's create
+configuration file with config JS an
+expert configuration object so let's add
+object object built within which there
+will be another object liap and by
+specifying this lip object we are
+informing with that our project is
+actually the package and with has to
+build this project differently so the
+first option in this object is entry
+which will basically point to the
+Javascript file of our package let's use
+function resolve to resolve the absolute
+pass to JavaScript file
+index.js and then let's assign name to
+our package I'm going to call it plug
+and also let's specify another option
+file name and this option will tell it
+which file name it should assign to the
+final bundle script of our library as
+always let's go ahead and write down an
+import statement for the function
+resolve that should be imported from the
+standard node.js module pass and then
+all that code that was used to test our
+function we are going to comment out
+because this is not Cent application so
+we're not going to use our function plug
+in this project but instead it is
+intended to be used by other users by
+installing our package into their
+applications and now it's finally time
+to build our package so in the terminal
+let's execute npm run build and looks
+like I have specified wrong pass to the
+index file let's quickly get back to V.C
+config.js and fix this pass the folder
+name should be source so right now after
+I'm going to build this project by
+running npm run build we can see that VD
+has generated two assets those are built
+files of our package and the reason why
+there are two files is because VD has
+generated two versions of our package
+the first version will be used when
+users will import our package by using
+EAS create modules and the second
+version will be imported if users will
+use function required
+while importing our package so now let's
+take a look at the content of these
+files firstly let's open up L.G which is
+inside of this folder here we can only
+see the code of our custom function
+which was minified a little bit and then
+this function was exported by using LS
+plaque and this file is what's going to
+be imported when users are going to
+import our library by using native
+ecmascript module syntax and now let's
+open up another file plug UMD CJs so as
+was said before this version of the
+library is going to be imported when
+users are going to use function require
+to import our library but this is not
+all and in order to make our package so
+that it can be imported we still have to
+do some tweaks inside package.json so
+here I'm going to assign different name
+to our library let's call it plaque then
+we're going to have to specify a couple
+more keys in this object and
+specifically those keys are Main and
+module and by using these keys we're
+specifying pass to the build files so
+when users are going to import our
+library by using require the file that
+should be imported in this case we're
+specifying under the key Main and in
+case of the Native ecmascript modules
+we're going to import file plug. JS and
+now I'm going to have to specify another
+object experts with almost the same
+content since our library is exposing
+Only One Import meaning that it has only
+one entry point let's specify this entry
+point and here we have to use a couple
+more keys import and require and these
+keys will also contain P to the files
+that have to be imported in case we're
+using ecmascript modules or function
+require to import our library so now
+everyon is ready to actually start using
+our library in our client application
+let's go to our client application and
+open up main Javascript file let's clear
+this file and then we have to somehow
+import our library into this application
+without actually publishing our package
+in the npm registry we are actually also
+going to see an example where we will
+publish the package but it will come in
+one of the next lessons and for now I'm
+going to make our library globally
+available
+in the operating system and npm allows
+us to do that by executing the following
+commment inside of that library that we
+have to make globally available and this
+command is npm link so I'm going to
+execute this command in the route of our
+library project and then later I will be
+able to link to this library from our
+client application but for now let's
+switch over to the route of our client
+application and install all npm
+dependency
+so now I need to get the code of our
+library in the node modules folder of
+our client application and since we have
+previously made our library globally
+available in the operating system we can
+simply link to that Library by running
+npm link and the library name in the
+root of our client application and right
+away we can see that this comment has
+created the link with the same name as
+our library and this link points to the
+source code of our library and finally
+it is time to test the functionality of
+our package in this application so I'm
+going to start development server and
+now it's finally time to test the
+functionality of our package from our
+client application and to do that let's
+just copy over that commented code we
+have previously put in the Javascript
+file of our package cut it from here and
+move it inside main.js of our client
+application ation but of course here
+this function plug should be imported
+from our custom package so let's write
+down an import statement for this
+function and import this function using
+our package name plug the same name
+which is used inside node modules folder
+and by actually importing our library in
+this way it will actually go ahead and
+import the function from this file plug.
+GS because we have previously specified
+pass to this file inside the package
+Json of our package source code and now
+let's just add some random content
+inside the index.html of our client
+application I'm going to show a heading
+here and here we go we got expected
+result in our console so our function
+plug which was imported from our custom
+package has extracted usernames from the
+array of user objects so at the end
+let's just recall what we have done in
+order to implement this Library in our
+library project we have created file
+with the name
+index.js where we have implemented our
+function plug and then by specifying
+object under the key lip inside vid
+configuration we have told VD that this
+project should be built as an npm
+package instead of a client application
+and here under the entry key we have
+pointed to the file which contains the
+source code of our library and we will
+also use the couple more keys to assign
+name to this Library as well as the file
+name that should be used for bundle
+JavaScript file after the build then
+inside package Json file we have added
+some extra configurations to specify
+which files should be imported in case
+our users are going to import our
+library by using standard easp modules
+or by using function require and then
+just to be able to use this library
+inside a client application without
+actually publishing this library to the
+npm registry we have made this Library
+globally available by running npm Link
+in the rout of this project and then
+inside the road of our client
+application we ran npm link and the
+library name then we head to add to node
+modules folder and this command has
+created the special link inside node
+modules folder of the client application
+with the same name as our package name
+plug and this link points directly to
+the source code of our package which
+eventually allowed us to import this
+library from our applications JavaScript
+code and these are the basics of
+developing JavaScript packages by using
+V in the upcoming lessons we're going to
+learn about this whole process even more

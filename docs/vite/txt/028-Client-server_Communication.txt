@@ -1,0 +1,144 @@
+now let's see how V allows us to
+establish client server communication
+just like in the previous lesson when we
+were using hook handle hot update to
+implement hot module replacement feature
+for our plugin and in here we were using
+webset up object to send events to the
+client and then we also had a chance to
+specify which data exactly should be
+sent along with this event and in our
+client script we have registered
+listener for this event accepted the
+data received from the server and then
+we were able to do anything we want with
+this data to implement hot module
+replacement but besides using this hook
+handle hot update which will be called
+only when any module that we are
+importing in JavaScript files will be
+changed we can use another hook which
+allows us to configure the server and
+this Hook is called configure server
+which accepts a server instance as the
+first parameter and by using this server
+object we can also access websocket
+connection so just like previously we
+can set up a listener for all kinds of
+events for example there is a default
+event called connection which will be
+fired whenever our webset connection
+will be established so we can try
+listening for this in here and once we
+establish web sucket connection let's
+send any1 to the client with the name
+connected and as a payload we can send
+simple message connection
+established and now to be able to listen
+for this event from the client code we
+have to register a listener by using
+object hot so here we also call a method
+called on and as a first parameter we
+have to specify event name with which
+will be listen in for and as the second
+parameter we specify the closure which
+will be our event handler so this
+closure is going to receive the payload
+sent from the server along with this
+event and now let's see what will be
+printed in a console I'm going to switch
+over to the browser and as we can see in
+here we have that message sent from the
+server once webset connection was
+established in this way we can exchange
+messages between server and the C L for
+example let's fire another event as a
+response to the server with a name pin
+and the payload which will also be a
+simple message hello server and now
+going back to our plugin implementation
+inside of this configure server hook
+let's register another listener for the
+pin event and specify an event handler
+this time event handler is going to
+receive two parameters first of which
+will be the payload sent from the client
+and the second parameter will be the
+client itself in other words the object
+that represents the connection and
+inside of this closure we will be able
+to use this object to send events to the
+client so as a response let's send event
+with a name pun and the message hello
+client and now one more time let's
+switch over to our client script and
+register a listener for this por by
+using that same object hot as an event
+handler let's specify the closure which
+will receive the payload as the first
+argument and print this payload in a
+console so now in the browser console we
+can see two messages the first one was
+printed once websocket connection was
+established because previously on the
+server site in our plugin implementation
+code we have registered listener for the
+connection event and as soon as webset
+connection was established we send the
+event called connected to the server
+with the message connection established
+and then client has received this event
+and printed that message in a console
+and now to reply back to the server
+client send another one with a name pin
+and the message hello server on the
+server side we have registered a
+listener for D pin and also printed the
+message which will come from the client
+in the server console so now if we're
+going to take a look on the server
+console we're going to see here that
+message received from the client hello
+server and finally besides printing this
+message in a console we're also firing
+another E pun to the client with the
+message hello client and in our client
+script we are basically listening for
+this event and printing received message
+in the browser console and which is why
+we're seeing in here a second look that
+says hello client received from the
+server and by the way all those
+listeners and EVS which we have used in
+here this code will be executed only if
+an object hot will be available because
+we have wrapped everything in the if
+conditional and the thing is that this
+object hot will be available only during
+development so if we're going to build
+this project for production by running
+npm run build this object hold will not
+be available so all this code will be
+basically removed from the production
+bundle by using Tre shaking so at the
+end let's just make sure that this is
+the case I'm going to print out simple
+message in here just to see that this
+code will be executed and indeed we're
+seeing that lock Hut in the browser
+console along with other locks because
+currently I'm running development server
+but once I'm going to switch over to the
+console and run the common to build this
+project for production and then run
+production built in the browser by
+executing npm run preview sure enough
+I'm not going to see any logs whatsoever
+this is because that conditional block
+which we're checking if object is
+present has not been executed since hot
+object is not available in the
+production build so this is how we can
+exchange messages between our plugins
+and the client code by using websocket
+connection provided by V in one of the

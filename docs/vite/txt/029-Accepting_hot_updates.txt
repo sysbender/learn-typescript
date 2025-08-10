@@ -1,0 +1,209 @@
+previous lessons we have implemented hot
+module replacement for CSV modules the
+way we have done this is by using handle
+hot update hook inside of our plug-in
+implementation so in here whenever do c
+PV file will be modified we would fire
+Event Y websocket connection to the
+client and include all necessary data
+along with this event so that client
+could receive this data and then
+Implement all necessary updates and in
+this lesson we're going to see how we
+can Implement hot module replacement for
+JavaScript files so I'm going to comment
+out all these listeners we're not going
+to need them in this lesson and also we
+don't need to fire any custom events
+from our server so let's just comment
+out this hook configure server which was
+basically used to Fire custom V web soet
+connection to the client and before
+getting to implementing hot module
+replacement for JavaScript files let's
+do a little preparation I'm going to
+create new JavaScript module in the root
+of the project let's call this file
+module. JS and here let's add some dami
+code for example let's expert constant
+with a name message and the random
+string and also let's add one more
+expert which will be a default expert
+also with a random
+string and now we're going to use HMR
+API to implement hot module replacement
+and all the code which we will need for
+hot module replacement we're going to
+wrap in the if conditional and check if
+hot object is present then we're going
+to mement HMR so that b could properly
+remove this Cod when doing production
+builds since we don't need to provide
+HMR during production so in order to
+implement hot module replacement for
+this specific module we can leverage
+method called accept on the object hot
+so this method accepts closure which in
+turn accepts one parameter which will be
+updated content of this module let's
+call this parameter updated module and
+then print out this variable in the
+browser console and just to see it an
+action we of course have to go back to
+our main Javascript file and write an
+import statement to import our new
+module and regarding all other code we
+actually don't need any of that so let's
+comment everything out besides our
+import and one more thing before we'll
+check it in a browser let's go back back
+to module. JS and print something out so
+we can see that this module will be
+loaded and here we go we got that Lo
+that means that our module was properly
+included and now let's see what is going
+to happen as soon as I'm going to modify
+the file module. GS for example let's
+change this string and in the browser
+console I'm seeing a different loog
+which was just modified because after
+updating this file this module was
+executed again and then we also got this
+lock which contains updated content of
+this module in the form of an object so
+here we can see a default expert of this
+module as well as a named expert of the
+constant message and this log was
+printed by using disclosure that we have
+passed into accept message so now if I'm
+going to modify the value of the message
+constant for example right away I'm
+seeing the new log in the browser and
+this time the constant message contains
+the new value that we have just updated
+so anytime we're going to modify module.
+JS file we're going to see here new log
+with updated content of that file and by
+the way all this is happening without
+full page refreshes but what if I'm not
+going to use call accept in this module
+Let's test it out let's comment out this
+part in the browser I'm only seeing one
+lock which was printed on the initial
+page load but after I'm going to modify
+by the file module. JS in the console we
+can see only the new Lo without all
+previous outputs and that is because
+browser has made full page refresh so in
+this case there is no hot module
+replacement and again if I'm going to go
+back to the editor and comment this code
+back in then initially here I'm seeing
+only one loog from the module. GS and
+after I'm going to modify this lock
+we're still going to see the old lock as
+well as the new output and in addition
+to that we got an object which contains
+updated data of the module so in this
+case as I'm using accept method in my
+module anytime we're modifying module.
+JS browser is not going to make full
+page refresh in order to update this
+module in a browser because all these
+updates are happening by using hot
+module replacement technique and now
+let's consider another example so what
+if my module. Js is going to import
+another module let's emulate this
+situation let's create the new file and
+call it subm module. JS this module is
+going to have only one default expert of
+the random
+string and then we're going to import
+this module from within module. GS right
+here and now let's say we want to
+monitor changes in all those modules we
+are importing in this module so for
+example I want to run some code anytime
+the module sub module. JS will change so
+in here I'm going to use another code to
+Method accept which in this case will
+have a different shape as the first
+parameter we can provide an array which
+consists of all those UTS we like to
+monitor changes in so for example in
+here I'm going to watch file called
+submodule dogs so I'm going to include
+this name in here and then in this
+closure we are going to receive an
+updated content of every module that we
+are monitoring since in this case I'm
+monitoring only one module I'm going to
+destructure this parameter and extract
+only the content of this subm module
+file and eventually let's see what will
+be contained in this new subm module
+variable which is supposed to give us
+updated content of the subm module file
+and before checking it out in the
+browser I'm going to include conso
+statement inside sub module. GS for
+testing
+purposes so on the initial page load we
+can see two locks obtained from loading
+subm module. JS as well as module. JS
+and now let's see what is going to
+happen if I'm going to modify the
+content of the subm module. GS let's
+let's change this message go back to the
+browser and here I can see the log from
+subm module. JS again because after
+modifying this file it was executed in
+the browser one more time and then I'm
+seeing another look which contains
+updated content of the modified subm
+module. GS file and that is because in
+our parent module which is called
+module. GS we have registered this
+listener which monitors for changes
+inside subm module. JS file and when
+that change occurs it is going to print
+the updated data of this subm module in
+the form of an object and if I'm going
+to make mistake in the subm module name
+and then we'll do any modifications to
+this subm module then in a browser I'm
+still going to see the lock but this
+lock comes from a different place it is
+actually this part of code which prints
+that log entry so just to make it all
+clear let's comment out this part and
+modify subm module. JS once again and as
+we can see after modification there are
+no extra locks in a console because we
+are no longer listening for changes in
+the subm module so let's go back to
+module. JS and fix that mistake in this
+name subm module. JS and one more time
+if I'm going to go ahead and modify the
+file subm module. JS sure enough in the
+console we're going to see a new log
+entry with an updated content of the
+subm module file and by the way if we're
+going to make any syntax errors in our
+modules then dead log which is
+responsible for showing updated content
+of the module we'll print value
+undefined instead so if we're planning
+to use this value in our closure it's
+necessary to firstly check if theed
+value actually exists so we're going to
+R this part in the if conditional so now
+if we're going to make any syntax errors
+in our modules it will prevent us from
+potential crashes and it's actually good
+to do these kind of checks most of the
+times so let's add the same conditional
+to this
+closure let's keep learning it in the
+next lesson so by now we already know

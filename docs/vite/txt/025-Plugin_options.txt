@@ -1,0 +1,217 @@
+description in the previous lesson we
+have implemented the plugin which allows
+us to import CSV files inside of
+ecmascript modules and the way it works
+is as follows whenever we import CSV
+file the CSV synex gets transformed into
+JavaScript array of objects but
+currently our plugin is kind of inlined
+inside of vid configuration but usually
+plugins are extracted into separate
+JavaScript modules in the form of
+factory function so let's try to move it
+into a separate file just like it is
+done for the inspect plugin here we're
+just importing this plugin and then
+coling it inside this plugins array so
+we're going to do the same with our CSV
+plugin let's just cut this whole object
+create a new file for this plug-in in
+the road of our project let's call it
+vid plugin CSV and this module is going
+to export one function which will be a
+factory function for our plugin here
+we're going to paste that whole object
+with plug-in definition let's also move
+that import that we need in this plugin
+of the function parse and since this
+function parse gets imported from the
+sync subm module the there's no need to
+make our transform hook a synchronous so
+we can remove this as in keyword from
+here let's also rename this plugin on
+simply CSV and then let's get back to
+our vid configuration and include this
+plugin by firstly importing Factory
+function from V plugin CSV file and then
+just like it is done for inspect plugin
+right next St we're going to call our
+Factory function CSV and this way we
+have just included our own plugin and
+please note that there is no difference
+between including plugins in line in the
+form of JavaScript objects or by moving
+them into Factory functions and then
+calling those functions right here in
+this plugins array so just to make sure
+that our plugin works as expected and we
+got the same result as before let's run
+development server and take a look in
+the browser as we can see we get the
+same data that means our plugin works as
+before and now a couple of words about
+existing plugins that exist in V
+ecosystem so first of all there is a
+list of official plugins provided on the
+official documentation page right here
+and then since V internally uses another
+bundle called rup to build projects for
+production there are a bunch of RAB
+plugins that are compatible with VD
+projects and the list of RAB plugins
+compatible with v projects can be found
+on this page and of course besides
+official r LA and with plugins there are
+countless of plugins built by the
+community for example there is ASMR app
+repository which has collection of
+resources specifically for rup and this
+page also includes list of community
+plugins and similar page also exists for
+V this repo is called awesome vit here
+we also can find a bunch of links to
+everything related to V projects as well
+as plugins developed by the community
+now let's go back to our plugin
+configuration and consider a couple more
+options that we can use for our plugin
+so an important option is called apply
+and this option allows us to specify
+which environment our plugin should be
+included into for example if we'd like
+to use this plugin only during
+development we can specify Val serve for
+this option and this way plugin will
+only be activated while we are running
+development server and by using another
+keyword called build allow us to include
+this plugin only in production builds in
+other words when we are running commment
+and PM run build to build the project
+for production so let's see for example
+I'm going to specify value serve which
+means the plugin should be included only
+in development mode and then if I run
+production build by running npm run
+build right away I get an error because
+our plugin which lets us import CSV
+modules was not actually included in the
+production environment and then if I'll
+go ahead and change this value unbuilt
+then while running development server by
+execu an npm run Devo in the browser
+we're going to get the following error
+since our import of the CSV file didn't
+work and besides specifying predefined
+vales for this Supply option we can also
+specify a closure which gives us morine
+grain control disclosure accepts couple
+of parameters first of which will be
+conf configuration object and another
+parameter will also be an object with a
+couple of useful properties such as
+comment and mode and then let's just
+print out each of those variables to see
+what they contain and by looking in the
+console we can see that the first
+parameter basically printed the whole
+configuration object command variable
+stores Val serve and mode variable
+stores Val development since currently
+we are running it in the development
+mode and based on this Val we can do an
+extra checks and if we're going to
+return value through from disclosure
+that means the plug-in should be
+included so for example if I'd like to
+include this plugin only during
+development I'm going to compare
+variable mode with the development word
+and this way this plugin will be
+included only while running development
+server and of course if I'll go ahead
+and try to build a project for
+production I'm going to get the
+corresponding error saying that CSV
+module cannot be imported since there is
+no plugin which recognizes such Imports
+also there may be a situations where we
+need to access configuration object in
+other hooks for example in this
+transform hook so how do we get access
+to this configuration object from other
+Hooks and there is actually another hook
+that we provides as way called config
+resolved this hook will be called
+automatically before transform hook and
+it receiv gives configuration object
+which we then can store in a variable so
+it will be accessible to other hooks so
+I'm going to declare here variable
+called config before returning
+configuration for this
+plugin and then inside config resolved
+hook I'm going to assign resolved
+configuration object to this varable
+config so then it's accessible from
+other Hooks and then based on
+configuration values we can easily do
+extra checks in this transform hook for
+example let's compare value serve with
+the value stored in common variable and
+based on that we're going to specify
+this value as the value for option
+columns for the parse function so now
+let's take a look at the difference
+firstly let's run our development server
+and check the result how our CSV code
+was transformed as we can see we got an
+array of objects where every key
+corresponds to the field from the CSV
+file and every such object corresponds
+to individual line from the CSV file and
+for example if I'm going to run
+development build in this case we're
+supposed to get different result so
+let's just run this production build in
+the browser by running preview server
+and as we can see the output is
+different in this case the first element
+of this array is another array which
+consist only of column values from the
+CSV file and all other elements store
+vales from Individual rows or the CSV
+file and now let's review one more
+useful hook which basically allows us to
+transform HTML content and this Hook is
+called transform index HTML which is
+about to receive the whole content of
+the HTML file so in here we can do all
+necessary transformation
+with the content of HTML file so let's
+replace the closing body Tech with the
+following I'm going to put basic script
+at the end of the body element which
+will open up a dialogue with the word
+hello like so and it is very important
+to position all the hooks on the same
+level so the transform hook as well as
+transform index HTML hook should be
+included on the the same level like this
+so now after running the development
+server in the browser we can see that
+firstly we got an alert with the word
+hello so our transformation of the HTML
+file was successful and at the end of
+the body element we got that script
+which opens up the dialog so in this
+lesson we have only reviewed a couple of
+hooks that we can leverage in our
+plugins but in fact there are a lot more
+of such Hooks and documentation about
+those can be found in the offal vid
+documentation but even only using these
+hooks we get a lot of flexibility and we
+can transform imported modules in
+whatever way we like let's continue
+learning about VD in the next lesson

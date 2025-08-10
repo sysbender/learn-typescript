@@ -1,0 +1,283 @@
+this lesson we're going to check how to
+work with a jsx specification in V
+projects and additionally we're going to
+implement our own custom jsx
+specification so let's get going first
+of all we're going to clear out our
+main.js and in here we'll add Only One
+Import I will import the file with the
+name 12. jsx and right away let's create
+this file within Source folder and as an
+example we're going to add some
+arbitrary jsx code within this file so
+let's create new constant template and
+then let's use the jsx syntax and
+specify arbitrary jsx markup kind of
+like we do in react projects when we
+create components here I'll create a du
+with the class wrapper within which I'm
+going to put Tech p and finally this
+paragraph will contain anchor Tech and
+just to have some Styles applied to our
+markup we're also going to create CSS
+file with the name 12. CSS and import it
+right
+here and as a Content let's just copy
+over all content from 3. CSS and put it
+within 12.
+CSS and just because we're using CSS
+class called rer in our jsx mark up
+let's rename this selector on wrapper
+and so that now we expert constant with
+a name template from this module let's
+go back to our main.js and apply the
+structuring to this import and extract
+only constant with a name template and
+I'm also going to use console loog
+statement in here just to see what we
+get within this variable after that
+we're going to get console error because
+currently our project cannot recognize
+Js syntax so we need to enable a jsx
+support and to convert jsx syntax into
+JS syntax V uses another bundler called
+es belet and it also lets us specify a
+couple of options within VD
+configuration file to kind of Define our
+own jsx specification and this way we're
+going to teach we how to process our jsx
+syntax so let's go back to the file with
+jsx code and here I'm going to create
+new new local function with a name
+create and later we will specify this
+function as a jsx factory function which
+is going to be responsible for creating
+D elements based on our jsx elements
+let's do this right now so let's open up
+V configuration file and in this
+configuration object we're going to
+specify options for ESU within this
+internal object and for now the only
+option that we need is called jsx
+Factory and this is the option where we
+need to specify our function name which
+will be responsible for processing jsx
+elements so if earlier we have created
+the function with a name create I'm
+going to use this name in here and when
+V is going to process our jsx code for
+every tag name it is going to call our
+custom function create and it will pass
+three additional parameters first one
+will be element which will contain the
+tag name the second one will be an
+object with a attributes that we have
+specified on that tag within jsx syntax
+and the third parameter will be content
+that we can put in between opening and
+closing text so before going any further
+let's just see what we get in all these
+three parameters I'm going to add
+another console loog statement and print
+out every parameter and this function
+will be called three times one time per
+tag we have used within jsx syntax so
+the first code to the create function
+has received three parameters with the
+following values the element parameter
+equals to T name a the attributes that
+we have specified on the anchor Tech
+consist of only one attribute called hrf
+and finally the text that we have
+specified for this anchor element is
+link the second call to the create
+function has received parameters with
+such Val when the first one corresponds
+to the tag name and the other two for
+now do not contain any vales and the
+reason to that is because we haven't
+returned anything from our Factory
+function yet and as a content for a
+paragraph element we use another element
+which is Anor Tech and finally these are
+the last set of three parameters that we
+get after calling create function third
+time because the root element of our jsx
+markup is div which has only one
+attribute class with the Val upper and
+because we haven't returned anything
+from our Factory function yet the third
+parameter which is supposed to be a
+content of this div element holds value
+undefine it for now and now we're going
+to get to fixing it going back to our
+create function in here I'm going to
+create new constant called node and
+based on the element name what we
+receive as the first parameter into this
+function we're going to use native Dom
+API and create Dome node by using Create
+element method on the document object
+like this
+and now that we have our Dom element
+created we need to take attributes
+object which we receive as a second
+parameter into this function and iterate
+over all the attributes within this
+object and to iterate keys and values of
+this object we can use JavaScript method
+entries and here we're passing object
+name which we' like to iterate over and
+if this object will be null we're going
+to f back to an empty object and this
+entries method is going to produce array
+with pairs key and value that are
+contained within attributes object so we
+can easily iterate over this array and
+as a first parameter we're going to
+destructure these pairs the name
+variable will hold attribute name and
+the Val variable will hold its Val and
+finally in here by using another native
+Dom AP Pi method called set attribute we
+can set attribute with a name stored in
+the variable name and assigned value
+stored in variable value like this and
+down here we also need to check if SE
+parameter also contains value which is
+supposed to be a content for our Dom
+element and if this value will be a
+string we're going to create text node
+based on this string by using Create
+text node method and pass received
+content into this method and then
+reassign resulting text element to this
+content variable and finally we need to
+append this text element into that Dom
+element we have previously created so
+let's use a pen child method and pass
+variable content as the first parameter
+and eventually we're going to return
+create a d element from this function so
+right now let's check one more time what
+values we're going to get within every
+parameter that we print in here the
+first code to the create function has
+produced the following result as the
+first parameter we still get anchor
+element the second parameter is object
+with attributes to this anchor and the
+third parameter will be content for this
+element and then when V sees paragraph
+element within our jsx markup it is
+going to call create function with this
+element as the first parameter and since
+we have not specified any attributes on
+this P element the second parameter is
+empty and finally just because this
+paragraph element contains another
+element a as the third parameter we have
+received D element which corresponds to
+an anchor and this anchor element was
+created when calling that function
+create that we have implemented earlier
+and finally our GSX markup also contains
+another element called div the create
+function gets called for this element
+first parameter will be element name
+which is Du the second parameter
+contains attributes of this element we
+have specified only one attribute with
+the name class and just because this
+element also wraps another element
+paragraph As a Content within the C
+parameter we receive this paragraph
+element so now let's go back to the
+create function and remove this console
+loog statement and as we can see in our
+main.js file we have another console
+lock statement which prints out content
+of the template variable and this
+template variable is supposed to hold
+Dom structure which was created based on
+our initial jsx markup so if we take a
+look in the browser we will see that
+this template variable holds a root
+element of our jsx markup for now it is
+represented as a Dom element but to see
+the whole content as text we can use
+another Dome property called outer HTML
+let's use it in here and check conso
+again and now we see full string
+representation of our jsx markup so this
+whole jsx markup that was specified in
+here it was properly processed and
+turned into Dom structure and then we
+have printed out its string
+representation in a console and now what
+we're going to do instead of printing
+this markup in a console we're actually
+going to create another div element in
+our
+index.html with an identifier of up and
+then let's goad and add this hmark up in
+our page so I'm going to use Query
+selector to select element with an idea
+of app then let's call append child and
+as a parameter we specify D element we
+wish to append within element with an
+IDE of app and as we can see in the
+browser new element was appeared on our
+page which is that whole converted jsx
+markup added within up element but right
+now we can't really see the link well so
+let's go ahead and change Style we're
+going to make the text color white for
+this link and there we go now we can
+clearly see the link and what we're
+going to do next is to extract this
+Factory function create and move it in
+the new module we're going to create new
+file called 12- create within Source
+folder and put that function in here and
+of course we need to expert this
+function from this module but after
+doing this change we're actually going
+to get error in a console saying that
+create is not defined so right now
+whenever we're going to use a jsx markup
+we also have to import our Factory
+function create from the new module 12
+create. GS let's add a proper import
+statement in this file and after this as
+we can see everything is working again
+but yes having to import this create
+function every time we want to use jsx
+markup is not very convenient so we can
+use another trick and specify option
+with the name jsx inject in the es build
+configuration object and here we can
+Define what content should be
+automatically added to all jsx files so
+we can add in here that import statement
+of create function so we don't have to
+import it manually over and over again
+in jsx files let's just specify an
+absolute pass to the module which holds
+our create function and now even though
+we haven't explicitly imported create
+function in jsx file we still can see
+that our jsx code was properly processed
+and resulting jsx structure was injected
+into the page that is because VD has
+automatically added proper import
+statement which Imports our Factory
+function create at the top of the GSX
+file and by the way every usage of the
+jsx element in our jsx markup was great
+into such function calls of our Factory
+function create with proper parameters
+depending on the GSX element so in this
+lesson we have learned how to write our
+own jsx specification and use it in vid
+projects let's talk about typescript

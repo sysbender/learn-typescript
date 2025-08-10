@@ -1,0 +1,575 @@
+WEBVTT
+
+00:00:02.239 --> 00:00:08.000
+how we can accept HMR updates by using
+
+00:00:04.920 --> 00:00:09.640
+method accept and apply them to our page
+
+00:00:08.000 --> 00:00:12.359
+and this method accept has a few
+
+00:00:09.640 --> 00:00:14.720
+signatures first one allows us to accept
+
+00:00:12.359 --> 00:00:17.000
+updates of the module itself and the
+
+00:00:14.720 --> 00:00:19.960
+other signature allows us to accept
+
+00:00:17.000 --> 00:00:22.120
+updates from dependencies of this module
+
+00:00:19.960 --> 00:00:25.000
+in other words from those modules that
+
+00:00:22.120 --> 00:00:27.080
+are imported in this module like we're
+
+00:00:25.000 --> 00:00:30.359
+doing in here where we are monitoring
+
+00:00:27.080 --> 00:00:32.800
+changes inside of subm module. GS but
+
+00:00:30.359 --> 00:00:35.080
+there can be such situations where when
+
+00:00:32.800 --> 00:00:37.520
+modules are updated and updates are
+
+00:00:35.080 --> 00:00:39.920
+applied in a browser those updates might
+
+00:00:37.520 --> 00:00:42.279
+also leave some kind of side effects for
+
+00:00:39.920 --> 00:00:45.279
+example those updates might modify Dom
+
+00:00:42.279 --> 00:00:47.640
+structure or change some data in local
+
+00:00:45.279 --> 00:00:49.239
+storage of the browser or even a simple
+
+00:00:47.640 --> 00:00:51.760
+console loog statement can also be
+
+00:00:49.239 --> 00:00:53.760
+considered a side effect and sometimes
+
+00:00:51.760 --> 00:00:56.080
+before applying updates of the module in
+
+00:00:53.760 --> 00:00:58.239
+a browser before we need to run some
+
+00:00:56.080 --> 00:01:01.040
+kind of a code which would clean up
+
+00:00:58.239 --> 00:01:03.840
+those side effects left from previous
+
+00:01:01.040 --> 00:01:05.800
+executions of this module it might sound
+
+00:01:03.840 --> 00:01:08.880
+complicated but in fact it is really
+
+00:01:05.800 --> 00:01:11.800
+simple let's consider one example I'm
+
+00:01:08.880 --> 00:01:14.720
+going to create variable Styles and then
+
+00:01:11.800 --> 00:01:17.880
+let's declare the function at stylesheet
+
+00:01:14.720 --> 00:01:21.120
+which is basically going to add Styles
+
+00:01:17.880 --> 00:01:24.479
+into head element on the page so in here
+
+00:01:21.120 --> 00:01:26.960
+I'm going to use Dom API to create Dom
+
+00:01:24.479 --> 00:01:30.160
+element which corresponds to the style
+
+00:01:26.960 --> 00:01:33.520
+tag and then we're going to assign
+
+00:01:30.160 --> 00:01:35.640
+arbitrary styles to the inner HTML
+
+00:01:33.520 --> 00:01:39.600
+property for example let's make
+
+00:01:35.640 --> 00:01:43.000
+background color of the body Indigo and
+
+00:01:39.600 --> 00:01:46.040
+text color will be white and then all we
+
+00:01:43.000 --> 00:01:49.520
+have to do is to append this style
+
+00:01:46.040 --> 00:01:52.439
+element to the Head element like so by
+
+00:01:49.520 --> 00:01:54.399
+using method append child and of course
+
+00:01:52.439 --> 00:01:57.040
+to apply these changes we have to
+
+00:01:54.399 --> 00:01:59.560
+execute this function once current
+
+00:01:57.040 --> 00:02:02.080
+module will be loaded in the browser so
+
+00:01:59.560 --> 00:02:05.239
+let's call the function add Styles shet
+
+00:02:02.080 --> 00:02:08.520
+right here and also let's open up
+
+00:02:05.239 --> 00:02:10.880
+index.html and in here we'll add H1
+
+00:02:08.520 --> 00:02:13.279
+element so in the browser we see that
+
+00:02:10.880 --> 00:02:16.199
+those styles were applied and if we take
+
+00:02:13.279 --> 00:02:18.439
+a look at the head element at the end we
+
+00:02:16.199 --> 00:02:21.880
+can see that style element that we have
+
+00:02:18.439 --> 00:02:24.080
+just added so far it looks good but what
+
+00:02:21.880 --> 00:02:26.920
+is going to happen if we're going to
+
+00:02:24.080 --> 00:02:29.279
+modify the Styles in any way for example
+
+00:02:26.920 --> 00:02:31.560
+let's change change the color on yellow
+
+00:02:29.279 --> 00:02:33.840
+and take a look in the browser the color
+
+00:02:31.560 --> 00:02:36.279
+was properly applied to the Page by
+
+00:02:33.840 --> 00:02:38.319
+using hot module replacement but in fact
+
+00:02:36.279 --> 00:02:41.040
+if we take a look at the Dum structure
+
+00:02:38.319 --> 00:02:43.600
+here we have two Style Elements so the
+
+00:02:41.040 --> 00:02:45.960
+previous style element was not removed
+
+00:02:43.600 --> 00:02:47.920
+and the new one was just added so the
+
+00:02:45.960 --> 00:02:50.880
+previous execution of this module has
+
+00:02:47.920 --> 00:02:53.279
+left side effect in the dome by adding
+
+00:02:50.880 --> 00:02:55.800
+style element but right after we have
+
+00:02:53.279 --> 00:02:58.239
+updated those Styles the previous style
+
+00:02:55.800 --> 00:03:00.680
+TCH was not removed So It produced
+
+00:02:58.239 --> 00:03:02.680
+so-called side effect but we didn't
+
+00:03:00.680 --> 00:03:05.439
+clean up that side effect before
+
+00:03:02.680 --> 00:03:07.720
+applying new updates and inserting new
+
+00:03:05.439 --> 00:03:09.960
+style element and as you may have
+
+00:03:07.720 --> 00:03:12.920
+guessed anytime we're going to do any
+
+00:03:09.960 --> 00:03:15.479
+kind of changes to our module we're
+
+00:03:12.920 --> 00:03:18.319
+going to get the new style element
+
+00:03:15.479 --> 00:03:20.399
+appended to head element so now let's
+
+00:03:18.319 --> 00:03:22.479
+see how we can actually clean up after
+
+00:03:20.399 --> 00:03:24.800
+ourselves and anytime we're going to
+
+00:03:22.479 --> 00:03:26.560
+modify this module the previous style
+
+00:03:24.800 --> 00:03:29.120
+tag will be removed and the new one will
+
+00:03:26.560 --> 00:03:32.600
+be appended and for that let's create
+
+00:03:29.120 --> 00:03:34.600
+new function call it remove style sheet
+
+00:03:32.600 --> 00:03:38.399
+and all this function is going to do is
+
+00:03:34.600 --> 00:03:41.239
+basically remove Styles Dom element by
+
+00:03:38.399 --> 00:03:43.080
+coling remove method like this but the
+
+00:03:41.239 --> 00:03:45.479
+question is where do we actually need to
+
+00:03:43.080 --> 00:03:47.160
+call this function remove style sheet
+
+00:03:45.479 --> 00:03:49.319
+and since this function has to be
+
+00:03:47.160 --> 00:03:52.600
+executed right before we're going to
+
+00:03:49.319 --> 00:03:55.720
+receive new HMR updates it provides us
+
+00:03:52.600 --> 00:03:57.960
+with another method called dispose that
+
+00:03:55.720 --> 00:03:59.920
+we also call on the H object
+
+00:03:57.960 --> 00:04:02.399
+and the closure which will be passed
+
+00:03:59.920 --> 00:04:05.080
+into this method should execute all
+
+00:04:02.399 --> 00:04:08.040
+necessary cleanup code to get rid of
+
+00:04:05.080 --> 00:04:09.960
+previous side effects so this is exactly
+
+00:04:08.040 --> 00:04:13.000
+the place where we can call our function
+
+00:04:09.960 --> 00:04:15.479
+remove style sheet to remove style Dom
+
+00:04:13.000 --> 00:04:17.880
+element so now before going back to the
+
+00:04:15.479 --> 00:04:21.640
+browser let's actually reset these
+
+00:04:17.880 --> 00:04:24.359
+Styles as they were initially let's also
+
+00:04:21.640 --> 00:04:27.239
+do a full page refresh to have only one
+
+00:04:24.359 --> 00:04:29.720
+style element on the page so now after
+
+00:04:27.239 --> 00:04:32.040
+I'm going to modify this module in the
+
+00:04:29.720 --> 00:04:34.840
+browser what we will actually see is
+
+00:04:32.040 --> 00:04:37.439
+that before appending updated Styles
+
+00:04:34.840 --> 00:04:39.800
+onto the page the previous style element
+
+00:04:37.439 --> 00:04:42.560
+was removed because that function remove
+
+00:04:39.800 --> 00:04:44.720
+stylesheet was executed inside of a
+
+00:04:42.560 --> 00:04:47.040
+closure of the method dispose which
+
+00:04:44.720 --> 00:04:49.640
+cleaned up our previous side effect
+
+00:04:47.040 --> 00:04:51.520
+before appending new element and just to
+
+00:04:49.640 --> 00:04:54.479
+see at what time those functions are
+
+00:04:51.520 --> 00:04:57.640
+executed let's just Place arbitrary
+
+00:04:54.479 --> 00:05:00.720
+console Lo statement into function add
+
+00:04:57.640 --> 00:05:03.560
+stylesheet as well as remove
+
+00:05:00.720 --> 00:05:06.720
+stylesheet so on the initial page load
+
+00:05:03.560 --> 00:05:09.080
+our module was executed and called
+
+00:05:06.720 --> 00:05:11.880
+function and style sheet and therefore
+
+00:05:09.080 --> 00:05:14.800
+new styles were applied to the page and
+
+00:05:11.880 --> 00:05:17.760
+after any subsequent modifications of
+
+00:05:14.800 --> 00:05:20.319
+this module we're going to see that
+
+00:05:17.760 --> 00:05:23.680
+before applying new updates our function
+
+00:05:20.319 --> 00:05:25.800
+remove styish sheet was executed thanks
+
+00:05:23.680 --> 00:05:27.800
+to that method dispose that we have
+
+00:05:25.800 --> 00:05:30.399
+called on the hot object
+
+00:05:27.800 --> 00:05:33.560
+so the previous styles were removed and
+
+00:05:30.399 --> 00:05:35.880
+then the new styles were added and this
+
+00:05:33.560 --> 00:05:39.239
+way we end up only with one style
+
+00:05:35.880 --> 00:05:41.680
+element on the page let's go back to the
+
+00:05:39.239 --> 00:05:44.319
+editor and remove these two console loog
+
+00:05:41.680 --> 00:05:46.800
+statements so by now we know how we can
+
+00:05:44.319 --> 00:05:50.720
+accept hot module updates by using
+
+00:05:46.800 --> 00:05:53.239
+method accept as well as how to remove
+
+00:05:50.720 --> 00:05:56.640
+any side effects before applying new
+
+00:05:53.239 --> 00:05:59.160
+updates by using function dispose and
+
+00:05:56.640 --> 00:06:02.000
+now a couple of words about standard vid
+
+00:05:59.160 --> 00:06:04.319
+events that we can listen to and there
+
+00:06:02.000 --> 00:06:06.600
+are several events that we can listen to
+
+00:06:04.319 --> 00:06:09.720
+and all of them are shown on this
+
+00:06:06.600 --> 00:06:13.080
+documentation page so for demonstration
+
+00:06:09.720 --> 00:06:16.080
+purposes let's just register listeners
+
+00:06:13.080 --> 00:06:18.399
+for some of these events as the first
+
+00:06:16.080 --> 00:06:21.239
+parameter we have to specify an event
+
+00:06:18.399 --> 00:06:24.399
+name I'm going to use before update
+
+00:06:21.239 --> 00:06:27.239
+event and as a second parameter we're
+
+00:06:24.399 --> 00:06:29.920
+passing the Handler which is going going
+
+00:06:27.239 --> 00:06:33.080
+to take some data received from the
+
+00:06:29.920 --> 00:06:35.760
+server let's just print out this data in
+
+00:06:33.080 --> 00:06:38.120
+the console and then duplicate this
+
+00:06:35.760 --> 00:06:41.120
+piece of code a couple more times to
+
+00:06:38.120 --> 00:06:45.160
+register listeners for other wins such
+
+00:06:41.120 --> 00:06:48.080
+as for after update and for the error
+
+00:06:45.160 --> 00:06:48.080
+reent like
+
+00:06:49.120 --> 00:06:54.160
+this and just to make it clear which
+
+00:06:51.720 --> 00:06:56.560
+conso Lo statement corresponds to which
+
+00:06:54.160 --> 00:06:57.680
+listener I'm going to add in here a
+
+00:06:56.560 --> 00:07:02.800
+label
+
+00:06:57.680 --> 00:07:05.800
+before update after update and
+
+00:07:02.800 --> 00:07:08.040
+error so again initially there are no
+
+00:07:05.800 --> 00:07:10.640
+looks that came from those listeners
+
+00:07:08.040 --> 00:07:12.880
+because none of those events were fired
+
+00:07:10.640 --> 00:07:14.800
+on the initial page load because they
+
+00:07:12.880 --> 00:07:17.479
+will be fired once we're going to modify
+
+00:07:14.800 --> 00:07:19.800
+the module so let's do just that I'm
+
+00:07:17.479 --> 00:07:22.800
+going to go ahead and change the color
+
+00:07:19.800 --> 00:07:24.640
+of the background and then in a browser
+
+00:07:22.800 --> 00:07:27.279
+we can see that firstly we have received
+
+00:07:24.640 --> 00:07:29.760
+the lock which came from the before
+
+00:07:27.279 --> 00:07:32.160
+update EV went listener with some
+
+00:07:29.760 --> 00:07:35.040
+metadata about the module which was
+
+00:07:32.160 --> 00:07:37.760
+updated when it was updated and the pass
+
+00:07:35.040 --> 00:07:40.319
+to this module so this log was printed
+
+00:07:37.760 --> 00:07:42.920
+to right before we have applied HMR
+
+00:07:40.319 --> 00:07:45.359
+update and the after update log was
+
+00:07:42.920 --> 00:07:48.319
+printed after we have applied HMR
+
+00:07:45.359 --> 00:07:50.560
+updates and this7 Handler also received
+
+00:07:48.319 --> 00:07:53.199
+the same object which describes the
+
+00:07:50.560 --> 00:07:55.439
+module which was updated and just to
+
+00:07:53.199 --> 00:07:58.439
+trigger the error went we have to make
+
+00:07:55.439 --> 00:07:59.920
+syntax error in this module and then in
+
+00:07:58.439 --> 00:08:02.279
+the console we're going to see that the
+
+00:07:59.920 --> 00:08:05.199
+error was printed which means the error
+
+00:08:02.279 --> 00:08:07.840
+handler was executed and the data that
+
+00:08:05.199 --> 00:08:10.439
+we have received in here contains the
+
+00:08:07.840 --> 00:08:12.640
+full description of the error and by the
+
+00:08:10.439 --> 00:08:15.040
+way the same error was displayed right
+
+00:08:12.640 --> 00:08:17.279
+here and this is how we can leverage
+
+00:08:15.040 --> 00:08:20.399
+those default events to be able to hook
+
+00:08:17.279 --> 00:08:23.319
+into HMR process and execute particular
+
+00:08:20.399 --> 00:08:25.800
+code at the different stages of HMR
+
+00:08:23.319 --> 00:08:27.920
+updates in this lesson we're going to
+

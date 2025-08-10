@@ -1,0 +1,590 @@
+WEBVTT
+
+00:00:02.760 --> 00:00:06.640
+from the file system by using special
+
+00:00:04.680 --> 00:00:09.359
+function which we will review in this
+
+00:00:06.640 --> 00:00:12.040
+lesson so first of all let's clear main
+
+00:00:09.359 --> 00:00:15.000
+Javascript file let's also go to
+
+00:00:12.040 --> 00:00:17.599
+index.html and remove IMG element with
+
+00:00:15.000 --> 00:00:19.839
+an idea of image and now back to our
+
+00:00:17.599 --> 00:00:21.400
+main Javascript file and in here we're
+
+00:00:19.839 --> 00:00:23.960
+going to write the following let's
+
+00:00:21.400 --> 00:00:26.119
+create constant with a name modules and
+
+00:00:23.960 --> 00:00:28.839
+the special function which VD provides
+
+00:00:26.119 --> 00:00:31.240
+us with is called Globe which we will
+
+00:00:28.839 --> 00:00:34.079
+call on The Meta object and here we're
+
+00:00:31.240 --> 00:00:36.040
+going to specify pass to those modules
+
+00:00:34.079 --> 00:00:38.280
+that should be imported and by the way
+
+00:00:36.040 --> 00:00:40.800
+in here we can also use so-called Globe
+
+00:00:38.280 --> 00:00:43.240
+syntax which is kind of like simplified
+
+00:00:40.800 --> 00:00:45.319
+version of regular Expressions so for
+
+00:00:43.240 --> 00:00:47.880
+example I'll say that I want to import
+
+00:00:45.319 --> 00:00:51.119
+all JavaScript files within folder with
+
+00:00:47.880 --> 00:00:54.160
+a name 10 and I can do so by specifying
+
+00:00:51.119 --> 00:00:56.200
+asteris instead of file name and of
+
+00:00:54.160 --> 00:00:57.839
+course to import these modules first of
+
+00:00:56.200 --> 00:01:00.359
+all we have to create them in our
+
+00:00:57.839 --> 00:01:03.240
+project structure so let's create folder
+
+00:01:00.359 --> 00:01:06.079
+with the name 10 within Source folder
+
+00:01:03.240 --> 00:01:07.480
+and in here let's create three modules
+
+00:01:06.079 --> 00:01:10.079
+first one is
+
+00:01:07.480 --> 00:01:12.200
+ajs and just to see that our modules
+
+00:01:10.079 --> 00:01:15.200
+will be imported we're going to place
+
+00:01:12.200 --> 00:01:16.520
+here simple console lock statement and
+
+00:01:15.200 --> 00:01:18.640
+the same thing we're going to do with
+
+00:01:16.520 --> 00:01:21.599
+the rest of modules second module will
+
+00:01:18.640 --> 00:01:24.400
+be BJs which is also going to contain
+
+00:01:21.599 --> 00:01:26.559
+simple consolo statement and finally
+
+00:01:24.400 --> 00:01:29.800
+third module will be called
+
+00:01:26.559 --> 00:01:32.599
+CJs and in here let's see what we got
+
+00:01:29.800 --> 00:01:35.079
+into this modules constant by printing
+
+00:01:32.599 --> 00:01:37.520
+it in a console like this and as we can
+
+00:01:35.079 --> 00:01:40.000
+see in a console we get an object where
+
+00:01:37.520 --> 00:01:42.599
+every qod this object corresponds to
+
+00:01:40.000 --> 00:01:44.599
+pass to a particular module and the
+
+00:01:42.599 --> 00:01:46.599
+value of each key is a special function
+
+00:01:44.599 --> 00:01:48.960
+which we can use to dynamically load
+
+00:01:46.599 --> 00:01:50.960
+particular module and actually before
+
+00:01:48.960 --> 00:01:53.520
+proceeding any further let's take a look
+
+00:01:50.960 --> 00:01:56.400
+at the transform main JS file which
+
+00:01:53.520 --> 00:01:59.680
+browser has received so once VD has
+
+00:01:56.400 --> 00:02:02.119
+discovered that call to Globe function
+
+00:01:59.680 --> 00:02:04.440
+it has transformed this SK into such
+
+00:02:02.119 --> 00:02:07.200
+form where we can see the usage of the
+
+00:02:04.440 --> 00:02:09.839
+method assign which creates an object
+
+00:02:07.200 --> 00:02:12.200
+where every key of an object points to
+
+00:02:09.839 --> 00:02:14.720
+individual module we're trying to import
+
+00:02:12.200 --> 00:02:17.280
+and as a value for every key it has a
+
+00:02:14.720 --> 00:02:20.160
+function which contains instruction to
+
+00:02:17.280 --> 00:02:22.920
+dynamically import particular module and
+
+00:02:20.160 --> 00:02:26.480
+now we can simply iterate over keys of
+
+00:02:22.920 --> 00:02:29.280
+this object let's do this by using Val
+
+00:02:26.480 --> 00:02:31.480
+method on the object and here we need to
+
+00:02:29.280 --> 00:02:34.240
+pass the object which Val Val we have to
+
+00:02:31.480 --> 00:02:37.319
+iterate over so we're using our modules
+
+00:02:34.240 --> 00:02:39.760
+constant then let's call method for each
+
+00:02:37.319 --> 00:02:41.760
+to iterate over values of the modules
+
+00:02:39.760 --> 00:02:43.599
+object and on every iteration we're
+
+00:02:41.760 --> 00:02:46.160
+going to get a function which we can use
+
+00:02:43.599 --> 00:02:48.559
+to dynamically load particular module
+
+00:02:46.160 --> 00:02:51.200
+and this function Returns the promise so
+
+00:02:48.559 --> 00:02:53.640
+we can chain then call and when the
+
+00:02:51.200 --> 00:02:56.079
+promise will be resolved once our module
+
+00:02:53.640 --> 00:02:57.480
+will be imported as a parameter in here
+
+00:02:56.079 --> 00:03:00.359
+we're going to get the result of
+
+00:02:57.480 --> 00:03:02.160
+execution of the imported module and
+
+00:03:00.359 --> 00:03:04.280
+which is why in a console we have three
+
+00:03:02.160 --> 00:03:06.640
+different log statements and each of
+
+00:03:04.280 --> 00:03:09.160
+these statements comes from modules
+
+00:03:06.640 --> 00:03:11.760
+imported dynamically so on the initial
+
+00:03:09.160 --> 00:03:14.599
+page load browser has instantly
+
+00:03:11.760 --> 00:03:17.000
+requested these three modules as we can
+
+00:03:14.599 --> 00:03:20.119
+see we have requests for every such
+
+00:03:17.000 --> 00:03:23.599
+module in the network Tab and therefore
+
+00:03:20.119 --> 00:03:25.760
+this consol statement was also run which
+
+00:03:23.599 --> 00:03:27.800
+produced those Lo statements in a
+
+00:03:25.760 --> 00:03:29.960
+console and now let's print out the
+
+00:03:27.800 --> 00:03:32.200
+value of the data variable which will
+
+00:03:29.960 --> 00:03:35.000
+receive after promise gets resolved
+
+00:03:32.200 --> 00:03:36.559
+after Dynamic module import so for now
+
+00:03:35.000 --> 00:03:39.240
+we're not going to see anything
+
+00:03:36.559 --> 00:03:41.920
+interesting Within These objects they're
+
+00:03:39.240 --> 00:03:44.280
+basically empty but what we're actually
+
+00:03:41.920 --> 00:03:47.079
+supposed to get Within These objects is
+
+00:03:44.280 --> 00:03:49.640
+the actual data which gets exported from
+
+00:03:47.079 --> 00:03:52.000
+the dynamically imported modules and as
+
+00:03:49.640 --> 00:03:54.480
+of now our dynamically imported modules
+
+00:03:52.000 --> 00:03:57.040
+do not export any data which is why
+
+00:03:54.480 --> 00:03:59.880
+those objects are empty so now let's go
+
+00:03:57.040 --> 00:04:01.160
+ahead and try to expert something from
+
+00:03:59.880 --> 00:04:03.559
+module a
+
+00:04:01.160 --> 00:04:06.240
+we're going to use default expert and
+
+00:04:03.559 --> 00:04:10.480
+expert number two from the next module
+
+00:04:06.240 --> 00:04:13.440
+BJs we're going to expert constant name
+
+00:04:10.480 --> 00:04:15.760
+with value John and right now within
+
+00:04:13.440 --> 00:04:18.359
+those objects which we receive after
+
+00:04:15.760 --> 00:04:21.079
+promise gets resolved first object is
+
+00:04:18.359 --> 00:04:23.520
+going to contain the key default since
+
+00:04:21.079 --> 00:04:25.920
+we use default expert within the first
+
+00:04:23.520 --> 00:04:28.559
+module and it contains value which we
+
+00:04:25.920 --> 00:04:31.359
+expert that number two and the second
+
+00:04:28.559 --> 00:04:32.880
+object contains property name because
+
+00:04:31.359 --> 00:04:35.520
+this is the constant name which we
+
+00:04:32.880 --> 00:04:38.359
+export from the second module with the
+
+00:04:35.520 --> 00:04:41.480
+value John but even though those Imports
+
+00:04:38.359 --> 00:04:44.079
+of modules a B and C are considered to
+
+00:04:41.480 --> 00:04:46.359
+be dynamic they are executed right away
+
+00:04:44.079 --> 00:04:48.720
+when we load the page and now let's try
+
+00:04:46.359 --> 00:04:51.079
+to change our code in such way that
+
+00:04:48.720 --> 00:04:53.359
+these modules will be loaded only after
+
+00:04:51.079 --> 00:04:55.799
+some event OCC course for example on the
+
+00:04:53.359 --> 00:04:58.799
+document object we can register listener
+
+00:04:55.799 --> 00:05:01.400
+for a click event and within this event
+
+00:04:58.799 --> 00:05:03.760
+handler we can place all this code which
+
+00:05:01.400 --> 00:05:06.440
+is going to dynamically import our
+
+00:05:03.760 --> 00:05:08.839
+modules and now in the initial page load
+
+00:05:06.440 --> 00:05:11.319
+we're not going to get any data within
+
+00:05:08.839 --> 00:05:14.440
+the console as we can see no logs are
+
+00:05:11.319 --> 00:05:17.280
+present here but after I click on the
+
+00:05:14.440 --> 00:05:19.720
+document in the network tab we can see
+
+00:05:17.280 --> 00:05:23.480
+that three new calls are being made to
+
+00:05:19.720 --> 00:05:26.040
+fetch our modules a b and c and of
+
+00:05:23.480 --> 00:05:28.799
+course after execution these modules we
+
+00:05:26.040 --> 00:05:30.640
+receive logs in a console as well as the
+
+00:05:28.799 --> 00:05:32.839
+data that gets exported from window
+
+00:05:30.640 --> 00:05:35.040
+those modules and now a couple of words
+
+00:05:32.839 --> 00:05:38.040
+about the configurations which we can
+
+00:05:35.040 --> 00:05:40.359
+pass when calling Globe method so as a
+
+00:05:38.040 --> 00:05:42.200
+second parameter in here it receives
+
+00:05:40.359 --> 00:05:45.240
+configuration object and one
+
+00:05:42.200 --> 00:05:47.280
+configuration option is called eager
+
+00:05:45.240 --> 00:05:49.920
+this option literally disables Dynamic
+
+00:05:47.280 --> 00:05:52.760
+nature and even though based on our
+
+00:05:49.920 --> 00:05:55.240
+current implementation Dynamic modules
+
+00:05:52.760 --> 00:05:57.720
+are supposed to be loaded only after
+
+00:05:55.240 --> 00:06:00.040
+clicking on the document with this eager
+
+00:05:57.720 --> 00:06:02.319
+option set to True our modules will be
+
+00:06:00.040 --> 00:06:05.119
+loaded instantly on the initial page
+
+00:06:02.319 --> 00:06:07.640
+load let's check it out and right away
+
+00:06:05.119 --> 00:06:09.640
+on the initial page load as we can see
+
+00:06:07.640 --> 00:06:11.960
+our console contains three log
+
+00:06:09.640 --> 00:06:15.200
+statements which is a hint that our
+
+00:06:11.960 --> 00:06:17.440
+Dynamic modules were loaded and executed
+
+00:06:15.200 --> 00:06:19.119
+an appropriate Network requests to lower
+
+00:06:17.440 --> 00:06:22.680
+Dynamic modules we can see in the
+
+00:06:19.119 --> 00:06:25.000
+network tab it's these three modules a b
+
+00:06:22.680 --> 00:06:27.160
+and c but also let's see what is going
+
+00:06:25.000 --> 00:06:29.119
+to happen this time when I will click on
+
+00:06:27.160 --> 00:06:31.400
+the document and in a console we're
+
+00:06:29.119 --> 00:06:33.839
+going to get an error saying that module
+
+00:06:31.400 --> 00:06:36.240
+is not a function and this is because we
+
+00:06:33.839 --> 00:06:38.440
+have used eager configuration option
+
+00:06:36.240 --> 00:06:40.920
+with value a true and The Returned
+
+00:06:38.440 --> 00:06:42.839
+modules object no longer contains
+
+00:06:40.920 --> 00:06:45.160
+functions that we can execute to load
+
+00:06:42.839 --> 00:06:47.160
+Dynamic modules and let's see what it
+
+00:06:45.160 --> 00:06:49.720
+contains instead by printing the value
+
+00:06:47.160 --> 00:06:52.559
+in a console so as we can see in here we
+
+00:06:49.720 --> 00:06:54.720
+got an object where every key is passed
+
+00:06:52.559 --> 00:06:56.520
+to a particular module and instead of
+
+00:06:54.720 --> 00:06:59.640
+the value be in a function which we can
+
+00:06:56.520 --> 00:07:02.559
+execute to load module dynamically this
+
+00:06:59.640 --> 00:07:05.200
+time all modules were loaded immediately
+
+00:07:02.559 --> 00:07:07.720
+on the initial page load and as well as
+
+00:07:05.200 --> 00:07:10.160
+in this object we have exported data
+
+00:07:07.720 --> 00:07:13.240
+from those modules for example first
+
+00:07:10.160 --> 00:07:15.760
+object contains key default because
+
+00:07:13.240 --> 00:07:18.359
+first module uses default expert and the
+
+00:07:15.760 --> 00:07:20.640
+second module contains key name because
+
+00:07:18.359 --> 00:07:23.400
+we expert constant with this name from
+
+00:07:20.640 --> 00:07:26.119
+that module and theel a John and as for
+
+00:07:23.400 --> 00:07:29.480
+the Transformations which wi has applied
+
+00:07:26.119 --> 00:07:32.000
+to the C2 Globe function we can see that
+
+00:07:29.480 --> 00:07:34.799
+it converted that call into such three
+
+00:07:32.000 --> 00:07:37.799
+import statements where each import
+
+00:07:34.799 --> 00:07:40.119
+statement Imports particular module and
+
+00:07:37.799 --> 00:07:43.280
+the data which gets exported from every
+
+00:07:40.119 --> 00:07:45.359
+module is being saved as a Val for keys
+
+00:07:43.280 --> 00:07:48.119
+of the resulting object that we store
+
+00:07:45.359 --> 00:07:49.920
+within modules constant and of course
+
+00:07:48.119 --> 00:07:52.880
+the same transformation which is being
+
+00:07:49.920 --> 00:07:55.280
+made on our JavaScript source file we
+
+00:07:52.880 --> 00:07:58.000
+can see if we take a look at our plugin
+
+00:07:55.280 --> 00:08:00.760
+inspector in here and this is how we can
+
+00:07:58.000 --> 00:08:03.280
+use special VI function called glob to
+
+00:08:00.760 --> 00:08:05.280
+import several modules at once but this
+
+00:08:03.280 --> 00:08:07.280
+is definitely not all what glow function
+
+00:08:05.280 --> 00:08:09.319
+can do and in the next lesson we're
+
+00:08:07.280 --> 00:08:12.200
+going to review some additional details
+
+00:08:09.319 --> 00:08:14.480
+about this function let's continue
+

@@ -1,0 +1,87 @@
+take a look at how to import static
+assets so let's just create new
+directory in our project we're going to
+use the following pass Source assets IMG
+and here we're going to move our image
+javascript. SVG and now let's try to
+impert this image in our main Javascript
+file so I'm going to add import
+statement and let's just reference that
+file that was previously moved within
+IMG folder with the name javascript. SVG
+and just to see how V is going to handle
+such image import we're going to print
+value of this image URL variable in a
+console and as we can see VD has given
+us full pass to that image so when our
+browser requested our main JavaScript
+file we see that the import of our image
+was transformed a little bit by adding
+import query parameter to the end of
+this pass and once browser has made
+another request to fetch this file we
+can see that VD has given us valid
+ecmascript module with the default
+expert which points to that image in our
+project so basically thisas module
+returns pass to their exported image and
+of course that pass was assigned to
+image URL variable which we have printed
+in a console and now we can do with this
+pass whatever we like for example let's
+add new Element image into our HTML file
+with an IDE of image and then from the
+JavaScript code we're going to get an
+image by using get element by ID method
+and then we can assign that pass to
+Source attribute so the image will be
+displayed in the browser and as we can
+see it worked and in a browser def tools
+Source attribute contains pass of the
+exported image and of course that image
+is shown on the page so once again when
+we have imported our image in the main
+Javascript file the pass to this image
+was saved into image URL variable and
+then we used this variable to assign to
+Source attribute of image element and
+this way image was displayed on the page
+and besides importing images like this
+we can also import other file types for
+example Json file let's try an example
+here I'm going to import Json file from
+the assets folder and within this space
+I'm also going to include URL query Pam
+like so and now let's see what this Pam
+URL is used for we're going to print
+this URL in a console switch over to the
+browser and right here when our browser
+has requested Json file by the following
+address instead of experting Json object
+as we have seen in one of the previous
+lessons by adding URL query R to this
+pass V has transformed exported Json
+file into valid masri module with the
+default expert which actually points to
+imported file but what if while
+importing images we can receive content
+of an image instead of the pass to this
+image so in such cases we can use
+another query param called row like so
+and in this case instead of giving us
+URL to this image within image URL
+variable V will return the content of
+the file J javascript. SV and we can see
+this content was printed in a console so
+in terms of Transformations if we take a
+look at javascript. SVG request here we
+see that the vid has transformed the
+request at file pass into valid excript
+module where default expert is the whole
+content of this image so in this lesson
+we have taken a look how to import
+static assets such as images into
+JavaScript files and additionally we
+have also taken a look at a few Cod
+parameters we can use while importing
+static assets such as URL and row in the

@@ -1,0 +1,395 @@
+WEBVTT
+
+00:00:01.040 --> 00:00:05.319
+lesson let's review how we can optimize
+
+00:00:03.000 --> 00:00:07.920
+images by using VD and for that I
+
+00:00:05.319 --> 00:00:10.200
+already prepared default vid project
+
+00:00:07.920 --> 00:00:12.359
+let's open it up in the browser and
+
+00:00:10.200 --> 00:00:14.520
+start so at the beginning as always
+
+00:00:12.359 --> 00:00:17.920
+let's just do a little preparation let's
+
+00:00:14.520 --> 00:00:21.080
+switch over to index.html file and here
+
+00:00:17.920 --> 00:00:23.439
+I'm going to add an image and in order
+
+00:00:21.080 --> 00:00:25.840
+for this image to not exceed the
+
+00:00:23.439 --> 00:00:28.880
+available wids of the browser let's
+
+00:00:25.840 --> 00:00:31.760
+assign wids 100% And then what we're
+
+00:00:28.880 --> 00:00:34.720
+going to do inside main.js firstly let's
+
+00:00:31.760 --> 00:00:37.479
+clear everything from here an import an
+
+00:00:34.720 --> 00:00:39.800
+example image which I'm going to add in
+
+00:00:37.479 --> 00:00:41.920
+this project in a bit so then once we
+
+00:00:39.800 --> 00:00:45.000
+got the pass to this image inside the
+
+00:00:41.920 --> 00:00:48.319
+image variable let's just select Dom
+
+00:00:45.000 --> 00:00:50.760
+element of that image we have just added
+
+00:00:48.319 --> 00:00:54.040
+and assign the pass of the image to the
+
+00:00:50.760 --> 00:00:56.359
+source attribute like so let me just
+
+00:00:54.040 --> 00:00:58.680
+quickly add an image to this project
+
+00:00:56.359 --> 00:01:01.279
+here it is this is how our image we're
+
+00:00:58.680 --> 00:01:04.520
+going to optimize looks like and then in
+
+00:01:01.279 --> 00:01:06.680
+order to easily see the size of any file
+
+00:01:04.520 --> 00:01:09.279
+within vs code we can use the following
+
+00:01:06.680 --> 00:01:12.040
+extension I already have this installed
+
+00:01:09.279 --> 00:01:15.520
+and the way this extension works is it
+
+00:01:12.040 --> 00:01:17.960
+just shows the size of an active file in
+
+00:01:15.520 --> 00:01:20.920
+the status bar at the bottom right
+
+00:01:17.960 --> 00:01:24.080
+corner I currently have my status bar
+
+00:01:20.920 --> 00:01:26.439
+hidden so let me just enable it and
+
+00:01:24.080 --> 00:01:28.960
+right here I can see the original size
+
+00:01:26.439 --> 00:01:32.760
+of this image as we can see this image
+
+00:01:28.960 --> 00:01:34.560
+is quite big and the size exceeds 1 MB
+
+00:01:32.760 --> 00:01:36.800
+and now before proceeding further let's
+
+00:01:34.560 --> 00:01:39.200
+switch over to the browser and make sure
+
+00:01:36.800 --> 00:01:41.920
+that this image shows up and everything
+
+00:01:39.200 --> 00:01:44.520
+looks good we can continue so in order
+
+00:01:41.920 --> 00:01:46.240
+to optimize images VD has several
+
+00:01:44.520 --> 00:01:48.640
+plugins and one of them we're going to
+
+00:01:46.240 --> 00:01:51.800
+use in this lesson I'm going to use
+
+00:01:48.640 --> 00:01:54.800
+plugin called VD plugin image Optimizer
+
+00:01:51.800 --> 00:01:59.200
+so this plugin relies on two other
+
+00:01:54.800 --> 00:02:01.680
+libraries sharp JS and SVG o for image
+
+00:01:59.200 --> 00:02:04.040
+optimizations so first things first
+
+00:02:01.680 --> 00:02:06.160
+let's just install this plugin by
+
+00:02:04.040 --> 00:02:08.120
+running the following npm code command
+
+00:02:06.160 --> 00:02:11.319
+I'm going to copy over this command and
+
+00:02:08.120 --> 00:02:13.880
+run it in my terminal and then since
+
+00:02:11.319 --> 00:02:15.680
+this plugin relies onto other libraries
+
+00:02:13.880 --> 00:02:18.520
+those libraries have to be manually
+
+00:02:15.680 --> 00:02:20.560
+installed so one by one I'm going to
+
+00:02:18.520 --> 00:02:23.399
+copy these commments to install these
+
+00:02:20.560 --> 00:02:26.080
+two libraries firstly let's install
+
+00:02:23.399 --> 00:02:29.920
+sharp and right after that let's also
+
+00:02:26.080 --> 00:02:31.920
+install another Library SVG o and once
+
+00:02:29.920 --> 00:02:33.760
+the installation process is finished we
+
+00:02:31.920 --> 00:02:37.000
+have to configure this plugin and the
+
+00:02:33.760 --> 00:02:39.240
+way we do this is by inserting this
+
+00:02:37.000 --> 00:02:41.920
+configuration into our re configuration
+
+00:02:39.240 --> 00:02:44.600
+file currently I do not have this file
+
+00:02:41.920 --> 00:02:47.120
+so let me create it and paste in here
+
+00:02:44.600 --> 00:02:49.399
+all that configuration there is nothing
+
+00:02:47.120 --> 00:02:51.680
+special about this configuration and the
+
+00:02:49.399 --> 00:02:53.600
+most important thing here is that we
+
+00:02:51.680 --> 00:02:56.160
+import and include our new image
+
+00:02:53.600 --> 00:02:58.760
+optimization plugin and add it to the
+
+00:02:56.160 --> 00:03:00.760
+vid pipeline actually this plugin allows
+
+00:02:58.760 --> 00:03:02.960
+us to configure a lot of things but
+
+00:03:00.760 --> 00:03:05.720
+we're not going to review any possible
+
+00:03:02.960 --> 00:03:07.600
+configuration option and instead let's
+
+00:03:05.720 --> 00:03:10.720
+just see how to optimize an image with
+
+00:03:07.600 --> 00:03:13.000
+an extension. gpg so let me copy over
+
+00:03:10.720 --> 00:03:16.359
+this configuration option and paste it
+
+00:03:13.000 --> 00:03:19.200
+into my V.C config.js and by using this
+
+00:03:16.359 --> 00:03:22.279
+option quality we can configure how much
+
+00:03:19.200 --> 00:03:25.080
+we want all gpg images to be optimized
+
+00:03:22.279 --> 00:03:27.000
+so as an example let's specify 80 and by
+
+00:03:25.080 --> 00:03:29.399
+the way image optimization only happens
+
+00:03:27.000 --> 00:03:31.439
+when building the project for production
+
+00:03:29.399 --> 00:03:34.080
+so I'm going to have to run the build by
+
+00:03:31.439 --> 00:03:36.120
+using npm run build and right here we
+
+00:03:34.080 --> 00:03:38.800
+can see the new output this is the
+
+00:03:36.120 --> 00:03:41.040
+result of that image optimization plugin
+
+00:03:38.800 --> 00:03:43.840
+and right away we can see in here that
+
+00:03:41.040 --> 00:03:46.279
+two images were optimized the first
+
+00:03:43.840 --> 00:03:49.640
+image is that image we just added to the
+
+00:03:46.279 --> 00:03:52.359
+project and another one vid SVG is the
+
+00:03:49.640 --> 00:03:54.800
+default one which recites inside public
+
+00:03:52.359 --> 00:03:57.880
+folder by default so as we can see the
+
+00:03:54.800 --> 00:04:01.080
+size of the first image was reduced by
+
+00:03:57.880 --> 00:04:02.520
+around 300 kilobytes and now to see the
+
+00:04:01.080 --> 00:04:05.760
+result in the browser I'm going to have
+
+00:04:02.520 --> 00:04:08.319
+to run npm run preview to open up build
+
+00:04:05.760 --> 00:04:10.680
+project in the browser and by following
+
+00:04:08.319 --> 00:04:13.160
+the address Local Host
+
+00:04:10.680 --> 00:04:15.760
+4173 we can see in the browser build
+
+00:04:13.160 --> 00:04:18.160
+project and there we go we got here an
+
+00:04:15.760 --> 00:04:20.040
+optimized image but the size here is a
+
+00:04:18.160 --> 00:04:22.399
+little bit different than the one we
+
+00:04:20.040 --> 00:04:25.279
+have just seen in the terminal anyway
+
+00:04:22.399 --> 00:04:26.760
+our image optimization is worked so now
+
+00:04:25.279 --> 00:04:29.920
+let's just change the value of the
+
+00:04:26.760 --> 00:04:33.359
+quality configuration option for example
+
+00:04:29.920 --> 00:04:36.200
+let's specify 40 and then run the build
+
+00:04:33.359 --> 00:04:38.840
+by running npm run build and this time
+
+00:04:36.200 --> 00:04:40.880
+the image size was reduced even more and
+
+00:04:38.840 --> 00:04:43.080
+of course if I open up this build in a
+
+00:04:40.880 --> 00:04:46.000
+browser we can see in here the newly
+
+00:04:43.080 --> 00:04:50.359
+optimized image with the size of
+
+00:04:46.000 --> 00:04:52.720
+392 kiloby so let's review in the editor
+
+00:04:50.359 --> 00:04:55.560
+let's open up original image with the
+
+00:04:52.720 --> 00:04:58.439
+name image. gpg and as we can see the
+
+00:04:55.560 --> 00:05:00.840
+original size of this image was over 1
+
+00:04:58.439 --> 00:05:03.240
+MB but then when building the project
+
+00:05:00.840 --> 00:05:07.120
+for production the size of this image
+
+00:05:03.240 --> 00:05:08.880
+was dropped to 34 4 kiloby and actually
+
+00:05:07.120 --> 00:05:11.319
+the point of this lesson was not to show
+
+00:05:08.880 --> 00:05:13.880
+you how the particular plugin works but
+
+00:05:11.319 --> 00:05:15.800
+how to include any plugin into it
+
+00:05:13.880 --> 00:05:18.880
+because the installation process as well
+
+00:05:15.800 --> 00:05:20.439
+as configuration will be pretty similar
+
+00:05:18.880 --> 00:05:22.080
+and of course there is not the only
+
+00:05:20.439 --> 00:05:25.160
+plugin which allows it to optimize
+
+00:05:22.080 --> 00:05:26.840
+images there are also other choices so
+
+00:05:25.160 --> 00:05:29.000
+we just have to pick that plugin which
+
+00:05:26.840 --> 00:05:31.160
+satisfies our needs and then follow
+
+00:05:29.000 --> 00:05:34.160
+simple steps to install and configure
+
+00:05:31.160 --> 00:05:36.520
+this plugin and then we'll be good to go
+
+00:05:34.160 --> 00:05:39.520
+let's keep exploring capabilities of itd
+
+00:05:36.520 --> 00:05:41.560
+in the next lesson in this lesson let's
+

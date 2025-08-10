@@ -1,0 +1,269 @@
+WEBVTT
+
+00:00:02.240 --> 00:00:08.199
+with CSS files in VD projects right now
+
+00:00:05.320 --> 00:00:10.560
+there is no Styles applied to our page
+
+00:00:08.199 --> 00:00:13.199
+so let's go to main Javascript file and
+
+00:00:10.560 --> 00:00:15.959
+try to import CSS file that we're going
+
+00:00:13.199 --> 00:00:19.160
+to create we're going to call new file
+
+00:00:15.959 --> 00:00:20.440
+3. CSS and place it inside of source
+
+00:00:19.160 --> 00:00:23.079
+assets
+
+00:00:20.440 --> 00:00:26.240
+folder and here we'll just add some
+
+00:00:23.079 --> 00:00:28.079
+basic styles to see that our CSS will be
+
+00:00:26.240 --> 00:00:31.240
+applied we're going to make background
+
+00:00:28.079 --> 00:00:33.560
+color of body dark gray and text color
+
+00:00:31.240 --> 00:00:36.720
+white and so let's see what we is going
+
+00:00:33.560 --> 00:00:38.880
+to do whenever it is that we import CSS
+
+00:00:36.720 --> 00:00:41.920
+file as we can see Styles have been
+
+00:00:38.880 --> 00:00:44.199
+applied right away to our page and here
+
+00:00:41.920 --> 00:00:47.160
+is how it works whenever browser makes a
+
+00:00:44.199 --> 00:00:50.360
+request to fetch this CSS file VI is
+
+00:00:47.160 --> 00:00:53.320
+going to process this CSS file and
+
+00:00:50.360 --> 00:00:56.000
+generate valid ecmascript module that
+
+00:00:53.320 --> 00:00:59.240
+looks like this so by doing the request
+
+00:00:56.000 --> 00:01:01.240
+to fetch that CSS file we got valid ecas
+
+00:00:59.240 --> 00:01:03.720
+module in a browser and this code
+
+00:01:01.240 --> 00:01:06.519
+contains instructions to inject our CSS
+
+00:01:03.720 --> 00:01:09.279
+code onto the page we also May notice in
+
+00:01:06.519 --> 00:01:10.959
+here that all those styles from CSS file
+
+00:01:09.279 --> 00:01:13.759
+have been assigned to the constant with
+
+00:01:10.959 --> 00:01:16.199
+CSS in a formal string and then this
+
+00:01:13.759 --> 00:01:18.560
+string has been added to the style Tech
+
+00:01:16.199 --> 00:01:20.120
+inside of the head element so let's take
+
+00:01:18.560 --> 00:01:21.880
+a closer look at what kind of
+
+00:01:20.120 --> 00:01:24.639
+Transformations are being applied
+
+00:01:21.880 --> 00:01:27.360
+whenever we import CSS file let's open
+
+00:01:24.639 --> 00:01:30.320
+up our inspector and whenever we request
+
+00:01:27.360 --> 00:01:32.560
+CSS file from with server it basically
+
+00:01:30.320 --> 00:01:35.600
+makes this transformation of CSS code
+
+00:01:32.560 --> 00:01:37.600
+into valid ecmascript module and this is
+
+00:01:35.600 --> 00:01:40.440
+how it makes it possible to directly
+
+00:01:37.600 --> 00:01:42.880
+import CSS files as valid ecmascript
+
+00:01:40.440 --> 00:01:46.440
+modules and here is one more way we can
+
+00:01:42.880 --> 00:01:48.160
+import CSS files so by adding query
+
+00:01:46.440 --> 00:01:50.519
+parameter called in line
+
+00:01:48.160 --> 00:01:53.560
+to this import we can get the content of
+
+00:01:50.519 --> 00:01:55.480
+this CSS file as a string into Styles
+
+00:01:53.560 --> 00:01:57.560
+variable and then let's see what is
+
+00:01:55.480 --> 00:02:00.560
+contain within this variable by printing
+
+00:01:57.560 --> 00:02:03.680
+it in a console and when browser fetches
+
+00:02:00.560 --> 00:02:05.839
+our main Javascript file it sees this
+
+00:02:03.680 --> 00:02:08.680
+import so it makes another request to
+
+00:02:05.839 --> 00:02:10.959
+the server to fetch CSS file but V also
+
+00:02:08.680 --> 00:02:13.120
+sees that this request has query
+
+00:02:10.959 --> 00:02:15.680
+parameter called in line and this is
+
+00:02:13.120 --> 00:02:18.440
+kind of assigned to V that instead of
+
+00:02:15.680 --> 00:02:20.680
+automatically injecting CSS Styles onto
+
+00:02:18.440 --> 00:02:23.600
+the page it should directly return
+
+00:02:20.680 --> 00:02:26.079
+content of this CSS file as a string so
+
+00:02:23.600 --> 00:02:29.240
+in response it's going to generate valid
+
+00:02:26.079 --> 00:02:31.360
+masr module where standard expert will
+
+00:02:29.240 --> 00:02:34.040
+be exporting all the styles from the
+
+00:02:31.360 --> 00:02:35.639
+imported CSS module and if we'll take a
+
+00:02:34.040 --> 00:02:38.399
+look at the console sure enough we're
+
+00:02:35.639 --> 00:02:41.240
+going to see those Styles as a string so
+
+00:02:38.399 --> 00:02:43.240
+this is how we processes CSS files and
+
+00:02:41.240 --> 00:02:46.000
+this is what transformation is going to
+
+00:02:43.240 --> 00:02:48.120
+be applied in this case whole CSS code
+
+00:02:46.000 --> 00:02:50.199
+will be converted to a string and this
+
+00:02:48.120 --> 00:02:52.319
+string will be exported as a default
+
+00:02:50.199 --> 00:02:54.759
+export from the generated ecmascript
+
+00:02:52.319 --> 00:02:56.680
+module and then in our JavaScript code
+
+00:02:54.759 --> 00:02:58.839
+we can do with those Styles anything we
+
+00:02:56.680 --> 00:03:01.600
+want for example let's create new
+
+00:02:58.839 --> 00:03:01.600
+element
+
+00:03:01.759 --> 00:03:08.079
+style let's assign those styles to Inner
+
+00:03:05.199 --> 00:03:11.319
+text property and then we're going to
+
+00:03:08.079 --> 00:03:14.399
+find a head element and append our newly
+
+00:03:11.319 --> 00:03:15.959
+created style element to the head and
+
+00:03:14.399 --> 00:03:18.399
+this way we're going to end up with the
+
+00:03:15.959 --> 00:03:20.360
+same result as if we would import CSS
+
+00:03:18.399 --> 00:03:23.000
+file in a normal way without using
+
+00:03:20.360 --> 00:03:25.199
+inline query parameter as we can see we
+
+00:03:23.000 --> 00:03:27.520
+just manually injected those Styles
+
+00:03:25.199 --> 00:03:28.880
+inside of head element formatting of
+
+00:03:27.520 --> 00:03:31.120
+style Tech will be a little bit
+
+00:03:28.880 --> 00:03:33.559
+different in here but the end result
+
+00:03:31.120 --> 00:03:36.319
+will be the same and this is how it
+
+00:03:33.559 --> 00:03:39.720
+handles CSS Imports let's go back to
+
+00:03:36.319 --> 00:03:42.400
+main.js file remove everything from here
+
+00:03:39.720 --> 00:03:44.720
+and leave only import of CSS file we're
+
+00:03:42.400 --> 00:03:47.960
+going to continue working with CSS in
+
+00:03:44.720 --> 00:03:49.799
+vid projects in the next lesson
+

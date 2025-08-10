@@ -1,0 +1,275 @@
+WEBVTT
+
+00:00:02.040 --> 00:00:06.920
+pass aliases so let's see how it can be
+
+00:00:04.400 --> 00:00:09.960
+useful for us I'm going to clear out our
+
+00:00:06.920 --> 00:00:12.360
+main Javascript file main.js then let's
+
+00:00:09.960 --> 00:00:15.280
+just go ahead and import this CSS file
+
+00:00:12.360 --> 00:00:16.920
+into our main GS file and of course to
+
+00:00:15.280 --> 00:00:19.520
+import that I'm going to have to write
+
+00:00:16.920 --> 00:00:22.360
+down the whole pass which leads to this
+
+00:00:19.520 --> 00:00:24.239
+CSS file like this and then let's add
+
+00:00:22.360 --> 00:00:27.360
+one more import and we're going to
+
+00:00:24.239 --> 00:00:30.280
+import this image so here I'm going to
+
+00:00:27.360 --> 00:00:34.000
+have to write the whole pass to this
+
+00:00:30.280 --> 00:00:37.000
+image which is contained inside IMG
+
+00:00:34.000 --> 00:00:40.440
+folder and then inside index HTML I'm
+
+00:00:37.000 --> 00:00:42.040
+going to add another IMG Tech to display
+
+00:00:40.440 --> 00:00:44.600
+that
+
+00:00:42.040 --> 00:00:47.080
+image but for demonstration purposes
+
+00:00:44.600 --> 00:00:50.120
+we're going to use JavaScript for it so
+
+00:00:47.080 --> 00:00:54.040
+let's select an element by an ID of
+
+00:00:50.120 --> 00:00:57.280
+image and assign the URL of an image to
+
+00:00:54.040 --> 00:00:59.440
+the source attribute like this
+
+00:00:57.280 --> 00:01:01.800
+so before switching over to the browser
+
+00:00:59.440 --> 00:01:05.120
+we also have to change the extension of
+
+00:01:01.800 --> 00:01:06.719
+our main Javascript file from DS on JS
+
+00:01:05.120 --> 00:01:09.679
+and now let's see how it looks in a
+
+00:01:06.719 --> 00:01:12.800
+browser so first of all the imported CSS
+
+00:01:09.679 --> 00:01:14.800
+file was inserted onto the page in this
+
+00:01:12.800 --> 00:01:17.280
+style tech and as we can see our
+
+00:01:14.800 --> 00:01:19.440
+JavaScript image is also displayed on
+
+00:01:17.280 --> 00:01:21.639
+the right side but there is a chance
+
+00:01:19.440 --> 00:01:23.639
+that over time our project will become
+
+00:01:21.639 --> 00:01:26.159
+pretty large with lots of different
+
+00:01:23.639 --> 00:01:28.880
+Imports and those Imports sometimes can
+
+00:01:26.159 --> 00:01:30.560
+be pretty long and just to avoid always
+
+00:01:28.880 --> 00:01:33.400
+mentioning the whole pass whenever we
+
+00:01:30.560 --> 00:01:36.520
+need to import some module that allows
+
+00:01:33.400 --> 00:01:38.600
+us to Define so-called pass Al's by
+
+00:01:36.520 --> 00:01:41.520
+using which we can drastically shorten
+
+00:01:38.600 --> 00:01:45.159
+our import pass so let's just apply pass
+
+00:01:41.520 --> 00:01:47.800
+LSS for this two UTS as Al I'm going to
+
+00:01:45.159 --> 00:01:50.719
+use add sign and soon we're going to map
+
+00:01:47.800 --> 00:01:53.920
+this character to point2 source as its
+
+00:01:50.719 --> 00:01:56.920
+folder and to Define our own P LS we
+
+00:01:53.920 --> 00:01:58.480
+have to open up VI configuration file
+
+00:01:56.920 --> 00:02:01.159
+and in here let's add another
+
+00:01:58.480 --> 00:02:03.920
+configuration key called resolve which
+
+00:02:01.159 --> 00:02:07.080
+will be an object with one more property
+
+00:02:03.920 --> 00:02:09.719
+called LS and in turn this will also be
+
+00:02:07.080 --> 00:02:13.480
+an object here we need to define the
+
+00:02:09.719 --> 00:02:16.760
+mapping between our pass ls's and actual
+
+00:02:13.480 --> 00:02:19.159
+P that these Alis will be pointing to so
+
+00:02:16.760 --> 00:02:22.320
+in here I'm going to Define one Alis
+
+00:02:19.159 --> 00:02:25.159
+that I have used previously it's this at
+
+00:02:22.320 --> 00:02:27.840
+sign and as for the pass which this LS
+
+00:02:25.159 --> 00:02:31.679
+should be pointing to I'm going to use
+
+00:02:27.840 --> 00:02:35.040
+node GS helper called resolve to resolve
+
+00:02:31.679 --> 00:02:37.239
+the pass to the folder Source assets as
+
+00:02:35.040 --> 00:02:40.320
+the first argument to this method I'm
+
+00:02:37.239 --> 00:02:43.159
+going to pass the current directory name
+
+00:02:40.320 --> 00:02:46.280
+where this configuration file is located
+
+00:02:43.159 --> 00:02:48.719
+and we can get it by using de name magic
+
+00:02:46.280 --> 00:02:52.480
+variable and as a second argument we
+
+00:02:48.719 --> 00:02:55.320
+should specify our folder where our P LS
+
+00:02:52.480 --> 00:02:57.679
+will be pointing to and at the top let's
+
+00:02:55.320 --> 00:03:00.639
+just quickly test this out I'm going to
+
+00:02:57.679 --> 00:03:03.960
+import this pass module and write
+
+00:03:00.639 --> 00:03:06.199
+console log statement and then see what
+
+00:03:03.960 --> 00:03:08.719
+is actually be printed after calling
+
+00:03:06.199 --> 00:03:11.320
+that resolve method with those
+
+00:03:08.719 --> 00:03:13.239
+parameters so in order to see this lock
+
+00:03:11.320 --> 00:03:16.679
+I'm going to have to restart our Dev
+
+00:03:13.239 --> 00:03:18.840
+server by running npm run Dev and right
+
+00:03:16.679 --> 00:03:22.000
+here we can see that pass that was
+
+00:03:18.840 --> 00:03:25.239
+printed by that method resolve and it's
+
+00:03:22.000 --> 00:03:27.400
+exactly the P that we need so our P LS
+
+00:03:25.239 --> 00:03:29.800
+will point to as a folder which is
+
+00:03:27.400 --> 00:03:31.520
+located inside of source folder and now
+
+00:03:29.800 --> 00:03:34.560
+in the browser I'm not supposed to see
+
+00:03:31.520 --> 00:03:36.920
+any changes so as we can see the Styles
+
+00:03:34.560 --> 00:03:39.440
+have been properly applied and the image
+
+00:03:36.920 --> 00:03:42.440
+is also displayed so that means that our
+
+00:03:39.440 --> 00:03:44.760
+custom alas was properly configured and
+
+00:03:42.440 --> 00:03:47.800
+while importing those modules vid has
+
+00:03:44.760 --> 00:03:50.960
+replaced that alas with the proper pass
+
+00:03:47.800 --> 00:03:53.440
+that that alas points to and in our case
+
+00:03:50.960 --> 00:03:55.719
+it is the assis folder inside of source
+
+00:03:53.440 --> 00:03:57.719
+folder so at the end let's go back to
+
+00:03:55.719 --> 00:04:00.159
+our configur curation file and get rid
+
+00:03:57.719 --> 00:04:03.440
+of this console log statement and this
+
+00:04:00.159 --> 00:04:06.199
+is how we can leverage p ls's in order
+
+00:04:03.440 --> 00:04:08.679
+to avoid long passes while importing
+
+00:04:06.199 --> 00:04:11.159
+modules in this lesson let's talk about
+

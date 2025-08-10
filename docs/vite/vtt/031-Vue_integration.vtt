@@ -1,0 +1,344 @@
+WEBVTT
+
+00:00:01.800 --> 00:00:07.239
+take a look at how we can integrate
+
+00:00:03.920 --> 00:00:09.920
+framework view in vid project so I have
+
+00:00:07.239 --> 00:00:12.120
+already scaffold the default vid project
+
+00:00:09.920 --> 00:00:15.720
+so let's start development server by
+
+00:00:12.120 --> 00:00:18.199
+running npm randev and by the way whil
+
+00:00:15.720 --> 00:00:20.359
+scolding new VD project there is a
+
+00:00:18.199 --> 00:00:23.199
+special command that we can use which
+
+00:00:20.359 --> 00:00:25.880
+will basically scaffold VI project with
+
+00:00:23.199 --> 00:00:27.800
+view framework already integrated but
+
+00:00:25.880 --> 00:00:30.520
+just to better understand this whole
+
+00:00:27.800 --> 00:00:33.199
+process and to see what is going on
+
+00:00:30.520 --> 00:00:35.439
+under the hood we're going to do this
+
+00:00:33.199 --> 00:00:37.800
+manually and the first thing we need to
+
+00:00:35.439 --> 00:00:41.080
+do is of course install all necessary
+
+00:00:37.800 --> 00:00:44.560
+npm dependencies such as framework view
+
+00:00:41.080 --> 00:00:47.520
+itself and vid plugin which will allow
+
+00:00:44.560 --> 00:00:50.640
+us to convert files with an extension.
+
+00:00:47.520 --> 00:00:53.560
+view into Jo script code so after
+
+00:00:50.640 --> 00:00:56.479
+installing both of these dependencies we
+
+00:00:53.560 --> 00:01:00.199
+need to open up VD configuration file v.
+
+00:00:56.479 --> 00:01:02.720
+config.js and in here we have to include
+
+00:01:00.199 --> 00:01:06.800
+that plugin we have just installed plug
+
+00:01:02.720 --> 00:01:08.199
+plugin view into this array by calling
+
+00:01:06.800 --> 00:01:10.479
+this function
+
+00:01:08.199 --> 00:01:13.479
+View and then let's just remove
+
+00:01:10.479 --> 00:01:16.880
+everything from the main.js file and
+
+00:01:13.479 --> 00:01:19.520
+start writing view component so inside
+
+00:01:16.880 --> 00:01:22.279
+of our index.html file we already have
+
+00:01:19.520 --> 00:01:24.560
+an element with an IDE of up this will
+
+00:01:22.279 --> 00:01:27.319
+be an element where we're going to Mound
+
+00:01:24.560 --> 00:01:29.960
+our View application so firstly we're
+
+00:01:27.319 --> 00:01:32.720
+going to create the root component up.
+
+00:01:29.960 --> 00:01:34.680
+View and for demonstration purposes we
+
+00:01:32.720 --> 00:01:37.600
+we're going to use a very basic example
+
+00:01:34.680 --> 00:01:41.040
+of a counter component so I'm going to
+
+00:01:37.600 --> 00:01:43.800
+create here one reactive variable by
+
+00:01:41.040 --> 00:01:46.640
+running function ref this variable is
+
+00:01:43.800 --> 00:01:49.080
+going to store current value of our
+
+00:01:46.640 --> 00:01:52.560
+counter and inside the template of this
+
+00:01:49.080 --> 00:01:56.319
+component let's add H1 element with a
+
+00:01:52.560 --> 00:01:58.439
+text counter and right under we're going
+
+00:01:56.319 --> 00:02:02.080
+to add a button which will allow us to
+
+00:01:58.439 --> 00:02:04.359
+increment count variable so let's also
+
+00:02:02.080 --> 00:02:07.560
+output develop the count variable in
+
+00:02:04.359 --> 00:02:10.279
+here and register click listener on this
+
+00:02:07.560 --> 00:02:13.560
+button which will basically increment
+
+00:02:10.279 --> 00:02:15.920
+count variable like this so now that we
+
+00:02:13.560 --> 00:02:18.279
+have one view component we need to
+
+00:02:15.920 --> 00:02:21.560
+initialize View application in our main
+
+00:02:18.279 --> 00:02:24.359
+script so in here firstly let's import
+
+00:02:21.560 --> 00:02:27.080
+our root component from the file up.
+
+00:02:24.359 --> 00:02:30.720
+view and also we'll need to import
+
+00:02:27.080 --> 00:02:32.680
+function create up from The View package
+
+00:02:30.720 --> 00:02:35.160
+which is going to be used to initialize
+
+00:02:32.680 --> 00:02:38.040
+our review application and in here let's
+
+00:02:35.160 --> 00:02:41.239
+call this function create up pass in our
+
+00:02:38.040 --> 00:02:44.920
+root component and then call in function
+
+00:02:41.239 --> 00:02:47.479
+Mount and specifying an identifier of
+
+00:02:44.920 --> 00:02:50.279
+that element where we're going to mount
+
+00:02:47.479 --> 00:02:52.640
+our application into and just as a
+
+00:02:50.279 --> 00:02:55.279
+reminder we already have an element with
+
+00:02:52.640 --> 00:02:58.000
+an IDE of up in our
+
+00:02:55.279 --> 00:03:01.279
+index.html so now in the browser as we
+
+00:02:58.000 --> 00:03:03.840
+can see we have a working counter so our
+
+00:03:01.279 --> 00:03:05.920
+View application was properly
+
+00:03:03.840 --> 00:03:08.479
+initialized and now let's take a look at
+
+00:03:05.920 --> 00:03:11.600
+the transformation which wi has applied
+
+00:03:08.479 --> 00:03:13.479
+to our app component I have additionally
+
+00:03:11.600 --> 00:03:15.560
+installed plugin called VD plugin
+
+00:03:13.479 --> 00:03:19.120
+inspect in order to see what
+
+00:03:15.560 --> 00:03:20.920
+transformation VD applies to our modules
+
+00:03:19.120 --> 00:03:23.439
+so we can open up this URL in the
+
+00:03:20.920 --> 00:03:26.040
+browser and in here we're going to see
+
+00:03:23.439 --> 00:03:29.439
+all those Transformations done to our
+
+00:03:26.040 --> 00:03:31.920
+modules so whenever we are importing up.
+
+00:03:29.439 --> 00:03:34.760
+view component the plugin is going to
+
+00:03:31.920 --> 00:03:37.800
+take the content of this component and
+
+00:03:34.760 --> 00:03:41.080
+turn all this content into valid
+
+00:03:37.800 --> 00:03:43.800
+JavaScript code in other words into the
+
+00:03:41.080 --> 00:03:46.800
+render function which will be called on
+
+00:03:43.800 --> 00:03:49.479
+the client side and render our component
+
+00:03:46.800 --> 00:03:52.479
+on the page and now let's also take a
+
+00:03:49.479 --> 00:03:53.720
+look on the network tab so when browser
+
+00:03:52.479 --> 00:03:56.720
+fetches
+
+00:03:53.720 --> 00:03:59.239
+main.js then it fires the call to the
+
+00:03:56.720 --> 00:04:01.479
+server to fetch the content of the
+
+00:03:59.239 --> 00:04:03.239
+update view component but instead of
+
+00:04:01.479 --> 00:04:06.040
+giving us the r cont content of the
+
+00:04:03.239 --> 00:04:08.479
+update view component vit has applied
+
+00:04:06.040 --> 00:04:11.080
+the plugin to the file with this. view
+
+00:04:08.479 --> 00:04:14.080
+extension which would transform view
+
+00:04:11.080 --> 00:04:15.439
+template into valid JavaScript syntax
+
+00:04:14.080 --> 00:04:17.760
+and this is the code which is
+
+00:04:15.439 --> 00:04:20.439
+responsible for rendering counter
+
+00:04:17.760 --> 00:04:22.399
+component on the page so as you can see
+
+00:04:20.439 --> 00:04:25.479
+it was very easy to integrate view
+
+00:04:22.399 --> 00:04:28.040
+framework into vid project initially we
+
+00:04:25.479 --> 00:04:31.439
+just had to install to npm dependencies
+
+00:04:28.040 --> 00:04:35.000
+view framework itself and vid plugin to
+
+00:04:31.439 --> 00:04:37.120
+transform View files into JavaScript
+
+00:04:35.000 --> 00:04:40.600
+code and then we had to include this
+
+00:04:37.120 --> 00:04:43.319
+plugin inside of V configuration file
+
+00:04:40.600 --> 00:04:45.239
+just like any other we plugin and after
+
+00:04:43.319 --> 00:04:47.720
+doing all these steps we have actually
+
+00:04:45.239 --> 00:04:50.960
+provided the full support of the view
+
+00:04:47.720 --> 00:04:53.680
+framework inside vid project so we can
+
+00:04:50.960 --> 00:04:55.720
+develop View application in a normal way
+
+00:04:53.680 --> 00:04:58.560
+by creating components with view
+
+00:04:55.720 --> 00:05:00.760
+extensions importing those components
+
+00:04:58.560 --> 00:05:02.920
+they will be properly transformed into
+
+00:05:00.760 --> 00:05:05.680
+valid JavaScript code and and everything
+
+00:05:02.920 --> 00:05:08.279
+will be working fine and this is how we
+
+00:05:05.680 --> 00:05:10.600
+integrate view framework in vid
+
+00:05:08.279 --> 00:05:12.479
+projects in this lesson we're going to
+

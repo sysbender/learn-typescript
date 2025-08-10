@@ -1,0 +1,653 @@
+WEBVTT
+
+00:00:00.040 --> 00:00:03.880
+description in the previous lesson we
+
+00:00:02.200 --> 00:00:07.160
+have implemented the plugin which allows
+
+00:00:03.880 --> 00:00:09.560
+us to import CSV files inside of
+
+00:00:07.160 --> 00:00:11.920
+ecmascript modules and the way it works
+
+00:00:09.560 --> 00:00:15.600
+is as follows whenever we import CSV
+
+00:00:11.920 --> 00:00:17.800
+file the CSV synex gets transformed into
+
+00:00:15.600 --> 00:00:20.600
+JavaScript array of objects but
+
+00:00:17.800 --> 00:00:23.680
+currently our plugin is kind of inlined
+
+00:00:20.600 --> 00:00:26.680
+inside of vid configuration but usually
+
+00:00:23.680 --> 00:00:28.640
+plugins are extracted into separate
+
+00:00:26.680 --> 00:00:32.120
+JavaScript modules in the form of
+
+00:00:28.640 --> 00:00:34.279
+factory function so let's try to move it
+
+00:00:32.120 --> 00:00:36.399
+into a separate file just like it is
+
+00:00:34.279 --> 00:00:39.040
+done for the inspect plugin here we're
+
+00:00:36.399 --> 00:00:41.560
+just importing this plugin and then
+
+00:00:39.040 --> 00:00:43.840
+coling it inside this plugins array so
+
+00:00:41.560 --> 00:00:47.040
+we're going to do the same with our CSV
+
+00:00:43.840 --> 00:00:49.439
+plugin let's just cut this whole object
+
+00:00:47.040 --> 00:00:51.920
+create a new file for this plug-in in
+
+00:00:49.439 --> 00:00:54.880
+the road of our project let's call it
+
+00:00:51.920 --> 00:00:57.640
+vid plugin CSV and this module is going
+
+00:00:54.880 --> 00:01:00.600
+to export one function which will be a
+
+00:00:57.640 --> 00:01:03.160
+factory function for our plugin here
+
+00:01:00.600 --> 00:01:06.279
+we're going to paste that whole object
+
+00:01:03.160 --> 00:01:08.399
+with plug-in definition let's also move
+
+00:01:06.279 --> 00:01:10.640
+that import that we need in this plugin
+
+00:01:08.399 --> 00:01:12.880
+of the function parse and since this
+
+00:01:10.640 --> 00:01:15.279
+function parse gets imported from the
+
+00:01:12.880 --> 00:01:17.880
+sync subm module the there's no need to
+
+00:01:15.279 --> 00:01:19.880
+make our transform hook a synchronous so
+
+00:01:17.880 --> 00:01:22.399
+we can remove this as in keyword from
+
+00:01:19.880 --> 00:01:25.279
+here let's also rename this plugin on
+
+00:01:22.399 --> 00:01:27.920
+simply CSV and then let's get back to
+
+00:01:25.279 --> 00:01:30.920
+our vid configuration and include this
+
+00:01:27.920 --> 00:01:35.240
+plugin by firstly importing Factory
+
+00:01:30.920 --> 00:01:37.920
+function from V plugin CSV file and then
+
+00:01:35.240 --> 00:01:39.800
+just like it is done for inspect plugin
+
+00:01:37.920 --> 00:01:43.040
+right next St we're going to call our
+
+00:01:39.800 --> 00:01:45.760
+Factory function CSV and this way we
+
+00:01:43.040 --> 00:01:47.680
+have just included our own plugin and
+
+00:01:45.760 --> 00:01:50.560
+please note that there is no difference
+
+00:01:47.680 --> 00:01:53.600
+between including plugins in line in the
+
+00:01:50.560 --> 00:01:55.720
+form of JavaScript objects or by moving
+
+00:01:53.600 --> 00:01:58.439
+them into Factory functions and then
+
+00:01:55.720 --> 00:02:01.000
+calling those functions right here in
+
+00:01:58.439 --> 00:02:03.560
+this plugins array so just to make sure
+
+00:02:01.000 --> 00:02:06.040
+that our plugin works as expected and we
+
+00:02:03.560 --> 00:02:08.000
+got the same result as before let's run
+
+00:02:06.040 --> 00:02:10.319
+development server and take a look in
+
+00:02:08.000 --> 00:02:13.479
+the browser as we can see we get the
+
+00:02:10.319 --> 00:02:15.880
+same data that means our plugin works as
+
+00:02:13.479 --> 00:02:18.240
+before and now a couple of words about
+
+00:02:15.880 --> 00:02:20.479
+existing plugins that exist in V
+
+00:02:18.240 --> 00:02:23.240
+ecosystem so first of all there is a
+
+00:02:20.479 --> 00:02:26.439
+list of official plugins provided on the
+
+00:02:23.240 --> 00:02:29.040
+official documentation page right here
+
+00:02:26.439 --> 00:02:31.720
+and then since V internally uses another
+
+00:02:29.040 --> 00:02:33.840
+bundle called rup to build projects for
+
+00:02:31.720 --> 00:02:36.279
+production there are a bunch of RAB
+
+00:02:33.840 --> 00:02:38.640
+plugins that are compatible with VD
+
+00:02:36.279 --> 00:02:40.920
+projects and the list of RAB plugins
+
+00:02:38.640 --> 00:02:43.479
+compatible with v projects can be found
+
+00:02:40.920 --> 00:02:46.000
+on this page and of course besides
+
+00:02:43.479 --> 00:02:47.760
+official r LA and with plugins there are
+
+00:02:46.000 --> 00:02:50.439
+countless of plugins built by the
+
+00:02:47.760 --> 00:02:52.359
+community for example there is ASMR app
+
+00:02:50.439 --> 00:02:55.359
+repository which has collection of
+
+00:02:52.359 --> 00:02:57.560
+resources specifically for rup and this
+
+00:02:55.359 --> 00:03:00.680
+page also includes list of community
+
+00:02:57.560 --> 00:03:03.880
+plugins and similar page also exists for
+
+00:03:00.680 --> 00:03:06.359
+V this repo is called awesome vit here
+
+00:03:03.880 --> 00:03:09.240
+we also can find a bunch of links to
+
+00:03:06.359 --> 00:03:12.319
+everything related to V projects as well
+
+00:03:09.240 --> 00:03:14.120
+as plugins developed by the community
+
+00:03:12.319 --> 00:03:16.479
+now let's go back to our plugin
+
+00:03:14.120 --> 00:03:19.359
+configuration and consider a couple more
+
+00:03:16.479 --> 00:03:22.359
+options that we can use for our plugin
+
+00:03:19.359 --> 00:03:25.200
+so an important option is called apply
+
+00:03:22.359 --> 00:03:27.600
+and this option allows us to specify
+
+00:03:25.200 --> 00:03:29.920
+which environment our plugin should be
+
+00:03:27.600 --> 00:03:31.720
+included into for example if we'd like
+
+00:03:29.920 --> 00:03:34.600
+to use this plugin only during
+
+00:03:31.720 --> 00:03:37.520
+development we can specify Val serve for
+
+00:03:34.600 --> 00:03:39.920
+this option and this way plugin will
+
+00:03:37.520 --> 00:03:42.319
+only be activated while we are running
+
+00:03:39.920 --> 00:03:45.359
+development server and by using another
+
+00:03:42.319 --> 00:03:49.080
+keyword called build allow us to include
+
+00:03:45.359 --> 00:03:50.960
+this plugin only in production builds in
+
+00:03:49.080 --> 00:03:53.279
+other words when we are running commment
+
+00:03:50.960 --> 00:03:56.040
+and PM run build to build the project
+
+00:03:53.279 --> 00:03:58.359
+for production so let's see for example
+
+00:03:56.040 --> 00:04:00.880
+I'm going to specify value serve which
+
+00:03:58.359 --> 00:04:04.200
+means the plugin should be included only
+
+00:04:00.880 --> 00:04:06.319
+in development mode and then if I run
+
+00:04:04.200 --> 00:04:09.279
+production build by running npm run
+
+00:04:06.319 --> 00:04:11.439
+build right away I get an error because
+
+00:04:09.279 --> 00:04:14.080
+our plugin which lets us import CSV
+
+00:04:11.439 --> 00:04:16.279
+modules was not actually included in the
+
+00:04:14.080 --> 00:04:18.920
+production environment and then if I'll
+
+00:04:16.279 --> 00:04:22.200
+go ahead and change this value unbuilt
+
+00:04:18.920 --> 00:04:24.640
+then while running development server by
+
+00:04:22.200 --> 00:04:26.319
+execu an npm run Devo in the browser
+
+00:04:24.640 --> 00:04:29.680
+we're going to get the following error
+
+00:04:26.319 --> 00:04:32.399
+since our import of the CSV file didn't
+
+00:04:29.680 --> 00:04:35.240
+work and besides specifying predefined
+
+00:04:32.399 --> 00:04:38.720
+vales for this Supply option we can also
+
+00:04:35.240 --> 00:04:41.319
+specify a closure which gives us morine
+
+00:04:38.720 --> 00:04:43.760
+grain control disclosure accepts couple
+
+00:04:41.319 --> 00:04:45.840
+of parameters first of which will be
+
+00:04:43.760 --> 00:04:47.720
+conf configuration object and another
+
+00:04:45.840 --> 00:04:49.800
+parameter will also be an object with a
+
+00:04:47.720 --> 00:04:52.439
+couple of useful properties such as
+
+00:04:49.800 --> 00:04:54.720
+comment and mode and then let's just
+
+00:04:52.439 --> 00:04:57.439
+print out each of those variables to see
+
+00:04:54.720 --> 00:04:59.439
+what they contain and by looking in the
+
+00:04:57.439 --> 00:05:01.840
+console we can see that the first
+
+00:04:59.439 --> 00:05:04.359
+parameter basically printed the whole
+
+00:05:01.840 --> 00:05:07.000
+configuration object command variable
+
+00:05:04.359 --> 00:05:09.960
+stores Val serve and mode variable
+
+00:05:07.000 --> 00:05:11.920
+stores Val development since currently
+
+00:05:09.960 --> 00:05:14.640
+we are running it in the development
+
+00:05:11.920 --> 00:05:17.240
+mode and based on this Val we can do an
+
+00:05:14.640 --> 00:05:19.560
+extra checks and if we're going to
+
+00:05:17.240 --> 00:05:21.000
+return value through from disclosure
+
+00:05:19.560 --> 00:05:23.240
+that means the plug-in should be
+
+00:05:21.000 --> 00:05:25.800
+included so for example if I'd like to
+
+00:05:23.240 --> 00:05:28.040
+include this plugin only during
+
+00:05:25.800 --> 00:05:30.560
+development I'm going to compare
+
+00:05:28.040 --> 00:05:32.479
+variable mode with the development word
+
+00:05:30.560 --> 00:05:35.560
+and this way this plugin will be
+
+00:05:32.479 --> 00:05:37.720
+included only while running development
+
+00:05:35.560 --> 00:05:39.439
+server and of course if I'll go ahead
+
+00:05:37.720 --> 00:05:41.040
+and try to build a project for
+
+00:05:39.439 --> 00:05:43.640
+production I'm going to get the
+
+00:05:41.040 --> 00:05:46.240
+corresponding error saying that CSV
+
+00:05:43.640 --> 00:05:49.800
+module cannot be imported since there is
+
+00:05:46.240 --> 00:05:52.760
+no plugin which recognizes such Imports
+
+00:05:49.800 --> 00:05:55.319
+also there may be a situations where we
+
+00:05:52.760 --> 00:05:57.439
+need to access configuration object in
+
+00:05:55.319 --> 00:06:00.279
+other hooks for example in this
+
+00:05:57.439 --> 00:06:02.720
+transform hook so how do we get access
+
+00:06:00.279 --> 00:06:05.279
+to this configuration object from other
+
+00:06:02.720 --> 00:06:07.840
+Hooks and there is actually another hook
+
+00:06:05.279 --> 00:06:09.880
+that we provides as way called config
+
+00:06:07.840 --> 00:06:13.279
+resolved this hook will be called
+
+00:06:09.880 --> 00:06:15.880
+automatically before transform hook and
+
+00:06:13.279 --> 00:06:19.040
+it receiv gives configuration object
+
+00:06:15.880 --> 00:06:22.120
+which we then can store in a variable so
+
+00:06:19.040 --> 00:06:24.439
+it will be accessible to other hooks so
+
+00:06:22.120 --> 00:06:26.800
+I'm going to declare here variable
+
+00:06:24.439 --> 00:06:29.760
+called config before returning
+
+00:06:26.800 --> 00:06:32.920
+configuration for this
+
+00:06:29.760 --> 00:06:35.720
+plugin and then inside config resolved
+
+00:06:32.920 --> 00:06:38.240
+hook I'm going to assign resolved
+
+00:06:35.720 --> 00:06:40.800
+configuration object to this varable
+
+00:06:38.240 --> 00:06:42.920
+config so then it's accessible from
+
+00:06:40.800 --> 00:06:45.760
+other Hooks and then based on
+
+00:06:42.920 --> 00:06:48.560
+configuration values we can easily do
+
+00:06:45.760 --> 00:06:52.479
+extra checks in this transform hook for
+
+00:06:48.560 --> 00:06:56.000
+example let's compare value serve with
+
+00:06:52.479 --> 00:06:58.439
+the value stored in common variable and
+
+00:06:56.000 --> 00:07:01.359
+based on that we're going to specify
+
+00:06:58.439 --> 00:07:04.920
+this value as the value for option
+
+00:07:01.359 --> 00:07:06.760
+columns for the parse function so now
+
+00:07:04.920 --> 00:07:10.279
+let's take a look at the difference
+
+00:07:06.760 --> 00:07:13.359
+firstly let's run our development server
+
+00:07:10.279 --> 00:07:16.040
+and check the result how our CSV code
+
+00:07:13.359 --> 00:07:18.160
+was transformed as we can see we got an
+
+00:07:16.040 --> 00:07:20.520
+array of objects where every key
+
+00:07:18.160 --> 00:07:23.680
+corresponds to the field from the CSV
+
+00:07:20.520 --> 00:07:26.920
+file and every such object corresponds
+
+00:07:23.680 --> 00:07:28.399
+to individual line from the CSV file and
+
+00:07:26.920 --> 00:07:30.680
+for example if I'm going to run
+
+00:07:28.399 --> 00:07:33.160
+development build in this case we're
+
+00:07:30.680 --> 00:07:35.040
+supposed to get different result so
+
+00:07:33.160 --> 00:07:38.200
+let's just run this production build in
+
+00:07:35.040 --> 00:07:39.800
+the browser by running preview server
+
+00:07:38.200 --> 00:07:42.439
+and as we can see the output is
+
+00:07:39.800 --> 00:07:45.359
+different in this case the first element
+
+00:07:42.439 --> 00:07:48.520
+of this array is another array which
+
+00:07:45.359 --> 00:07:51.760
+consist only of column values from the
+
+00:07:48.520 --> 00:07:54.640
+CSV file and all other elements store
+
+00:07:51.760 --> 00:07:56.840
+vales from Individual rows or the CSV
+
+00:07:54.640 --> 00:07:59.840
+file and now let's review one more
+
+00:07:56.840 --> 00:08:03.200
+useful hook which basically allows us to
+
+00:07:59.840 --> 00:08:06.239
+transform HTML content and this Hook is
+
+00:08:03.200 --> 00:08:08.479
+called transform index HTML which is
+
+00:08:06.239 --> 00:08:12.319
+about to receive the whole content of
+
+00:08:08.479 --> 00:08:14.359
+the HTML file so in here we can do all
+
+00:08:12.319 --> 00:08:18.080
+necessary transformation
+
+00:08:14.359 --> 00:08:20.880
+with the content of HTML file so let's
+
+00:08:18.080 --> 00:08:24.239
+replace the closing body Tech with the
+
+00:08:20.880 --> 00:08:27.120
+following I'm going to put basic script
+
+00:08:24.239 --> 00:08:29.840
+at the end of the body element which
+
+00:08:27.120 --> 00:08:33.600
+will open up a dialogue with the word
+
+00:08:29.840 --> 00:08:36.239
+hello like so and it is very important
+
+00:08:33.600 --> 00:08:39.160
+to position all the hooks on the same
+
+00:08:36.239 --> 00:08:42.720
+level so the transform hook as well as
+
+00:08:39.160 --> 00:08:45.680
+transform index HTML hook should be
+
+00:08:42.720 --> 00:08:47.800
+included on the the same level like this
+
+00:08:45.680 --> 00:08:50.000
+so now after running the development
+
+00:08:47.800 --> 00:08:52.319
+server in the browser we can see that
+
+00:08:50.000 --> 00:08:55.600
+firstly we got an alert with the word
+
+00:08:52.319 --> 00:08:57.920
+hello so our transformation of the HTML
+
+00:08:55.600 --> 00:09:00.239
+file was successful and at the end of
+
+00:08:57.920 --> 00:09:03.319
+the body element we got that script
+
+00:09:00.239 --> 00:09:05.080
+which opens up the dialog so in this
+
+00:09:03.319 --> 00:09:07.319
+lesson we have only reviewed a couple of
+
+00:09:05.080 --> 00:09:09.560
+hooks that we can leverage in our
+
+00:09:07.319 --> 00:09:12.239
+plugins but in fact there are a lot more
+
+00:09:09.560 --> 00:09:14.399
+of such Hooks and documentation about
+
+00:09:12.239 --> 00:09:16.760
+those can be found in the offal vid
+
+00:09:14.399 --> 00:09:19.760
+documentation but even only using these
+
+00:09:16.760 --> 00:09:22.239
+hooks we get a lot of flexibility and we
+
+00:09:19.760 --> 00:09:24.520
+can transform imported modules in
+
+00:09:22.239 --> 00:09:27.680
+whatever way we like let's continue
+
+00:09:24.520 --> 00:09:29.800
+learning about VD in the next lesson
+

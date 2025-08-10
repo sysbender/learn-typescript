@@ -1,0 +1,135 @@
+take a look at how we can integrate
+react into vid project so I have
+prepared an empty vid project which
+doesn't use any Frameworks so let's get
+to integrating react and actually before
+we start there is an option which VD
+provides us with which allows us to
+scaffold with project with react
+integrated right from the beginning and
+for that we just need to use value react
+for this template option and run the
+following comment but just to better
+understand this whole process and how
+the integration happens we're going to
+do all these steps manually and before
+we start we actually have to install all
+necessary npm packages such as libraries
+react react Dom and VD plugin which
+allows us to import react components and
+after all those libraries are installed
+we have to open up configuration file
+V.C config.js and in here let's import
+the plugin from the vdjs plug-in react
+package and then to include this plugin
+we have to call this function react in
+this array of plugins like so and that's
+basically it now we can just start
+developing react application so Aron
+starts with the main script file
+main.js let's remove Aron from this file
+and also rename this file on main. jsx
+since we're going to use jsx syntax in
+this file and also we have to fix the P
+to this file inside of
+index.html so let's go here and fix this
+extension right here as we can see we
+already have a de with an identifier app
+this will be a de where we're going to
+mount react application so let's create
+our root component we'll call the new
+file
+app.jsx and here we're going to use a
+simple example which will be basic
+counter component so let's import use
+State function from react then we're
+also going to create file with Styles
+and import them right here and then down
+here let's define our component function
+up so this function is going to have
+only one state variable which will be a
+counter initial value for this counter
+will be zero and right here let's define
+our template for this component so I'm
+going to add H1 element with the counter
+text and down Bellow we're going to
+create the button which is going to
+increment our counter and just to see if
+our counter gets incremented we're also
+going to show this variables value is
+the label for this button like so and
+now we'll register The Listener which
+will be fired when clicking on this
+button and inside of this listener we're
+basically going to update State variable
+count by incrementing it by one and
+finally at the bottom of this file let's
+export this component as a default
+expert and also just to check if we will
+be able to import CSS files with Styles
+and those Styles will be applied to our
+components let's create basic CSS file
+with the name up. CSS and in here I'm
+going to describe one rule for the H1
+element and make the color of this
+element blue because previously I have
+already imported this CSS file in our
+component which is supposed to make this
+H1 Element blue so now that we have our
+root component in place we actually have
+to initialize react application inside
+of our main script so in here we're
+going to import react Dom Library from
+the react Dom client and also we're
+going to import our root component up
+from
+app.jsx in here we have to pass Dom
+element where we're going to mount our
+application into in this case we're
+going to mount it inside of element with
+an idea of up and eventually to render
+this application we're calling method
+render and as the parameter we're
+specifying our root component as the
+jsx and after that if we're going to
+take a look in a browser sure enough
+we're going to see work en counter and
+that means that react application was
+properly initialized so now just to see
+what Transformations are being applied
+to our react components we can use
+plug-in inspect which I have already
+pre-installed which allows us to open up
+this URL in a browser and see
+Transformations that happen to our
+inputs so in this case case once browser
+reads main. jsx file then it sees this
+import of app.jsx component then it
+fires the call to the server to fetch
+the code of this component and instead
+of giving us Z row content of this
+component VD applies react plugin to
+convert the content of this component
+into render function which will be
+recognized in the browser and then this
+function runs in a browser in this way
+we're seeing our counter component on
+the page and if we open up our inspector
+and take a look at the transformation
+which is happening with our component
+file we're going to see that this jsx
+syntax was converted into proper render
+function which will be recognized and
+run in the browser and this is it the
+whole process of react integration into
+vid project was pretty simple so just to
+recap we had to install three
+dependencies react react Dom and plugin
+for react and then we had to include
+this plugin inside vid configuration
+file in this plugins array and this is
+what actually allows us to create an
+import react components in our files so
+we can start developing our react
+applications in vid projects as we are
+used to we are slowly approaching the

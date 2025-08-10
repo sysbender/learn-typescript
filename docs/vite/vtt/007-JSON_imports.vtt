@@ -1,0 +1,149 @@
+WEBVTT
+
+00:00:02.320 --> 00:00:07.360
+files very easily all we have to do to
+
+00:00:04.799 --> 00:00:10.120
+use some Json file in our Javascript
+
+00:00:07.360 --> 00:00:12.240
+file we just have to import it as usual
+
+00:00:10.120 --> 00:00:14.159
+as native ecmascript module and let's
+
+00:00:12.240 --> 00:00:17.320
+see it in action so in here I'm going to
+
+00:00:14.159 --> 00:00:20.159
+import some Json file and accept default
+
+00:00:17.320 --> 00:00:22.279
+export from this module in data variable
+
+00:00:20.159 --> 00:00:24.880
+and then let's create basic Json file
+
+00:00:22.279 --> 00:00:25.720
+with a couple of fields for example name
+
+00:00:24.880 --> 00:00:29.559
+and
+
+00:00:25.720 --> 00:00:31.120
+H this object will describe a person and
+
+00:00:29.559 --> 00:00:33.039
+then just to see what we're going to get
+
+00:00:31.120 --> 00:00:35.240
+inside of data variable let's print it
+
+00:00:33.039 --> 00:00:37.480
+out in the console and check it in the
+
+00:00:35.240 --> 00:00:39.720
+browser and first of all what is going
+
+00:00:37.480 --> 00:00:42.840
+to happen in a browser whenever it
+
+00:00:39.720 --> 00:00:45.919
+encounters our Json import right here it
+
+00:00:42.840 --> 00:00:48.639
+is going to fire a code to our server to
+
+00:00:45.919 --> 00:00:50.559
+fetch this JavaScript module but since
+
+00:00:48.639 --> 00:00:52.960
+this file is not a valid JavaScript
+
+00:00:50.559 --> 00:00:55.919
+module VD has to process this import
+
+00:00:52.960 --> 00:00:58.279
+first and convert Json file into valid
+
+00:00:55.919 --> 00:01:00.279
+ecmascript module and eventually by
+
+00:00:58.279 --> 00:01:02.440
+doing a cod to fetch this file in the
+
+00:01:00.279 --> 00:01:04.960
+browser we're going to get the following
+
+00:01:02.440 --> 00:01:08.360
+in the response so every field of that
+
+00:01:04.960 --> 00:01:10.880
+Json object was exported here separately
+
+00:01:08.360 --> 00:01:13.399
+and additionally the whole Json object
+
+00:01:10.880 --> 00:01:15.600
+gets exported as default expert right
+
+00:01:13.399 --> 00:01:18.120
+here and by printing that value which
+
+00:01:15.600 --> 00:01:20.720
+gets exported from Json module we will
+
+00:01:18.120 --> 00:01:24.080
+get plain alt JavaScript or object in a
+
+00:01:20.720 --> 00:01:26.000
+console with properties name and Ag and
+
+00:01:24.080 --> 00:01:28.760
+as for Transformations which git is
+
+00:01:26.000 --> 00:01:31.440
+going to apply to our Json module we can
+
+00:01:28.760 --> 00:01:34.079
+see that it converts Json syntax into
+
+00:01:31.440 --> 00:01:36.919
+ecmascript syntax which of course allows
+
+00:01:34.079 --> 00:01:39.240
+us to import Json files as normal
+
+00:01:36.919 --> 00:01:41.720
+ecmascript modules in our JavaScript
+
+00:01:39.240 --> 00:01:44.240
+source files and since the default
+
+00:01:41.720 --> 00:01:45.879
+expert that we get is normal JavaScript
+
+00:01:44.240 --> 00:01:47.879
+object we can easily apply the
+
+00:01:45.879 --> 00:01:50.639
+structuring and extract only necessary
+
+00:01:47.879 --> 00:01:52.359
+Fields name and H
+
+00:01:50.639 --> 00:01:54.839
+and sure enough in a console we're going
+
+00:01:52.359 --> 00:01:57.399
+to get value of every field exported
+
+00:01:54.839 --> 00:02:00.280
+separately so this is how easy it is to
+
+00:01:57.399 --> 00:02:02.760
+work with Json files in viit
+
+00:02:00.280 --> 00:02:05.040
+projects in this lesson we're going to
+

@@ -1,0 +1,407 @@
+WEBVTT
+
+00:00:01.600 --> 00:00:06.239
+take a look at how we can integrate
+
+00:00:03.479 --> 00:00:08.920
+react into vid project so I have
+
+00:00:06.239 --> 00:00:11.600
+prepared an empty vid project which
+
+00:00:08.920 --> 00:00:14.319
+doesn't use any Frameworks so let's get
+
+00:00:11.600 --> 00:00:16.520
+to integrating react and actually before
+
+00:00:14.319 --> 00:00:18.560
+we start there is an option which VD
+
+00:00:16.520 --> 00:00:21.439
+provides us with which allows us to
+
+00:00:18.560 --> 00:00:23.960
+scaffold with project with react
+
+00:00:21.439 --> 00:00:26.160
+integrated right from the beginning and
+
+00:00:23.960 --> 00:00:28.520
+for that we just need to use value react
+
+00:00:26.160 --> 00:00:31.239
+for this template option and run the
+
+00:00:28.520 --> 00:00:32.840
+following comment but just to better
+
+00:00:31.239 --> 00:00:35.800
+understand this whole process and how
+
+00:00:32.840 --> 00:00:38.600
+the integration happens we're going to
+
+00:00:35.800 --> 00:00:40.720
+do all these steps manually and before
+
+00:00:38.600 --> 00:00:44.520
+we start we actually have to install all
+
+00:00:40.720 --> 00:00:48.560
+necessary npm packages such as libraries
+
+00:00:44.520 --> 00:00:52.520
+react react Dom and VD plugin which
+
+00:00:48.560 --> 00:00:54.680
+allows us to import react components and
+
+00:00:52.520 --> 00:00:57.080
+after all those libraries are installed
+
+00:00:54.680 --> 00:01:01.040
+we have to open up configuration file
+
+00:00:57.080 --> 00:01:05.000
+V.C config.js and in here let's import
+
+00:01:01.040 --> 00:01:07.479
+the plugin from the vdjs plug-in react
+
+00:01:05.000 --> 00:01:10.399
+package and then to include this plugin
+
+00:01:07.479 --> 00:01:13.439
+we have to call this function react in
+
+00:01:10.399 --> 00:01:15.479
+this array of plugins like so and that's
+
+00:01:13.439 --> 00:01:18.319
+basically it now we can just start
+
+00:01:15.479 --> 00:01:21.160
+developing react application so Aron
+
+00:01:18.319 --> 00:01:24.680
+starts with the main script file
+
+00:01:21.160 --> 00:01:28.880
+main.js let's remove Aron from this file
+
+00:01:24.680 --> 00:01:31.160
+and also rename this file on main. jsx
+
+00:01:28.880 --> 00:01:34.239
+since we're going to use jsx syntax in
+
+00:01:31.160 --> 00:01:36.960
+this file and also we have to fix the P
+
+00:01:34.239 --> 00:01:40.120
+to this file inside of
+
+00:01:36.960 --> 00:01:42.760
+index.html so let's go here and fix this
+
+00:01:40.120 --> 00:01:45.520
+extension right here as we can see we
+
+00:01:42.760 --> 00:01:48.640
+already have a de with an identifier app
+
+00:01:45.520 --> 00:01:52.000
+this will be a de where we're going to
+
+00:01:48.640 --> 00:01:54.279
+mount react application so let's create
+
+00:01:52.000 --> 00:01:55.760
+our root component we'll call the new
+
+00:01:54.279 --> 00:01:58.479
+file
+
+00:01:55.760 --> 00:02:01.199
+app.jsx and here we're going to use a
+
+00:01:58.479 --> 00:02:04.479
+simple example which will be basic
+
+00:02:01.199 --> 00:02:07.080
+counter component so let's import use
+
+00:02:04.479 --> 00:02:09.880
+State function from react then we're
+
+00:02:07.080 --> 00:02:12.279
+also going to create file with Styles
+
+00:02:09.880 --> 00:02:14.800
+and import them right here and then down
+
+00:02:12.279 --> 00:02:17.760
+here let's define our component function
+
+00:02:14.800 --> 00:02:20.239
+up so this function is going to have
+
+00:02:17.760 --> 00:02:22.960
+only one state variable which will be a
+
+00:02:20.239 --> 00:02:26.359
+counter initial value for this counter
+
+00:02:22.960 --> 00:02:29.399
+will be zero and right here let's define
+
+00:02:26.359 --> 00:02:32.880
+our template for this component so I'm
+
+00:02:29.399 --> 00:02:35.399
+going to add H1 element with the counter
+
+00:02:32.880 --> 00:02:37.760
+text and down Bellow we're going to
+
+00:02:35.399 --> 00:02:41.279
+create the button which is going to
+
+00:02:37.760 --> 00:02:44.160
+increment our counter and just to see if
+
+00:02:41.279 --> 00:02:47.640
+our counter gets incremented we're also
+
+00:02:44.160 --> 00:02:51.080
+going to show this variables value is
+
+00:02:47.640 --> 00:02:53.399
+the label for this button like so and
+
+00:02:51.080 --> 00:02:55.319
+now we'll register The Listener which
+
+00:02:53.399 --> 00:02:58.080
+will be fired when clicking on this
+
+00:02:55.319 --> 00:03:01.239
+button and inside of this listener we're
+
+00:02:58.080 --> 00:03:05.080
+basically going to update State variable
+
+00:03:01.239 --> 00:03:07.760
+count by incrementing it by one and
+
+00:03:05.080 --> 00:03:10.720
+finally at the bottom of this file let's
+
+00:03:07.760 --> 00:03:13.520
+export this component as a default
+
+00:03:10.720 --> 00:03:17.080
+expert and also just to check if we will
+
+00:03:13.520 --> 00:03:19.560
+be able to import CSS files with Styles
+
+00:03:17.080 --> 00:03:23.640
+and those Styles will be applied to our
+
+00:03:19.560 --> 00:03:26.520
+components let's create basic CSS file
+
+00:03:23.640 --> 00:03:29.399
+with the name up. CSS and in here I'm
+
+00:03:26.520 --> 00:03:31.720
+going to describe one rule for the H1
+
+00:03:29.399 --> 00:03:34.439
+element and make the color of this
+
+00:03:31.720 --> 00:03:37.279
+element blue because previously I have
+
+00:03:34.439 --> 00:03:39.560
+already imported this CSS file in our
+
+00:03:37.279 --> 00:03:42.680
+component which is supposed to make this
+
+00:03:39.560 --> 00:03:45.199
+H1 Element blue so now that we have our
+
+00:03:42.680 --> 00:03:47.920
+root component in place we actually have
+
+00:03:45.199 --> 00:03:50.239
+to initialize react application inside
+
+00:03:47.920 --> 00:03:53.439
+of our main script so in here we're
+
+00:03:50.239 --> 00:03:56.920
+going to import react Dom Library from
+
+00:03:53.439 --> 00:03:59.960
+the react Dom client and also we're
+
+00:03:56.920 --> 00:04:01.439
+going to import our root component up
+
+00:03:59.960 --> 00:04:04.159
+from
+
+00:04:01.439 --> 00:04:07.000
+app.jsx in here we have to pass Dom
+
+00:04:04.159 --> 00:04:09.239
+element where we're going to mount our
+
+00:04:07.000 --> 00:04:11.680
+application into in this case we're
+
+00:04:09.239 --> 00:04:15.239
+going to mount it inside of element with
+
+00:04:11.680 --> 00:04:17.520
+an idea of up and eventually to render
+
+00:04:15.239 --> 00:04:20.439
+this application we're calling method
+
+00:04:17.520 --> 00:04:23.960
+render and as the parameter we're
+
+00:04:20.439 --> 00:04:26.439
+specifying our root component as the
+
+00:04:23.960 --> 00:04:28.920
+jsx and after that if we're going to
+
+00:04:26.439 --> 00:04:31.600
+take a look in a browser sure enough
+
+00:04:28.920 --> 00:04:34.279
+we're going to see work en counter and
+
+00:04:31.600 --> 00:04:37.080
+that means that react application was
+
+00:04:34.279 --> 00:04:39.359
+properly initialized so now just to see
+
+00:04:37.080 --> 00:04:42.120
+what Transformations are being applied
+
+00:04:39.359 --> 00:04:44.199
+to our react components we can use
+
+00:04:42.120 --> 00:04:46.680
+plug-in inspect which I have already
+
+00:04:44.199 --> 00:04:49.080
+pre-installed which allows us to open up
+
+00:04:46.680 --> 00:04:51.319
+this URL in a browser and see
+
+00:04:49.080 --> 00:04:54.080
+Transformations that happen to our
+
+00:04:51.319 --> 00:04:57.920
+inputs so in this case case once browser
+
+00:04:54.080 --> 00:05:00.720
+reads main. jsx file then it sees this
+
+00:04:57.920 --> 00:05:03.399
+import of app.jsx component then it
+
+00:05:00.720 --> 00:05:05.960
+fires the call to the server to fetch
+
+00:05:03.399 --> 00:05:07.920
+the code of this component and instead
+
+00:05:05.960 --> 00:05:12.040
+of giving us Z row content of this
+
+00:05:07.920 --> 00:05:14.960
+component VD applies react plugin to
+
+00:05:12.040 --> 00:05:16.640
+convert the content of this component
+
+00:05:14.960 --> 00:05:19.080
+into render function which will be
+
+00:05:16.640 --> 00:05:21.800
+recognized in the browser and then this
+
+00:05:19.080 --> 00:05:23.880
+function runs in a browser in this way
+
+00:05:21.800 --> 00:05:27.439
+we're seeing our counter component on
+
+00:05:23.880 --> 00:05:29.399
+the page and if we open up our inspector
+
+00:05:27.439 --> 00:05:31.800
+and take a look at the transformation
+
+00:05:29.399 --> 00:05:34.840
+which is happening with our component
+
+00:05:31.800 --> 00:05:38.120
+file we're going to see that this jsx
+
+00:05:34.840 --> 00:05:40.359
+syntax was converted into proper render
+
+00:05:38.120 --> 00:05:43.120
+function which will be recognized and
+
+00:05:40.359 --> 00:05:45.720
+run in the browser and this is it the
+
+00:05:43.120 --> 00:05:48.560
+whole process of react integration into
+
+00:05:45.720 --> 00:05:51.399
+vid project was pretty simple so just to
+
+00:05:48.560 --> 00:05:54.720
+recap we had to install three
+
+00:05:51.399 --> 00:05:58.560
+dependencies react react Dom and plugin
+
+00:05:54.720 --> 00:06:01.399
+for react and then we had to include
+
+00:05:58.560 --> 00:06:04.479
+this plugin inside vid configuration
+
+00:06:01.399 --> 00:06:06.680
+file in this plugins array and this is
+
+00:06:04.479 --> 00:06:10.359
+what actually allows us to create an
+
+00:06:06.680 --> 00:06:12.319
+import react components in our files so
+
+00:06:10.359 --> 00:06:14.920
+we can start developing our react
+
+00:06:12.319 --> 00:06:18.199
+applications in vid projects as we are
+
+00:06:14.920 --> 00:06:20.319
+used to we are slowly approaching the
+

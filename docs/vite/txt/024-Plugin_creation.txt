@@ -1,0 +1,197 @@
+explore how we can create our own vid
+plugins so I have already created
+default vid project let's run
+development server and just to make
+things a little bit easier while
+developing our plugin let's use another
+plugin called VD plugin inspect and what
+this plugin will allow us to do is it
+will provide us with such inspector view
+where we can see all the Transformations
+that are going to be applied to our
+modules by all plugins including our own
+so let's quickly install this plugin by
+using npm and run this commment in the
+terminal and then let's copy over this
+code to include this plugin let's create
+configuration file with config JS and
+paste in here that code and now I'll
+have to restart my development server by
+running npm randev and in here besides
+our up URL we can also see inspector URL
+and by opening up this URL in the
+browser we can access our inspector so
+if we see this page that means our
+inspector was installed successfully we
+can continue so we're going to create
+our own plugin which is going to allow
+us to import CSV modules and to
+transform CSV code into valid JavaScript
+arrays we're going to use nodejs Library
+called node CSV and since this library
+has several libraries in it the one that
+we need is called CSV pars so let's
+install inst this Library by running the
+following npm commment in our terminal
+and then before actually getting to
+writing our plugin let's do a little
+preparation by adding an empty pre Tech
+in our HTML file and then let's switch
+over to
+main.js and remove everything from here
+we're going to start from scratch so
+what we're going to do in here is try to
+import the CSV file we're going to
+create soon and then all the content of
+the CSV file we're going to assign to
+that prech specifically to text content
+property like so but since products will
+be the array firstly we have to
+stringify this array and which is why
+we're calling message stringified to
+turn this array into a string and of
+course this statement should import CSV
+file so let's change this extension on
+dot CSV and then we'll add this
+products. CSV file in the road of this
+project and here I'm going to insert
+some random data we're going to work
+with products and their quantities the
+first line will contain names of The
+Columns of the CSV file and all other
+lines will contain the data for every
+column like so and of course by default
+VD does not support important in CSV
+modules so when we switch over to the
+browser we'll actually get an error
+because as soon as our browser tries to
+make a request to products. CSV file our
+server responds with the row content of
+the CSV file which is not the valid
+module hence this import didn't work so
+before actually importing CSV modules we
+have to apply custom transformation
+which would transform CSV code into
+valid JavaScript array so it can be
+imported as other ecmascript modules so
+our transform JavaScript array could be
+assigned to the products variable in
+here and now we're going to get to the
+main part of this lesson which is
+creating the vid plugin so theid plugin
+is basically an object which we should
+add to plugins array in our vid
+configuration file so in here let's
+create a new object firstly we'll have
+to specify the name for our plugin I'm
+going to use V column CSV and then most
+importantly we have to provide a special
+function cook called transform which in
+our case will be a synchronous and this
+function will be called automatically by
+it whenever we're going to import any
+modules inside JavaScript files the
+first parameter of this hook will be the
+content of the imported module and the
+second parameter will be the pass to
+this module I'm going to call these
+parameters source and ID so once we have
+fetched the content of the CSV module we
+need to transform this CSV code into
+JavaScript array which we can do by
+using function called pars and this
+functions going going to be imported
+from that CSV pars module that we have
+installed at the beginning of this
+lesson also to this function I'm going
+to pass configuration object with only
+one option columns that will tell this
+parse function that our CSV code
+contains name of columns as the first
+line in our CSV file so it can properly
+transform our CSV code and then let's go
+up and in here add an import for the
+pars function from the CSV dasp pars
+package and the sync subm module like so
+and then by following conventions of it
+the transform function has to return an
+object which should have a key called
+code and in here we have to provide
+valid script code which is supposed to
+be exported when people are going to
+import CSV modules in JavaScript files
+and now very important thing to note is
+that this hook transform is going to be
+called anytime we're going to import any
+module inside JavaScript files not only
+CSV files so we actually have to
+restrict execution of this hook to only
+CSV modules and we can do this by adding
+conditional and wrapping All The Code by
+this conditional so here we're going to
+use regular expression and check if the
+currently imported module is indeed CSV
+module only then we're going to run this
+transformation otherwise our again is
+not going to do anything when importing
+other modules so just for clarity let's
+also print some variable values in here
+for example Source ID as well as records
+and then in the browser we can see the
+result of our plugin so there is no
+error anymore while importing CSV
+modules and what we got instead is
+actually transformed CSV code into
+JavaScript array on the page let's just
+make this output a little bit prettier
+by adding style white space with the
+value of PRP to place the content on
+multiple lines and if we select the
+request which was supposed to fetch CSV
+module from the server in the response
+we can see that the response was turned
+into validas module which exports an
+array of objects and apparently it
+contains objects for every line from the
+CSV file and then this variable was
+stringified and assigned to text contain
+property of the preag which is why we're
+seeing this array in the stringified
+form on the page and now in a server
+console let's see the result of these
+variables so if I refresh the page these
+variables are supposed to be printed in
+the server console and there we go so
+this value corresponds to the variable
+source which contains all content from
+the CSV file and the other output which
+is the pass to the CSV file corresponds
+to an ad variable and finally after
+executing this whole thing we got the
+transformed CSV into constant called
+records which was later transformed into
+volid Mas script module string and this
+is actually the result of outputting
+that variable in the server console so
+one more time while importing CSV module
+in our Javascript file we got
+transformed CSV code into JavaScript
+array and this JavaScript array was
+assigned to the products variable which
+later was stringified and assigned to
+text content property of the prech and
+now let's take a look at the
+transformation of our custom plugin that
+was applied to CSV module so let's open
+up an inspector click on our module
+products. CSV and right here we see the
+following transformation which
+corresponds to the name of our plugin
+with colon CSV so our plugin has read
+the content of the CSV file and
+transformed this code into validas
+script module and that's about it we
+have successfully implemented our custom
+VI plugin which allows us to import CSV
+modules in JavaScript files link to the
+source code will be in the video

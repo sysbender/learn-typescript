@@ -1,0 +1,89 @@
+with CSS files in VD projects right now
+there is no Styles applied to our page
+so let's go to main Javascript file and
+try to import CSS file that we're going
+to create we're going to call new file
+3. CSS and place it inside of source
+assets
+folder and here we'll just add some
+basic styles to see that our CSS will be
+applied we're going to make background
+color of body dark gray and text color
+white and so let's see what we is going
+to do whenever it is that we import CSS
+file as we can see Styles have been
+applied right away to our page and here
+is how it works whenever browser makes a
+request to fetch this CSS file VI is
+going to process this CSS file and
+generate valid ecmascript module that
+looks like this so by doing the request
+to fetch that CSS file we got valid ecas
+module in a browser and this code
+contains instructions to inject our CSS
+code onto the page we also May notice in
+here that all those styles from CSS file
+have been assigned to the constant with
+CSS in a formal string and then this
+string has been added to the style Tech
+inside of the head element so let's take
+a closer look at what kind of
+Transformations are being applied
+whenever we import CSS file let's open
+up our inspector and whenever we request
+CSS file from with server it basically
+makes this transformation of CSS code
+into valid ecmascript module and this is
+how it makes it possible to directly
+import CSS files as valid ecmascript
+modules and here is one more way we can
+import CSS files so by adding query
+parameter called in line
+to this import we can get the content of
+this CSS file as a string into Styles
+variable and then let's see what is
+contain within this variable by printing
+it in a console and when browser fetches
+our main Javascript file it sees this
+import so it makes another request to
+the server to fetch CSS file but V also
+sees that this request has query
+parameter called in line and this is
+kind of assigned to V that instead of
+automatically injecting CSS Styles onto
+the page it should directly return
+content of this CSS file as a string so
+in response it's going to generate valid
+masr module where standard expert will
+be exporting all the styles from the
+imported CSS module and if we'll take a
+look at the console sure enough we're
+going to see those Styles as a string so
+this is how we processes CSS files and
+this is what transformation is going to
+be applied in this case whole CSS code
+will be converted to a string and this
+string will be exported as a default
+export from the generated ecmascript
+module and then in our JavaScript code
+we can do with those Styles anything we
+want for example let's create new
+element
+style let's assign those styles to Inner
+text property and then we're going to
+find a head element and append our newly
+created style element to the head and
+this way we're going to end up with the
+same result as if we would import CSS
+file in a normal way without using
+inline query parameter as we can see we
+just manually injected those Styles
+inside of head element formatting of
+style Tech will be a little bit
+different in here but the end result
+will be the same and this is how it
+handles CSS Imports let's go back to
+main.js file remove everything from here
+and leave only import of CSS file we're
+going to continue working with CSS in
+vid projects in the next lesson

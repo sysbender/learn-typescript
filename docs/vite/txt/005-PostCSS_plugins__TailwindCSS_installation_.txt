@@ -1,0 +1,120 @@
+import CSS files in JavaScript modules
+and also in the previous lesson we have
+taken a look how it works with CSS
+modules specification and in this lesson
+we're going to see how it allows us to
+apply post CSS transformations to CSS
+Imports and just to demonstrate how to
+work with post CSS plugins in vid
+projects we're going to install very
+popular post CSS plugin which is
+Tailwind CSS framework so in docs let's
+open up installation instructions in
+this case we're installing Tailwind CSS
+in vid project so let's use page how to
+install tailin CSS Within withd project
+and here we can skip the first step
+because First Step initializes default
+withd project but we already have a
+project so let's go directly to step
+number two and install all necessary
+packages to provide support for Tailwind
+CSS the first comment is going to
+install the following packages Tailwind
+CSS post CSS and auto prefixer and the
+second command is going to generate two
+configuration files one for Tailwind CSS
+called twin. config.js and another file
+is post CSS configuration and by the way
+generated post CSS configuration file
+already contains necessary plugins which
+provide support for tawin CSS there is
+Tailwind CSS plugin itself and auto
+prefixer to provide support for modern
+CSS rules in most browsers and now we
+need to tell Tailwind CSS utility which
+files will include Tailwind CSS classes
+and we can do it by specifying value for
+Content property here we just list pass
+to all the files with tawin CSS classes
+and since in our case we're only going
+to use Tailwind classes within
+index.html let's just mention pass to
+this file and on the next step we're
+going to have to add the following
+Tailwind CSS directive to our main CSS
+file so let's copy over these three
+directives so inside of our project
+let's create new CS s file 5. CSS inside
+of assets folder and place those three
+dires in here and finally after we
+restart server by running npm Rand Dev
+we can start using all available
+Tailwind CSS classes in our source files
+like this so first of all let's restart
+our server by pressing contrl C in here
+to stop the server and run it again by
+running npm randev let's clear out
+everything within main.js file and leave
+only import which includes tellin CSS so
+we only import 5. CSS file because this
+is the file where we previously included
+TN CSS directives and now when browser
+Encounters this CSS import it is going
+to make request to our VD server and VD
+server is going to respond with valid
+EAS module which means it has converted
+our CSS file with included Tailwind CSS
+on the Fly and hold CSS style sheet has
+been assigned to with CSS constant and
+then this constant has been used to
+inject this Styles onto our page as we
+can see this style includes generated
+tailn CSS style sheet so let's go ahead
+and try to apply a couple of Tailwind
+CSS classes to our heading let's copy
+over code of this background color from
+this file and style our H1 heading and
+in deln CSS the class which corresponds
+to background color starts with BG and
+then here in square brackets we can
+specify Dynamic value of the color so
+let's paste that hexadecimal code and
+let's also make text color white and
+let's better apply those classes to the
+body element and here we go in Def toes
+we can see that the appropriate Tailwind
+CSS classes have been generated and sure
+enough proper Styles have been applied
+and in terms of Transformations let's
+see what transformation have been
+applied to our initial CSS file as we
+know our initial stylesheet contains
+only Tailwind CSS directives so tawin
+CSS plugin that we have included in post
+CSS configuration has turned this three
+directive into full tawin CSS stylesheet
+and then vid has taken this generated
+stylesheet and applied another
+transformation which eventually turned
+this stylesheet into valid ecmascript
+module so at the end this code was run
+in the browser and tawin CSS Styles have
+been included on the page let's just try
+to use another Tailwind CSS class to
+make font size 30 pixels and in a
+browser in order to see newly generated
+class we don't even need to refresh the
+page all modifications are reflected on
+the page instantly thanks to v hot
+module replacement feature and this is
+how we can work with po CSS
+transformations in VD Pro projects we
+just need to create post CSS file in our
+project install all necessary post CSS
+plugins then include those plugins in
+post CSS configuration file and it is
+going to automatically apply all
+necessary post CSS transformations to
+all imported CSS
+files let's see how easy it is to use

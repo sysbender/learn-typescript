@@ -1,0 +1,118 @@
+have created the library with multiple
+entry points and then in our client
+application we have imported the
+functionality from those two entry
+points right here from the main entry
+point plug and from subm module loog and
+just as a reminder the way we have
+organized the code in our library is as
+follows so in here we have a couple of
+JavaScript files inside source folder
+where each of those files contain only
+one function and then to tell node.js
+which modules have to be imported
+whenever client application will import
+functionality from our library by using
+either main entry point or sub entry
+point which in our case is called lock
+we have provided the pass in here for
+every buildt file which corresponds to
+every entry point of our library weather
+client side application is going to use
+native ECP modules to import
+functionality from our package or
+commonjs modules in both of these cases
+imports from our library are going to
+work fine but so far we have only tested
+importing functionality from our library
+by using naasri modules and in this case
+note while importing these modules looks
+into key import of the package Json file
+of our library in order to find the file
+which it should import and of course
+each of these PS specified in this
+package Jon file points to build files
+of our library that it has generated
+during the build process and it placed
+all these build files inside this folder
+by default so now let's see if it is
+going to work if in our client
+application instead of using native es6
+inerts we're going to use commonjs synex
+by using function require so I'm going
+to convert both of these UTS to use
+function require like this and now this
+I'm doing inside of the main Javascript
+file of our main client application
+which Imports functionality from the
+library and now instead of checking
+result in the browser we're going to run
+this script main.js by using node so in
+the terminal I'm going to run node and
+the F name and as we can see we got an
+error saying that require is not defined
+in yes module scope and in order to fix
+this issue we have to rename an
+extension of this script on CJs so that
+nodejs will treat this module as common
+G s module but we're going to do it a
+bit differently and instead of renaming
+the current file I'm going to make a
+copy of this file with an extension of
+CJs like so and then let's just revert
+all the changes we have previously made
+to the main DJs file and leave file with
+an extension CJs as is which still uses
+syntax of commonjs modules with require
+function calls and now again let's
+execute main. CJs script in the node
+environment and in this case as we can
+see everything worked fine we got a
+result and as a reminder this script
+just extracts usern names from the array
+of user objects and then it prints out
+the new array which consists only of
+usern names so that's what we are seeing
+in here so as we can see it is possible
+to use our library in both cases
+whenever client application uses native
+ecmascript import syntax or syntax of
+common GS modules by using function
+required to import functionality from
+the library and this is possible because
+it while building our library has
+generated two versions of our library
+the one which is intended to be used
+with Native ecmascript Imports and
+another one for importing functionality
+by using common GS syntax in other words
+by using function require and of course
+if I'm going to go back to the source
+code of our library and in here I'm
+going to remove versions of of CJs
+builds those are the files responsible
+for providing support to import our
+library as command JS modules then after
+removal both of these files from the
+dist folder index. CJs and log. CJs if
+we'll try to execute our main. CJs
+script from the client application which
+still uses command GS syntax to import
+modules from our library in this case
+we're going to get the following error
+well obviously because we have just
+removed those files that were previously
+providing support to import
+functionality from our package by using
+commonjs syntax so as we can see it's
+very good that while building our
+library vit generates two sets of the
+build files the first set of files is
+intended to be imported as normal
+ecmascript modules and the second set of
+file provides support whenever users are
+going to import functionality from our
+Library by using require function so
+let's continue reviewing possibilities
+of building libraries with it in the
+next lesson so by now we have already

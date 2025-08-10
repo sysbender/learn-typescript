@@ -1,0 +1,233 @@
+lessons we have implemented the custom
+withd plugin which allows us to import
+CSV files inside JavaScript modules
+inside of our main Javascript file we
+are importing the file products. CSV and
+then rough content of the CSV file will
+be transformed by our plugin and turned
+into array of JavaScript objects and
+from the code point of view it looks
+like this inside of the configuration
+file where in including this plugin by
+calling Factory function CSV which we
+are importing from V plugin CSV file
+let's open up this file and take a look
+at the implementation so here we're
+basically using the hook called
+transform which will be called by we any
+time we are going to import CSV files in
+easr modules and then we're basically
+converting the row content of the CSV
+file into valid JavaScript array of
+objects by using this function pars and
+at the end we are returning valid easr
+module to the client which contains the
+data from the CSV file in the form of
+array of JavaScript objects and here is
+how our products. CSV file currently
+looks like that we are importing in our
+main Javascript file right here and then
+we're basically injecting the content
+that we have received after importing
+that CSV file into the prech and which
+is why we're seeing the content of the
+CSV file on this page but the the thing
+is that now if we're going to update the
+content of the CSV file it will cause
+the full page refresh of the browser and
+just to see it in action let's create
+arbitrary constant plugin and see if
+this plug-in constant will still be
+available after we're going to modify
+CSV file let's just go ahead and make
+any modification to the content of the
+products. CSV file I'm basically going
+to add another row in here and then in
+the browser let's see if the plugin
+constant is still available so first of
+all we're seeing here that the new line
+that was added in the CSV file was
+appeared on this page but the plugin
+constant is undefined because browser
+has made full page refresh in order to
+update the content on the page so now
+we're going to implement support of
+so-called hot module replacement for our
+plug-in and this technique basically
+allows us to update modules that are
+modified F without doing the full page
+refresh in the browser it's called HMR
+which stands for hot module replacement
+and in order to implement hot module
+replacement for our plugin we need to
+use another hook provided by vit called
+handle hot update this Hook is going to
+do a synchronous operation so let's mark
+this function as an as sync function and
+as a first parameter into this function
+V will'll pass context object so this
+function will be called anytime we're
+going to modify any module that we are
+currently importing in our JavaScript
+files but we don't need to listen for
+all updates but only for updates that
+happen to CSV files so let's use the
+same condition we have used in the
+transform hook and check if modification
+has been done to CSV file only then
+we're going to run this logic inside
+this if conditional but here in order to
+to access the file name which was
+updated we need to reference property
+file on this context object and the way
+we're going to implement hot module
+replacement is by leveraging websocket
+connection and firing custom event to
+the client by using method send on the
+websocket object like this and then we
+also have to specify custom
+configuration for this event let's
+specify the type which will be a custom
+the event name Will will be CSV D update
+here we can use any kind of name we like
+later we're going to listen to this
+event in the client code and then we
+also have to specify the data key and
+this key will basically store the
+content which we're going to send to the
+client for now let's just read the
+content of the updated CSV file by
+calling method read on the context
+object and since this mthod isn't
+synchronous we have to await the
+response and then then assign it to the
+data property like so and right after
+that just to tell it that we are going
+to take care about hot module
+replacement ourselves we need to notify
+Vi about it by simply returning an empty
+array from this method like this so now
+let's try it out one more time and check
+if the constant that we're going to
+declare in here will be available even
+after we're going to modify CSV file so
+I'm going to remove the last line of the
+CSV file and check if the plug-in
+constant is still available so as we can
+see it is still defined that means the
+browser hasn't reloaded the page but we
+also haven't seen any changes to the
+content on the page because we are
+currently not listening to the custom
+event that we are firing from the server
+so this was the first part of
+implementing the hot module replacement
+which is firing an event from the server
+to the client the next part is to
+actually listen for this event on the
+client side so I'm going to switch over
+to the client script and in here first
+of all let's check if the object which
+is responsible for hot module
+replacement exists this object is stored
+on The Meta property of an import object
+and if so we're going to register a
+listener for the custom event we have
+specified on the server with the name
+CSV update and as a second argument to
+this function we have to pass closure
+with one parameter and this parameter is
+basically going to store the data that
+we have specified under the data key
+while sending this event right here so
+first of all let's check it out what
+we're going to receive in this data
+parameter I'm going to printed out in a
+console let's switch over to the browser
+as we can see currently I have three
+products in my CSV file let's go there
+and change the content and after that in
+the browser we can see that the console
+shows new content of the CSV file
+including our latest product Edition so
+now we're going to get to updates on the
+actual page because after CSV file is
+modified we need to properly change the
+content on the page to do so in our
+client script I'm going to copy this
+line and paste it into this Handler so
+anytime we're going to receive the new
+content from the server we're going to
+update
+the content of the preag by assigning
+updated content but currently this
+content will be ped as a row content of
+the CSV file but what we need to do
+instead in our plugin is to actually
+transform CSV content into JavaScript
+array by calling function pars just like
+we have done in this transform hook so
+let's wrap the content of the CSV file
+in the pars function call and this way
+client application will receive
+JavaScript array instead of a row CSV
+content so now back to the browser and
+check it out once again initially I have
+four products in my CSV file let's
+remove the last product from here and
+see how it will be reflected in a
+browser as you can see content was
+changed and now instead of four products
+I have only three which corresponds to
+the latest content of the CSV file and
+that means that our hot module
+replacement worked and from the server y
+websocket connection we have received
+updated content of the CSV file in the
+form of array of objects and of course
+now as soon as I'm going to do any kind
+of modifications to the CSV file
+instantly I'm going to see those changes
+reflected on the page so as we can see
+our for product was back and now let's
+just do one little Improvement to our
+plugin by passing structured data to the
+client so I'm going to to send an object
+with two properties First Property will
+be a URL and second one data URL will
+store the pass to the module that was
+updated and the data will store the new
+transformed content of the updated
+module let's just add more descriptive
+message on the client side in the
+console and say which module was
+updated and here we have to destructure
+two properties URL and the data those
+are two properties we have just
+specified in the source code of our
+plugin right here so now let's check it
+out one more time in a browser we'll
+create constant plugin and if this
+constant will be available this will be
+a sign that the browser hasn't done full
+page refresh so after modifying the
+content of the products. CSV file we can
+see that it was reflected on the page as
+well as we can see the new loog which
+shows the pass to the file which was
+updated and of course the constant
+plugin is still available so our hot
+module replacement for CSV files works
+great and this is how we can Implement
+hot modu replacement in withd projects
+by basically using the function handle
+hot update in our plugin and then
+sending custom event via websocket to
+the client with appropriate payload and
+then on the client side we are
+registering The Listener for this when
+accept updated data and then do whatever
+we need with this updated data in order
+to apply hot module replacement update
+so this was one of the ways how we can
+Implement hot module replacement in vit

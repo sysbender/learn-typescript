@@ -1,0 +1,233 @@
+finally time to actually go ahead and
+publish our package into npm registry
+and as a reminder we are already
+importing functionality from our package
+in the main.js file of our client
+application and the way we made it
+possible is by linking our local folder
+with a package to node modulus folder of
+our client application by running the
+following command npm link and the name
+of the package would' like to link to
+our client application and then as we
+can see inside node modules folder we
+have the new link called PLU which
+points directly to the folder with our
+library and now instead of linking our
+local library we're actually going to go
+ahead and publish our package to npm
+registry so first of all what we have to
+do is to login let's run npm login in
+the rout of our library and we will be
+presented with a couple of prompts here
+we need to type in the username as well
+as the password that we have used to
+register on the npm website and yes I
+note we need to be registered up front
+in order to log to npm then we also have
+to enter our email address and right
+after we will receive the code on our
+email so let's enter this code in here
+and as soon as we're going to see this
+message that means we were successfully
+authenticated so I'll switch over to my
+browser and right here as we can see I
+don't have any libraries in my npm
+account yet so let's start the process
+of publishing our library to npm
+first of all let's go and open up file
+package Json of our library and here the
+first thing that I'm going to do is
+rename the value stored under the key
+name besides the name of our library I'm
+also going to use Nam space this Nam
+space should match username of the loged
+in user and what this will do is it will
+basically make sure that we are not
+going to get any naming collisions
+because there is a high chance that the
+package with the name plugged already
+exists on NP pm and now in the terminal
+to publish the package we have to run
+npm publish this time we get an error
+saying that our library is considered to
+be private and the reason is that in the
+package Json file we have the key
+private with the Val through so let's
+remove this key run npm publish again
+and it looks like publishing private
+packages is actually paid feature so
+when running npm publish we have to
+specify one flag called access with
+access modifier
+in this case I'm going to use public so
+this way our library will be publicly
+visible and finally the common has
+finished with no errors and if I'll
+switch over to the browser in here I can
+see that my library was published next
+let's go back to the editor inside the
+client application let's open up
+package.json and here let's remove the
+only dependency collect JS we're also
+going to remove the folder with this
+dependency from node modules folder as
+well as special folder. vit that
+generates to store cached dependencies
+and now in order to install the library
+I have just published we can use npm
+install and the full Library name the
+full name is stored in here under the
+name key of the package Json of our
+library project so let's see what is
+going to happen when we run npm install
+and our library name as we can see the
+library was successfully installed and
+now I can run development server by
+running npm Rand Dev and here I see the
+following error saying that some of the
+dependencies were not resolved and those
+dependencies are from our library and
+the reason is that currently our client
+application inside main.js file
+references old pass to import
+functionality from our library so we
+have to properly update this import pass
+by specifying full Library name in here
+next let's start development server
+again this time we got a new error and
+to understand what's going on in here
+let's open up the folder with our
+package inside node modulus folder of
+our client application and here we can
+see that there is no folder dist with
+the built assets of our library but in
+fact inside the package.json file we are
+referencing these files from the this
+folder cuz those are the files that have
+to be imported when users are going to
+import functionality from our library so
+we actually have to do one more thing
+before publishing our package to npm
+let's go back to the package Json file
+of our library and in here we have to
+specify the key files where we can list
+all the files and folders that have to
+be published in our case we only need to
+publish folder with the build up assets
+which is dist so I'm going to specify
+one folder name in here and then once we
+do any change to our library I'm also
+going to have to republish this library
+but with a different version number we
+could update this version manually or we
+could use npm command called npm version
+so we also have to specify which version
+number we'd like to update either the
+first one second one or the third one in
+this case it's not really important
+which one we're going to update so I'm
+going to update the third one and the
+word responsible for updating the third
+number is patch let's run this commment
+as we can see our version number was
+updated and also this number was updated
+inside package Json and to grab the new
+version of this library in the client
+application we have to reinstall it and
+before installing the new version of
+this library in the client application
+let's go inside node modules folder of
+our client application and manually
+remove the folder of our library from
+here and right after that we are ready
+to install a new version let's run npm
+install and our library name and now we
+will take a look at the content of the
+library inside non modules folder we can
+see here that this time only one folder
+is present which is this this is that
+folder we have previously specified
+under the key files inside package Json
+of the library
+and which is why only this folder has
+been published to npm let's run
+development server once again and this
+time we also got an error but the error
+message is different so it cannot
+install the library collect GS but in
+fact we reference this library from the
+source code of our package right here
+inside index. GS but in fact we have not
+install this library in the client
+application as well as in our package so
+this dependency is not nowhere to be
+found and the reason why this library
+was not included in the buildt file of
+our library is because inside v.
+config.js we have manually specified
+that we should not include this external
+dependency into final build of our
+library so to fix this issue we have to
+go inside of package Json of our library
+and in here let's specify one more key
+called Pure dependencies and these are
+the dependencies that our Library
+depends on but it doesn't include those
+dependencies so actually client
+applications will be the ones who will
+be responsible to install this library
+in order to use our package so let's
+specify here one perer dependency
+collect. JS this way we are saying that
+our library depends on this third party
+library and then of course I'm going to
+have to republish our new version of the
+package let's firstly update the version
+of our package by running running the
+corresponding command and then let's go
+back inside the folder with our client
+application let's remove our previous
+version of the library from node modules
+folder and reinstall it by running nbm
+install so what actually happened this
+time is this besides installing our
+library we can see that inside node
+modules folder there is collect JS
+folder which means dependency collect JS
+was automatically installed along with
+our package and the reason it was
+installed automatically is because we
+have previously specified this
+dependency under pure dependencies key
+inside of our library so from now on
+when any client application is going to
+install our library the dependency
+collect. JS will be automatically
+installed and finally if we're going to
+run development server inside of our
+client application eventually it worked
+and in the browser we can see an
+expected result in a console and also so
+let's see if production build is also
+going to work I'm going to run npm run
+build to build this client application
+the build has finished without errors so
+that's good and now let's run this build
+in the browser by running npm run
+preview and then by opening up this URL
+we see the same result as in development
+mode so we were able to successfully
+publish our package to npm registry and
+additionally our package contains
+external dependency collect JS which is
+not bundled with our library so all
+client applications that are going to
+use our library once they're going to
+install our library all third party
+libraries which our library depends upon
+which in this case is only one
+dependency collect GS they are going to
+be automatically installed so that's
+about it for this lesson let's continue
+learning with in the next one in this

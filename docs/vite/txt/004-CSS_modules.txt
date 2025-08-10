@@ -1,0 +1,146 @@
+let's see how we can work with CSS
+module specification in withd projects
+first of all we're going to import a
+couple of CSS files in our main script
+let's just give them arbitrary names and
+create these files as with another CSS
+file we're going to place new files
+within asss folder and now just to have
+something to work with let's add here
+some CSS rules for example we will have
+heading class which will have the
+following role color of the text will be
+orange and in another CSS file we're
+going to have the same CSS selector but
+in this case let's use another CSS
+property font size and set it to 30
+pixels and so what will happen right now
+when we're going to use this heading
+class is that it's going to apply both
+of these rules to the element so the
+color will become orange and font size
+will be 30 pixels let's just assign this
+class heading to this H1 element and
+before we check it out in the browser
+let's go back to main.js file and import
+another CSS file 3. CSS this is the file
+we have already created in the previous
+lesson and we already know what will
+happen in a browser when it's going to
+make requests to fetch these CSS files
+actually VD is going to convert every
+CSS UT into valid ecmascript module
+where all styles will be assigned to a
+constant with the name V CSS and then
+this code will also include these Styles
+as separate Style Elements inside of
+head element as we can see right here
+and as a result on the page we see text
+with orange color and now we're going to
+go back to the editor and do the
+following let's include suffix module in
+every of these Imports and this is going
+to be kind of a hint for V to treat this
+CSS Import in a special way so what vit
+is going to do whenever it sees such UT
+with word module it is going to apply
+transformation to to convert this CSS
+module into valid ecmascript module and
+this module as a default expert will
+have JavaScript object with Styles and
+of course we can import such objects
+from CSS modules and assign it to
+appropriate variables for example to
+style a variable and style B and just to
+see exactly what we're going to get in
+these variables let's print each of
+those variables in a console and in
+order for this to work we should also
+rename appropriate CSS files and use
+module word in names so let's do this
+rename first module 4 a by adding module
+word and also do the same with second
+module for B and if we take a look what
+we get in a browser when we were
+requesting every CSS module we see that
+theit has applied conversion to turn CSS
+modules into AAS script module but this
+time it has also converted our original
+class names into unique strings as we
+can see and also since we printed
+exported objects in a console let's just
+see how these objects look so as a key
+in here we see our original class name
+that we have used in CSS module files
+and as a Val it has corresponding
+converted class name which is unique per
+CSS module so on the page we're going to
+see two Style Elements that include both
+of these unique class names and every
+style element corresponds to one CSS
+module so now we don't have to to worry
+if we're going to have two equal class
+names in more than one CSS module
+because generated classes will be unique
+and let's see it in action so I'm going
+to query element with class heading and
+assign to property class name class of
+the first CSS module so I'm referring to
+the first CSS module object Styles a and
+use class name which is start within
+heading property as we can see this key
+corresponds to our original class name
+but the actual value which is stored
+under this key is unique class name so
+by applying only this heading class from
+the first module we going to get only
+one property applied font size and
+another property which makes text color
+orange which belongs to another CSS
+module was not actually applied because
+every class name is unique per CSS
+module and if I would like to also apply
+text color I'm going to have to manually
+assign CSS class from the second module
+Styles B in the same way by referencing
+heading property so right now we see
+that both those CSS rules have been
+applied because we have manually
+assigned unique CSS classes to this H1
+element and as for Transformations that
+we makes with our CSS modules we can see
+that our original CSS module code gets
+converted into the following code where
+class name becomes unique with unique HH
+appended to class name and after after
+we has applied this transformation it is
+going to transform this CSS code into
+valid ecmascript module so after running
+this code in the browser the Styles will
+be added to the page and this module
+also exports object where key is our
+original class name and value converted
+unique class name and this is how we
+were able to import CSS module within
+Javascript file so we have received
+default expert into this Styles a
+variable which contains our original
+class names as keys and converted unique
+class names as values and since here we
+use synex of native Imports of es
+modules we can just as easily use the
+structuring and fetch only those parts
+that we need for example we want FH only
+class that corresponds to heading let's
+use here variable heading assign an alas
+heading for size just to avoid collision
+with another CSS class that we are
+importing in here we can also assign
+unique Alias heading color and then we
+need to reference these new aliases when
+we assign these classes to heading
+element and sure enough we're going to
+end up with the same result and this is
+how we can work with CSS module
+specification in vid
+projects we have already seen how to

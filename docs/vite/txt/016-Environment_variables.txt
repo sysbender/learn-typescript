@@ -1,0 +1,214 @@
+environment variables and how to work
+with them in vid projects so we'll start
+with removing everything from our main
+Javascript file and in here all I'm
+going to do is actually print only one
+value so V exposes all environment
+variables to the client code under a
+special object which is stored inside
+the import meta object so if I'm going
+to print the value of this object in a
+console then in the browser we will see
+that this object already contains some
+default environment variables for
+example mode environment variables
+contains mode in which we have run V
+whether we have run development server
+by using npm runev or production build
+by using npm run build and now if we're
+going to go ahead and build this project
+by using npm run build and then open up
+the build project in the browser by
+running npm run preview then after
+opening this URL in the browser and
+taking a look at those environment
+variables we will see that this time
+value of the environment variable mode
+was changed on production as well as
+value of prod variable now it's true
+because now we are viewing build project
+in the browser and next let's see how we
+can Define our own environment variables
+and to do so we have to create the file
+called EnV and in here we can list all
+the variables that we need as an example
+I'm going to create a couple of
+environment variables with API URL and
+with another wire and for demonstration
+purposes let's just assign random values
+to each of these
+variables my Dev server is still running
+so let's open up the browser and see the
+result and this time in that in the
+object we have two more variables those
+are the variables we have just declared
+inside the EnV file and what's really
+important while declaring those
+environment variables in order for them
+to appear in this object we have to
+start the name of every environment
+variable with a special prefix which by
+default is V underscore because if we're
+going to try to create another variable
+without using Us in the prefix for
+example secret and then let's take a
+look if this variable is available in
+the console we will find out that this
+variable secret is nowhere to be found
+and this is intentional Behavior because
+every environment variable which we're
+going to declare in the environment file
+will be potentially included in the
+build project and those variables might
+contain some sensitive information such
+as database password and to prevent us
+from accidentally exposing those enir
+environment variables to the public
+build V forces us to explicitly use
+prefix in environment variable names to
+manually choose which environment
+variables should be available in the
+client code and by the way the prefix
+can be easily overwritten so to override
+the default prefix we can go to the
+configuration file with. config.js and
+the option that we need to overwrite the
+prefix is called invvy prefix and here
+we just specify desired prefix
+and this time by looking at the
+environment variables again we will see
+that none of those variables we have
+previously defined is visible in here
+and that makes sense because since we
+have changed the prefix we also have to
+change this prefix when declaring those
+environment variables so I'm going to
+quickly change this prefix on our new
+prefix and now as we can see those
+custom environment variables are back so
+this is how we can Define custom
+environment variables to be used in our
+client code by creating environment
+variable file with the name EnV but
+since V can run in multiple modes we can
+declare many such environment files for
+example if I only want some variables to
+be available in the production mode I
+can create the file do envy. mode name
+in this case it will be production and
+since by default when we run the build
+command executing npm run build it runs
+in production mode so that means these
+two variables will only be available
+when building the project for production
+so let's run the npm Run build and then
+npm run preview to open up the build in
+the browser and this time we see that
+these environment variables contain
+those values that were earlier specified
+in the file. env. production and if we
+switch over to the first tab where my
+development project is still running
+here I'm seeing that those two variables
+have different values the values from
+EnV file and when we start development
+server by running npm randev V runs in
+development mode but we are not limited
+to only those two modes development and
+production we can use as many modes as
+we wish so for example for some reason I
+want to build a project for a different
+mode let's say for St in and this build
+should have different values for some of
+the environment variables so so to do
+that I will just create another
+environment file EnV and then following
+the same convention do environment name
+in this case it will be called envy.
+staging in here just to demonstrate I'm
+going to modify values of these two
+environment variables and now we will
+try to build the project by using this
+stag in mode so to specify the custom
+mode that V should use while building
+the project we need to write this right
+after npm run build we use two hyphens
+then another two hyphens mode this will
+be an option Name by using which we
+specify custom mode and then we just
+specify our custom mode name stag in and
+this time let's take a look at the
+values of those two variables and now
+let's open up the build in the browser
+by using npm run preview and take a look
+at those two environment variables so as
+we can see these environment variables
+have taken their values from the file.in
+v. stag because we have just built a
+project with using our custom mode
+staging and now in our inspector let's
+take a look at the transformation that
+itd has applied to this line when we are
+printing all environment variables in
+the console so basically took this line
+and assign an object with all
+environment variables to to the
+property. EnV and if we take a look in
+the browser it will be more clear so
+let's take a look at the content of the
+main Javascript file and right here we
+can see that an object with all
+environment variables was assigned to NV
+property and this way those environment
+variables are accessible in our client
+code and besides accessing those
+environment variables in the JavaScript
+files we can also access these variables
+in HTML file
+so for example let's print out the value
+of this app API URL variable in the
+index.html and in order to print
+environment variables in HTML file we
+just use a simple notation between
+percentage signs with specify variable
+name in this way this variable will be
+printed on the page so in this case
+since I'm running the development server
+then this environment variables value
+was taken fromt EnV file but if we're
+going to go ahead and build a project
+for production by using mpm run build
+and then take a look at the page here we
+see a different value because this value
+has been taken from environment file
+which corresponds to production mode
+called env. production because as a
+reminder VD executes the build in
+production mode but keep in mind that in
+order to use these environment variables
+in the client code we have to use the
+prefix in their names the default prefix
+is vore
+but in our case we have overwritten this
+prefix on up underscore and one more
+thing that is also worth mentioning
+regarding environment variables is that
+we can also specify these environment
+variables while executing VD commments
+for example here I'm going to start
+development server and at the same time
+I'm going to declare environment
+variable up API URL and by declaring
+environment variables in this way it
+will overwrite all those environment
+variables with the same name that were
+declared in any inv file so if I open up
+development server in the browser we
+will see that the value of that
+environment variable will be exactly the
+one that we have specified in the
+terminal while executing npm randev
+commment because that value has over
+written any values specified in any EnV
+files and that is how we can work with
+environment variables in vid projects

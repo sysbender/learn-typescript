@@ -1,0 +1,351 @@
+WEBVTT
+
+00:00:02.199 --> 00:00:07.000
+end of the course and in this final
+
+00:00:04.319 --> 00:00:09.520
+lesson we're going to take a look how to
+
+00:00:07.000 --> 00:00:11.000
+deploy V application and the service for
+
+00:00:09.520 --> 00:00:13.600
+the deployment that we are going to be
+
+00:00:11.000 --> 00:00:15.399
+using is called GitHub pages in fact
+
+00:00:13.600 --> 00:00:17.279
+there are a lot more services that
+
+00:00:15.399 --> 00:00:19.560
+provide support for when it comes to
+
+00:00:17.279 --> 00:00:22.359
+deployment and the deployment process is
+
+00:00:19.560 --> 00:00:24.479
+pretty simple for any of those services
+
+00:00:22.359 --> 00:00:27.720
+so we're going to review deployment
+
+00:00:24.479 --> 00:00:30.239
+steps by using GitHub Pages as always I
+
+00:00:27.720 --> 00:00:33.239
+have already prepared default vid
+
+00:00:30.239 --> 00:00:34.920
+application which we're going to deploy
+
+00:00:33.239 --> 00:00:36.760
+and actually before get into the
+
+00:00:34.920 --> 00:00:39.479
+deployment we need to make sure that
+
+00:00:36.760 --> 00:00:41.800
+that our repository exists on GitHub
+
+00:00:39.479 --> 00:00:44.319
+which in my case it does so we can go
+
+00:00:41.800 --> 00:00:47.319
+directly to the deployment we will not
+
+00:00:44.319 --> 00:00:49.800
+change any default configurations so
+
+00:00:47.319 --> 00:00:53.600
+after building our project all build
+
+00:00:49.800 --> 00:00:55.479
+files will be located inside this folder
+
+00:00:53.600 --> 00:00:58.399
+and this is exactly the folder which is
+
+00:00:55.479 --> 00:01:01.279
+going to be deployed so here in docs
+
+00:00:58.399 --> 00:01:05.439
+let's choose the option deployment to
+
+00:01:01.279 --> 00:01:08.120
+GitHub pages and our repository URL
+
+00:01:05.439 --> 00:01:11.279
+corresponds to this format where we have
+
+00:01:08.120 --> 00:01:13.960
+two URL segments first one is our GitHub
+
+00:01:11.279 --> 00:01:16.159
+username and the second one is the name
+
+00:01:13.960 --> 00:01:18.840
+of the repository so the only
+
+00:01:16.159 --> 00:01:21.760
+configuration option we have to specify
+
+00:01:18.840 --> 00:01:25.159
+will be the option called base and this
+
+00:01:21.760 --> 00:01:27.319
+option should contain the name of our
+
+00:01:25.159 --> 00:01:30.399
+repository so let's just go ahead and
+
+00:01:27.319 --> 00:01:33.319
+create configuration file vi. config.js
+
+00:01:30.399 --> 00:01:35.720
+in the root of this project from here
+
+00:01:33.319 --> 00:01:38.760
+we're going to expert configuration
+
+00:01:35.720 --> 00:01:41.359
+object which with only one option base
+
+00:01:38.760 --> 00:01:45.199
+where we're going to specify repository
+
+00:01:41.359 --> 00:01:47.479
+name which in my case is vit Das
+
+00:01:45.199 --> 00:01:49.800
+deployment and once again this is really
+
+00:01:47.479 --> 00:01:53.439
+important that this option Val should
+
+00:01:49.800 --> 00:01:55.920
+match repository name on GitHub so now
+
+00:01:53.439 --> 00:01:59.080
+we have to create new commit where we're
+
+00:01:55.920 --> 00:02:02.439
+going to include our configuration file
+
+00:01:59.080 --> 00:02:05.239
+let's specify any message and push this
+
+00:02:02.439 --> 00:02:08.359
+commit to
+
+00:02:05.239 --> 00:02:10.680
+GitHub after that let's just make sure
+
+00:02:08.359 --> 00:02:14.159
+that the new commit appears in the
+
+00:02:10.680 --> 00:02:17.680
+GitHub history of our project it is the
+
+00:02:14.159 --> 00:02:20.199
+second commit then let's open up
+
+00:02:17.680 --> 00:02:22.520
+settings tab the main branch of our
+
+00:02:20.199 --> 00:02:25.319
+repository is main so we're going to
+
+00:02:22.520 --> 00:02:29.680
+deploy this branch and now on the left
+
+00:02:25.319 --> 00:02:31.479
+side let's open up page called pages and
+
+00:02:29.680 --> 00:02:34.720
+in here we have to set up some
+
+00:02:31.479 --> 00:02:37.040
+deployment configurations firstly in
+
+00:02:34.720 --> 00:02:40.680
+this Source dropdown we have to choose
+
+00:02:37.040 --> 00:02:43.720
+option GitHub actions and then let's
+
+00:02:40.680 --> 00:02:45.800
+click this link create your own which is
+
+00:02:43.720 --> 00:02:48.479
+basically going to create an empty
+
+00:02:45.800 --> 00:02:51.239
+deployment configuration file let's
+
+00:02:48.479 --> 00:02:54.359
+clear out all this predefined content
+
+00:02:51.239 --> 00:02:57.600
+and specify our own configurations and
+
+00:02:54.359 --> 00:03:00.880
+these configurations are listed in vit
+
+00:02:57.600 --> 00:03:04.319
+docs so we just have to copy over this
+
+00:03:00.880 --> 00:03:06.920
+whole configuration paste it in that
+
+00:03:04.319 --> 00:03:10.239
+file and let's quickly go through some
+
+00:03:06.920 --> 00:03:12.680
+of the options specified in this file in
+
+00:03:10.239 --> 00:03:15.399
+here we can see which branch is going to
+
+00:03:12.680 --> 00:03:17.840
+be deployed and down here there are a
+
+00:03:15.399 --> 00:03:20.239
+couple of steps which will be executed
+
+00:03:17.840 --> 00:03:22.000
+during deployment for example in here we
+
+00:03:20.239 --> 00:03:24.680
+can see that the node version which is
+
+00:03:22.000 --> 00:03:27.760
+going to be used to build our project
+
+00:03:24.680 --> 00:03:30.920
+will be version 18 then we're going to
+
+00:03:27.760 --> 00:03:33.520
+install all npm dependencies by running
+
+00:03:30.920 --> 00:03:37.279
+npm install after that we're going to
+
+00:03:33.520 --> 00:03:40.720
+build a project by running npm run build
+
+00:03:37.279 --> 00:03:43.840
+and at the end once this folder with our
+
+00:03:40.720 --> 00:03:47.120
+built files will be created this folder
+
+00:03:43.840 --> 00:03:49.000
+will be deployed to GitHub Pages server
+
+00:03:47.120 --> 00:03:53.399
+then let's just give this configuration
+
+00:03:49.000 --> 00:03:56.479
+file a name for example deploy yml and
+
+00:03:53.399 --> 00:03:58.880
+click commit changes in here let's make
+
+00:03:56.479 --> 00:04:01.399
+sure that the new commit will be created
+
+00:03:58.880 --> 00:04:04.000
+on the main branch let's click commit
+
+00:04:01.399 --> 00:04:06.960
+changes once again and then we can see
+
+00:04:04.000 --> 00:04:08.720
+another new commit in the commit history
+
+00:04:06.960 --> 00:04:11.960
+this the commit with the configuration
+
+00:04:08.720 --> 00:04:15.520
+file for deployment we have just created
+
+00:04:11.960 --> 00:04:17.319
+and then if we open up top actions here
+
+00:04:15.520 --> 00:04:19.840
+we can actually see the new deployment
+
+00:04:17.319 --> 00:04:22.319
+task that is currently running and this
+
+00:04:19.840 --> 00:04:25.199
+is our deployment task so anytime we're
+
+00:04:22.319 --> 00:04:27.199
+going to push changes to the main branch
+
+00:04:25.199 --> 00:04:29.840
+it will automatically kick off the
+
+00:04:27.199 --> 00:04:32.120
+deployment process and by clicking on
+
+00:04:29.840 --> 00:04:35.080
+this task we can actually inspect what
+
+00:04:32.120 --> 00:04:37.080
+steps are executed during the deployment
+
+00:04:35.080 --> 00:04:39.800
+and once this deployment will be
+
+00:04:37.080 --> 00:04:42.760
+successfully finished we can once again
+
+00:04:39.800 --> 00:04:46.399
+open up settings tab and then go to
+
+00:04:42.760 --> 00:04:48.479
+Pages page and in here we will see the
+
+00:04:46.399 --> 00:04:50.800
+URL where our application will be
+
+00:04:48.479 --> 00:04:53.479
+available on the web so by following
+
+00:04:50.800 --> 00:04:56.040
+this URL we can see that our application
+
+00:04:53.479 --> 00:04:58.720
+was successfully deployed on GitHub
+
+00:04:56.040 --> 00:05:02.000
+pages and that's it we were able to
+
+00:04:58.720 --> 00:05:04.560
+successfully deploy V application on
+
+00:05:02.000 --> 00:05:07.159
+GitHub Pages server as we can see it was
+
+00:05:04.560 --> 00:05:09.279
+pretty simple process and if we decide
+
+00:05:07.159 --> 00:05:12.000
+to deploy our project by using another
+
+00:05:09.279 --> 00:05:14.680
+hosting provider the deployment process
+
+00:05:12.000 --> 00:05:16.680
+is going to be pretty simple as well and
+
+00:05:14.680 --> 00:05:20.720
+with that we are finishing this course
+
+00:05:16.680 --> 00:05:20.720
+about vid bundler
+
+

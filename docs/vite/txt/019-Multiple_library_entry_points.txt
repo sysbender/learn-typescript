@@ -1,0 +1,162 @@
+so in the previous lesson we have
+developed the package by using V Library
+mode and then included that package in
+here in our client application and that
+time we had only one entry point in our
+package but what if we'd like to create
+such package that would expose more than
+one entry point and what I mean by that
+is this that we could basically import
+some functionality like this from the
+sub pass so in this lesson let's figure
+out how this can be done firstly let's
+recall what functionality our package
+exposes so in the index.js file of our
+package we have only one function plug
+and then to be able to import this
+function from the client applications we
+had to modify package Json file and in
+here we had to specify a key called
+module where we have basically provided
+the pass to our main library file with
+that function and then in our client
+application it would basically let us
+Import in functionality from our package
+by using its name like so so now we're
+going to create another file which will
+also export some functionality so in our
+package let's create new file called
+log. JS which is also inside the source
+folder and here for demonstration we're
+also going to create only one function
+called loog which is basically going to
+be a wrapper around console lock method
+we're not going to complicate things too
+much because our main job here is to
+configure it in such a way so it can
+support multiple entry points of our
+package so next we're going to add
+configuration to vid config JS file to
+generate two different bundles for every
+Javascript file of our package so that
+later we could import function loog from
+the subp pass in the client application
+like this so before going back to our
+package project let's just use this
+function login here to print out array
+of users later we're going to need this
+to test our package and now back to our
+package project let's go inside V.C
+config.js and here we're going to tell
+vit about all our entry points of our
+package so basically instead of
+specifying in here only one p we will
+convert this to array which will contain
+all references to all files that we're
+going to expose in our package so I'm
+going to add another rering here and
+reference that new file called log. JS
+so this way we have told bit about all
+our entry points and now let's see what
+will be generated when we run npm run
+build so basically when we'll try to
+build our package and as we can see VD
+has generated four files so two files
+for every entry point because in order
+to provide support for importing our
+package as a commonjs module by using
+functional require it generates separate
+bundles and that is why we have four
+JavaScript files here instead of two but
+they all have the same name so how can
+we customize the name and thankfully
+that option file name inside
+configuration file also can accept
+closure and this closure takes two
+parameters first one is format that we
+are generating bundle for either
+ecmascript 6 or commonjs module and the
+second parameter here is the source
+Javascript file name which is in our
+case all JavaScript files are contained
+within Source folder so the name
+parameter will be either index or lock
+and here I'm going to use basic
+condition and check if VD is currently
+generating bundle for EAS create module
+we're going to use the following format
+for the file name and if it is currently
+generating bundle for command JS module
+besides using name as a file name we're
+also going to use custom extension for
+this file specified inside format
+parameter and this way we have
+customized names that we is going to
+produce while generating our bundles
+let's see what those names are one more
+time let's generate our bundles by
+executing npm run build and this time we
+still see four files but all of these
+files now have more appropriate names
+and again all these files have been
+generated inside the disc folder of our
+package project so now back to file
+package.json and in here in order to
+provide the way for importing our sub
+module by client applications we also
+need to add an entry for our second
+entry point inside this expert object so
+let's add another object and use the key
+lock this will be a key what client
+applications will use when they are
+going to import our subm module lock
+just like we have already used in the
+main doj of our client application in
+this import and also since we have
+modified the names which we produces
+while generating bundles we also need to
+correct these names inside package.json
+so firstly let's replace plug word with
+index in all these file names and then
+one by one let's correct a pass so it
+points to the correct file from the dist
+folder otherwise important things from
+our package is not going to work and now
+it's time to check if we will be able to
+import functionality from the subm
+module of our package so instead of
+publishing our package to npm registry
+we have used one trick by running
+command npm link inside the project of
+our package in order to make this
+package available globally in the
+operating system and in addition to that
+to add a link to this package into node
+modules folder of the client application
+we had to execute npm link but with
+package name inside the rout of our
+client application and this way this
+commment will add link to our package
+inside node modules folder and finally
+let's get back to testing and run
+development server inside our client
+application so that we could test if we
+would be able to import functionality
+from this subm module loog and then use
+this imported function to print out list
+of users in Here and Now switch over to
+the browser and as we can see we have
+two logs here first of which is produced
+by our custom function log that comes
+from our package so importing
+functionality from the second entry
+point of our package worked fine and we
+could even remove this log statement and
+instead print out result of the function
+plug by using our custom loog function
+everything is working fine so in this
+lesson we have reviewed how to build our
+library in case it has more than one
+entry point and as we can see it makes
+this process very simple let's continue
+in the next lesson all right so far we

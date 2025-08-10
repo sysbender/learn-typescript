@@ -1,0 +1,593 @@
+WEBVTT
+
+00:00:01.520 --> 00:00:05.840
+explore how we can create our own vid
+
+00:00:03.560 --> 00:00:07.880
+plugins so I have already created
+
+00:00:05.840 --> 00:00:10.279
+default vid project let's run
+
+00:00:07.880 --> 00:00:11.800
+development server and just to make
+
+00:00:10.279 --> 00:00:14.319
+things a little bit easier while
+
+00:00:11.800 --> 00:00:17.040
+developing our plugin let's use another
+
+00:00:14.319 --> 00:00:19.279
+plugin called VD plugin inspect and what
+
+00:00:17.040 --> 00:00:21.600
+this plugin will allow us to do is it
+
+00:00:19.279 --> 00:00:24.160
+will provide us with such inspector view
+
+00:00:21.600 --> 00:00:25.880
+where we can see all the Transformations
+
+00:00:24.160 --> 00:00:29.080
+that are going to be applied to our
+
+00:00:25.880 --> 00:00:30.880
+modules by all plugins including our own
+
+00:00:29.080 --> 00:00:33.800
+so let's quickly install this plugin by
+
+00:00:30.880 --> 00:00:37.000
+using npm and run this commment in the
+
+00:00:33.800 --> 00:00:39.720
+terminal and then let's copy over this
+
+00:00:37.000 --> 00:00:42.439
+code to include this plugin let's create
+
+00:00:39.720 --> 00:00:45.080
+configuration file with config JS and
+
+00:00:42.439 --> 00:00:47.319
+paste in here that code and now I'll
+
+00:00:45.080 --> 00:00:50.279
+have to restart my development server by
+
+00:00:47.319 --> 00:00:53.720
+running npm randev and in here besides
+
+00:00:50.279 --> 00:00:55.439
+our up URL we can also see inspector URL
+
+00:00:53.720 --> 00:00:58.399
+and by opening up this URL in the
+
+00:00:55.439 --> 00:01:00.439
+browser we can access our inspector so
+
+00:00:58.399 --> 00:01:03.000
+if we see this page that means our
+
+00:01:00.439 --> 00:01:05.560
+inspector was installed successfully we
+
+00:01:03.000 --> 00:01:07.800
+can continue so we're going to create
+
+00:01:05.560 --> 00:01:11.240
+our own plugin which is going to allow
+
+00:01:07.800 --> 00:01:14.680
+us to import CSV modules and to
+
+00:01:11.240 --> 00:01:17.960
+transform CSV code into valid JavaScript
+
+00:01:14.680 --> 00:01:21.319
+arrays we're going to use nodejs Library
+
+00:01:17.960 --> 00:01:23.880
+called node CSV and since this library
+
+00:01:21.319 --> 00:01:26.760
+has several libraries in it the one that
+
+00:01:23.880 --> 00:01:29.240
+we need is called CSV pars so let's
+
+00:01:26.760 --> 00:01:32.640
+install inst this Library by running the
+
+00:01:29.240 --> 00:01:34.600
+following npm commment in our terminal
+
+00:01:32.640 --> 00:01:36.920
+and then before actually getting to
+
+00:01:34.600 --> 00:01:40.240
+writing our plugin let's do a little
+
+00:01:36.920 --> 00:01:43.520
+preparation by adding an empty pre Tech
+
+00:01:40.240 --> 00:01:44.479
+in our HTML file and then let's switch
+
+00:01:43.520 --> 00:01:47.720
+over to
+
+00:01:44.479 --> 00:01:49.840
+main.js and remove everything from here
+
+00:01:47.720 --> 00:01:51.960
+we're going to start from scratch so
+
+00:01:49.840 --> 00:01:54.720
+what we're going to do in here is try to
+
+00:01:51.960 --> 00:01:58.399
+import the CSV file we're going to
+
+00:01:54.720 --> 00:02:01.120
+create soon and then all the content of
+
+00:01:58.399 --> 00:02:04.359
+the CSV file we're going to assign to
+
+00:02:01.120 --> 00:02:07.479
+that prech specifically to text content
+
+00:02:04.359 --> 00:02:09.399
+property like so but since products will
+
+00:02:07.479 --> 00:02:11.439
+be the array firstly we have to
+
+00:02:09.399 --> 00:02:13.200
+stringify this array and which is why
+
+00:02:11.439 --> 00:02:15.840
+we're calling message stringified to
+
+00:02:13.200 --> 00:02:18.279
+turn this array into a string and of
+
+00:02:15.840 --> 00:02:20.800
+course this statement should import CSV
+
+00:02:18.279 --> 00:02:23.560
+file so let's change this extension on
+
+00:02:20.800 --> 00:02:26.279
+dot CSV and then we'll add this
+
+00:02:23.560 --> 00:02:30.160
+products. CSV file in the road of this
+
+00:02:26.279 --> 00:02:32.520
+project and here I'm going to insert
+
+00:02:30.160 --> 00:02:35.359
+some random data we're going to work
+
+00:02:32.520 --> 00:02:37.000
+with products and their quantities the
+
+00:02:35.359 --> 00:02:39.640
+first line will contain names of The
+
+00:02:37.000 --> 00:02:42.000
+Columns of the CSV file and all other
+
+00:02:39.640 --> 00:02:45.359
+lines will contain the data for every
+
+00:02:42.000 --> 00:02:47.840
+column like so and of course by default
+
+00:02:45.359 --> 00:02:50.080
+VD does not support important in CSV
+
+00:02:47.840 --> 00:02:52.720
+modules so when we switch over to the
+
+00:02:50.080 --> 00:02:55.479
+browser we'll actually get an error
+
+00:02:52.720 --> 00:02:59.240
+because as soon as our browser tries to
+
+00:02:55.479 --> 00:03:01.680
+make a request to products. CSV file our
+
+00:02:59.240 --> 00:03:04.720
+server responds with the row content of
+
+00:03:01.680 --> 00:03:07.920
+the CSV file which is not the valid
+
+00:03:04.720 --> 00:03:10.080
+module hence this import didn't work so
+
+00:03:07.920 --> 00:03:12.160
+before actually importing CSV modules we
+
+00:03:10.080 --> 00:03:14.720
+have to apply custom transformation
+
+00:03:12.160 --> 00:03:16.720
+which would transform CSV code into
+
+00:03:14.720 --> 00:03:20.080
+valid JavaScript array so it can be
+
+00:03:16.720 --> 00:03:22.640
+imported as other ecmascript modules so
+
+00:03:20.080 --> 00:03:24.760
+our transform JavaScript array could be
+
+00:03:22.640 --> 00:03:26.920
+assigned to the products variable in
+
+00:03:24.760 --> 00:03:28.520
+here and now we're going to get to the
+
+00:03:26.920 --> 00:03:31.960
+main part of this lesson which is
+
+00:03:28.520 --> 00:03:34.359
+creating the vid plugin so theid plugin
+
+00:03:31.960 --> 00:03:36.600
+is basically an object which we should
+
+00:03:34.359 --> 00:03:39.080
+add to plugins array in our vid
+
+00:03:36.600 --> 00:03:41.319
+configuration file so in here let's
+
+00:03:39.080 --> 00:03:44.279
+create a new object firstly we'll have
+
+00:03:41.319 --> 00:03:47.840
+to specify the name for our plugin I'm
+
+00:03:44.279 --> 00:03:49.880
+going to use V column CSV and then most
+
+00:03:47.840 --> 00:03:52.800
+importantly we have to provide a special
+
+00:03:49.880 --> 00:03:55.200
+function cook called transform which in
+
+00:03:52.800 --> 00:03:57.240
+our case will be a synchronous and this
+
+00:03:55.200 --> 00:03:59.560
+function will be called automatically by
+
+00:03:57.240 --> 00:04:02.399
+it whenever we're going to import any
+
+00:03:59.560 --> 00:04:04.160
+modules inside JavaScript files the
+
+00:04:02.399 --> 00:04:07.319
+first parameter of this hook will be the
+
+00:04:04.160 --> 00:04:10.120
+content of the imported module and the
+
+00:04:07.319 --> 00:04:11.880
+second parameter will be the pass to
+
+00:04:10.120 --> 00:04:15.279
+this module I'm going to call these
+
+00:04:11.880 --> 00:04:18.200
+parameters source and ID so once we have
+
+00:04:15.279 --> 00:04:21.240
+fetched the content of the CSV module we
+
+00:04:18.200 --> 00:04:23.319
+need to transform this CSV code into
+
+00:04:21.240 --> 00:04:26.120
+JavaScript array which we can do by
+
+00:04:23.319 --> 00:04:27.960
+using function called pars and this
+
+00:04:26.120 --> 00:04:30.760
+functions going going to be imported
+
+00:04:27.960 --> 00:04:32.240
+from that CSV pars module that we have
+
+00:04:30.760 --> 00:04:34.359
+installed at the beginning of this
+
+00:04:32.240 --> 00:04:36.279
+lesson also to this function I'm going
+
+00:04:34.359 --> 00:04:39.000
+to pass configuration object with only
+
+00:04:36.279 --> 00:04:41.760
+one option columns that will tell this
+
+00:04:39.000 --> 00:04:44.359
+parse function that our CSV code
+
+00:04:41.760 --> 00:04:47.279
+contains name of columns as the first
+
+00:04:44.359 --> 00:04:50.200
+line in our CSV file so it can properly
+
+00:04:47.279 --> 00:04:52.520
+transform our CSV code and then let's go
+
+00:04:50.200 --> 00:04:56.279
+up and in here add an import for the
+
+00:04:52.520 --> 00:05:00.399
+pars function from the CSV dasp pars
+
+00:04:56.279 --> 00:05:02.600
+package and the sync subm module like so
+
+00:05:00.399 --> 00:05:05.439
+and then by following conventions of it
+
+00:05:02.600 --> 00:05:08.080
+the transform function has to return an
+
+00:05:05.439 --> 00:05:10.399
+object which should have a key called
+
+00:05:08.080 --> 00:05:12.760
+code and in here we have to provide
+
+00:05:10.399 --> 00:05:14.720
+valid script code which is supposed to
+
+00:05:12.760 --> 00:05:18.040
+be exported when people are going to
+
+00:05:14.720 --> 00:05:20.319
+import CSV modules in JavaScript files
+
+00:05:18.040 --> 00:05:23.279
+and now very important thing to note is
+
+00:05:20.319 --> 00:05:26.720
+that this hook transform is going to be
+
+00:05:23.279 --> 00:05:29.720
+called anytime we're going to import any
+
+00:05:26.720 --> 00:05:32.080
+module inside JavaScript files not only
+
+00:05:29.720 --> 00:05:35.920
+CSV files so we actually have to
+
+00:05:32.080 --> 00:05:39.920
+restrict execution of this hook to only
+
+00:05:35.920 --> 00:05:42.439
+CSV modules and we can do this by adding
+
+00:05:39.920 --> 00:05:45.080
+conditional and wrapping All The Code by
+
+00:05:42.439 --> 00:05:47.880
+this conditional so here we're going to
+
+00:05:45.080 --> 00:05:51.600
+use regular expression and check if the
+
+00:05:47.880 --> 00:05:54.680
+currently imported module is indeed CSV
+
+00:05:51.600 --> 00:05:57.040
+module only then we're going to run this
+
+00:05:54.680 --> 00:05:59.479
+transformation otherwise our again is
+
+00:05:57.040 --> 00:06:02.200
+not going to do anything when importing
+
+00:05:59.479 --> 00:06:04.960
+other modules so just for clarity let's
+
+00:06:02.200 --> 00:06:09.319
+also print some variable values in here
+
+00:06:04.960 --> 00:06:11.279
+for example Source ID as well as records
+
+00:06:09.319 --> 00:06:15.000
+and then in the browser we can see the
+
+00:06:11.279 --> 00:06:17.640
+result of our plugin so there is no
+
+00:06:15.000 --> 00:06:20.120
+error anymore while importing CSV
+
+00:06:17.640 --> 00:06:23.000
+modules and what we got instead is
+
+00:06:20.120 --> 00:06:25.520
+actually transformed CSV code into
+
+00:06:23.000 --> 00:06:27.880
+JavaScript array on the page let's just
+
+00:06:25.520 --> 00:06:30.439
+make this output a little bit prettier
+
+00:06:27.880 --> 00:06:33.160
+by adding style white space with the
+
+00:06:30.439 --> 00:06:35.520
+value of PRP to place the content on
+
+00:06:33.160 --> 00:06:38.080
+multiple lines and if we select the
+
+00:06:35.520 --> 00:06:40.520
+request which was supposed to fetch CSV
+
+00:06:38.080 --> 00:06:43.000
+module from the server in the response
+
+00:06:40.520 --> 00:06:45.960
+we can see that the response was turned
+
+00:06:43.000 --> 00:06:48.479
+into validas module which exports an
+
+00:06:45.960 --> 00:06:51.439
+array of objects and apparently it
+
+00:06:48.479 --> 00:06:54.520
+contains objects for every line from the
+
+00:06:51.439 --> 00:06:57.479
+CSV file and then this variable was
+
+00:06:54.520 --> 00:06:59.800
+stringified and assigned to text contain
+
+00:06:57.479 --> 00:07:01.680
+property of the preag which is why we're
+
+00:06:59.800 --> 00:07:04.800
+seeing this array in the stringified
+
+00:07:01.680 --> 00:07:07.200
+form on the page and now in a server
+
+00:07:04.800 --> 00:07:10.960
+console let's see the result of these
+
+00:07:07.200 --> 00:07:13.000
+variables so if I refresh the page these
+
+00:07:10.960 --> 00:07:15.880
+variables are supposed to be printed in
+
+00:07:13.000 --> 00:07:18.359
+the server console and there we go so
+
+00:07:15.880 --> 00:07:21.120
+this value corresponds to the variable
+
+00:07:18.359 --> 00:07:23.920
+source which contains all content from
+
+00:07:21.120 --> 00:07:26.600
+the CSV file and the other output which
+
+00:07:23.920 --> 00:07:29.359
+is the pass to the CSV file corresponds
+
+00:07:26.600 --> 00:07:31.600
+to an ad variable and finally after
+
+00:07:29.359 --> 00:07:34.560
+executing this whole thing we got the
+
+00:07:31.600 --> 00:07:37.319
+transformed CSV into constant called
+
+00:07:34.560 --> 00:07:40.040
+records which was later transformed into
+
+00:07:37.319 --> 00:07:41.960
+volid Mas script module string and this
+
+00:07:40.040 --> 00:07:44.960
+is actually the result of outputting
+
+00:07:41.960 --> 00:07:47.960
+that variable in the server console so
+
+00:07:44.960 --> 00:07:50.479
+one more time while importing CSV module
+
+00:07:47.960 --> 00:07:53.240
+in our Javascript file we got
+
+00:07:50.479 --> 00:07:55.240
+transformed CSV code into JavaScript
+
+00:07:53.240 --> 00:07:58.160
+array and this JavaScript array was
+
+00:07:55.240 --> 00:08:01.680
+assigned to the products variable which
+
+00:07:58.160 --> 00:08:04.479
+later was stringified and assigned to
+
+00:08:01.680 --> 00:08:05.640
+text content property of the prech and
+
+00:08:04.479 --> 00:08:08.600
+now let's take a look at the
+
+00:08:05.640 --> 00:08:12.160
+transformation of our custom plugin that
+
+00:08:08.600 --> 00:08:14.640
+was applied to CSV module so let's open
+
+00:08:12.160 --> 00:08:17.680
+up an inspector click on our module
+
+00:08:14.640 --> 00:08:19.240
+products. CSV and right here we see the
+
+00:08:17.680 --> 00:08:21.319
+following transformation which
+
+00:08:19.240 --> 00:08:24.600
+corresponds to the name of our plugin
+
+00:08:21.319 --> 00:08:26.920
+with colon CSV so our plugin has read
+
+00:08:24.600 --> 00:08:29.800
+the content of the CSV file and
+
+00:08:26.920 --> 00:08:32.080
+transformed this code into validas
+
+00:08:29.800 --> 00:08:34.319
+script module and that's about it we
+
+00:08:32.080 --> 00:08:37.240
+have successfully implemented our custom
+
+00:08:34.319 --> 00:08:39.960
+VI plugin which allows us to import CSV
+
+00:08:37.240 --> 00:08:42.040
+modules in JavaScript files link to the
+
+00:08:39.960 --> 00:08:44.200
+source code will be in the video
+

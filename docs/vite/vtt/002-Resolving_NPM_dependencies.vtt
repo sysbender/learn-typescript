@@ -1,0 +1,557 @@
+WEBVTT
+
+00:00:00.840 --> 00:00:04.680
+we install VD project there are three
+
+00:00:02.919 --> 00:00:07.600
+preconfigured commments inside of
+
+00:00:04.680 --> 00:00:09.960
+package Json first commment starts local
+
+00:00:07.600 --> 00:00:12.080
+development server we have already used
+
+00:00:09.960 --> 00:00:14.240
+this commment in the previous lesson
+
+00:00:12.080 --> 00:00:17.720
+when we started Dev server by running
+
+00:00:14.240 --> 00:00:19.919
+npm randev the second script build is
+
+00:00:17.720 --> 00:00:22.360
+going to build our project for
+
+00:00:19.919 --> 00:00:24.199
+production by applying all necessary
+
+00:00:22.360 --> 00:00:26.400
+optimizations to achieve better
+
+00:00:24.199 --> 00:00:29.400
+performance and there is also one more
+
+00:00:26.400 --> 00:00:31.800
+script preview which starts basic static
+
+00:00:29.400 --> 00:00:34.240
+web server to serve our built
+
+00:00:31.800 --> 00:00:36.120
+application to see how it is going to
+
+00:00:34.240 --> 00:00:39.039
+behave in the production like
+
+00:00:36.120 --> 00:00:41.960
+environment all these three scripts use
+
+00:00:39.039 --> 00:00:44.479
+VD binary which we get by installing
+
+00:00:41.960 --> 00:00:46.360
+VD npm package and this binary is
+
+00:00:44.479 --> 00:00:49.199
+contained within bin folder which is
+
+00:00:46.360 --> 00:00:51.560
+inside of node modules folder so when we
+
+00:00:49.199 --> 00:00:54.240
+use V comments everything starts with
+
+00:00:51.560 --> 00:00:56.840
+this script so let's start reviewing V's
+
+00:00:54.240 --> 00:00:59.560
+features switch over to the terminal and
+
+00:00:56.840 --> 00:01:02.400
+start development server by using
+
+00:00:59.560 --> 00:01:04.720
+command npm run Dev in the previous
+
+00:01:02.400 --> 00:01:07.319
+lesson we have removed everything inside
+
+00:01:04.720 --> 00:01:09.800
+of our main Javascript file so we see a
+
+00:01:07.319 --> 00:01:12.479
+blank page in the browser so let's go
+
+00:01:09.800 --> 00:01:15.639
+inside of index.htm ML and remove this
+
+00:01:12.479 --> 00:01:18.879
+de with an ADF app and on this place
+
+00:01:15.639 --> 00:01:20.639
+let's add heading with some text right
+
+00:01:18.879 --> 00:01:23.000
+away this changes will be reflected in
+
+00:01:20.639 --> 00:01:25.759
+the browser without manually refreshing
+
+00:01:23.000 --> 00:01:28.479
+the page and since our main script file
+
+00:01:25.759 --> 00:01:30.800
+is included as es module in here by
+
+00:01:28.479 --> 00:01:33.400
+using this type attribute we can of
+
+00:01:30.800 --> 00:01:36.280
+course use Import and Export keywords to
+
+00:01:33.400 --> 00:01:38.919
+include other modules and browsers will
+
+00:01:36.280 --> 00:01:41.400
+properly fetch those modules so let's
+
+00:01:38.919 --> 00:01:43.639
+try to import in here arbitrary
+
+00:01:41.400 --> 00:01:46.400
+Javascript file we're going to create
+
+00:01:43.639 --> 00:01:49.039
+this file in projects rout and here
+
+00:01:46.400 --> 00:01:50.800
+we'll just use arbitrary consol loog
+
+00:01:49.039 --> 00:01:52.879
+statement and let's see what's going to
+
+00:01:50.800 --> 00:01:55.080
+happen in the browser when our main
+
+00:01:52.879 --> 00:01:57.879
+application script is requested by the
+
+00:01:55.080 --> 00:02:01.360
+browser browser gets content of this
+
+00:01:57.879 --> 00:02:03.639
+script and once it sees this import it
+
+00:02:01.360 --> 00:02:06.080
+is going to fire an extra request to the
+
+00:02:03.639 --> 00:02:07.759
+server to fetch this module this is
+
+00:02:06.080 --> 00:02:10.319
+native ecmascript feature which is
+
+00:02:07.759 --> 00:02:12.720
+currently widely supported in all modern
+
+00:02:10.319 --> 00:02:15.479
+browsers so we can easily leverage
+
+00:02:12.720 --> 00:02:18.039
+native es modules and once we get a
+
+00:02:15.479 --> 00:02:20.879
+response on request to fetch module with
+
+00:02:18.039 --> 00:02:23.400
+name a we get this content and browser
+
+00:02:20.879 --> 00:02:25.280
+is supposed to run this module so now
+
+00:02:23.400 --> 00:02:28.159
+we're supposed to see this console loog
+
+00:02:25.280 --> 00:02:30.840
+statement in browser's console and sure
+
+00:02:28.159 --> 00:02:32.960
+enough we see this output in here so by
+
+00:02:30.840 --> 00:02:35.000
+now there is nothing special going on
+
+00:02:32.960 --> 00:02:37.919
+and such Imports of es modules are
+
+00:02:35.000 --> 00:02:40.280
+needly supported in browsers so let's
+
+00:02:37.919 --> 00:02:43.400
+try something more interesting for
+
+00:02:40.280 --> 00:02:45.640
+example let's try to use npm package to
+
+00:02:43.400 --> 00:02:48.560
+demonstrate this example I'll be using
+
+00:02:45.640 --> 00:02:50.919
+Library called collect JS let's go ahead
+
+00:02:48.560 --> 00:02:53.360
+and install this Library by using the
+
+00:02:50.919 --> 00:02:56.039
+following npm command and once this
+
+00:02:53.360 --> 00:02:58.640
+library is installed let's go back to
+
+00:02:56.039 --> 00:03:00.959
+docs and here we just need to include
+
+00:02:58.640 --> 00:03:03.640
+this library on the page so let's use
+
+00:03:00.959 --> 00:03:06.200
+this import statement in our main script
+
+00:03:03.640 --> 00:03:08.640
+We'll add it here right after our import
+
+00:03:06.200 --> 00:03:11.160
+of the first module and then let's try
+
+00:03:08.640 --> 00:03:13.399
+to use this library for example to C
+
+00:03:11.160 --> 00:03:17.000
+Cate average from the docs we're going
+
+00:03:13.399 --> 00:03:20.000
+to copy over this instruction and output
+
+00:03:17.000 --> 00:03:22.000
+result in a console and now let's see if
+
+00:03:20.000 --> 00:03:23.880
+it's going to work in the browser and if
+
+00:03:22.000 --> 00:03:26.560
+we would be using normal static web
+
+00:03:23.880 --> 00:03:29.279
+server imports from node modules folder
+
+00:03:26.560 --> 00:03:31.600
+will not be recognized so UT of this
+
+00:03:29.279 --> 00:03:33.880
+collect library is not going to work but
+
+00:03:31.600 --> 00:03:36.279
+in our case we're using VD server so
+
+00:03:33.880 --> 00:03:38.800
+this example worked fine and we got
+
+00:03:36.279 --> 00:03:40.760
+calculated average in a console and
+
+00:03:38.800 --> 00:03:43.800
+let's find out what happened in this
+
+00:03:40.760 --> 00:03:47.120
+case and how V was able to process our
+
+00:03:43.800 --> 00:03:50.360
+import of npm package so whenever we
+
+00:03:47.120 --> 00:03:53.519
+requested our main JS file we can see
+
+00:03:50.360 --> 00:03:56.160
+that VD has done some processing and it
+
+00:03:53.519 --> 00:03:58.640
+transformed the second import when we
+
+00:03:56.160 --> 00:04:01.200
+try to import module from node modules
+
+00:03:58.640 --> 00:04:03.920
+folder let's take a closer look at this
+
+00:04:01.200 --> 00:04:06.640
+import we see that VD transformed pass
+
+00:04:03.920 --> 00:04:09.200
+to this library and once browser
+
+00:04:06.640 --> 00:04:11.680
+receives this transformed inut it is
+
+00:04:09.200 --> 00:04:13.959
+going to request this Library
+
+00:04:11.680 --> 00:04:18.399
+by using the following paths node
+
+00:04:13.959 --> 00:04:21.320
+modules viit depths and the name of our
+
+00:04:18.399 --> 00:04:23.480
+library collect JS and once browser
+
+00:04:21.320 --> 00:04:25.800
+tries to request this file by using the
+
+00:04:23.480 --> 00:04:28.440
+following paths sure enough it gets
+
+00:04:25.800 --> 00:04:31.040
+source code which makes that collect
+
+00:04:28.440 --> 00:04:34.000
+Library work in the browser so VD has
+
+00:04:31.040 --> 00:04:36.680
+dynamically generated folder called vit
+
+00:04:34.000 --> 00:04:39.720
+within node modules folder and here it
+
+00:04:36.680 --> 00:04:42.399
+puts source code of our imported Library
+
+00:04:39.720 --> 00:04:44.920
+collect Js and at the same time VD has
+
+00:04:42.399 --> 00:04:47.120
+done some optimizations to this source
+
+00:04:44.920 --> 00:04:49.760
+code and this is how VD makes it
+
+00:04:47.120 --> 00:04:52.079
+possible to import libraries directly
+
+00:04:49.760 --> 00:04:54.000
+from node modules folder so these
+
+00:04:52.079 --> 00:04:56.440
+libraries will be available to use
+
+00:04:54.000 --> 00:04:59.440
+inside of browsers and this is a big
+
+00:04:56.440 --> 00:05:02.680
+advantage of vit server over basic
+
+00:04:59.440 --> 00:05:05.839
+static server since static server cannot
+
+00:05:02.680 --> 00:05:07.560
+resolve UTS from node modules folder and
+
+00:05:05.839 --> 00:05:09.600
+now let's take a closer look at what
+
+00:05:07.560 --> 00:05:12.399
+Transformations are applied to our
+
+00:05:09.600 --> 00:05:14.600
+source files when when they are served
+
+00:05:12.399 --> 00:05:16.240
+and exactly for this purpose we have
+
+00:05:14.600 --> 00:05:18.720
+previously installed withd plug-in
+
+00:05:16.240 --> 00:05:22.040
+called inspect here we can clearly see
+
+00:05:18.720 --> 00:05:24.639
+how it transforms our source files if we
+
+00:05:22.040 --> 00:05:27.519
+select here module main we can see
+
+00:05:24.639 --> 00:05:30.279
+initial content of this module as we
+
+00:05:27.519 --> 00:05:32.839
+wrote it and transformed code which gets
+
+00:05:30.279 --> 00:05:35.399
+sent to the browser when our browser
+
+00:05:32.839 --> 00:05:37.920
+requests this module here we also see
+
+00:05:35.399 --> 00:05:39.839
+that import of module from node modules
+
+00:05:37.920 --> 00:05:42.079
+folder but if we take a look at
+
+00:05:39.839 --> 00:05:45.399
+Transformations what being applied to
+
+00:05:42.079 --> 00:05:48.320
+another module ajs we can see that the
+
+00:05:45.399 --> 00:05:50.440
+content of this module is left as this
+
+00:05:48.320 --> 00:05:53.120
+so we didn't try to apply any
+
+00:05:50.440 --> 00:05:56.160
+Transformations because this content can
+
+00:05:53.120 --> 00:05:58.480
+be easily recognized by browsers so no
+
+00:05:56.160 --> 00:06:00.800
+extra Transformations are needed in this
+
+00:05:58.480 --> 00:06:03.000
+case it's just a simple consolo
+
+00:06:00.800 --> 00:06:05.839
+statement now let's go back to the
+
+00:06:03.000 --> 00:06:08.720
+editor and in projects root let's create
+
+00:06:05.839 --> 00:06:11.079
+new folder called Source this is pretty
+
+00:06:08.720 --> 00:06:13.600
+common convention to name this folder
+
+00:06:11.079 --> 00:06:16.040
+source which is going to store all our
+
+00:06:13.600 --> 00:06:19.360
+source files and right away let's just
+
+00:06:16.040 --> 00:06:21.920
+move our module a inside of this folder
+
+00:06:19.360 --> 00:06:25.360
+and right after that let's go to
+
+00:06:21.920 --> 00:06:27.880
+main.js here we'll fix the import to
+
+00:06:25.360 --> 00:06:30.160
+import the module with a new name and
+
+00:06:27.880 --> 00:06:33.560
+move these two lines with usage of
+
+00:06:30.160 --> 00:06:36.399
+collect JS Library into file
+
+00:06:33.560 --> 00:06:39.120
+tojs so that the module's file name
+
+00:06:36.399 --> 00:06:40.560
+corresponds to current lesson number and
+
+00:06:39.120 --> 00:06:43.639
+one more time let's see what's going on
+
+00:06:40.560 --> 00:06:46.959
+in the browser when browser requests our
+
+00:06:43.639 --> 00:06:49.720
+main script file with the name main.js
+
+00:06:46.959 --> 00:06:52.839
+it pares content of this file and once
+
+00:06:49.720 --> 00:06:55.720
+it sees this import it is going to fire
+
+00:06:52.839 --> 00:06:58.480
+another request to the server to fetch
+
+00:06:55.720 --> 00:07:01.199
+module with this name and we see this
+
+00:06:58.480 --> 00:07:04.639
+request right here and while fetching
+
+00:07:01.199 --> 00:07:06.920
+content of this file V has done extra
+
+00:07:04.639 --> 00:07:09.320
+transformations to provide support for
+
+00:07:06.920 --> 00:07:11.920
+importing modules directly from node
+
+00:07:09.320 --> 00:07:14.880
+modules folder by doing all necessary
+
+00:07:11.920 --> 00:07:17.120
+transformations to this import statement
+
+00:07:14.880 --> 00:07:19.560
+and here you may have also noticed that
+
+00:07:17.120 --> 00:07:22.199
+we were able to use collect Library by
+
+00:07:19.560 --> 00:07:24.639
+using name collect but here we import
+
+00:07:22.199 --> 00:07:27.160
+this Library under randomly generated
+
+00:07:24.639 --> 00:07:29.040
+name and if we search for this name in
+
+00:07:27.160 --> 00:07:31.040
+this file we can see that it gets
+
+00:07:29.040 --> 00:07:33.720
+assigned to the constant with name
+
+00:07:31.040 --> 00:07:36.519
+collect which lets us use this library
+
+00:07:33.720 --> 00:07:38.320
+in a usual way and finally once browser
+
+00:07:36.519 --> 00:07:40.920
+has fetched source code of collect
+
+00:07:38.320 --> 00:07:43.839
+Library we were able to easily use
+
+00:07:40.920 --> 00:07:45.800
+functionality provided by this library
+
+00:07:43.839 --> 00:07:47.800
+and the ability to use libraries
+
+00:07:45.800 --> 00:07:50.880
+imported directly from node modules
+
+00:07:47.800 --> 00:07:52.800
+folder is a great advantage of VD server
+
+00:07:50.880 --> 00:07:55.240
+over basic static
+
+00:07:52.800 --> 00:07:58.320
+server let's take a look how we can work
+

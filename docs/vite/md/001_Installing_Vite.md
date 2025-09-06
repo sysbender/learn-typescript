@@ -66,14 +66,13 @@ npm install -D vite-plugin-inspect
 
 ```js
 // vite.config.js
-import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 
-export default defineConfig({
+export default {
   plugins: [
-    Inspect() // opens inspector dashboard in the browser
-  ]
-})
+    Inspect()
+  ],
+}
 ```
 
 **Restart the dev server** (stop it with `Ctrl+C`, then run `npm run dev` again). The plugin will print an inspector URL in the terminal (usually under the dev server's addresses). Open that inspector URL in your browser to see how Vite transforms your files step-by-step.

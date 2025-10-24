@@ -12,3 +12,19 @@ npm i --save-dev @types/node
 ```
 
 
+## sort
+
+```shell
+# 
+npm init -y
+npm install nodemon concurrently
+
+
+# 
+tsc init
+
+# add rootdir , outdir
+
+
+
+```

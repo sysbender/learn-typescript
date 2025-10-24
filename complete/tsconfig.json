@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
+    "target": "ES2020",             // Good for modern browsers
+    "module": "ESNext",             // Let Parcel handle module bundling
     "moduleResolution": "node",
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
+    "strict": true,
     "esModuleInterop": true,
-    "strict": true
+    "sourceMap": true,
+    "isolatedModules": true,        // Helps with module safety
+    "jsx": "preserve",              // Optional, only needed for JSX support
+    "types": ["leaflet"]            // Helps avoid implicit type errors
   },
-  "ts-node": {
-    "esm": true
-  },
-  "include": ["src"]
+  "include": ["c00/**/*.ts"]
 }

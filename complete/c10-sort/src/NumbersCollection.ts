@@ -1,7 +1,6 @@
 import { Sorter, type Sortable } from "./Sorter.js";
 
 export class NumbersCollection extends Sorter {
-  // data: number[];
   constructor(public data: number[]) {
     super();
     this.data = data;

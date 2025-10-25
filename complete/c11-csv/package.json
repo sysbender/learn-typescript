@@ -1,0 +1,23 @@
+{
+  "name": "c11-csv",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:build": " tsc -w ",
+    "start:run": "nodemon dist/index.js ",
+    "start": "  concurrently npm:start:* "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "@types/node": "^24.9.1"
+  }
+}

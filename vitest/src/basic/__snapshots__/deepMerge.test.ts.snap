@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshot deep merge  1`] = `
+{
+  "accounts": {
+    "gmail": "john@gmail.com",
+    "outlook": "john@outlook.com",
+  },
+  "age": 30,
+  "name": "John",
+}
+`;

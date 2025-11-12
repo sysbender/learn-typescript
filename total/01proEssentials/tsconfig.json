@@ -1,14 +1,33 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
+    /* Base Options: */
+    "skipLibCheck": true, // don't not check d.ts
+    "target": "es2022",
+    "esModuleInterop": true, // Makes working with CommonJS easier
+    "allowJs": true, // Lets you import .js files
+    "resolveJsonModule": true, // Lets you import .json files
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    /* Strictness */
     "strict": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "types": ["vitest/importMeta", "node"]
-  },
-  "include": ["src/**/*.ts"]
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    /* If transpiling with TypeScript (tsc) : */
+    "module": "NodeNext",
+    "outDir": "dist",
+    "sourceMap": true,
+    /* AND if you're building for a library: */
+    "declaration": true, // produce d.ts
+    /* AND if you're building for a library in a monorepo: */
+    "composite": true,
+    "declarationMap": true,
+    /* If NOT transpiling with TypeScript: turn TS into linter */
+    // "module": "Preserve",
+    // "noEmit": true,  //turn TS into linter
+    /* If your code runs in the DOM: */
+    "lib": ["es2022", "dom", "dom.iterable"]
+    /* If your code doesn't run in the DOM: */
+    // "lib": ["es2022"]
+  }
 }
